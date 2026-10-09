@@ -1,18 +1,5 @@
 # Hệ thống báo cáo phân tích cơ hội đầu tư cổ phiếu
 
-Dự án hiện ở **`F:\Mid_term_finance1\Mid_term`**. Đây là nền tảng để phát triển
-hệ thống báo cáo cổ phiếu, báo cáo vĩ mô và báo cáo ngành, sau đó công bố PDF
-trên một web có bộ lọc.
-
-Đã có bộ thu thập giá/giao dịch DNSE, BCTC CafeF với cửa sổ 8 quý và bộ chọn sàn,
-phân ngành/thống kê ngành DNSE, bộ tin tức chuyển từ `market-pulse`, kho PDF và web.
-Việc tải dữ liệu đã được tiếp tục theo yêu cầu ngày 09/10/2026.
-Đã có bộ phân tích và tạo **ba đầu ra PDF**: cổ phiếu, ngành và tổng quan vĩ mô.
-Báo cáo cổ phiếu dùng chung phần vĩ mô/ngành, bổ sung mô hình kinh doanh, tài chính,
-giao dịch, định giá/kịch bản và rủi ro. Bố cục A4 tham chiếu mẫu SSI; web áp dụng
-thiết kế Stitch, font Noto Sans tiếng Việt được lưu cục bộ và nhúng vào PDF.
-Báo cáo thực đã được tạo và công bố lên thư viện. Đầu vào chưa kiểm chứng được ghi rõ;
-không sinh giá mục tiêu hoặc khuyến nghị mua/bán khi thiếu đơn vị, scope, cổ phiếu hay giả định.
 
 ## Chạy web bằng một script
 

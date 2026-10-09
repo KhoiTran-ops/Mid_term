@@ -248,7 +248,7 @@ def financial_metrics(data, profile):
     beginning = quarter_from_number(quarter_number(p)-4)
     for key, label in [('equity','ROE TTM'),('assets','ROA TTM')]:
         start, end = data.value(key,beginning), v(key)
-        average = (start+end)/2 if start is not None and end is not None else None
+        average = (start+end)/2 if start is not None and end is not None and beginning not in data.invalid_balance_periods else None
         profit = data.ttm('net_profit',p)
         add(label,ratio(profit,average,percent=True),'%', 'LNST 4 quý liên tiếp / bình quân đầu-cuối 12 tháng', ['net_profit',key])
         if data.review:

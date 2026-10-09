@@ -26,6 +26,9 @@ mọi kho nguồn. JSON lưu đúng các facts tài chính đã đọc, cùng gi
 - Chọn tối đa tám kỳ đã công bố gần nhất; metadata báo cáo không bảo đảm đủ mọi bảng.
 - Ánh xạ tên chỉ tiêu theo bảng và danh sách alias. Hai dòng cùng chỉ tiêu nhưng
   khác giá trị bị giữ thiếu và cảnh báo. Không cộng CashFlow và CashFlowDirect.
+- Bảng cân đối ánh xạ phải thỏa tài sản ≈ nợ + vốn và tài sản không nhỏ hơn vốn
+  (dung sai 0,5% do phần mềm đặt). Sai lệch chặn tỷ lệ dùng BS/định giá và ghi cảnh báo;
+  không tự sửa số liệu nguồn hoặc đoán đơn vị.
 - Không dùng 0 thay thiếu. Phân số có mẫu số không dương trả thiếu.
 - Tỷ lệ cùng bảng trên đơn vị gốc chỉ là quan sát sơ bộ khi chưa kiểm chứng scope/đơn vị.
 - Quý riêng từ YTD: Q1 giữ nguyên; Qn = YTD Qn − YTD Q(n−1) trong cùng năm.

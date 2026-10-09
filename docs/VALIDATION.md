@@ -2,11 +2,11 @@
 
 ## Phân tích, PDF và giao diện Stitch
 
-- Toàn bộ **71 tests passed**, chạy `run.py test` ngoài sandbox với dữ liệu tạm trong
+- Toàn bộ **73 tests passed**, chạy `run.py test` ngoài sandbox với dữ liệu tạm trong
   `var/pytest-run`. Kết quả này thay thế giới hạn 58/63 của đợt trước.
 - Kiểm chứng công thức chuyển YTD/TTM, khoảng trống quý, bình quân ROE, thiếu/0 mẫu số,
   profile tài chính, cổng đơn vị/thuyết minh, P/B pha loãng, ba kịch bản duy nhất,
-  dữ liệu không hữu hạn/ngày tương lai, reuse báo cáo, nguồn và font PDF nhúng.
+  dữ liệu không hữu hạn/ngày tương lai, bảng cân đối không nhất quán, reuse báo cáo, nguồn và font PDF nhúng.
 - Kiểm thử snapshot giữ giá trị đã đọc khi collector cập nhật database; không đọc lại
   đầu vào khác cho JSON sau khi đã tính báo cáo.
 - API kiểm tra Host/Origin, mã/nhóm thiếu, không lộ tệp riêng hoặc raw inputs.
@@ -14,7 +14,7 @@
   lượt lấy không có lỗi. Năm quan sát được ghi rõ trong PDF.
 - PDF thực: cổ phiếu SSI/chứng khoán, HPG/sản xuất, VCB/ngân hàng, ngành dịch vụ tài chính
   và tổng quan vĩ mô. Chưa có hồ sơ review/giả định thật nên không xuất giá mục tiêu giả.
-- Render mọi trang qua Poppler, xem contact sheet và trang chi tiết để kiểm tra bố cục,
+- Render 46 trang của năm PDF cuối qua Poppler, xem contact sheet và trang chi tiết để kiểm tra bố cục,
   bảng/biểu đồ, đánh số trang, nguồn và chữ tiếng Việt. Ảnh tại `var/pdf-check`.
 - Browser Edge/Playwright: tab ba loại, lọc, xem/tải PDF, tạo vĩ mô từ giao diện, đóng dialog
   bằng Escape, tin Việt Nam/quốc tế/nguồn, font Noto Sans và responsive 320/390/768/1440px;
