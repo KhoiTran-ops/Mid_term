@@ -1,0 +1,50 @@
+[
+  {
+    "source": "F:\\Telegram_chatbot\\Telegram_Trading_Bot\\data\\dnse_market.py",
+    "destination": "F:\\Mid_term_finance1\\data\\dnse_market.py",
+    "source_sha256": "eccf828e0f775a7f9b7fbcf1a70b65379ecd617d2a980596c05123df8c28c0be",
+    "extracted_sha256": "eccf828e0f775a7f9b7fbcf1a70b65379ecd617d2a980596c05123df8c28c0be"
+  },
+  {
+    "source": "F:\\Telegram_chatbot\\Telegram_Trading_Bot\\data\\cafef\\client.py",
+    "destination": "F:\\Mid_term_finance1\\data\\cafef\\client.py",
+    "source_sha256": "36ba8ac9975f81233ed93a7926c214d8138ea94bb138261bd5c4142507a68f17",
+    "extracted_sha256": "963a24000b0eef80ef1a59688ed6bad2708ff4d49cedd64fd142a1c2fe7324d4"
+  },
+  {
+    "source": "F:\\Telegram_chatbot\\Telegram_Trading_Bot\\data\\cafef\\parsers.py",
+    "destination": "F:\\Mid_term_finance1\\data\\cafef\\parsers.py",
+    "source_sha256": "54f5ee38b56c42aafb9168fa2abe283603a8654d7424a9498dd0ca28a10f7cac",
+    "extracted_sha256": "54f5ee38b56c42aafb9168fa2abe283603a8654d7424a9498dd0ca28a10f7cac"
+  },
+  {
+    "source": "F:\\Telegram_chatbot\\Telegram_Trading_Bot\\data\\cafef\\sync.py",
+    "destination": "F:\\Mid_term_finance1\\data\\cafef\\sync.py",
+    "source_sha256": "2fdc887034c453f4b6effdef7782df2cac95ec8f37f595330baa18563997f846",
+    "extracted_sha256": "fd05c4f1f7ed75cc80c2311b9c5141d9a1aee6a9fd88375622066fba5914e950"
+  },
+  {
+    "source": "F:\\Telegram_chatbot\\Telegram_Trading_Bot\\data\\db\\market_store.py",
+    "destination": "F:\\Mid_term_finance1\\data\\db\\market_store.py",
+    "source_sha256": "cfd5574787793fa5dacc08263fc8cb4c8b1b0e1a87c1d6ed3a7a8cff65a82340",
+    "extracted_sha256": "686c1a2e0aae0f6c9b941ec5e9ed9d3e84c160b2e5bd130834901d2793fccd01"
+  },
+  {
+    "source": "F:\\Telegram_chatbot\\Telegram_Trading_Bot\\common\\types.py",
+    "destination": "F:\\Mid_term_finance1\\common\\types.py",
+    "source_sha256": "df349a304661346b6adb1b0b5488ef92ffb025f60c1f3dbf5e7ede9b50a95d0f",
+    "extracted_sha256": "cef37693f0fb2c4b8ea528b1d77043ab2e5d0c6da3efee791cfa66141b4627b0"
+  },
+  {
+    "source": "F:\\Telegram_chatbot\\Telegram_Trading_Bot\\data\\providers.py",
+    "destination": "F:\\Mid_term_finance1\\data\\providers.py",
+    "source_sha256": "710ab1e487ff71a7509015b7de547d8d9da70a86b17c92a97da3f85bc4d494e0",
+    "extracted_sha256": "a387425def9a5ea8d17390d71daa344323c124d9a5271ac4d87782aaf92fa711"
+  },
+  {
+    "source": "F:\\Telegram_chatbot\\Telegram_Trading_Bot\\LICENSE",
+    "destination": "F:\\Mid_term_finance1\\LICENSE",
+    "source_sha256": "9c030e2f887a755251d1160bbf4aa965c29b10277dd51f5e29c34cc225ef66a5",
+    "extracted_sha256": "9c030e2f887a755251d1160bbf4aa965c29b10277dd51f5e29c34cc225ef66a5"
+  }
+]

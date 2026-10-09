@@ -1,0 +1,4 @@
+# Same provider/runtime versions as the source project.
+dnse==0.5.0
+tzdata==2026.4
+python-dotenv==1.2.3
