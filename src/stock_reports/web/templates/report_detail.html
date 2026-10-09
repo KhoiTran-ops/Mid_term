@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% block title %}{{ report.title }} · Equity Research{% endblock %}
+{% block scripts %}<script src="/static/report.js" defer></script>{% endblock %}
 {% block content %}
 <p class="breadcrumb"><a href="/">Thư viện báo cáo</a> / {{ labels[report.kind.value] }}</p>
 <div class="intro detail-heading"><div><p class="eyebrow">{{ labels[report.kind.value] }} · {{ report.as_of.strftime('%d/%m/%Y') }}</p><h1>{{ report.title }}</h1></div><a class="button" href="/api/reports/{{ report.id }}/pdf?download=true">↓ Tải PDF</a></div>

@@ -2,7 +2,7 @@
 
 ## Phân tích, PDF và giao diện Stitch
 
-- Toàn bộ **73 tests passed**, chạy `run.py test` ngoài sandbox với dữ liệu tạm trong
+- Toàn bộ **73 tests passed**, xác nhận lại qua `run.ps1 test` và `run.py test` ngoài sandbox với dữ liệu tạm trong
   `var/pytest-run`. Kết quả này thay thế giới hạn 58/63 của đợt trước.
 - Kiểm chứng công thức chuyển YTD/TTM, khoảng trống quý, bình quân ROE, thiếu/0 mẫu số,
   profile tài chính, cổng đơn vị/thuyết minh, P/B pha loãng, ba kịch bản duy nhất,
@@ -21,7 +21,8 @@
   không lỗi page và không tràn ngang. Ảnh tại `var/browser-check`.
 - `pip check`, compile Python và `git diff --check`; lock thư viện được cập nhật.
 - Web tại http://127.0.0.1:8001, collector tin/ngành tiếp tục chạy. Cổng 8000 của ứng dụng
-  khác được giữ nguyên. Đã bắt đầu thêm lượt cập nhật giá/giao dịch HOSE cuối phiên.
+  khác được giữ nguyên. Lượt cập nhật giá/giao dịch HOSE cuối phiên hoàn tất 16:06:31, xử lý 407 mã
+  gồm VNINDEX, ghi/cập nhật 369 nến và làm mới giao dịch nước ngoài, không lỗi.
 
 
 
@@ -81,3 +82,15 @@ Web mới tại `http://127.0.0.1:8001/news`; không dừng chương trình đan
 
 Chưa kiểm thử dữ liệu nguồn trực tiếp, nội dung báo cáo đầu tư hay renderer PDF
 vì các tác vụ đó nằm ngoài phạm vi nền tảng lần này. Catalog thật hiện trống.
+
+## Các PDF đã kiểm tra cuối
+
+- SSI - Chứng khoán: phân tích cơ hội đầu tư: `cea5bc6a-17b4-4100-8427-4f8a5f4d6987`, 11 trang.
+- Phân tích ngành Dịch vụ tài chính - 09/10/2026: `c3ff181e-763a-489d-a4ea-e581225bf947`, 6 trang.
+- Tổng quan vĩ mô Việt Nam - 09/10/2026: `838dba32-a07f-4ebc-96a8-2865e8d8caf1`, 7 trang.
+- HPG - Sản xuất và vật liệu: phân tích cơ hội đầu tư: `d4dcf09b-ab45-4807-bbb4-2dd7b7412bf2`, 11 trang.
+- VCB - Ngân hàng: phân tích cơ hội đầu tư: `2c39d312-2091-435c-9445-8d5bd0cd7edf`, 11 trang.
+
+Các bản PDF thử bố cục được giữ nguyên tệp/JSON; metadata thử được lưu tại
+`var/archives/layout-qa-reports.json` và database sao lưu. Thư viện hiện hiển thị
+năm báo cáo cuối đã kiểm tra, tránh các card lặp do quá trình thử layout.
