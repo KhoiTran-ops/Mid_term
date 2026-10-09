@@ -136,7 +136,9 @@ def sync_financial_history(client: CafeFClient, store: MarketStore, *,
                                    error_type=type(error).__name__))
                 break
             requests += 1
-            periods.extend(block)
+            unique = {(int(p['fiscal_year']), int(p['fiscal_quarter'])): p for p in periods}
+            unique.update({(int(p['fiscal_year']), int(p['fiscal_quarter'])): p for p in block})
+            periods = list(unique.values())
             block_keys = {(int(p['fiscal_year']), int(p['fiscal_quarter'])) for p in block}
             if incremental and block and len(cached_keys) >= max_quarters and block_keys <= cached_keys:
                 # Reuse the older, already downloaded periods, but preserve fresh audit metadata.
@@ -144,7 +146,7 @@ def sync_financial_history(client: CafeFClient, store: MarketStore, *,
                 periods = [*fresh.values(), *[p for p in cached
                     if (int(p['fiscal_year']), int(p['fiscal_quarter'])) not in fresh]]
                 break
-            if page * 4 >= min(total, max_quarters) or not block:
+            if len(periods) >= max_quarters or page * 4 >= total or not block:
                 break
             page += 1
         periods = sorted(
@@ -163,22 +165,40 @@ def sync_financial_history(client: CafeFClient, store: MarketStore, *,
         }
         for statement_type in STATEMENT_TYPES:
             existing = store.financial_statement_periods(symbol, statement_type) if incremental else set()
-            ordered = sorted(available_periods, reverse=True)
-            for offset in range(0, len(ordered), 4):
-                anchor_year, anchor_quarter = ordered[offset]
-                block_periods = set(ordered[offset:offset + 4])
-                if incremental and block_periods <= existing:
-                    continue
-                try:
-                    html = client.get_financial_html(
-                        symbol, statement_type, anchor_year, anchor_quarter
-                    )
-                except (CafeFError, ValueError) as error:
-                    rejected += 1
-                    issues.append(dict(symbol=symbol, statement_type=statement_type,
-                        anchor=f'{anchor_year}Q{anchor_quarter}', error_type=type(error).__name__))
+            pending = available_periods - existing
+            attempted = set()
+            while pending:
+                primary = max(pending)
+                number = primary[0] * 4 + primary[1] - 1
+                # HTML windows contain four calendar quarters, including gaps in publication.
+                primary_window = {p for p in pending if 0 <= number - (p[0]*4+p[1]-1) < 4}
+                fallback_year, fallback_zero_quarter = divmod(number + 1, 4)
+                fallback = (fallback_year, fallback_zero_quarter + 1)
+                anchors = [primary]
+                html = None
+                for anchor_year, anchor_quarter in anchors:
+                    anchor = (anchor_year, anchor_quarter)
+                    if anchor in attempted:
+                        continue
+                    attempted.add(anchor)
+                    try:
+                        html = client.get_financial_html(symbol, statement_type, anchor_year, anchor_quarter)
+                        break
+                    except (CafeFError, ValueError) as error:
+                        rejected += 1
+                        issues.append(dict(symbol=symbol, statement_type=statement_type,
+                            anchor=f'{anchor_year}Q{anchor_quarter}', error_type=type(error).__name__,
+                            status_code=getattr(error, 'status_code', None)))
+                        # An unavailable anchor can still appear in the next quarter's table.
+                        if anchor == primary and getattr(error, 'status_code', None) == 404 and fallback <= max(available_periods):
+                            anchors.append(fallback)
+                if html is None:
+                    pending.difference_update(primary_window)
                     continue
                 requests += 1
+                number = anchor_year * 4 + anchor_quarter - 1
+                block_periods = {p for p in available_periods if 0 <= number - (p[0]*4+p[1]-1) < 4}
+                pending.difference_update(block_periods)
                 facts = parse_financial_statement(html)
                 source = (
                     "https://cafef.vn/du-lieu/BaoCaoTaiChinh_V2.aspx"

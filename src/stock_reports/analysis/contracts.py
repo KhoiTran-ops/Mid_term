@@ -1,4 +1,5 @@
 from enum import StrEnum
+import math
 from typing import Protocol
 
 from pydantic import Field, model_validator
@@ -30,10 +31,32 @@ class Finding(ResearchModel):
         return self
 
 
+class ReportBlock(ResearchModel):
+    kind: str = Field(pattern='^(table|chart)$')
+    title: str
+    headers: tuple[str, ...] = ()
+    rows: tuple[tuple[str, ...], ...] = ()
+    labels: tuple[str, ...] = ()
+    values: tuple[float | None, ...] = ()
+    note: str = ''
+    sources: tuple[SourceReference, ...] = ()
+
+    @model_validator(mode='after')
+    def check_shape(self):
+        if self.kind == 'table' and any(len(r) != len(self.headers) for r in self.rows):
+            raise ValueError('Table columns must match headers')
+        if self.kind == 'chart' and len(self.labels) != len(self.values):
+            raise ValueError('Chart labels must match values')
+        if any(v is not None and not math.isfinite(v) for v in self.values):
+            raise ValueError('Chart values must be finite or missing')
+        return self
+
+
 class AnalysisSection(ResearchModel):
     kind: SectionKind
     title: str
     findings: tuple[Finding, ...] = Field(min_length=1)
+    blocks: tuple[ReportBlock, ...] = ()
 
 
 class AnalysisInputs(ResearchModel):

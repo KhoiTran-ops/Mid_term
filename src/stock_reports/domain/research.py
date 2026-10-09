@@ -21,6 +21,7 @@ class SourceReference(ResearchModel):
     url: HttpUrl
     retrieved_at: AwareDatetime
     published_at: AwareDatetime | None = None
+    locator: str | None = None
 
 
 class Observation(ResearchModel):
@@ -48,7 +49,7 @@ class CompanyProfile(ResearchModel):
 class NewsArticle(ResearchModel):
     title: str
     url: HttpUrl
-    published_at: AwareDatetime
+    published_at: AwareDatetime | None
     symbols: tuple[str, ...]
     industry_ids: tuple[str, ...]
     source: SourceReference

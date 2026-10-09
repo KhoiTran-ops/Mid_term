@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block title %}{{ report.title }} · Equity Research{% endblock %}
+{% block content %}
+<p class="breadcrumb"><a href="/">Thư viện báo cáo</a> / {{ labels[report.kind.value] }}</p>
+<div class="intro detail-heading"><div><p class="eyebrow">{{ labels[report.kind.value] }} · {{ report.as_of.strftime('%d/%m/%Y') }}</p><h1>{{ report.title }}</h1></div><a class="button" href="/api/reports/{{ report.id }}/pdf?download=true">↓ Tải PDF</a></div>
+<div class="detail-layout"><aside class="detail-panel"><h2>Thông tin báo cáo</h2><dl><dt>Doanh nghiệp / phạm vi</dt><dd>{{ report.company_name or report.industry_name or 'Kinh tế Việt Nam' }}</dd><dt>Ngày chốt dữ liệu</dt><dd>{{ report.as_of.strftime('%d/%m/%Y') }}</dd><dt>Loại báo cáo</dt><dd>{{ labels[report.kind.value] }}</dd></dl>
+{% if analysis %}<p class="assessment">{{ analysis.document.assessment }}</p><p class="metadata">{{ analysis.page_count }} trang · Có bảng số liệu và nguồn tham chiếu</p><h2>Nội dung phân tích</h2><ol class="section-list">{% for section in analysis.document.sections %}<li>{{ section.title }}</li>{% endfor %}</ol>
+{% if analysis.document.data_quality %}<details open><summary>Chất lượng dữ liệu</summary><ul>{% for note in analysis.document.data_quality %}<li>{{ note }}</li>{% endfor %}</ul></details>{% endif %}{% endif %}
+<a href="/api/reports/{{ report.id }}/pdf" target="_blank" rel="noopener">Mở PDF trong tab mới ↗</a></aside>
+<section class="pdf-panel" aria-label="Xem trước PDF"><div class="pdf-toolbar"><span>Bản báo cáo đầy đủ</span><span>PDF</span></div><iframe title="{{ report.title }}" src="/api/reports/{{ report.id }}/pdf#view=FitH&pagemode=none"></iframe><p class="metadata">Nếu trình duyệt không hỗ trợ xem PDF, hãy dùng nút tải xuống.</p></section></div>
+{% endblock %}

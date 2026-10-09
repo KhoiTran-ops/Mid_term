@@ -1,7 +1,8 @@
 from pathlib import Path
+from datetime import datetime, UTC
 from typing import Protocol
 
-from pydantic import Field, model_validator
+from pydantic import AwareDatetime, Field, model_validator
 
 from stock_reports.analysis.contracts import AnalysisSection, SectionKind
 from stock_reports.reports.models import ReportKind, ReportMetadata
@@ -9,6 +10,10 @@ from stock_reports.reports.models import ReportKind, ReportMetadata
 
 class ReportDocument(ReportMetadata):
     sections: tuple[AnalysisSection, ...] = Field(min_length=1)
+    generated_at: AwareDatetime = Field(default_factory=lambda: datetime.now(UTC))
+    financial_period: str | None = None
+    assessment: str = 'Chưa đủ cơ sở khuyến nghị'
+    data_quality: tuple[str, ...] = ()
 
     @model_validator(mode='after')
     def require_sections(self):

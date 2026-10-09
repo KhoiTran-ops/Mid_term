@@ -1,0 +1,238 @@
+{
+  "companies": {
+    "FPT": [
+      "FPT",
+      "FPT Corporation"
+    ],
+    "CMG": [
+      "CMC Corporation",
+      "Tập đoàn CMC",
+      "CMG"
+    ],
+    "CTR": [
+      "Viettel Construction",
+      "Viettel công trình",
+      "CTR"
+    ],
+    "HPG": [
+      "Hòa Phát",
+      "Hoa Phat",
+      "HPG"
+    ],
+    "VCB": [
+      "Vietcombank",
+      "VCB"
+    ],
+    "MBB": [
+      "MB Bank",
+      "MBbank",
+      "MBB"
+    ],
+    "TCB": [
+      "Techcombank",
+      "TCB"
+    ],
+    "BID": [
+      "BIDV"
+    ],
+    "VPB": [
+      "VPBank",
+      "VPB"
+    ],
+    "ACB": [
+      "ACB"
+    ],
+    "MWG": [
+      "Thế Giới Di Động",
+      "Mobile World",
+      "MWG"
+    ],
+    "PNJ": [
+      "PNJ"
+    ],
+    "MSN": [
+      "Masan",
+      "MSN"
+    ],
+    "VIC": [
+      "Vingroup",
+      "VIC"
+    ],
+    "VHM": [
+      "Vinhomes",
+      "VHM"
+    ],
+    "VNM": [
+      "Vinamilk",
+      "VNM"
+    ],
+    "GMD": [
+      "Gemadept",
+      "GMD"
+    ],
+    "GAS": [
+      "PV Gas",
+      "PVGas"
+    ],
+    "PLX": [
+      "Petrolimex",
+      "PLX"
+    ],
+    "NVDA": [
+      "Nvidia",
+      "NVDA"
+    ],
+    "AAPL": [
+      "Apple",
+      "AAPL"
+    ],
+    "MSFT": [
+      "Microsoft",
+      "MSFT"
+    ],
+    "GOOGL": [
+      "Google",
+      "Alphabet",
+      "GOOGL"
+    ],
+    "AMZN": [
+      "Amazon",
+      "AMZN"
+    ],
+    "TSLA": [
+      "Tesla",
+      "TSLA"
+    ],
+    "META": [
+      "Meta Platforms",
+      "Facebook"
+    ],
+    "Samsung": [
+      "Samsung"
+    ],
+    "TSMC": [
+      "TSMC",
+      "Taiwan Semiconductor"
+    ]
+  },
+  "sectors": {
+    "Ngân hàng": [
+      "ngân hàng",
+      "banking",
+      "bank",
+      "tín dụng",
+      "credit"
+    ],
+    "Công nghệ": [
+      "công nghệ",
+      "technology",
+      "software",
+      "phần mềm",
+      "trí tuệ nhân tạo",
+      "artificial intelligence",
+      "chip",
+      "semiconductor",
+      "chuyển đổi số"
+    ],
+    "Bất động sản": [
+      "bất động sản",
+      "real estate",
+      "housing",
+      "property",
+      "nhà ở"
+    ],
+    "Năng lượng": [
+      "dầu khí",
+      "oil",
+      "gas",
+      "energy",
+      "năng lượng",
+      "renewable",
+      "điện gió",
+      "điện mặt trời",
+      "giá điện",
+      "nhà máy điện",
+      "electricity"
+    ],
+    "Bán lẻ": [
+      "bán lẻ",
+      "retail",
+      "consumer",
+      "tiêu dùng",
+      "siêu thị"
+    ],
+    "Logistics": [
+      "logistics",
+      "shipping",
+      "vận tải",
+      "cảng biển",
+      "freight",
+      "supply chain"
+    ],
+    "Sản xuất": [
+      "manufacturing",
+      "sản xuất",
+      "thép",
+      "steel",
+      "factory",
+      "công nghiệp"
+    ],
+    "Nông nghiệp": [
+      "agriculture",
+      "nông nghiệp",
+      "thủy sản",
+      "seafood",
+      "coffee",
+      "cà phê",
+      "rice",
+      "gạo"
+    ],
+    "Y tế": [
+      "healthcare",
+      "pharma",
+      "dược",
+      "bệnh viện",
+      "y tế"
+    ],
+    "Du lịch": [
+      "tourism",
+      "du lịch",
+      "airline",
+      "hàng không",
+      "hotel"
+    ]
+  },
+  "macro": [
+    "GDP",
+    "CPI",
+    "lạm phát",
+    "inflation",
+    "lãi suất",
+    "interest rate",
+    "tỷ giá",
+    "exchange rate",
+    "FDI",
+    "thuế quan",
+    "tariff",
+    "chính sách tiền tệ",
+    "monetary policy",
+    "ngân sách",
+    "fiscal",
+    "xuất khẩu",
+    "export",
+    "nhập khẩu",
+    "import",
+    "Federal Reserve",
+    "ECB",
+    "central bank",
+    "recession",
+    "thất nghiệp",
+    "unemployment",
+    "kinh tế vĩ mô",
+    "macroeconomic",
+    "vĩ mô",
+    "chứng khoán",
+    "stock market",
+    "bond yields"
+  ]
+}

@@ -1,0 +1,11 @@
+<!doctype html>
+<html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>{% block title %}Equity Research · Thư viện phân tích{% endblock %}</title>
+<link rel="stylesheet" href="/static/library.css"><link rel="stylesheet" href="/static/news.css">
+{% block scripts %}{% endblock %}</head><body>
+<a class="skip" href="#main">Đến nội dung chính</a>
+<header><div class="shell header-inner"><a class="brand" href="/"><span class="brand-mark">ER</span><span>Equity<span class="brand-light">Research</span></span></a>
+<nav class="main-nav" aria-label="Chức năng"><a href="/" {% if active!='news' %}aria-current="page"{% endif %}>Thư viện báo cáo</a><a href="/news" {% if active=='news' %}aria-current="page"{% endif %}>Tin tức</a></nav><span class="header-note">NGHIÊN CỨU ĐẦU TƯ</span></div></header>
+<main class="shell" id="main">{% block content %}{% endblock %}</main>
+<footer class="shell"><span>EquityResearch · Phân tích từ dữ liệu</span><span>Cổ phiếu · Ngành · Vĩ mô</span></footer>
+</body></html>

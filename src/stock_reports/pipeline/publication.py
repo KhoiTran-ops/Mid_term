@@ -19,5 +19,5 @@ class ReportPublisher:
             rendered = self.renderer.render(document, destination)
             if Path(rendered).resolve() != destination.resolve():
                 raise ValueError('The renderer must return the requested destination')
-            metadata = ReportMetadata.model_validate(document.model_dump(exclude={'sections'}))
+            metadata = ReportMetadata.model_validate({key: getattr(document, key) for key in ReportMetadata.model_fields})
             return self.catalog.register(metadata, destination)

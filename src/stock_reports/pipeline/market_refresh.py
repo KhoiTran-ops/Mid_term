@@ -4,13 +4,14 @@ from datetime import datetime
 import logging
 
 from stock_reports.data_sources.dnse.market import BENCHMARK_SYMBOL, DNSESynchronizer, VIETNAM
+from stock_reports.data_sources.dnse.catalog import select_symbols
 
 
 logger = logging.getLogger(__name__)
 
 
 def refresh_market(gateway, store, *, symbols=None, timeframes=('1D', '1m'),
-                   now=None, include_foreign=False, on_progress=None, instruments=None):
+                   now=None, include_foreign=False, on_progress=None, instruments=None, exchanges=None):
     now = now or datetime.now(VIETNAM)
     end = int(now.timestamp())
     day_start = int(now.replace(hour=0, minute=0, second=0, microsecond=0).timestamp())
@@ -18,6 +19,10 @@ def refresh_market(gateway, store, *, symbols=None, timeframes=('1D', '1m'),
     if not instruments:
         raise ValueError('DNSE returned an empty instrument catalog')
     store.replace_instruments(instruments, source='dnse')
+    if exchanges:
+        selected = set(select_symbols(instruments, exchanges=exchanges,
+            symbols=[s for s in symbols if s != BENCHMARK_SYMBOL] if symbols else None))
+        instruments = [i for i in instruments if i.symbol in selected]
     if symbols:
         requested = set(symbols)
         instruments = [item for item in instruments if item.symbol in requested]

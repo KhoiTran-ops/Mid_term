@@ -1,5 +1,8 @@
-from datetime import date
+from datetime import date, datetime
+import asyncio
+from contextlib import asynccontextmanager
 from pathlib import Path
+from zoneinfo import ZoneInfo
 
 from fastapi import FastAPI, HTTPException, Query, Request
 from fastapi.exceptions import RequestValidationError
@@ -11,6 +14,12 @@ from fastapi.templating import Jinja2Templates
 from stock_reports.core.config import Settings
 from stock_reports.reports.models import ReportKind, ReportPage, StoredReport
 from stock_reports.storage.reports import ReportCatalog
+from stock_reports.pipeline.news_runtime import configured_news, NewsRunner
+from stock_reports.web.news import news_router
+from stock_reports.web.generation import ReportJobs, generation_router
+from stock_reports.pipeline.research_reports import report_analysis
+from stock_reports.analysis.repository import ResearchRepository, VIETNAM
+from starlette.middleware.trustedhost import TrustedHostMiddleware
 
 
 LABELS = {'stock': 'Cổ phiếu', 'industry': 'Ngành', 'macro': 'Vĩ mô'}
@@ -20,7 +29,23 @@ def create_app(settings: Settings) -> FastAPI:
     assets = Path(__file__).resolve().parent
     catalog = ReportCatalog(settings.reports_database, settings.reports_directory)
     templates = Jinja2Templates(directory=assets / 'templates')
-    app = FastAPI(title='Thư viện báo cáo đầu tư', version='0.1.0', docs_url=None, redoc_url=None)
+    templates.env.filters['local_time'] = lambda value: datetime.fromisoformat(value).astimezone(ZoneInfo('Asia/Ho_Chi_Minh')).strftime('%d/%m/%Y %H:%M')
+    news_store, collector = configured_news(settings)
+    runner = NewsRunner(settings, collector)
+    jobs = ReportJobs(settings)
+
+    @asynccontextmanager
+    async def lifespan(app):
+        if settings.news_auto_update:
+            runner.start()
+        yield
+        await asyncio.to_thread(runner.stop)
+        await asyncio.to_thread(jobs.stop)
+
+    app = FastAPI(title='Thư viện báo cáo đầu tư', version='0.2.0', docs_url=None, redoc_url=None, lifespan=lifespan)
+    app.include_router(news_router(news_store, templates))
+    app.include_router(generation_router(settings, catalog, templates, jobs))
+    app.add_middleware(TrustedHostMiddleware, allowed_hosts=['localhost','127.0.0.1','testserver'])
     app.mount('/static', StaticFiles(directory=assets / 'static'), name='static')
 
     @app.middleware('http')
@@ -102,9 +127,18 @@ def create_app(settings: Settings) -> FastAPI:
             error = 'Vui lòng kiểm tra loại báo cáo và khoảng ngày đã chọn.'
             result = ReportPage(items=[], total=0, page=1, page_size=20)
         total_pages = max(1, (result.total + result.page_size - 1) // result.page_size)
+        repo = ResearchRepository(settings, datetime.now(VIETNAM).date())
+        details = {}
+        for record in result.items:
+            payload = report_analysis(settings, record.id, catalog)
+            details[record.id] = dict(pages=payload['page_count'] if payload else None,
+                assessment=payload['document']['assessment'] if payload else '')
+        counts = {key:catalog.list_reports(kind=ReportKind(key),page_size=1).total for key in LABELS}
         return templates.TemplateResponse(request=request, name='library.html',
             context=dict(result=result, filters=filters, options=catalog.filter_options(),
-                labels=LABELS, error=error, total_pages=total_pages,
+                latest_news=news_store.list_news(page_size=3)['items'],
+                labels=LABELS, error=error, total_pages=total_pages, active='reports',
+                details=details, counts=counts, industry_options=repo.industries(), companies=repo.companies(),
                 previous_url=str(request.url.include_query_params(page=page-1)) if page>1 else None,
                 next_url=str(request.url.include_query_params(page=page+1)) if page<total_pages else None),
             status_code=422 if error else 200)

@@ -13,8 +13,11 @@ class Settings:
     market_database: Path
     reports_database: Path
     reports_directory: Path
+    news_database: Path
+    industries_database: Path
     outputs_directory: Path
     runs_directory: Path
+    news_auto_update: bool = True
     dnse_api_key: str | None = field(default=None, repr=False)
     dnse_api_secret: str | None = field(default=None, repr=False)
 
@@ -29,7 +32,10 @@ class Settings:
         return cls(root=root, market_database=path('DATABASE_PATH', 'var/market_data.db'),
             reports_database=path('REPORTS_DATABASE_PATH', 'var/reports.db'),
             reports_directory=path('REPORTS_DIRECTORY', 'outputs/reports'),
+            news_database=path('NEWS_DATABASE_PATH', 'var/news.db'),
+            industries_database=path('INDUSTRIES_DATABASE_PATH', 'var/industries.db'),
             outputs_directory=root / 'outputs', runs_directory=root / 'var/runs',
+            news_auto_update=str(values.get('NEWS_AUTO_UPDATE', 'true')).lower() in ('true', '1', 'yes'),
             dnse_api_key=values.get('DNSE_API_KEY'), dnse_api_secret=values.get('DNSE_API_SECRET'))
 
     @property

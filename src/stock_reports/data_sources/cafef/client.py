@@ -16,7 +16,9 @@ EXCHANGES = frozenset({"HOSE", "HNX", "UPCOM"})
 
 
 class CafeFError(RuntimeError):
-    pass
+    def __init__(self, message: str, *, status_code: int | None = None):
+        super().__init__(message)
+        self.status_code = status_code
 
 
 class Transport(Protocol):
@@ -55,7 +57,7 @@ class RateLimitedTransport:
                     return response.read()
             except HTTPError as error:
                 if error.code not in {429, 500, 502, 503, 504} or attempt == self._retries:
-                    raise CafeFError(f"CafeF HTTP {error.code}") from error
+                    raise CafeFError(f"CafeF HTTP {error.code}", status_code=error.code) from error
                 retry_after = error.headers.get("Retry-After")
                 delay = min(float(retry_after), 300) if retry_after else 2 ** attempt
             except (URLError, TimeoutError) as error:

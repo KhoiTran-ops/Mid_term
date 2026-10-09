@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% block title %}Tin tức thị trường · Equity Research{% endblock %}
+{% block scripts %}<script src="/static/news.js" defer></script>{% endblock %}
+{% block content %}
+
+    <div class="intro"><p class="eyebrow">THỊ TRƯỜNG · DOANH NGHIỆP · KINH TẾ</p>
+      <h1>Tin tức thị trường</h1>
+      <p>Theo dõi tin doanh nghiệp, diễn biến ngành và kinh tế Việt Nam, quốc tế.</p>
+    </div>
+    <nav class="tabs" aria-label="Khu vực tin tức">
+      <a href="/news" {% if not filters.region %}aria-current="page"{% endif %}>Tất cả tin</a>
+      <a href="/news?region=VN" {% if filters.region=='VN' %}aria-current="page"{% endif %}>Việt Nam</a>
+      <a href="/news?region=international" {% if filters.region=='international' %}aria-current="page"{% endif %}>Quốc tế</a>
+    </nav>
+    <form method="get" action="/news" class="filters" aria-label="Lọc tin tức">
+      <div class="field search"><label for="query">Tìm tin tức</label><input id="query" name="query" value="{{ filters.query }}" placeholder="Ví dụ: lãi suất, Hòa Phát, ngành thép" maxlength="240"></div>
+      <div class="field"><label for="region">Khu vực</label><select id="region" name="region">
+        <option value="">Tất cả khu vực</option><option value="VN" {% if filters.region=='VN' %}selected{% endif %}>Việt Nam</option>
+        <option value="international" {% if filters.region=='international' %}selected{% endif %}>Quốc tế</option>
+      </select></div>
+      <div class="field"><label for="source">Nguồn tin</label><select id="source" name="source_id">
+        <option value="">Tất cả nguồn</option>{% for source in sources %}<option value="{{ source.id }}" {% if filters.source_id==source.id %}selected{% endif %}>{{ source.config.name }}</option>{% endfor %}
+      </select></div>
+      <div class="field"><label for="symbol">Mã doanh nghiệp</label><input id="symbol" name="symbol" value="{{ filters.symbol }}" placeholder="Ví dụ: HPG, FPT" maxlength="12"></div>
+      <div class="actions"><button type="submit">Lọc tin tức</button><a href="/news">Xóa bộ lọc</a></div>
+    </form>
+    <div class="news-status">
+      <span id="refresh-message" role="status">{{ sources|length }} nguồn theo dõi · Danh sách cập nhật mỗi phút</span>
+      {% if latest_success %}<span>Lần lấy tin thành công: {{ latest_success|local_time }}</span>{% endif %}
+    </div>
+    {% if failed_sources %}<details class="source-issues"><summary>{{ failed_sources|length }} nguồn đang gặp lỗi, hệ thống sẽ thử lại</summary>
+      <ul>{% for source in failed_sources %}<li>{{ source.config.name }} · {{ source.error }}</li>{% endfor %}</ul>
+    </details>{% endif %}
+    <section id="news-results" aria-labelledby="news-title">
+      <div class="results-heading"><h2 id="news-title">Tin mới nhất</h2><span>{{ result.total }} tin</span></div>
+      {% if result['items'] %}<div class="report-list">
+        {% for item in result['items'] %}<article class="news-item">
+          <div class="metadata"><span class="kind">{{ 'Việt Nam' if item.region=='VN' else 'Quốc tế' }}</span><span>{{ item.source_name }}</span>
+            {% if item.published_at %}<time datetime="{{ item.published_at }}">{{ item.published_at|local_time }}</time>{% else %}<span>Chưa rõ ngày đăng</span>{% endif %}
+          </div>
+          <h3><a href="{{ item.url }}" target="_blank" rel="noopener noreferrer">{{ item.title }} <span aria-hidden="true">↗</span></a></h3>
+          {% if item.excerpt %}<p class="news-excerpt">{{ item.excerpt }}</p>{% endif %}
+          {% if item.companies or item.sectors %}<div class="news-tags" aria-label="Gợi ý liên quan">
+            {% for company in item.companies %}<a href="/news?symbol={{ company|urlencode }}">{{ company }}</a>{% endfor %}
+            {% for sector in item.sectors %}<span>{{ sector }}</span>{% endfor %}
+          </div>{% endif %}
+          <p class="news-retrieved">Ghi nhận: {{ item.first_seen|local_time }}</p>
+        </article>{% endfor %}
+      </div>{% else %}<div class="empty"><h3>Chưa có tin phù hợp</h3><p>Thử xóa bộ lọc hoặc chờ lần cập nhật tiếp theo.</p></div>{% endif %}
+      {% if total_pages>1 %}<nav class="pagination" aria-label="Phân trang">
+        {% if previous_url %}<a href="{{ previous_url }}">← Trang trước</a>{% endif %}
+        <span>Trang {{ result.page }} / {{ total_pages }}</span>{% if next_url %}<a href="{{ next_url }}">Trang sau →</a>{% endif %}
+      </nav>{% endif %}
+    </section>
+{% endblock %}
