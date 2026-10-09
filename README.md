@@ -6,7 +6,6 @@
 Mở PowerShell tại thư mục dự án:
 
 ```powershell
-cd F:\Mid_term_finance1\Mid_term
 powershell -ExecutionPolicy Bypass -File .\run.ps1
 ```
 
