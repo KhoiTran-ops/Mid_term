@@ -5,8 +5,8 @@ import hashlib
 import json
 from pathlib import Path
 
-from data.cafef.client import RateLimitedTransport
-from data.dnse_market import DNSEGateway
+from stock_reports.data_sources.cafef.client import RateLimitedTransport
+from stock_reports.data_sources.dnse.market import DNSEGateway
 
 
 class ResponseArchive:

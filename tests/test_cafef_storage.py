@@ -1,8 +1,8 @@
 from datetime import date
 import sqlite3
 
-from data.cafef.parsers import parse_financial_periods, parse_financial_statement
-from data.db.market_store import MarketStore
+from stock_reports.data_sources.cafef.parsers import parse_financial_periods, parse_financial_statement
+from stock_reports.storage.market import MarketStore
 
 
 class Instrument:

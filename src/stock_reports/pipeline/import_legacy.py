@@ -6,7 +6,8 @@ import json
 from pathlib import Path
 import sqlite3
 
-from data.db.market_store import MarketStore
+from stock_reports.storage.market import MarketStore
+from stock_reports.core.config import Settings
 
 
 TABLES = ('instruments', 'ohlcv_bars', 'foreign_snapshots', 'eod_prices',
@@ -46,12 +47,15 @@ def import_database(source: Path, target: Path, *, quarters: int = 8) -> dict:
                 legacy_raw_documents_available=False)
 
 
-def main():
+def main(argv=None, settings: Settings | None = None):
+    settings = settings or Settings.from_root(Path(__file__).resolve().parents[3])
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--source', type=Path, required=True)
-    parser.add_argument('--database', type=Path, default=Path('var/market_data.db'))
+    parser.add_argument('--database', type=Path, default=settings.market_database)
     parser.add_argument('--quarters', type=int, default=8)
-    args = parser.parse_args()
+    args = parser.parse_args(argv)
+    args.source = (settings.root / args.source).resolve()
+    args.database = (settings.root / args.database).resolve()
     result = import_database(args.source, args.database, quarters=args.quarters)
     manifest = args.database.parent / 'legacy_import.json'
     manifest.write_text(json.dumps(result, ensure_ascii=False, indent=2), encoding='utf-8')

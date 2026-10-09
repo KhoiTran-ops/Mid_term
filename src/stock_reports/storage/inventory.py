@@ -6,7 +6,7 @@ import json
 from pathlib import Path
 import sqlite3
 
-from data.dnse_market import VIETNAM
+from stock_reports.data_sources.dnse.market import VIETNAM
 
 
 def local_time(timestamp):

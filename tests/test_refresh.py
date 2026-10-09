@@ -1,8 +1,8 @@
 from datetime import datetime
 
-from data.db.market_store import MarketStore
-from data.dnse_market import DNSEInstrument, VIETNAM
-from data.refresh import refresh_market
+from stock_reports.storage.market import MarketStore
+from stock_reports.data_sources.dnse.market import DNSEInstrument, VIETNAM
+from stock_reports.pipeline.market_refresh import refresh_market
 
 
 def test_refresh_overlaps_latest_daily_bar_and_continues_after_symbol_error(tmp_path):

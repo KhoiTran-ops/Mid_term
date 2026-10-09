@@ -1,7 +1,9 @@
 import sqlite3
 
-from data.db.market_store import MarketStore
-from scripts.import_legacy import import_database
+from stock_reports.storage.market import MarketStore
+from stock_reports.pipeline.import_legacy import import_database
+from stock_reports.pipeline.import_legacy import main as import_main
+from stock_reports.core.config import Settings
 
 
 def test_import_keeps_latest_eight_periods_per_symbol_and_no_chat_data(tmp_path):
@@ -33,3 +35,15 @@ def test_import_keeps_latest_eight_periods_per_symbol_and_no_chat_data(tmp_path)
         assert db.execute('SELECT COUNT(*) FROM financial_periods').fetchone()[0] == 8
         assert db.execute('SELECT COUNT(*),MIN(value_numeric) FROM financial_facts').fetchone() == (8, 2)
         assert not db.execute("SELECT 1 FROM sqlite_master WHERE name='notification_subscriptions'").fetchone()
+
+
+def test_import_command_resolves_relative_files_from_project_root(tmp_path, monkeypatch):
+    project = tmp_path / 'project'
+    project.mkdir()
+    source = MarketStore(project / 'source.db')
+    source.initialize()
+    monkeypatch.chdir(tmp_path)
+    import_main(['--source', 'source.db', '--database', 'var/imported.db'], Settings.from_root(project))
+    assert (project / 'var/imported.db').is_file()
+    assert (project / 'var/legacy_import.json').is_file()
+    assert not (tmp_path / 'var/imported.db').exists()

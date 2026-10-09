@@ -3,7 +3,7 @@
 from datetime import datetime
 import logging
 
-from data.dnse_market import BENCHMARK_SYMBOL, DNSESynchronizer, VIETNAM
+from stock_reports.data_sources.dnse.market import BENCHMARK_SYMBOL, DNSESynchronizer, VIETNAM
 
 
 logger = logging.getLogger(__name__)
@@ -41,7 +41,7 @@ def refresh_market(gateway, store, *, symbols=None, timeframes=('1D', '1m'),
                                      error_type=type(error).__name__))
                 logger.warning('DNSE %s %s failed (%s)', symbol, timeframe, type(error).__name__)
         if include_foreign and asset == 'STOCK':
-            from data.dnse_market import parse_foreign_trading
+            from stock_reports.data_sources.dnse.market import parse_foreign_trading
             try:
                 rows = parse_foreign_trading(gateway.get_foreign_trading(symbol, day_start, end))
                 store.upsert_foreign_snapshots(rows, source='dnse')

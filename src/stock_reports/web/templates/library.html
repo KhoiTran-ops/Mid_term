@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Thư viện báo cáo đầu tư</title>
+  <link rel="stylesheet" href="/static/library.css">
+</head>
+<body>
+  <a class="skip" href="#reports">Đến danh sách báo cáo</a>
+  <header><div class="shell header-inner"><a class="brand" href="/">EQUITY <span>RESEARCH</span></a><span class="header-note">Thư viện phân tích đầu tư</span></div></header>
+  <main class="shell">
+    <div class="intro"><p class="eyebrow">NGHIÊN CỨU · DỮ LIỆU · ĐẦU TƯ</p><h1>Thư viện báo cáo</h1><p>Tra cứu phân tích cổ phiếu, triển vọng ngành và bức tranh kinh tế vĩ mô.</p></div>
+    <nav class="tabs" aria-label="Loại báo cáo">
+      <a href="/" {% if not filters.kind %}aria-current="page"{% endif %}>Tất cả báo cáo</a>
+      {% for value,label in labels.items() %}<a href="/?kind={{ value }}" {% if filters.kind==value %}aria-current="page"{% endif %}>{{ label }}</a>{% endfor %}
+    </nav>
+    <form method="get" action="/" class="filters" aria-label="Lọc báo cáo">
+      <div class="field search"><label for="query">Tìm báo cáo hoặc doanh nghiệp</label><input id="query" name="query" value="{{ filters.query }}" placeholder="Tên báo cáo, doanh nghiệp hoặc mã cổ phiếu"></div>
+      <div class="field"><label for="symbol">Mã cổ phiếu</label><input id="symbol" name="symbol" list="symbols" value="{{ filters.symbol }}" placeholder="Ví dụ: HPG" maxlength="12"><datalist id="symbols">{% for symbol in options.symbols %}<option value="{{ symbol }}">{% endfor %}</datalist></div>
+      <div class="field"><label for="industry">Ngành</label><select id="industry" name="industry_id"><option value="">Tất cả ngành</option>{% for item in options.industries %}<option value="{{ item.id }}" {% if filters.industry_id==item.id %}selected{% endif %}>{{ item.name }}</option>{% endfor %}</select></div>
+      <div class="field"><label for="kind">Loại báo cáo</label><select id="kind" name="kind"><option value="">Tất cả loại</option>{% for value,label in labels.items() %}<option value="{{ value }}" {% if filters.kind==value %}selected{% endif %}>{{ label }}</option>{% endfor %}</select></div>
+      <div class="field"><label for="date_from">Từ ngày</label><input type="date" id="date_from" name="date_from" value="{{ filters.date_from }}"></div>
+      <div class="field"><label for="date_to">Đến ngày</label><input type="date" id="date_to" name="date_to" value="{{ filters.date_to }}"></div>
+      <div class="actions"><button type="submit">Lọc báo cáo</button><a href="/">Xóa bộ lọc</a></div>
+    </form>
+    <section id="reports" aria-labelledby="results-title">
+      <div class="results-heading"><h2 id="results-title">Danh sách báo cáo</h2><span>{{ result.total }} báo cáo</span></div>
+      {% if error %}<p class="error" role="alert">{{ error }}</p>{% endif %}
+      {% if result.items %}
+      <div class="report-list">{% for report in result.items %}
+        <article class="report"><div class="report-body"><div class="metadata"><span class="kind">{{ labels[report.kind.value] }}</span><time datetime="{{ report.as_of }}">{{ report.as_of.strftime('%d/%m/%Y') }}</time>{% if report.symbol %}<span class="ticker">{{ report.symbol }}</span>{% endif %}</div><h3>{{ report.title }}</h3><p>{{ report.company_name or '' }}{% if report.company_name and report.industry_name %} · {% endif %}{{ report.industry_name or ('Tổng quan kinh tế' if report.kind.value=='macro' else '') }}</p></div><div class="report-links"><a class="view" href="/api/reports/{{ report.id }}/pdf" target="_blank" rel="noopener">Xem PDF <span aria-hidden="true">↗</span></a><a href="/api/reports/{{ report.id }}/pdf?download=true">Tải xuống</a></div></article>
+      {% endfor %}</div>
+      {% else %}
+      <div class="empty"><span class="empty-mark" aria-hidden="true">≡</span><h3>{% if filters.kind or filters.symbol or filters.industry_id or filters.query or filters.date_from or filters.date_to %}Không tìm thấy báo cáo phù hợp{% else %}Chưa có báo cáo{% endif %}</h3><p>{% if filters.kind or filters.symbol or filters.industry_id or filters.query or filters.date_from or filters.date_to %}Thử thay đổi hoặc xóa bộ lọc để xem các báo cáo khác.{% else %}Các báo cáo đã xuất bản sẽ xuất hiện tại đây để bạn tra cứu và tải PDF.{% endif %}</p></div>
+      {% endif %}
+      {% if total_pages>1 %}<nav class="pagination" aria-label="Phân trang">{% if previous_url %}<a href="{{ previous_url }}">← Trang trước</a>{% endif %}<span>Trang {{ result.page }} / {{ total_pages }}</span>{% if next_url %}<a href="{{ next_url }}">Trang sau →</a>{% endif %}</nav>{% endif %}
+    </section>
+    <footer>Equity Research <span>Báo cáo cổ phiếu · Ngành · Vĩ mô</span></footer>
+  </main>
+</body>
+</html>

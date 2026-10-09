@@ -4,12 +4,12 @@ import json
 
 import pytest
 
-from data.dnse_market import (
+from stock_reports.data_sources.dnse.market import (
     CompatibleDNSEMarketStream, DNSEInstrument, DNSEMarketDataProvider,
     DNSEMarketService, DNSESynchronizer,
     foreign_history_window, parse_foreign_trading, parse_ohlc,
 )
-from data.db.market_store import MarketStore
+from stock_reports.storage.market import MarketStore
 
 
 def test_parse_ohlc_validates_parallel_arrays() -> None:
@@ -228,10 +228,10 @@ async def test_realtime_subscription_starts_before_backfill_finishes(
     async def idle_foreign_loop() -> None:
         await asyncio.Future()
 
-    monkeypatch.setattr("data.dnse_market.DNSEGateway", Gateway)
-    monkeypatch.setattr("data.dnse_market.DNSESynchronizer", Synchronizer)
-    monkeypatch.setattr("data.dnse_market.CompatibleDNSEMarketStream", Stream)
-    monkeypatch.setattr("data.dnse_market.asyncio.to_thread", delayed_to_thread)
+    monkeypatch.setattr("stock_reports.data_sources.dnse.market.DNSEGateway", Gateway)
+    monkeypatch.setattr("stock_reports.data_sources.dnse.market.DNSESynchronizer", Synchronizer)
+    monkeypatch.setattr("stock_reports.data_sources.dnse.market.CompatibleDNSEMarketStream", Stream)
+    monkeypatch.setattr("stock_reports.data_sources.dnse.market.asyncio.to_thread", delayed_to_thread)
     service = DNSEMarketService("key", "secret", Store())
     monkeypatch.setattr(service, "_foreign_loop", idle_foreign_loop)
 

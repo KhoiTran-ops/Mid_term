@@ -1,7 +1,7 @@
 from datetime import date
 import json
 
-from data.cafef.client import CafeFClient, RateLimitedTransport
+from stock_reports.data_sources.cafef.client import CafeFClient, RateLimitedTransport
 
 
 class StubTransport:
@@ -85,9 +85,9 @@ def test_transport_retries_read_timeout(monkeypatch) -> None:
             raise TimeoutError("read timed out")
         return Response()
 
-    monkeypatch.setattr("data.cafef.client.urlopen", urlopen_once_timed_out)
-    monkeypatch.setattr("data.cafef.client.time.sleep", lambda _delay: None)
-    monkeypatch.setattr("data.cafef.client.random.uniform", lambda *_args: 0)
+    monkeypatch.setattr("stock_reports.data_sources.cafef.client.urlopen", urlopen_once_timed_out)
+    monkeypatch.setattr("stock_reports.data_sources.cafef.client.time.sleep", lambda _delay: None)
+    monkeypatch.setattr("stock_reports.data_sources.cafef.client.random.uniform", lambda *_args: 0)
 
     content = RateLimitedTransport(requests_per_second=1, retries=1).get(
         "https://cafef.vn/du-lieu/test"

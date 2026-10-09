@@ -1,7 +1,7 @@
 import sqlite3
 
-from data.cafef.sync import sync_financial_history, Instrument, STATEMENT_TYPES
-from data.db.market_store import MarketStore
+from stock_reports.data_sources.cafef.sync import sync_financial_history, Instrument, STATEMENT_TYPES
+from stock_reports.storage.market import MarketStore
 
 
 def make_period(year, quarter):

@@ -6,21 +6,15 @@ from dataclasses import asdict
 from datetime import datetime
 import json
 import logging
-import os
 from pathlib import Path
+from stock_reports.core.config import Settings
 
-from dotenv import load_dotenv
-
-from data.archive import ArchivedCafeFTransport, ArchivedDNSEGateway, ResponseArchive
-from data.cafef.client import CafeFClient
-from data.cafef.sync import sync_financial_history
-from data.db.market_store import MarketStore
-from data.dnse_market import VIETNAM
-from data.refresh import refresh_market
-
-
-ROOT = Path(__file__).resolve().parent
-load_dotenv(ROOT / '.env')
+from stock_reports.data_sources.archive import ArchivedCafeFTransport, ArchivedDNSEGateway, ResponseArchive
+from stock_reports.data_sources.cafef.client import CafeFClient
+from stock_reports.data_sources.cafef.sync import sync_financial_history
+from stock_reports.storage.market import MarketStore
+from stock_reports.data_sources.dnse.market import VIETNAM
+from stock_reports.pipeline.market_refresh import refresh_market
 
 
 def progress(provider):
@@ -30,9 +24,9 @@ def progress(provider):
     return notify
 
 
-def build_parser():
+def build_parser(settings: Settings):
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--database', type=Path, default=ROOT / os.getenv('DATABASE_PATH', 'var/market_data.db'))
+    parser.add_argument('--database', type=Path, default=settings.market_database)
     commands = parser.add_subparsers(dest='command', required=True)
     for name in ('update', 'market', 'financials'):
         p = commands.add_parser(name)
@@ -45,31 +39,33 @@ def build_parser():
     commands.add_parser('status')
     export = commands.add_parser('export')
     export.add_argument('--symbols', nargs='+')
-    export.add_argument('--output', type=Path, default=ROOT / 'outputs')
+    export.add_argument('--output', type=Path, default=settings.outputs_directory)
     return parser
 
 
-def main():
-    args = build_parser().parse_args()
+def main(argv=None, settings: Settings | None = None):
+    settings = settings or Settings.from_root(Path(__file__).resolve().parents[3])
+    args = build_parser(settings).parse_args(argv)
+    args.database = (settings.root / args.database).resolve()
     logging.basicConfig(level=logging.WARNING, format='%(levelname)s %(message)s')
     store = MarketStore(args.database)
     store.initialize()
     if args.command in ('status', 'export'):
-        from data.inventory import export_data, write_inventory
-        result = write_inventory(store, ROOT / 'outputs') if args.command == 'status' else export_data(
-            store, args.output, args.symbols)
+        from stock_reports.storage.inventory import export_data, write_inventory
+        result = write_inventory(store, settings.outputs_directory) if args.command == 'status' else export_data(
+            store, (settings.root / args.output).resolve(), args.symbols)
         print(json.dumps(result, ensure_ascii=False, indent=2))
         return
     if args.quarters < 1:
         raise ValueError('--quarters must be positive')
     symbols = [s.strip().upper() for s in args.symbols] if args.symbols else None
     started = datetime.now(VIETNAM)
-    run_dir = ROOT / 'var' / 'runs' / started.strftime('%Y%m%dT%H%M%S%f')
+    run_dir = settings.runs_directory / started.strftime('%Y%m%dT%H%M%S%f')
     archive = ResponseArchive(run_dir / 'raw')
     catalog = None
 
     def new_gateway():
-        key, secret = os.getenv('DNSE_API_KEY'), os.getenv('DNSE_API_SECRET')
+        key, secret = settings.dnse_api_key, settings.dnse_api_secret
         if not key or not secret:
             raise ValueError('Configure both DNSE_API_KEY and DNSE_API_SECRET in .env')
         return ArchivedDNSEGateway(key, secret, archive)
@@ -115,8 +111,8 @@ def main():
                     database=str(args.database), symbols=symbols, results=results)
     (run_dir / 'manifest.json').write_text(json.dumps(manifest, ensure_ascii=False, indent=2), encoding='utf-8')
     print(json.dumps(manifest, ensure_ascii=False, indent=2), flush=True)
-    from data.inventory import write_inventory
-    write_inventory(store, ROOT / 'outputs')
+    from stock_reports.storage.inventory import write_inventory
+    write_inventory(store, settings.outputs_directory)
     if any(result.get('failures') or result.get('rejected') for result in results):
         raise SystemExit(2)
 

@@ -1,10 +1,10 @@
 # Tiến độ và tính năng tiếp theo
 
-- [ ] F01: Tái cấu trúc provider/storage/domain và giữ kiểm thử cũ.
-- [ ] F02: Cấu hình di chuyển được, hợp đồng dữ liệu/phân tích/PDF.
-- [ ] F03: Kho báo cáo và bộ lọc loại/mã/ngành/ngày, kiểm thử bảo vệ PDF.
-- [ ] F04: Web cơ bản và script chạy chung, kiểm thử từ thư mục khác.
-- [ ] F05: Hướng dẫn, review và xác minh không khởi động tải dữ liệu.
+- [x] F01: Tái cấu trúc provider/storage/domain và giữ kiểm thử cũ.
+- [x] F02: Cấu hình di chuyển được, hợp đồng dữ liệu/phân tích/PDF.
+- [x] F03: Kho báo cáo và bộ lọc loại/mã/ngành/ngày, kiểm thử bảo vệ PDF.
+- [x] F04: Web cơ bản và script chạy chung, kiểm thử từ thư mục khác.
+- [x] F05: Hướng dẫn, review và xác minh không khởi động tải dữ liệu.
 
 Sau nền tảng:
 
@@ -13,6 +13,7 @@ Sau nền tảng:
 - [ ] D03: Tin doanh nghiệp: nguồn, ngày công bố, trùng lặp và liên kết mã.
 - [ ] D04: Dữ liệu vĩ mô/nguồn tin chính thức, ngày công bố và phiên bản điều chỉnh.
 - [ ] D05: Dữ liệu ngành, doanh nghiệp so sánh và định nghĩa phân ngành.
+- [ ] D06: Chỉ số tài chính ROE/ROA/EPS/P/E/P/B sau khi hoàn thành D01.
 - [ ] A01: Phân tích vĩ mô độc lập có bằng chứng và tác động tới thị trường.
 - [ ] A02: Phân tích ngành độc lập có bằng chứng và động lực/rủi ro.
 - [ ] A03: Phân tích kỹ thuật, tài chính và tin doanh nghiệp.

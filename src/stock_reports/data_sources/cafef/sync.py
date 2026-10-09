@@ -6,9 +6,9 @@ import logging
 import math
 from typing import Callable, Iterable, Protocol
 
-from data.cafef.client import CafeFClient, CafeFError, DataPage, EXCHANGES
-from data.cafef.parsers import parse_financial_periods, parse_financial_statement
-from data.db.market_store import MarketStore
+from stock_reports.data_sources.cafef.client import CafeFClient, CafeFError, DataPage, EXCHANGES
+from stock_reports.data_sources.cafef.parsers import parse_financial_periods, parse_financial_statement
+from stock_reports.storage.market import MarketStore
 
 
 logger = logging.getLogger(__name__)
@@ -215,7 +215,7 @@ def sync_financial_history(client: CafeFClient, store: MarketStore, *,
 def build_default_sync(database_path: str, *, requests_per_second: float = 0.5
                        ) -> tuple[CafeFClient, MarketStore, CafeFSynchronizer]:
     from pathlib import Path
-    from data.cafef.client import RateLimitedTransport
+    from stock_reports.data_sources.cafef.client import RateLimitedTransport
     client = CafeFClient(transport=RateLimitedTransport(
         requests_per_second=requests_per_second
     ))

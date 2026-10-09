@@ -1,12 +1,12 @@
 from datetime import date, datetime, timedelta, timezone
 
-from data.cafef.client import DataPage
-from data.cafef.client import CafeFError
-from data.cafef.sync import (
+from stock_reports.data_sources.cafef.client import DataPage
+from stock_reports.data_sources.cafef.client import CafeFError
+from stock_reports.data_sources.cafef.sync import (
     CafeFSynchronizer, Instrument, catalog_instruments, next_daily_run,
     sync_financial_history,
 )
-from data.db.market_store import MarketStore
+from stock_reports.storage.market import MarketStore
 
 
 class PagingClient:

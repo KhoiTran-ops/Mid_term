@@ -13,9 +13,9 @@ from zoneinfo import ZoneInfo
 from dnse import DnseClient, DnseMarketStream
 from dnse.stream.exceptions import DnseStreamAuthError
 
-from data.db.market_store import MarketStore
-from data.providers import ProviderUnavailableError
-from common.types import MarketPrice
+from stock_reports.storage.market import MarketStore
+from stock_reports.core.errors import ProviderUnavailableError
+from stock_reports.domain.market import MarketPrice
 
 
 logger = logging.getLogger(__name__)
