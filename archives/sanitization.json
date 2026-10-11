@@ -1,0 +1,9 @@
+{
+  "source_sha256": "d00c72b2503563ee28e067a7fcb772d0c21d405f7b299cb2a1486fc1bd3a7600",
+  "output_sha256": "8aa8c3ed40a8ae1d7456126c362ca05e9e307e4b6ceb340f44c557c953c146b7",
+  "output_bytes": 1602756894,
+  "source_unchanged": true,
+  "scanned_files": 36680,
+  "excluded_entry_count": 566,
+  "removed_sensitive_files": []
+}
