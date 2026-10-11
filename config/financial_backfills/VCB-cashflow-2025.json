@@ -1,0 +1,238 @@
+{
+  "symbol": "VCB",
+  "statement_type": "CashFlowDirect",
+  "scope": "consolidated",
+  "currency": "VND",
+  "money_multiplier": 1000000,
+  "basis": "ytd",
+  "verification": "Đã đọc hình ảnh PDF các trang 9–10 (số trang in 8–9). Chỉ lấy cột năm nay; dấu gạch giữ null, không nhập 0. Bảng trực tiếp, không cộng với bảng gián tiếp. Quý 3: đã đọc hình ảnh PDF trang 9-10; CafeF gán sai nhãn bảng gián tiếp, dùng toàn bộ bảng trực tiếp gốc.",
+  "periods": {
+    "2025Q1": {
+      "pdf": "var/issuer_disclosures/VCB/6a9c1c1704d0d08cd53f.pdf",
+      "sha256": "b60430271f0f11038de208e318add30f7514e9a9aaa11e53599fb2d788c7a01b",
+      "url": "https://www.vietcombank.com.vn/-/media/Project/VCB-Sites/VCB/Nha-Dau-tu/Files/BC-dinh-ky/BCTC/2025/20250429_VCB_BCTC-hop-nhat-Q1-2025_v2.pdf?ts=20250429090416"
+    },
+    "2025Q2": {
+      "pdf": "var/issuer_disclosures/VCB/014c1724f6e9f369d81e.pdf",
+      "sha256": "789948b37004bdfcb11e56c0efa153bc745e4ec2b79b4336d2a8413ac87f034a",
+      "url": "https://www.vietcombank.com.vn/-/media/Project/VCB-Sites/VCB/Nha-Dau-tu/Files/BC-dinh-ky/BCTC/2025/20250730---VCB---BCTC-Hop-nhat-Q22025.pdf?ts=00010101000000"
+    },
+    "2025Q3": {
+      "pdf": "var/issuer_disclosures/VCB/696613d43599a1a228fb.pdf",
+      "sha256": "61243e3a00f2653ba237dd6e919e9a3c444421ebb7815d5528c156f64f6046a1",
+      "url": "https://www.vietcombank.com.vn/-/media/Project/VCB-Sites/VCB/Nha-Dau-tu/Files/BC-dinh-ky/BCTC/2025/20251030---VCB---BCTC-Hop-nhat-Q32025.pdf?ts=20251030103505"
+    }
+  },
+  "rows": [
+    [
+      "1. Thu nhập lãi và các khoản thu nhập tương tự nhận được",
+      "23.692.971",
+      "50.041.309",
+      "76.029.283"
+    ],
+    [
+      "2. Chi phí lãi và các chi phí tương tự đã trả",
+      "(11.670.037)",
+      "(22.297.307)",
+      "(32.970.806)"
+    ],
+    [
+      "3. Thu nhập từ hoạt động dịch vụ nhận được",
+      "805.964",
+      "1.615.294",
+      "2.551.777"
+    ],
+    [
+      "4. Chênh lệch số tiền thực thu từ hoạt động kinh doanh (ngoại tệ, vàng bạc, chứng khoán)",
+      "(316.258)",
+      "888.740",
+      "4.055.051"
+    ],
+    [
+      "5. Chi phí khác",
+      "(98.301)",
+      "(155.562)",
+      "(118.008)"
+    ],
+    [
+      "6. Tiền thu các khoản nợ đã được xử lý xóa, bù đắp bằng nguồn rủi ro",
+      "759.633",
+      "1.966.222",
+      "2.854.702"
+    ],
+    [
+      "7. Tiền chi trả cho nhân viên và hoạt động quản lý công vụ",
+      "(5.686.026)",
+      "(12.485.745)",
+      "(16.930.954)"
+    ],
+    [
+      "8. Tiền thuế thu nhập thực nộp trong kỳ",
+      "(4.372.647)",
+      "(6.524.464)",
+      "(9.162.037)"
+    ],
+    [
+      "Tiền thuần từ hoạt động kinh doanh trước những thay đổi về tài sản và vốn lưu động",
+      "3.115.299",
+      "13.048.487",
+      "26.309.008"
+    ],
+    [
+      "9. Các khoản tiền, vàng gửi và cho vay các tổ chức tín dụng khác",
+      "(11.116.836)",
+      "(6.802.849)",
+      "(7.220.042)"
+    ],
+    [
+      "10. Các khoản về kinh doanh chứng khoán",
+      "(13.134.901)",
+      "2.560.883",
+      "1.353.710"
+    ],
+    [
+      "11. Các công cụ tài chính phái sinh và các tài sản tài chính khác",
+      "1.314.434",
+      "1.314.434",
+      "1.314.434"
+    ],
+    [
+      "12. Các khoản cho vay khách hàng",
+      "(17.191.637)",
+      "(106.570.577)",
+      "(180.743.609)"
+    ],
+    [
+      "13. Giảm nguồn dự phòng để xử lý rủi ro, xử lý, bù đắp tổn thất",
+      "(443.446)",
+      "(443.445)",
+      "(519.889)"
+    ],
+    [
+      "14. Tài sản hoạt động khác",
+      "3.905.881",
+      "317.138",
+      "(2.774.435)"
+    ],
+    [
+      "15. Các khoản nợ Chính phủ và NHNN",
+      "47.061.130",
+      "21.499.815",
+      "84.348.010"
+    ],
+    [
+      "16. Các khoản tiền gửi, tiền vay các tổ chức tín dụng khác",
+      "(11.769.687)",
+      "24.552.096",
+      "82.638.584"
+    ],
+    [
+      "17. Các khoản tiền gửi của khách hàng",
+      "(5.551.461)",
+      "72.017.825",
+      "97.301.848"
+    ],
+    [
+      "18. Các khoản phát hành giấy tờ có giá",
+      "(9.960.000)",
+      "40.019",
+      "(1.039.981)"
+    ],
+    [
+      "19. Các khoản vốn tài trợ, ủy thác, đầu tư cho vay tổ chức tín dụng chịu rủi ro",
+      "(527)",
+      "(527)",
+      "(527)"
+    ],
+    [
+      "20. Các công cụ tài chính phái sinh và các khoản nợ tài chính khác",
+      "306.420",
+      "47.261",
+      "28.651"
+    ],
+    [
+      "21. Công nợ hoạt động khác",
+      "1.461.343",
+      "4.915.691",
+      "7.433.442"
+    ],
+    [
+      "22. Chi từ các quỹ của tổ chức tín dụng",
+      "(1.176.607)",
+      "(1.759.544)",
+      "(2.145.915)"
+    ],
+    [
+      "I. Tiền thuần (sử dụng cho) hoạt động kinh doanh",
+      "(13.180.595)",
+      "24.736.707",
+      "106.283.289"
+    ],
+    [
+      "1. Mua sắm tài sản cố định",
+      "(186.147)",
+      "(381.054)",
+      "(845.578)"
+    ],
+    [
+      "2. Tiền thu từ thanh lý, nhượng bán tài sản cố định",
+      "1.678",
+      "5.432",
+      "11.539"
+    ],
+    [
+      "3. Tiền chi cho thanh lý, nhượng bán tài sản cố định",
+      "(132)",
+      "(286)",
+      "(657)"
+    ],
+    [
+      "4. Tiền thu đầu tư, góp vốn vào các đơn vị khác",
+      "-",
+      "-",
+      "-"
+    ],
+    [
+      "Tiền thu cổ tức và lợi nhuận được chia từ các khoản đầu tư, góp vốn dài hạn",
+      "9.703",
+      "21.806",
+      "116.327"
+    ],
+    [
+      "II. Tiền thuần (sử dụng cho) hoạt động đầu tư",
+      "(174.898)",
+      "(354.102)",
+      "(718.369)"
+    ],
+    [
+      "1. Cổ tức đã trả",
+      "-",
+      "-",
+      "-"
+    ],
+    [
+      "III. Tiền thuần từ hoạt động tài chính",
+      "-",
+      "-",
+      "-"
+    ],
+    [
+      "IV. Lưu chuyển tiền thuần trong kỳ",
+      "(13.355.493)",
+      "24.382.605",
+      "105.564.920"
+    ],
+    [
+      "V. Tiền và các khoản tương đương tiền tại thời điểm đầu kỳ",
+      "430.614.185",
+      "430.614.185",
+      "430.614.185"
+    ],
+    [
+      "VI. Tiền và các khoản tương đương tiền tại thời điểm cuối kỳ",
+      "417.258.692",
+      "454.996.790",
+      "536.179.105"
+    ]
+  ]
+}

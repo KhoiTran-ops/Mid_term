@@ -11,6 +11,10 @@ class MarketStore:
     def __init__(self, path: Path) -> None:
         self.path = path
 
+    def annual_statement_years(self, symbol, statement_type):
+        with self._connect() as db:
+            return {int(r[0]) for r in db.execute('SELECT DISTINCT fiscal_year FROM annual_statement_facts WHERE symbol=? AND statement_type=? AND value_numeric IS NOT NULL', (symbol,statement_type))}
+
     def _connect(self) -> sqlite3.Connection:
         self.path.parent.mkdir(parents=True, exist_ok=True)
         connection = sqlite3.connect(self.path)
@@ -60,6 +64,32 @@ class MarketStore:
                 retrieved_at TEXT NOT NULL,
                 PRIMARY KEY (symbol, fiscal_year, fiscal_quarter)
             );
+            CREATE TABLE IF NOT EXISTS annual_financial_facts (
+                symbol TEXT NOT NULL, fiscal_year INTEGER NOT NULL,
+                metric TEXT NOT NULL, category TEXT NOT NULL,
+                value_raw TEXT NOT NULL, value_numeric REAL,
+                source_url TEXT NOT NULL, workbook_sha256 TEXT NOT NULL,
+                sheet_name TEXT NOT NULL, source_row INTEGER NOT NULL,
+                imported_at TEXT NOT NULL,
+                PRIMARY KEY (symbol, fiscal_year, metric)
+            );
+            CREATE TABLE IF NOT EXISTS annual_imports (
+                workbook_sha256 TEXT PRIMARY KEY, source_path TEXT NOT NULL,
+                source_url TEXT NOT NULL, imported_at TEXT NOT NULL,
+                workbook_rows INTEGER NOT NULL, saved_facts INTEGER NOT NULL,
+                duplicate_facts INTEGER NOT NULL, conflict_facts INTEGER NOT NULL,
+                quality_json TEXT NOT NULL
+            );
+            CREATE TABLE IF NOT EXISTS annual_statement_facts (
+                symbol TEXT NOT NULL, statement_type TEXT NOT NULL,
+                fiscal_year INTEGER NOT NULL, row_order INTEGER NOT NULL,
+                item_name TEXT NOT NULL, value_raw TEXT NOT NULL, value_numeric REAL,
+                source_url TEXT NOT NULL, response_sha256 TEXT NOT NULL,
+                retrieved_at TEXT NOT NULL,
+                PRIMARY KEY(symbol,statement_type,fiscal_year,row_order)
+            );
+            CREATE INDEX IF NOT EXISTS idx_annual_statement_symbol_year
+                ON annual_statement_facts(symbol,fiscal_year);
             CREATE TABLE IF NOT EXISTS foreign_snapshots (
                 symbol TEXT NOT NULL, board_id TEXT NOT NULL, ts INTEGER NOT NULL,
                 buy_volume INTEGER NOT NULL, buy_value REAL NOT NULL,
@@ -88,6 +118,8 @@ class MarketStore:
                 ON foreign_trading(symbol, trade_date);
             CREATE INDEX IF NOT EXISTS idx_financial_symbol_year
                 ON financial_facts(symbol, fiscal_year);
+            CREATE INDEX IF NOT EXISTS idx_annual_financial_symbol_year
+                ON annual_financial_facts(symbol, fiscal_year);
             CREATE INDEX IF NOT EXISTS idx_ohlcv_timeframe_ts
                 ON ohlcv_bars(timeframe, ts);
             CREATE INDEX IF NOT EXISTS idx_foreign_snapshots_symbol_ts
@@ -215,6 +247,13 @@ class MarketStore:
         with self._connect() as db:
             return db.execute(
                 "SELECT symbol, exchange FROM instruments ORDER BY exchange, symbol"
+            ).fetchall()
+
+    def list_instrument_details(self) -> list[tuple[str, str, str]]:
+        with self._connect() as db:
+            return db.execute(
+                "SELECT symbol, exchange, COALESCE(company_name, '') "
+                "FROM instruments ORDER BY exchange, symbol"
             ).fetchall()
 
     def upsert_ohlcv_bars(self, bars: Iterable[dict[str, object]], *, source: str) -> int:
@@ -425,7 +464,25 @@ class MarketStore:
         with self._connect() as db:
             periods = sorted({period for fact in facts
                               for period in fact.get("values", {}).keys()})
+            numeric_periods = {period for fact in facts for period, pair in fact['values'].items()
+                               if pair[1] is not None}
+            preserved = set()
             for year, quarter in periods:
+                if 'cafef.vn/' in source and db.execute(
+                    'SELECT 1 FROM financial_facts WHERE symbol=? AND statement_type=? '
+                    'AND fiscal_year=? AND fiscal_quarter=? AND source LIKE ? LIMIT 1',
+                    (symbol,statement_type,year,quarter,'https://www.vietcombank.com.vn/%')).fetchone():
+                    preserved.add((year,quarter))
+                    self._record_anomaly(db,'financial_facts',f'{symbol}:{statement_type}:{year}Q{quarter}',
+                        'Kept manually reviewed issuer table; secondary refresh archived, not substituted',
+                        {'source':source,'rows':[dict(f,values={str(k):v for k,v in f['values'].items()}) for f in facts]},now)
+                    continue
+                if (year, quarter) not in numeric_periods and db.execute(
+                    'SELECT 1 FROM financial_facts WHERE symbol=? AND statement_type=? '
+                    'AND fiscal_year=? AND fiscal_quarter=? AND value_numeric IS NOT NULL LIMIT 1',
+                    (symbol, statement_type, year, quarter)).fetchone():
+                    preserved.add((year, quarter))
+                    continue
                 db.execute(
                     "DELETE FROM financial_facts WHERE symbol=? AND statement_type=? "
                     "AND fiscal_year=? AND fiscal_quarter=?",
@@ -436,6 +493,8 @@ class MarketStore:
                 if not isinstance(values, dict):
                     continue
                 for (year, quarter), pair in values.items():
+                    if (year, quarter) in preserved:
+                        continue
                     raw, numeric = pair
                     db.execute("""
                     INSERT INTO financial_facts VALUES (?,?,?,?,?,?,?,?,?,?)
@@ -444,7 +503,39 @@ class MarketStore:
                       value_numeric=excluded.value_numeric, source=excluded.source,
                       retrieved_at=excluded.retrieved_at
                     """, (symbol, statement_type, year, quarter, fact["row_order"],
-                          fact["item_name"], raw, numeric, source, now))
+                          fact["item_name"], raw, float(numeric) if numeric is not None else None, source, now))
+                    count += 1
+        return count
+
+    def replace_annual_statement(self, symbol: str, statement: str, facts: list[dict], *,
+                                 source_url: str, response_sha256: str) -> int:
+        """Replace only successfully fetched numeric years, atomically.
+
+        A blank response must not erase a previously available annual statement.
+        Original workbooks stay intact in their own provenance table.
+        """
+        numeric_years = {year for f in facts for year, pair in f['values'].items()
+                         if pair[1] is not None}
+        if not numeric_years:
+            return 0
+        years = {year for f in facts for year in f['values']}
+        count = 0
+        now = datetime.now(UTC).isoformat()
+        with self._connect() as db:
+            years = {y for y in years if y in numeric_years or not db.execute(
+                'SELECT 1 FROM annual_statement_facts WHERE symbol=? AND statement_type=? '
+                'AND fiscal_year=? AND value_numeric IS NOT NULL LIMIT 1',
+                (symbol, statement, y)).fetchone()}
+            for year in years:
+                db.execute('DELETE FROM annual_statement_facts WHERE symbol=? '
+                           'AND statement_type=? AND fiscal_year=?', (symbol, statement, year))
+            for fact in facts:
+                for year, (raw, numeric) in fact['values'].items():
+                    if year not in years:
+                        continue
+                    db.execute('INSERT INTO annual_statement_facts VALUES (?,?,?,?,?,?,?,?,?,?)',
+                        (symbol, statement, year, fact['row_order'], fact['item_name'], raw,
+                         float(numeric) if numeric is not None else None, source_url, response_sha256, now))
                     count += 1
         return count
 
@@ -483,11 +574,30 @@ class MarketStore:
                 'ORDER BY fiscal_year DESC,fiscal_quarter DESC LIMIT ?',
                 (symbol, limit))]
 
+    def financial_fact_count_for(self, symbol: str) -> int:
+        with self._connect() as db:
+            return int(db.execute(
+                'SELECT COUNT(*) FROM financial_facts WHERE symbol=?',
+                (symbol.upper(),)).fetchone()[0])
+
+    def financial_numeric_fact_count_for(self, symbol: str) -> int:
+        """Template rows containing NULL are not usable financial observations."""
+        with self._connect() as db:
+            return int(db.execute(
+                'SELECT COUNT(*) FROM financial_facts WHERE symbol=? AND value_numeric IS NOT NULL',
+                (symbol.upper(),)).fetchone()[0])
+
+    def financial_symbols(self) -> set[str]:
+        with self._connect() as db:
+            return {row[0] for row in db.execute(
+                'SELECT DISTINCT symbol FROM financial_facts WHERE value_numeric IS NOT NULL ORDER BY symbol')}
+
     def financial_statement_periods(self, symbol: str, statement: str) -> set[tuple[int, int]]:
         with self._connect() as db:
             return set(db.execute(
                 'SELECT DISTINCT fiscal_year,fiscal_quarter FROM financial_facts '
-                'WHERE symbol=? AND statement_type=?', (symbol, statement)))
+                'WHERE symbol=? AND statement_type=? AND value_numeric IS NOT NULL',
+                (symbol, statement)))
 
     def trim_financial_history(self, symbol: str, limit: int) -> None:
         with self._connect() as db:
@@ -518,6 +628,10 @@ class MarketStore:
                 "eod_max_date": db.execute("SELECT MAX(trade_date) FROM eod_prices").fetchone()[0],
                 "foreign_trading": db.execute("SELECT COUNT(*) FROM foreign_trading").fetchone()[0],
                 "financial_facts": db.execute("SELECT COUNT(*) FROM financial_facts").fetchone()[0],
+                "annual_financial_facts": db.execute(
+                    "SELECT COUNT(*) FROM annual_financial_facts"
+                ).fetchone()[0],
+                "annual_statement_facts": db.execute('SELECT COUNT(*) FROM annual_statement_facts').fetchone()[0],
                 "instruments": db.execute("SELECT COUNT(*) FROM instruments").fetchone()[0],
                 "anomalies": db.execute("SELECT COUNT(*) FROM data_anomalies").fetchone()[0],
                 "completed_exports": db.execute(

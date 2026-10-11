@@ -1,0 +1,6 @@
+<!doctype html><html lang="vi"><head><meta charset="utf-8"><title>StockLens · {{ d.meta.period_label }}</title><style>{{ styles|safe }}</style></head><body>
+{% import 'components.html' as c with context %}
+{% for page_name in pages %}{% set page_no=loop.index %}{% set groups=page_groups[page_name] %}
+<section class="page" data-period="{{ d.meta.period_code }}" data-page="{{ page_name }}"><header class="page-header"><div class="brand"><span class="logo">SL</span>STOCKLENS · MACRO</div><div>Vĩ mô Việt Nam · {{ d.meta.period_label }} · {{ d.meta.report_date|datevn }}</div></header>
+<main class="page-content"><div class="kicker">{{ page_no|string|zfill }} · {{ titles[page_name]|upper }}</div><h1>{{ headings[page_name] }}</h1>{% if draft %}<div class="draft">BẢN NHÁP · CẦN KIỂM TRA{% if quality.status=='blocked' %} · Có lỗi chất lượng dữ liệu{% endif %}</div>{% endif %}{% include 'pages/'+page_name+'.html' %}</main>
+<footer class="page-footer"><div class="footer-text">Nguồn: {{ sources(groups) }}<br>Chỉ mang tính tham khảo, không phải khuyến nghị đầu tư · Xuất {{ exported_at }}</div><span class="page-count mono">{{ page_no }} / {{ total }}</span></footer></section>{% endfor %}</body></html>

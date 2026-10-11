@@ -109,23 +109,49 @@ def collect_source(source: dict, state: dict, archive=None) -> dict:
         headers['If-None-Match'] = state['etag']
     if state.get('last_modified'):
         headers['If-Modified-Since'] = state['last_modified']
-    with httpx.Client(timeout=20, follow_redirects=True) as client:
-        with client.stream('GET', source['url'], headers=headers) as response:
-            if response.status_code == 304:
-                return dict(not_modified=True)
-            response.raise_for_status()
-            if int(response.headers.get('content-length') or 0) > MAX_RESPONSE_BYTES:
-                raise ValueError('Response too large')
-            chunks, size = [], 0
-            for chunk in response.iter_bytes():
-                size += len(chunk)
-                if size > MAX_RESPONSE_BYTES:
+    def fetch(url, request_headers):
+        with httpx.Client(timeout=20, follow_redirects=True) as client:
+            with client.stream('GET', url, headers=request_headers) as response:
+                if response.status_code == 304:
+                    return None, None, None, None
+                response.raise_for_status()
+                if int(response.headers.get('content-length') or 0) > MAX_RESPONSE_BYTES:
                     raise ValueError('Response too large')
-                chunks.append(chunk)
-            body = b''.join(chunks)
-            encoding = response.encoding or 'utf-8'
-            etag, last_modified = response.headers.get('etag'), response.headers.get('last-modified')
+                chunks, size = [], 0
+                for chunk in response.iter_bytes():
+                    size += len(chunk)
+                    if size > MAX_RESPONSE_BYTES:
+                        raise ValueError('Response too large')
+                    chunks.append(chunk)
+                return (b''.join(chunks), response.encoding or 'utf-8',
+                        response.headers.get('etag'), response.headers.get('last-modified'))
+
+    fallback = False
+    try:
+        body, encoding, etag, last_modified = fetch(source['url'], headers)
+    except httpx.HTTPError:
+        fallback_url = source.get('fallbackRssUrl')
+        if not fallback_url:
+            raise
+        # Some local networks cannot reach Vietcap's CDN.  The fallback is a
+        # site-restricted Google News RSS query; titles are filtered below and
+        # links still resolve to the Vietcap article through Google News.
+        body, encoding, etag, last_modified = fetch(fallback_url, {
+            'User-Agent': headers['User-Agent'],
+            'Accept': 'application/rss+xml,application/xml;q=0.9,*/*;q=0.5',
+        })
+        fallback = True
+    if body is None:
+        return dict(not_modified=True)
     if archive:
-        archive.save('news', source['url'], body, '.xml' if source['kind'] == 'rss' else '.html')
-    rows = parse_feed(body) if source['kind'] == 'rss' else parse_listing(body.decode(encoding, errors='replace'), source)
+        request_url = source['fallbackRssUrl'] if fallback else source['url']
+        archive.save('news', request_url, body,
+                     '.xml' if source['kind'] == 'rss' or fallback else '.html')
+    rows = parse_feed(body) if source['kind'] == 'rss' or fallback else parse_listing(
+        body.decode(encoding, errors='replace'), source)
+    if fallback:
+        required = source.get('fallbackTitleContains', 'Vietcap').casefold()
+        rows = [row for row in rows if required in str(row.get('title') or '').casefold()]
+        if not rows:
+            raise ValueError('Fallback feed contains no matching publisher articles')
     return dict(articles=rows, etag=etag, last_modified=last_modified)

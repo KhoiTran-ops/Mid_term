@@ -1,0 +1,92 @@
+{
+  "ticker": "HPG",
+  "report_date": "2026-10-11",
+  "price_date": "2026-10-09",
+  "missing_count": 32,
+  "missing_reason": {
+    "price.series_250.0.volume": "Nguồn đã lưu và hồ sơ đối chiếu chưa cung cấp số liệu cùng kỳ/cơ sở; không suy số hoặc dùng số mẫu.",
+    "price.series_250.1.volume": "Nguồn đã lưu và hồ sơ đối chiếu chưa cung cấp số liệu cùng kỳ/cơ sở; không suy số hoặc dùng số mẫu.",
+    "price.series_250.2.volume": "Nguồn đã lưu và hồ sơ đối chiếu chưa cung cấp số liệu cùng kỳ/cơ sở; không suy số hoặc dùng số mẫu.",
+    "price.series_250.79.volume": "Nguồn đã lưu và hồ sơ đối chiếu chưa cung cấp số liệu cùng kỳ/cơ sở; không suy số hoặc dùng số mẫu.",
+    "price.series_250.80.volume": "Nguồn đã lưu và hồ sơ đối chiếu chưa cung cấp số liệu cùng kỳ/cơ sở; không suy số hoặc dùng số mẫu.",
+    "scores.pillars.value": "Trụ cột bị tắt trong cấu hình gốc; không điền điểm 0.",
+    "financials.parent_equity.0": "Nguồn đã lưu và hồ sơ đối chiếu chưa cung cấp số liệu cùng kỳ/cơ sở; không suy số hoặc dùng số mẫu.",
+    "financials.parent_equity.1": "Nguồn đã lưu và hồ sơ đối chiếu chưa cung cấp số liệu cùng kỳ/cơ sở; không suy số hoặc dùng số mẫu.",
+    "financials.parent_equity.2": "Nguồn đã lưu và hồ sơ đối chiếu chưa cung cấp số liệu cùng kỳ/cơ sở; không suy số hoặc dùng số mẫu.",
+    "financials.parent_equity.3": "Nguồn đã lưu và hồ sơ đối chiếu chưa cung cấp số liệu cùng kỳ/cơ sở; không suy số hoặc dùng số mẫu.",
+    "financials.annual_history.0.values.parent_income": "Nguồn đã lưu và hồ sơ đối chiếu chưa cung cấp số liệu cùng kỳ/cơ sở; không suy số hoặc dùng số mẫu.",
+    "financials.annual_history.0.values.parent_equity": "Nguồn đã lưu và hồ sơ đối chiếu chưa cung cấp số liệu cùng kỳ/cơ sở; không suy số hoặc dùng số mẫu.",
+    "financials.annual_history.0.values.operating_cash_flow": "Nguồn đã lưu và hồ sơ đối chiếu chưa cung cấp số liệu cùng kỳ/cơ sở; không suy số hoặc dùng số mẫu.",
+    "financials.annual_history.0.values.short_debt": "Nguồn đã lưu và hồ sơ đối chiếu chưa cung cấp số liệu cùng kỳ/cơ sở; không suy số hoặc dùng số mẫu.",
+    "financials.annual_history.0.values.long_debt": "Nguồn đã lưu và hồ sơ đối chiếu chưa cung cấp số liệu cùng kỳ/cơ sở; không suy số hoặc dùng số mẫu.",
+    "financials.annual_history.0.values.current_assets": "Nguồn đã lưu và hồ sơ đối chiếu chưa cung cấp số liệu cùng kỳ/cơ sở; không suy số hoặc dùng số mẫu.",
+    "financials.annual_history.0.values.current_liabilities": "Nguồn đã lưu và hồ sơ đối chiếu chưa cung cấp số liệu cùng kỳ/cơ sở; không suy số hoặc dùng số mẫu.",
+    "financials.annual_history.1.values.parent_equity": "Nguồn đã lưu và hồ sơ đối chiếu chưa cung cấp số liệu cùng kỳ/cơ sở; không suy số hoặc dùng số mẫu.",
+    "financials.annual_history.2.values.parent_equity": "Nguồn đã lưu và hồ sơ đối chiếu chưa cung cấp số liệu cùng kỳ/cơ sở; không suy số hoặc dùng số mẫu.",
+    "financials.annual_history.3.values.parent_equity": "Nguồn đã lưu và hồ sơ đối chiếu chưa cung cấp số liệu cùng kỳ/cơ sở; không suy số hoặc dùng số mẫu.",
+    "financials.annual_history.4.values.parent_equity": "Nguồn đã lưu và hồ sơ đối chiếu chưa cung cấp số liệu cùng kỳ/cơ sở; không suy số hoặc dùng số mẫu.",
+    "financials.latest_quarter.parent_equity": "Nguồn đã lưu và hồ sơ đối chiếu chưa cung cấp số liệu cùng kỳ/cơ sở; không suy số hoặc dùng số mẫu.",
+    "financials.latest_quarter.nim": "Không áp dụng chỉ tiêu ngân hàng cho doanh nghiệp này.",
+    "financials.latest_quarter.casa": "Không áp dụng chỉ tiêu ngân hàng cho doanh nghiệp này.",
+    "financials.latest_quarter.npl": "Không áp dụng chỉ tiêu ngân hàng cho doanh nghiệp này.",
+    "financials.latest_quarter.car": "Không áp dụng chỉ tiêu ngân hàng cho doanh nghiệp này.",
+    "valuation.peer_median_pe": "Không có snapshot cùng ngày gồm từng thành viên, P/E và phân loại sector/industry; PDF tổng hợp không thay thế dữ liệu gốc.",
+    "valuation.peer_count": "Không có snapshot cùng ngày gồm từng thành viên, P/E và phân loại sector/industry; PDF tổng hợp không thay thế dữ liệu gốc.",
+    "valuation.peer_snapshot_date": "Không có snapshot cùng ngày gồm từng thành viên, P/E và phân loại sector/industry; PDF tổng hợp không thay thế dữ liệu gốc.",
+    "annual_report.file": "Chưa có BCTN gốc trong bản lưu công bố doanh nghiệp.",
+    "annual_report.pages": "Chưa có BCTN gốc trong bản lưu công bố doanh nghiệp.",
+    "annual_report.total_matches": "Chưa có BCTN gốc trong bản lưu công bố doanh nghiệp."
+  },
+  "quality_checks": [
+    {
+      "check": "adjusted_history_300",
+      "status": "pass",
+      "detail": "573 phiên điều chỉnh; không tự bù phiên."
+    },
+    {
+      "check": "volume_adjustment",
+      "status": "warning",
+      "detail": "Khối lượng/giá trị TB20 phải kiểm tra sự kiện quyền và cơ sở khớp lệnh/tổng giao dịch; chưa đối chiếu không được coi là xác nhận X10."
+    },
+    {
+      "check": "aligned_price_dates",
+      "status": "pass",
+      "detail": "Ngày giá thô và giá điều chỉnh."
+    },
+    {
+      "check": "eps_share_identity",
+      "status": "pass",
+      "detail": "EPS × cổ phiếu = LNST mẹ TTM; thiếu đầu vào thì chặn định giá."
+    },
+    {
+      "check": "balance_2026Q2",
+      "status": "pass",
+      "detail": "Tài sản công bố = nợ + tổng vốn (≤ 0,5%); sai lệch thì cách ly ba trường, không suy tổng vốn."
+    },
+    {
+      "check": "balance_2026Q1",
+      "status": "pass",
+      "detail": "Tài sản công bố = nợ + tổng vốn (≤ 0,5%); sai lệch thì cách ly ba trường, không suy tổng vốn."
+    },
+    {
+      "check": "balance_2025Q4",
+      "status": "pass",
+      "detail": "Tài sản công bố = nợ + tổng vốn (≤ 0,5%); sai lệch thì cách ly ba trường, không suy tổng vốn."
+    },
+    {
+      "check": "balance_2025Q3",
+      "status": "pass",
+      "detail": "Tài sản công bố = nợ + tổng vốn (≤ 0,5%); sai lệch thì cách ly ba trường, không suy tổng vốn."
+    },
+    {
+      "check": "balance_2025Q2",
+      "status": "pass",
+      "detail": "Tài sản công bố = nợ + tổng vốn (≤ 0,5%); sai lệch thì cách ly ba trường, không suy tổng vốn."
+    },
+    {
+      "check": "action_price_jumps",
+      "status": "pass",
+      "detail": "Đối chiếu giá thô/điều chỉnh quanh các bước thay đổi cơ sở >5 điểm %: [{\"date\": \"2026-05-25\", \"raw_return_pct\": -8.538899430740043, \"adjusted_return_pct\": 0.6263048016701411}]"
+    }
+  ]
+}

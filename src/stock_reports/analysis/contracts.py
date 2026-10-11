@@ -1,6 +1,6 @@
 from enum import StrEnum
 import math
-from typing import Protocol
+from typing import Literal, Protocol
 
 from pydantic import Field, model_validator
 
@@ -17,6 +17,9 @@ class SectionKind(StrEnum):
     VALUATION = 'valuation'
     RECOMMENDATION = 'recommendation'
     RISKS = 'risks'
+    BUSINESS = 'business'
+    PROSPECTS = 'prospects'
+    APPENDIX = 'appendix'
 
 
 class Finding(ResearchModel):
@@ -38,6 +41,8 @@ class ReportBlock(ResearchModel):
     rows: tuple[tuple[str, ...], ...] = ()
     labels: tuple[str, ...] = ()
     values: tuple[float | None, ...] = ()
+    chart_type: Literal['line','pie','bar'] = 'line'
+    series: tuple[tuple[str, tuple[float | None, ...]], ...] = ()
     note: str = ''
     sources: tuple[SourceReference, ...] = ()
 
@@ -49,6 +54,9 @@ class ReportBlock(ResearchModel):
             raise ValueError('Chart labels must match values')
         if any(v is not None and not math.isfinite(v) for v in self.values):
             raise ValueError('Chart values must be finite or missing')
+        for _, values in self.series:
+            if len(values)!=len(self.labels) or any(v is not None and not math.isfinite(v) for v in values):
+                raise ValueError('Additional chart series must align and be finite or missing')
         return self
 
 

@@ -1,6 +1,7 @@
 """Conservative parsers: preserve raw values and never impute missing data."""
 
 from html.parser import HTMLParser
+import math
 import re
 
 
@@ -60,10 +61,15 @@ def parse_financial_number(raw: str) -> int | float | None:
     value = raw.strip()
     if not value or value in {"-", "--", "N/A"}:
         return None
-    normalized = value.replace(".", "").replace(",", ".").replace(" ", "")
+    negative = value.startswith('(') and value.endswith(')')
+    if negative:
+        value = value[1:-1]
+    normalized = value.replace(".", "").replace(",", ".").replace(" ", "").replace('\xa0', '')
     if not re.fullmatch(r"[-+]?\d+(?:\.\d+)?", normalized):
         return None
-    number = float(normalized)
+    number = float(normalized) * (-1 if negative else 1)
+    if not math.isfinite(number):
+        return None
     return int(number) if number.is_integer() else number
 
 
@@ -90,6 +96,25 @@ def parse_financial_statement(html: str) -> list[dict[str, object]]:
             for period, raw in zip(periods, cells[1:], strict=False)
         }
         facts.append({"row_order": row_order, "item_name": cells[0], "values": values})
+    return facts
+
+
+def parse_annual_financial_statement(html: str) -> list[dict[str, object]]:
+    """Keep annual header positions, all component rows, raw values and nulls."""
+    headers = _direct_rows(html, 'tblGridData')
+    if not headers:
+        return []
+    columns = [(index, int(cell)) for index, cell in enumerate(headers[0])
+               if re.fullmatch(r'(?:19|20)\d{2}', cell.strip())]
+    if not columns:
+        return []
+    facts = []
+    for order, cells in enumerate(_direct_rows(html, 'tableContent')):
+        if not cells or not cells[0]:
+            continue
+        values = {year: (cells[index], parse_financial_number(cells[index]))
+                  for index, year in columns if index < len(cells)}
+        facts.append(dict(row_order=order, item_name=cells[0], values=values))
     return facts
 
 

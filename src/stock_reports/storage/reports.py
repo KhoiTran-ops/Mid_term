@@ -4,6 +4,7 @@ from contextlib import closing
 from datetime import date, datetime, UTC
 import hashlib
 from pathlib import Path
+import re
 import shutil
 import sqlite3
 from uuid import UUID, uuid4
@@ -24,35 +25,122 @@ class ReportCatalog:
                 industry_id TEXT, industry_name TEXT, created_at TEXT NOT NULL,
                 sha256 TEXT NOT NULL, pdf_filename TEXT NOT NULL);
                 CREATE INDEX IF NOT EXISTS idx_reports_scope
-                ON reports(kind,symbol,industry_id,as_of);''')
+                ON reports(kind,symbol,industry_id,as_of);
+                CREATE TABLE IF NOT EXISTS report_generation_keys (
+                generation_key TEXT PRIMARY KEY,
+                report_id TEXT NOT NULL);
+                CREATE INDEX IF NOT EXISTS idx_report_generation_keys_report
+                ON report_generation_keys(report_id);''')
 
-    def register(self, metadata: ReportMetadata, pdf: Path) -> StoredReport:
+    @staticmethod
+    def _generation_key(value: str | None) -> str | None:
+        if value is not None and not re.fullmatch(r'[0-9a-f]{64}', value):
+            raise ValueError('Invalid report generation key')
+        return value
+
+    def find_by_generation_key(self, generation_key: str) -> StoredReport | None:
+        generation_key = self._generation_key(generation_key)
+        with closing(sqlite3.connect(self.database)) as db:
+            db.row_factory = sqlite3.Row
+            row = db.execute('''SELECT r.* FROM reports r
+                JOIN report_generation_keys k ON k.report_id=r.id
+                WHERE k.generation_key=?''', (generation_key,)).fetchone()
+        return self._record(row) if row else None
+
+    def bind_generation_key(self, generation_key: str, report_id: str) -> StoredReport:
+        """Attach a legacy sidecar fingerprint without creating another report."""
+        generation_key = self._generation_key(generation_key)
+        report_id = str(UUID(report_id))
+        with closing(sqlite3.connect(self.database, timeout=30)) as db:
+            db.row_factory = sqlite3.Row
+            db.execute('BEGIN IMMEDIATE')
+            row = db.execute('''SELECT r.* FROM reports r
+                JOIN report_generation_keys k ON k.report_id=r.id
+                WHERE k.generation_key=?''', (generation_key,)).fetchone()
+            if row is None:
+                row = db.execute('SELECT * FROM reports WHERE id=?', (report_id,)).fetchone()
+                if row is None:
+                    db.rollback()
+                    raise ValueError('Report not found')
+                db.execute('INSERT INTO report_generation_keys VALUES (?,?)',
+                           (generation_key, report_id))
+            db.commit()
+        return self._record(row)
+
+    def register(self, metadata: ReportMetadata, pdf: Path, *,
+                 generation_key: str | None = None) -> StoredReport:
         pdf = Path(pdf)
         with pdf.open('rb') as stream:
             if stream.read(5) != b'%PDF-':
                 raise ValueError('The report file must have a PDF signature')
-        report_id = str(uuid4())
-        destination = self.directory / f'{report_id}.pdf'
-        shutil.copyfile(pdf, destination)
-        with destination.open('rb') as stream:
+        generation_key = self._generation_key(generation_key)
+        with pdf.open('rb') as stream:
             digest = hashlib.file_digest(stream, 'sha256').hexdigest()
-        record = StoredReport(**metadata.model_dump(), id=report_id,
-                              created_at=datetime.now(UTC), sha256=digest)
+        identity = (metadata.kind.value, metadata.title, metadata.as_of.isoformat(),
+                    metadata.symbol, metadata.company_name, metadata.industry_id,
+                    metadata.industry_name)
+        destination = None
+        destination_created = False
         try:
-            with closing(sqlite3.connect(self.database)) as db, db:
-                db.execute('INSERT INTO reports VALUES (?,?,?,?,?,?,?,?,?,?,?)', (
+            with closing(sqlite3.connect(self.database, timeout=30)) as db:
+                db.row_factory = sqlite3.Row
+                db.execute('BEGIN IMMEDIATE')
+                row = None
+                if generation_key:
+                    row = db.execute('''SELECT r.* FROM reports r
+                        JOIN report_generation_keys k ON k.report_id=r.id
+                        WHERE k.generation_key=?''', (generation_key,)).fetchone()
+                if row is None:
+                    row = db.execute('''SELECT * FROM reports WHERE kind=? AND title=?
+                        AND as_of=? AND symbol IS ? AND company_name IS ?
+                        AND industry_id IS ? AND industry_name IS ? AND sha256=?
+                        ORDER BY created_at DESC,id DESC LIMIT 1''', (*identity, digest)).fetchone()
+                if row is not None:
+                    destination = (self.directory / row['pdf_filename']).resolve()
+                    if (not destination.is_relative_to(self.directory) or
+                            destination.suffix.lower() != '.pdf'):
+                        raise ValueError('Report file is outside the configured PDF directory')
+                    if not destination.is_file():
+                        shutil.copyfile(pdf, destination)
+                        destination_created = True
+                        if row['sha256'] != digest:
+                            db.execute('UPDATE reports SET sha256=? WHERE id=?',
+                                       (digest, row['id']))
+                            row = db.execute('SELECT * FROM reports WHERE id=?',
+                                             (row['id'],)).fetchone()
+                    if generation_key:
+                        db.execute('INSERT OR IGNORE INTO report_generation_keys VALUES (?,?)',
+                                   (generation_key, row['id']))
+                    db.commit()
+                    return self._record(row)
+
+                report_id = str(uuid4())
+                destination = self.directory / f'{report_id}.pdf'
+                shutil.copyfile(pdf, destination)
+                destination_created = True
+                record = StoredReport(**metadata.model_dump(), id=report_id,
+                                      created_at=datetime.now(UTC), sha256=digest)
+                db.execute('''INSERT INTO reports
+                    (id,kind,title,as_of,symbol,company_name,industry_id,industry_name,
+                     created_at,sha256,pdf_filename) VALUES (?,?,?,?,?,?,?,?,?,?,?)''', (
                     record.id, record.kind.value, record.title, record.as_of.isoformat(),
                     record.symbol, record.company_name, record.industry_id, record.industry_name,
                     record.created_at.isoformat(), record.sha256, destination.name))
+                if generation_key:
+                    db.execute('INSERT INTO report_generation_keys VALUES (?,?)',
+                               (generation_key, record.id))
+                db.commit()
+                return record
         except Exception:
-            destination.unlink(missing_ok=True)
+            if destination is not None and destination_created:
+                destination.unlink(missing_ok=True)
             raise
-        return record
 
     @staticmethod
     def _record(row) -> StoredReport:
         values = dict(row)
         values.pop('pdf_filename')
+        values.pop('duplicate_rank', None)
         return StoredReport.model_validate(values)
 
     def get(self, report_id: str) -> StoredReport | None:
@@ -99,12 +187,18 @@ class ReportCatalog:
             conditions.append('as_of<=?')
             values.append(date_to.isoformat())
         where = ' WHERE ' + ' AND '.join(conditions) if conditions else ''
+        ranked = '''WITH filtered AS (SELECT * FROM reports''' + where + '''),
+            ranked AS (SELECT *,ROW_NUMBER() OVER (
+                PARTITION BY kind,title,as_of,COALESCE(symbol,''),COALESCE(company_name,''),
+                    COALESCE(industry_id,''),COALESCE(industry_name,'')
+                ORDER BY created_at DESC,id DESC) AS duplicate_rank FROM filtered)'''
         with closing(sqlite3.connect(self.database)) as db:
             db.row_factory = sqlite3.Row
             db.execute('BEGIN')
-            total = db.execute('SELECT COUNT(*) FROM reports' + where, values).fetchone()[0]
-            rows = db.execute('SELECT * FROM reports' + where +
-                ' ORDER BY as_of DESC,created_at DESC,id DESC LIMIT ? OFFSET ?',
+            total = db.execute(ranked + ' SELECT COUNT(*) FROM ranked WHERE duplicate_rank=1',
+                               values).fetchone()[0]
+            rows = db.execute(ranked + ''' SELECT * FROM ranked WHERE duplicate_rank=1
+                ORDER BY as_of DESC,created_at DESC,id DESC LIMIT ? OFFSET ?''',
                 [*values, page_size, (page - 1) * page_size]).fetchall()
         return ReportPage(items=[self._record(r) for r in rows], total=total, page=page, page_size=page_size)
 

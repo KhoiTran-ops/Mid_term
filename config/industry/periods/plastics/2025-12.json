@@ -1,0 +1,3678 @@
+{
+  "meta": {
+    "industry_id": "plastics",
+    "industry_name": "Ngành nhựa",
+    "period_code": "2025-12",
+    "period_label": "12/2025",
+    "report_date": "2025-12-12",
+    "language": "vi",
+    "example": true,
+    "data_note": "Bản minh họa lấy số liệu từ mẫu người dùng cung cấp, không phải dữ liệu ngành hiện tại. Các lỗi số liệu/nhãn gốc được giữ và ghi trong quality_report; không sao chép diễn giải của báo cáo bên thứ ba.",
+    "sources": [
+      {
+        "id": "ref",
+        "name": "Mẫu ngành nhựa đính kèm · 12/2025",
+        "url": "local:StockLens-industry-plastics-2025-12",
+        "retrieved_at": "2026-10-11T00:00:00+07:00",
+        "published_at": null,
+        "groups": [
+          "summary",
+          "global",
+          "domestic",
+          "companies"
+        ]
+      }
+    ],
+    "attribution": {
+      "publisher": "FPTS Research (theo mẫu đính kèm)",
+      "report_title": "Báo cáo ngành nhựa 12/2025",
+      "published_at": null,
+      "license_status": "unknown"
+    },
+    "exchange_catalog": {
+      "AAA": "HOSE",
+      "TDP": "HOSE",
+      "ECO": "UPCOM",
+      "TPP": "HNX",
+      "VNP": "UPCOM",
+      "VBC": "HNX",
+      "BBS": "HNX",
+      "STP": "HNX",
+      "PBP": "HNX",
+      "BXH": "HNX",
+      "PMP": "HNX",
+      "BPC": "HNX",
+      "BMP": "HOSE",
+      "NTP": "HNX",
+      "DNP": "HNX",
+      "HCD": "HOSE",
+      "DPC": "UPCOM",
+      "VTZ": "HNX",
+      "NHH": "HOSE"
+    }
+  },
+  "summary": {
+    "hero": {
+      "title": "NGÀNH NHỰA",
+      "subtitle": "Hồ sơ dữ liệu minh họa · 12/2025",
+      "metric_label": "SẢN LƯỢNG VIỆT NAM 2024",
+      "metric_value": 11.7,
+      "metric_note": "11,7 → 16,4 triệu tấn · CAGR dự phóng của nguồn: 7,0%/năm"
+    },
+    "kpis": [
+      {
+        "label": "Doanh thu ngành 2024",
+        "value": 31,
+        "unit": "tỷ USD",
+        "polarity": "neutral"
+      },
+      {
+        "label": "Đóng góp GDP",
+        "value": 6.5,
+        "unit": "%",
+        "polarity": "neutral"
+      },
+      {
+        "label": "Xuất khẩu 2024",
+        "value": 6.7,
+        "unit": "tỷ USD",
+        "polarity": "neutral"
+      },
+      {
+        "label": "HDPE 2026F",
+        "value": 940,
+        "unit": "USD/tấn",
+        "polarity": "neutral"
+      }
+    ],
+    "stances": [
+      {
+        "segment": "Nhựa xây dựng",
+        "horizon": "short_mid",
+        "rating": "KHẢ QUAN",
+        "source": {
+          "organization": "FPTS Research (mẫu người dùng cung cấp)",
+          "date": "2025-12"
+        }
+      },
+      {
+        "segment": "Nhựa xây dựng",
+        "horizon": "long",
+        "rating": "TRUNG LẬP",
+        "source": {
+          "organization": "FPTS Research (mẫu người dùng cung cấp)",
+          "date": "2025-12"
+        }
+      },
+      {
+        "segment": "Bao bì (chung)",
+        "horizon": "short_mid",
+        "rating": "TRUNG LẬP",
+        "source": {
+          "organization": "FPTS Research (mẫu người dùng cung cấp)",
+          "date": "2025-12"
+        }
+      },
+      {
+        "segment": "Bao bì nội địa",
+        "horizon": "long",
+        "rating": "TRUNG LẬP",
+        "source": {
+          "organization": "FPTS Research (mẫu người dùng cung cấp)",
+          "date": "2025-12"
+        }
+      },
+      {
+        "segment": "Bao bì xuất khẩu",
+        "horizon": "long",
+        "rating": "KÉM KHẢ QUAN",
+        "source": {
+          "organization": "FPTS Research (mẫu người dùng cung cấp)",
+          "date": "2025-12"
+        }
+      }
+    ],
+    "global_highlights": [
+      "Thế giới 2023: khoảng 490 triệu tấn; 61 kg/người/năm.",
+      "CAGR tiêu thụ 2000-2023 trong nguồn: 3,3%/năm."
+    ],
+    "domestic_highlights": [
+      "Việt Nam 2024: 11,7 triệu tấn; tăng 15,7% YoY.",
+      "Bao bì / xây dựng chiếm 35% / 25% sản lượng."
+    ],
+    "thesis": null
+  },
+  "global": {
+    "overview": {
+      "phases": [
+        {
+          "label": "1950-1970",
+          "cagr": 15.4
+        },
+        {
+          "label": "1970-2000",
+          "cagr": 6.3
+        },
+        {
+          "label": "2000-2023",
+          "cagr": 3.3
+        }
+      ],
+      "size": {
+        "value": 490,
+        "unit": "triệu tấn",
+        "year": 2023
+      },
+      "per_capita": [
+        {
+          "region": "Thế giới",
+          "kg": 61,
+          "cagr_forecast": 2.7,
+          "source": {
+            "organization": "FPTS Research (mẫu người dùng cung cấp)",
+            "date": "2025-12"
+          }
+        },
+        {
+          "region": "Trung Quốc",
+          "kg": 73,
+          "cagr_forecast": 3.1,
+          "source": {
+            "organization": "FPTS Research (mẫu người dùng cung cấp)",
+            "date": "2025-12"
+          }
+        },
+        {
+          "region": "Châu Á ngoài TQ",
+          "kg": 37,
+          "cagr_forecast": 4.4,
+          "source": {
+            "organization": "FPTS Research (mẫu người dùng cung cấp)",
+            "date": "2025-12"
+          }
+        },
+        {
+          "region": "Trung Đông - Châu Phi",
+          "kg": 21,
+          "cagr_forecast": 3.8,
+          "source": {
+            "organization": "FPTS Research (mẫu người dùng cung cấp)",
+            "date": "2025-12"
+          }
+        },
+        {
+          "region": "Châu Mỹ",
+          "kg": 130,
+          "cagr_forecast": 1.7,
+          "source": {
+            "organization": "FPTS Research (mẫu người dùng cung cấp)",
+            "date": "2025-12"
+          }
+        },
+        {
+          "region": "Châu Âu",
+          "kg": 124,
+          "cagr_forecast": 1.2,
+          "source": {
+            "organization": "FPTS Research (mẫu người dùng cung cấp)",
+            "date": "2025-12"
+          }
+        }
+      ],
+      "notes": [
+        "Phân biệt số thực tế 2023 và CAGR dự phóng 2022-2030F của nguồn."
+      ]
+    },
+    "value_chain": {
+      "cost_structure": [
+        {
+          "name": "Nguyên liệu",
+          "pct": 71
+        },
+        {
+          "name": "Nhân công",
+          "pct": 7
+        },
+        {
+          "name": "Vận hành",
+          "pct": 10
+        },
+        {
+          "name": "Khác",
+          "pct": 12
+        }
+      ],
+      "output_structure": [
+        {
+          "name": "Bao bì",
+          "pct": 32
+        },
+        {
+          "name": "Xây dựng",
+          "pct": 17
+        },
+        {
+          "name": "Kỹ thuật",
+          "pct": 14
+        },
+        {
+          "name": "Gia dụng",
+          "pct": 10
+        },
+        {
+          "name": "Khác",
+          "pct": 27
+        }
+      ],
+      "input_mix": [
+        {
+          "name": "PE",
+          "pct": 29
+        },
+        {
+          "name": "PP",
+          "pct": 21.2
+        },
+        {
+          "name": "PVC",
+          "pct": 14.3
+        },
+        {
+          "name": "PET",
+          "pct": 6.9
+        },
+        {
+          "name": "PUR",
+          "pct": 5.9
+        },
+        {
+          "name": "PS",
+          "pct": 5.7
+        },
+        {
+          "name": "Khác",
+          "pct": 17.1
+        }
+      ],
+      "price_forecast": {
+        "unit": "USD/tấn",
+        "years": [
+          "2022A",
+          "2023A",
+          "2024A",
+          "2025F",
+          "2026F",
+          "2027F",
+          "2028F",
+          "2029F",
+          "2030F"
+        ],
+        "source": {
+          "organization": "FPTS Research (mẫu người dùng cung cấp)",
+          "date": "2025-12"
+        },
+        "series": [
+          {
+            "name": "HDPE",
+            "values": [
+              1178,
+              1032,
+              1013,
+              958,
+              940,
+              930,
+              930,
+              940,
+              940
+            ]
+          },
+          {
+            "name": "PP",
+            "values": [
+              1170,
+              998,
+              1001,
+              975,
+              940,
+              930,
+              940,
+              940,
+              940
+            ]
+          },
+          {
+            "name": "PVC",
+            "values": [
+              1144,
+              843,
+              806,
+              712,
+              715,
+              720,
+              750,
+              755,
+              755
+            ]
+          }
+        ]
+      },
+      "commodity_price": {
+        "name": "Brent 2026F (dự phóng nguồn)",
+        "forecast": 60,
+        "unit": "USD/thùng",
+        "note": "Mức ghi trong mẫu, không phải dự phóng của StockLens.",
+        "source": {
+          "organization": "FPTS Research (mẫu người dùng cung cấp)",
+          "date": "2025-12"
+        }
+      }
+    },
+    "supply_demand": [
+      {
+        "material": "PE",
+        "utilization": 80.2,
+        "capacity": 151,
+        "supply_cagr_hist": 4.2,
+        "supply_cagr_fwd": 3.8,
+        "demand_cagr_hist": 2.7,
+        "demand_cagr_fwd": 3.9,
+        "notes": "Nhãn văn bản cần kiểm tra trong mẫu: hiệu suất PE ≈75%; bảng hiệu suất PE 2024 ghi 80,2%.",
+        "source": {
+          "organization": "FPTS Research (mẫu người dùng cung cấp)",
+          "date": "2025-12"
+        }
+      },
+      {
+        "material": "PP",
+        "utilization": 79.1,
+        "capacity": 111,
+        "supply_cagr_hist": 5.1,
+        "supply_cagr_fwd": 3.9,
+        "demand_cagr_hist": 3.4,
+        "demand_cagr_fwd": 3.4,
+        "notes": null,
+        "source": {
+          "organization": "FPTS Research (mẫu người dùng cung cấp)",
+          "date": "2025-12"
+        }
+      },
+      {
+        "material": "PVC",
+        "utilization": 77.4,
+        "capacity": null,
+        "supply_cagr_hist": 1.9,
+        "supply_cagr_fwd": 1.8,
+        "demand_cagr_hist": 1.3,
+        "demand_cagr_fwd": 3.1,
+        "notes": null,
+        "source": {
+          "organization": "FPTS Research (mẫu người dùng cung cấp)",
+          "date": "2025-12"
+        }
+      }
+    ],
+    "policy_trends": [
+      {
+        "topic": "Tái chế: chai PET",
+        "measures": [
+          "Các biện pháp được nguồn liệt kê: đặt cọc, tỷ lệ rPET, thuế chai nhựa nguyên sinh."
+        ],
+        "markets": [
+          "EU",
+          "Mỹ",
+          "Nhật Bản"
+        ]
+      },
+      {
+        "topic": "Túi dùng một lần",
+        "measures": [
+          "Nguồn liệt kê biện pháp cấm/thu phí và yêu cầu độ dày."
+        ],
+        "markets": [
+          "EU",
+          "Mỹ",
+          "Trung Quốc"
+        ]
+      }
+    ],
+    "segments": [
+      {
+        "name": "Bao bì",
+        "share_pct": 32,
+        "volume": 157,
+        "drivers": [],
+        "regional_split": [
+          {
+            "name": "Châu Á-TBD",
+            "pct": 45
+          },
+          {
+            "name": "Bắc Mỹ",
+            "pct": 27
+          },
+          {
+            "name": "Châu Âu",
+            "pct": 21
+          },
+          {
+            "name": "Mỹ Latin",
+            "pct": 5
+          },
+          {
+            "name": "TĐ-Châu Phi",
+            "pct": 2
+          }
+        ],
+        "demand_split": [
+          {
+            "name": "Thực phẩm/đồ uống",
+            "pct": 51
+          },
+          {
+            "name": "Cá nhân/gia đình",
+            "pct": 19
+          },
+          {
+            "name": "Công nghiệp",
+            "pct": 12
+          },
+          {
+            "name": "Dược",
+            "pct": 11
+          },
+          {
+            "name": "Khác",
+            "pct": 7
+          }
+        ]
+      },
+      {
+        "name": "Xây dựng",
+        "share_pct": 17,
+        "volume": 84,
+        "drivers": [],
+        "regional_split": [],
+        "demand_split": [],
+        "forecast_regions": [
+          {
+            "region": "Châu Á-TBD",
+            "cagr": 4.9,
+            "source": {
+              "organization": "FPTS Research (mẫu người dùng cung cấp)",
+              "date": "2025-12"
+            }
+          },
+          {
+            "region": "TĐ-Châu Phi",
+            "cagr": 3.9,
+            "source": {
+              "organization": "FPTS Research (mẫu người dùng cung cấp)",
+              "date": "2025-12"
+            }
+          },
+          {
+            "region": "Thế giới",
+            "cagr": 3.8,
+            "source": {
+              "organization": "FPTS Research (mẫu người dùng cung cấp)",
+              "date": "2025-12"
+            }
+          },
+          {
+            "region": "Mỹ Latin",
+            "cagr": 3.5,
+            "source": {
+              "organization": "FPTS Research (mẫu người dùng cung cấp)",
+              "date": "2025-12"
+            }
+          },
+          {
+            "region": "Châu Âu",
+            "cagr": 2.9,
+            "source": {
+              "organization": "FPTS Research (mẫu người dùng cung cấp)",
+              "date": "2025-12"
+            }
+          },
+          {
+            "region": "Bắc Mỹ",
+            "cagr": 2.4,
+            "source": {
+              "organization": "FPTS Research (mẫu người dùng cung cấp)",
+              "date": "2025-12"
+            }
+          }
+        ]
+      }
+    ],
+    "segment_traits": [
+      {
+        "segment": "Bao bì",
+        "materials": "PE, PP, PET",
+        "technology": "Thổi khuôn / thổi màng",
+        "products": "Chai, túi, màng",
+        "customers": "B2B / B2C"
+      },
+      {
+        "segment": "Xây dựng",
+        "materials": "PVC, PE, PP",
+        "technology": "Ép đùn",
+        "products": "Ống / ván sàn",
+        "customers": "Nhà ở / hạ tầng"
+      }
+    ]
+  },
+  "domestic": {
+    "overview": {
+      "revenue": 31,
+      "gdp_share": 6.5,
+      "volume": 11.7,
+      "cagr_revenue": 13.4,
+      "cagr_volume": 8.6,
+      "yoy_volume": 15.7,
+      "output_structure": [
+        {
+          "name": "Bao bì",
+          "pct": 35
+        },
+        {
+          "name": "Xây dựng",
+          "pct": 25
+        },
+        {
+          "name": "Gia dụng",
+          "pct": 22
+        },
+        {
+          "name": "Kỹ thuật",
+          "pct": 18
+        }
+      ],
+      "export_structure": [
+        {
+          "name": "Xây dựng",
+          "pct": 34
+        },
+        {
+          "name": "Bao bì",
+          "pct": 19
+        },
+        {
+          "name": "Tấm/phiến/màng",
+          "pct": 18
+        },
+        {
+          "name": "Gia dụng",
+          "pct": 17
+        },
+        {
+          "name": "Kỹ thuật, khác",
+          "pct": 12,
+          "derived": true,
+          "formula": "100% - 34% - 19% - 18% - 17% = 12%"
+        }
+      ],
+      "market_split": {
+        "domestic_pct": 78.3,
+        "export_pct": 22,
+        "import_value": 8.9
+      },
+      "per_capita": [
+        {
+          "region": "Châu Mỹ",
+          "kg": 130
+        },
+        {
+          "region": "Châu Âu",
+          "kg": 124
+        },
+        {
+          "region": "Trung Quốc",
+          "kg": 73
+        },
+        {
+          "region": "Thế giới",
+          "kg": 61
+        },
+        {
+          "region": "Châu Á ngoài TQ",
+          "kg": 37
+        },
+        {
+          "region": "Đông Nam Á (có VN)",
+          "kg": 34
+        },
+        {
+          "region": "TĐ-Châu Phi",
+          "kg": 21
+        }
+      ]
+    },
+    "competition": [
+      {
+        "force": "Cạnh tranh trong ngành",
+        "level": "high",
+        "comment": "Mức độ theo nguồn đính kèm, không do hệ thống tự xếp hạng."
+      },
+      {
+        "force": "Gia nhập mới",
+        "level": "high",
+        "comment": "Mức độ theo nguồn đính kèm, không do hệ thống tự xếp hạng."
+      },
+      {
+        "force": "Sản phẩm thay thế",
+        "level": "low",
+        "comment": "Mức độ theo nguồn đính kèm, không do hệ thống tự xếp hạng."
+      },
+      {
+        "force": "Người mua",
+        "level": "high",
+        "comment": "Mức độ theo nguồn đính kèm, không do hệ thống tự xếp hạng."
+      },
+      {
+        "force": "Nhà cung cấp",
+        "level": "low",
+        "comment": "Mức độ theo nguồn đính kèm, không do hệ thống tự xếp hạng."
+      }
+    ],
+    "value_chain": {
+      "cost_structure": [
+        {
+          "name": "Nguyên vật liệu",
+          "pct": 76
+        },
+        {
+          "name": "Nhân công",
+          "pct": 9
+        },
+        {
+          "name": "Vận hành",
+          "pct": 8
+        },
+        {
+          "name": "Khấu hao",
+          "pct": 3
+        },
+        {
+          "name": "Khác",
+          "pct": 5
+        }
+      ],
+      "input_mix": [
+        {
+          "name": "PE",
+          "pct": 28.7
+        },
+        {
+          "name": "PP",
+          "pct": 25.6
+        },
+        {
+          "name": "PVC",
+          "pct": 12.6
+        },
+        {
+          "name": "Khác",
+          "pct": 33.1
+        }
+      ],
+      "domestic_supply": {
+        "capacity": 2.7,
+        "self_sufficiency": 35,
+        "new_capacity_note": "Số nguồn: công suất cuối 2024; tự chủ sau Long Sơn vận hành 8/2025."
+      },
+      "machinery_imports": {
+        "cagr_periods": [
+          {
+            "label": "2011-2019 CAGR",
+            "cagr": 13.6
+          },
+          {
+            "label": "2019-2023 CAGR",
+            "cagr": -7.7
+          },
+          {
+            "label": "2024 YoY",
+            "cagr": 39.2
+          }
+        ],
+        "origin_split": [
+          {
+            "name": "Trung Quốc",
+            "pct": 70
+          },
+          {
+            "name": "Nhật",
+            "pct": 9
+          },
+          {
+            "name": "Đài Loan",
+            "pct": 6
+          },
+          {
+            "name": "Hàn Quốc",
+            "pct": 6
+          },
+          {
+            "name": "Đức",
+            "pct": 3
+          },
+          {
+            "name": "Khác",
+            "pct": 6
+          }
+        ]
+      }
+    },
+    "regulations": [
+      {
+        "name": "Nghị định 08/2022/NĐ-CP",
+        "summary": "Mẫu đề cập lộ trình hạn chế nhựa dùng một lần. Nội dung lịch sử, chưa kiểm tra hiệu lực pháp lý hiện tại.",
+        "effective": "Lộ trình được mẫu nêu: 2026 / sau 2030",
+        "tables": []
+      },
+      {
+        "name": "Nghị định 05/2025/NĐ-CP · EPR",
+        "summary": "Tỷ lệ tái chế ghi theo mẫu nguồn.",
+        "effective": "Theo nguồn 12/2025",
+        "tables": [
+          {
+            "headers": [
+              "Bao bì",
+              "Tỷ lệ tái chế",
+              "Đơn vị"
+            ],
+            "rows": [
+              [
+                "PET cứng",
+                22,
+                "%"
+              ],
+              [
+                "HDPE/LDPE/PP/PS cứng",
+                15,
+                "%"
+              ],
+              [
+                "EPS/PVC/khác cứng",
+                10,
+                "%"
+              ],
+              [
+                "Nhựa mềm",
+                10,
+                "%"
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Nghị định 199/2025/NĐ-CP",
+        "summary": "Thuế nhập khẩu ưu đãi ghi theo mẫu.",
+        "effective": "Theo nguồn 12/2025",
+        "tables": [
+          {
+            "headers": [
+              "Hạt nhựa",
+              "Thuế",
+              "Đơn vị"
+            ],
+            "rows": [
+              [
+                "LLDPE",
+                2,
+                "%"
+              ],
+              [
+                "HDPE",
+                2,
+                "%"
+              ],
+              [
+                "PP",
+                3,
+                "%"
+              ]
+            ]
+          }
+        ]
+      }
+    ],
+    "authorities": [
+      "Bộ Công Thương",
+      "Bộ Tài chính",
+      "Bộ Nông nghiệp và Môi trường",
+      "Hiệp hội nhựa Việt Nam"
+    ],
+    "segments": [
+      {
+        "name": "Nhựa bao bì",
+        "share_pct": 35,
+        "structure": [
+          {
+            "name": "Màng phức",
+            "pct": 60
+          },
+          {
+            "name": "Chai",
+            "pct": 25
+          },
+          {
+            "name": "Màng đơn",
+            "pct": 15
+          }
+        ],
+        "customers": [
+          {
+            "group": "Thực phẩm",
+            "names": [
+              "Masan Consumer",
+              "AceCook",
+              "Ajinomoto",
+              "Orion",
+              "Micoem",
+              "Vifon"
+            ]
+          },
+          {
+            "group": "Đồ uống",
+            "names": [
+              "Coca-Cola",
+              "Suntory Pepsico",
+              "Nestlé",
+              "Tân Hiệp Phát",
+              "URC"
+            ]
+          }
+        ],
+        "market_share": [],
+        "growth_series": [],
+        "export": {
+          "structure": [
+            {
+              "name": "EU",
+              "pct": 32
+            },
+            {
+              "name": "Nhật",
+              "pct": 23
+            },
+            {
+              "name": "Mỹ",
+              "pct": 23
+            },
+            {
+              "name": "Khác",
+              "pct": 22
+            }
+          ],
+          "notes": [
+            "Xuất khẩu túi nhựa 2024: 1,08 tỷ USD; CAGR 2016-2024: 6,9%."
+          ]
+        },
+        "notes": [
+          "Cơ cấu và tên khách hàng lấy từ mẫu, không bổ sung ước tính."
+        ],
+        "headwinds": [],
+        "tailwinds": []
+      },
+      {
+        "name": "Nhựa xây dựng · ống nhựa",
+        "share_pct": 25,
+        "structure": [
+          {
+            "name": "Nhà ở",
+            "pct": 70
+          },
+          {
+            "name": "Hạ tầng",
+            "pct": 20
+          },
+          {
+            "name": "Tưới tiêu/thủy sản",
+            "pct": 10
+          }
+        ],
+        "customers": [],
+        "market_share": [
+          {
+            "name": "NTP",
+            "pct": 32
+          },
+          {
+            "name": "BMP",
+            "pct": 23
+          },
+          {
+            "name": "HSG",
+            "pct": 13
+          },
+          {
+            "name": "DNP",
+            "pct": 9.3
+          },
+          {
+            "name": "Khác",
+            "pct": 21.9
+          }
+        ],
+        "growth_series": [
+          {
+            "title": "Tăng trưởng sản lượng ống nhựa",
+            "unit": "%",
+            "source": {
+              "organization": "FPTS Research (mẫu người dùng cung cấp)",
+              "date": "2025-12"
+            },
+            "polarity": "neutral",
+            "points": [
+              {
+                "label": "2021",
+                "value": -13.6,
+                "status": "A"
+              },
+              {
+                "label": "2022",
+                "value": 5.9,
+                "status": "A"
+              },
+              {
+                "label": "2023",
+                "value": -9,
+                "status": "A"
+              },
+              {
+                "label": "2024",
+                "value": 4,
+                "status": "A"
+              }
+            ]
+          }
+        ],
+        "export": {},
+        "notes": [
+          "9T2025: mẫu ghi sản lượng tiêu thụ tăng khoảng 24% YoY."
+        ],
+        "headwinds": [],
+        "tailwinds": []
+      },
+      {
+        "name": "Nhựa xây dựng · sàn SPC",
+        "share_pct": null,
+        "structure": [],
+        "customers": [],
+        "market_share": [
+          {
+            "name": "Việt Nam",
+            "pct": 49.6
+          },
+          {
+            "name": "Trung Quốc",
+            "pct": 28.1
+          },
+          {
+            "name": "Khác",
+            "pct": 22.3
+          }
+        ],
+        "growth_series": [
+          {
+            "title": "Tăng trưởng xuất khẩu sàn nhựa · dự phóng của nguồn",
+            "unit": "%",
+            "source": {
+              "organization": "FPTS Research (mẫu người dùng cung cấp)",
+              "date": "2025-12"
+            },
+            "polarity": "neutral",
+            "points": [
+              {
+                "label": "2022",
+                "value": 58.8,
+                "status": "A"
+              },
+              {
+                "label": "2023",
+                "value": -7.9,
+                "status": "A"
+              },
+              {
+                "label": "2024",
+                "value": 51.9,
+                "status": "A"
+              },
+              {
+                "label": "2025F",
+                "value": 34.9,
+                "status": "F"
+              },
+              {
+                "label": "2026F",
+                "value": 11.8,
+                "status": "F"
+              },
+              {
+                "label": "2027F",
+                "value": 16.5,
+                "status": "F"
+              },
+              {
+                "label": "2028F",
+                "value": 5.9,
+                "status": "F"
+              },
+              {
+                "label": "2029F",
+                "value": 5.3,
+                "status": "F"
+              },
+              {
+                "label": "2030F",
+                "value": 4,
+                "status": "F"
+              }
+            ]
+          }
+        ],
+        "export": {},
+        "notes": [
+          "Mẫu ghi xuất khẩu sang Mỹ 2024: 1,5 tỷ USD."
+        ],
+        "headwinds": [],
+        "tailwinds": []
+      }
+    ],
+    "outlook": {
+      "output_forecast": {
+        "from": 11.7,
+        "to": 16.4,
+        "cagr": 7,
+        "start_value": 11.7,
+        "end_value": 16.4,
+        "n_years": 5,
+        "source": {
+          "organization": "FPTS Research (mẫu người dùng cung cấp)",
+          "date": "2025-12"
+        }
+      },
+      "segment_table": [
+        {
+          "segment": "Bao bì nội địa",
+          "drivers": "Chi tiêu hộ gia đình (nguồn BMI)",
+          "forecast": "CAGR chi tiêu 2024-2028F: 10,38%"
+        },
+        {
+          "segment": "Bao bì xuất khẩu",
+          "drivers": "Thị phần theo nguồn",
+          "forecast": "Kim ngạch 2024-2029F: 3,9%/năm"
+        },
+        {
+          "segment": "Ống nội địa",
+          "drivers": "Nhà ở / đầu tư công",
+          "forecast": "2025F +12%; 2026F +8%"
+        },
+        {
+          "segment": "Sàn xuất khẩu",
+          "drivers": "SPC tại Mỹ",
+          "forecast": "CAGR 2024-2030F: 12,6%"
+        }
+      ],
+      "series": [
+        {
+          "title": "Chi tiêu hộ gia đình VN · nguồn BMI",
+          "unit": "%",
+          "source": {
+            "organization": "FPTS Research (mẫu người dùng cung cấp)",
+            "date": "2025-12"
+          },
+          "polarity": "neutral",
+          "points": [
+            {
+              "label": "2022",
+              "value": 10.7,
+              "status": "A"
+            },
+            {
+              "label": "2023",
+              "value": 8.9,
+              "status": "A"
+            },
+            {
+              "label": "2024",
+              "value": 9.7,
+              "status": "A"
+            },
+            {
+              "label": "2025F",
+              "value": 9.8,
+              "status": "F"
+            },
+            {
+              "label": "2026F",
+              "value": 10.7,
+              "status": "F"
+            },
+            {
+              "label": "2027F",
+              "value": 10.6,
+              "status": "F"
+            },
+            {
+              "label": "2028F",
+              "value": 10.5,
+              "status": "F"
+            }
+          ]
+        },
+        {
+          "title": "Xuất khẩu túi nhựa · số/dự phóng nguồn",
+          "unit": "triệu USD",
+          "source": {
+            "organization": "FPTS Research (mẫu người dùng cung cấp)",
+            "date": "2025-12"
+          },
+          "polarity": "neutral",
+          "points": [
+            {
+              "label": "2019",
+              "value": 894,
+              "status": "A"
+            },
+            {
+              "label": "2024",
+              "value": 1084,
+              "status": "A"
+            },
+            {
+              "label": "2029F",
+              "value": 1314,
+              "status": "F"
+            },
+            {
+              "label": "2034F",
+              "value": 1538,
+              "status": "F"
+            }
+          ]
+        }
+      ],
+      "macro_drivers": []
+    },
+    "risks": [
+      {
+        "area": "Đầu vào",
+        "title": "Biến động nguyên liệu",
+        "points": [
+          "Giá dầu/khí và hạt nhựa là nhóm rủi ro được nguồn liệt kê."
+        ]
+      },
+      {
+        "area": "Bao bì",
+        "title": "Quy định nhựa dùng một lần",
+        "points": [
+          "Nguồn liệt kê hạn chế nhựa dùng một lần tại các thị trường xuất khẩu."
+        ]
+      },
+      {
+        "area": "Xây dựng",
+        "title": "Phụ thuộc thị trường Mỹ",
+        "points": [
+          "Thuế và nguồn gốc hàng hóa là nhóm rủi ro được nguồn liệt kê."
+        ]
+      }
+    ]
+  },
+  "companies": {
+    "table": {
+      "as_of": "2025-12-12",
+      "period": "9T2025",
+      "columns": [
+        "group",
+        "ticker",
+        "exchange",
+        "market_cap",
+        "total_assets",
+        "revenue",
+        "revenue_yoy",
+        "net_income",
+        "net_income_yoy"
+      ],
+      "rows": [
+        {
+          "group": "Bao bì",
+          "ticker": "AAA",
+          "exchange": "HOSE",
+          "market_cap": 3130,
+          "total_assets": 12242,
+          "revenue": 12782,
+          "revenue_yoy": -4.5,
+          "net_income": 362,
+          "net_income_yoy": 41.3,
+          "period": "9T2025",
+          "market_cap_as_of": "2025-12-12",
+          "price_as_of": "2025-12-12"
+        },
+        {
+          "group": "Bao bì",
+          "ticker": "TDP",
+          "exchange": "HOSE",
+          "market_cap": 2488,
+          "total_assets": 4212,
+          "revenue": 3458,
+          "revenue_yoy": 9.3,
+          "net_income": 76,
+          "net_income_yoy": -6.2,
+          "period": "9T2025",
+          "market_cap_as_of": "2025-12-12",
+          "price_as_of": "2025-12-12"
+        },
+        {
+          "group": "Bao bì",
+          "ticker": "ECO",
+          "exchange": "UPCOM",
+          "market_cap": 798,
+          "total_assets": 407,
+          "revenue": 357,
+          "revenue_yoy": 11.5,
+          "net_income": 11,
+          "net_income_yoy": 29.3,
+          "period": "9T2025",
+          "market_cap_as_of": "2025-12-12",
+          "price_as_of": "2025-12-12"
+        },
+        {
+          "group": "Bao bì",
+          "ticker": "TPP",
+          "exchange": "HNX",
+          "market_cap": 667,
+          "total_assets": 2718,
+          "revenue": 2350,
+          "revenue_yoy": 3.9,
+          "net_income": 71,
+          "net_income_yoy": 225.1,
+          "period": "9T2025",
+          "market_cap_as_of": "2025-12-12",
+          "price_as_of": "2025-12-12"
+        },
+        {
+          "group": "Bao bì",
+          "ticker": "VNP",
+          "exchange": "UPCOM",
+          "market_cap": 400,
+          "total_assets": 305,
+          "revenue": 41,
+          "revenue_yoy": -36.4,
+          "net_income": 22,
+          "net_income_yoy": 60.6,
+          "period": "9T2025",
+          "market_cap_as_of": "2025-12-12",
+          "price_as_of": "2025-12-12"
+        },
+        {
+          "group": "Bao bì",
+          "ticker": "VBC",
+          "exchange": "HNX",
+          "market_cap": 154,
+          "total_assets": 385,
+          "revenue": 618,
+          "revenue_yoy": 4.8,
+          "net_income": 21,
+          "net_income_yoy": 0.5,
+          "period": "9T2025",
+          "market_cap_as_of": "2025-12-12",
+          "price_as_of": "2025-12-12"
+        },
+        {
+          "group": "Bao bì",
+          "ticker": "BBS",
+          "exchange": "HNX",
+          "market_cap": 77,
+          "total_assets": 301,
+          "revenue": 342,
+          "revenue_yoy": 38,
+          "net_income": 5,
+          "net_income_yoy": 3.1,
+          "period": "9T2025",
+          "market_cap_as_of": "2025-12-12",
+          "price_as_of": "2025-12-12"
+        },
+        {
+          "group": "Bao bì",
+          "ticker": "STP",
+          "exchange": "HNX",
+          "market_cap": 65,
+          "total_assets": 166,
+          "revenue": 137,
+          "revenue_yoy": -6.7,
+          "net_income": 5,
+          "net_income_yoy": -3.4,
+          "period": "9T2025",
+          "market_cap_as_of": "2025-12-12",
+          "price_as_of": "2025-12-12"
+        },
+        {
+          "group": "Bao bì",
+          "ticker": "PBP",
+          "exchange": "HNX",
+          "market_cap": 62,
+          "total_assets": 146,
+          "revenue": 327,
+          "revenue_yoy": 51.7,
+          "net_income": 6,
+          "net_income_yoy": 0.5,
+          "period": "9T2025",
+          "market_cap_as_of": "2025-12-12",
+          "price_as_of": "2025-12-12"
+        },
+        {
+          "group": "Bao bì",
+          "ticker": "BXH",
+          "exchange": "HNX",
+          "market_cap": 60,
+          "total_assets": 91,
+          "revenue": 175,
+          "revenue_yoy": 51.5,
+          "net_income": 1,
+          "net_income_yoy": 70.7,
+          "period": "9T2025",
+          "market_cap_as_of": "2025-12-12",
+          "price_as_of": "2025-12-12"
+        },
+        {
+          "group": "Bao bì",
+          "ticker": "PMP",
+          "exchange": "HNX",
+          "market_cap": 57,
+          "total_assets": 298,
+          "revenue": 509,
+          "revenue_yoy": 11.8,
+          "net_income": 6,
+          "net_income_yoy": 7.6,
+          "period": "9T2025",
+          "market_cap_as_of": "2025-12-12",
+          "price_as_of": "2025-12-12"
+        },
+        {
+          "group": "Bao bì",
+          "ticker": "BPC",
+          "exchange": "HNX",
+          "market_cap": 49,
+          "total_assets": 185,
+          "revenue": 198,
+          "revenue_yoy": 5.6,
+          "net_income": 1,
+          "net_income_yoy": 16.5,
+          "period": "9T2025",
+          "market_cap_as_of": "2025-12-12",
+          "price_as_of": "2025-12-12"
+        },
+        {
+          "group": "Xây dựng",
+          "ticker": "BMP",
+          "exchange": "HOSE",
+          "market_cap": 14408,
+          "total_assets": 3971,
+          "revenue": 4224,
+          "revenue_yoy": 18.5,
+          "net_income": 967,
+          "net_income_yoy": 27.3,
+          "period": "9T2025",
+          "market_cap_as_of": "2025-12-12",
+          "price_as_of": "2025-12-12",
+          "net_income_prior": 760
+        },
+        {
+          "group": "Xây dựng",
+          "ticker": "NTP",
+          "exchange": "HNX",
+          "market_cap": 11117,
+          "total_assets": 6920,
+          "revenue": 4869,
+          "revenue_yoy": 27.1,
+          "net_income": 790,
+          "net_income_yoy": 52.2,
+          "period": "9T2025",
+          "market_cap_as_of": "2025-12-12",
+          "price_as_of": "2025-12-12",
+          "net_income_prior": 519
+        },
+        {
+          "group": "Xây dựng",
+          "ticker": "DNP",
+          "exchange": "HNX",
+          "market_cap": 2833,
+          "total_assets": 17893,
+          "revenue": 7002,
+          "revenue_yoy": 12.2,
+          "net_income": 125,
+          "net_income_yoy": 1.2,
+          "period": "9T2025",
+          "market_cap_as_of": "2025-12-12",
+          "price_as_of": "2025-12-12"
+        },
+        {
+          "group": "Xây dựng",
+          "ticker": "HCD",
+          "exchange": "HOSE",
+          "market_cap": 286,
+          "total_assets": 784,
+          "revenue": 562,
+          "revenue_yoy": -15.8,
+          "net_income": 17,
+          "net_income_yoy": -31.5,
+          "period": "9T2025",
+          "market_cap_as_of": "2025-12-12",
+          "price_as_of": "2025-12-12"
+        },
+        {
+          "group": "Xây dựng",
+          "ticker": "DPC",
+          "exchange": "UPCOM",
+          "market_cap": 21,
+          "total_assets": 67,
+          "revenue": 17,
+          "revenue_yoy": -36.2,
+          "net_income": 3,
+          "net_income_yoy": null,
+          "period": "9T2025",
+          "market_cap_as_of": "2025-12-12",
+          "price_as_of": "2025-12-12",
+          "net_income_prior": -1,
+          "note": "Cùng kỳ lỗ 1 tỷ VND: %YoY không có ý nghĩa"
+        },
+        {
+          "group": "Gia dụng",
+          "ticker": "VTZ",
+          "exchange": "HNX",
+          "market_cap": 1386,
+          "total_assets": 3059,
+          "revenue": 3507,
+          "revenue_yoy": 33.6,
+          "net_income": 47,
+          "net_income_yoy": 2.7,
+          "period": "9T2025",
+          "market_cap_as_of": "2025-12-12",
+          "price_as_of": "2025-12-12"
+        },
+        {
+          "group": "Kỹ thuật",
+          "ticker": "NHH",
+          "exchange": "HOSE",
+          "market_cap": 1356,
+          "total_assets": 2471,
+          "revenue": 1756,
+          "revenue_yoy": 17.1,
+          "net_income": 119,
+          "net_income_yoy": 46.2,
+          "period": "9T2025",
+          "market_cap_as_of": "2025-12-12",
+          "price_as_of": "2025-12-12"
+        }
+      ],
+      "footnotes": [
+        "Phân loại theo mảng doanh thu lớn nhất của nguồn; không phải danh mục ngành DNSE.",
+        "DPC: cùng kỳ lỗ 1 tỷ VND, %YoY LNST hiển thị N/A.",
+        "Số làm tròn nguyên tỷ theo mẫu, không dùng để tái tạo số gốc."
+      ]
+    },
+    "profiles": [
+      {
+        "name": "CTCP Nhựa Thiếu niên Tiền Phong",
+        "ticker": "NTP",
+        "exchange": "HNX",
+        "trading": {
+          "as_of": "2025-12-12",
+          "price": 65000,
+          "high_52w": 70000,
+          "low_52w": 44400,
+          "avg_volume_10d": 129590,
+          "eps_ttm": 5885,
+          "pe_ttm": 11,
+          "target_price": 74100,
+          "target_upside": 14,
+          "target_source": {
+            "organization": "FPTS Research (mẫu người dùng cung cấp)",
+            "date": "2025-12"
+          }
+        },
+        "business_points": [
+          "Công suất nguồn: 260.000 tấn/năm.",
+          "Thị phần nguồn 2024: khoảng 32,2%."
+        ],
+        "series": [
+          {
+            "title": "LNST NTP",
+            "unit": "tỷ VND",
+            "metric": "net_income",
+            "source": {
+              "organization": "FPTS Research (mẫu người dùng cung cấp)",
+              "date": "2025-12"
+            },
+            "polarity": "neutral",
+            "points": [
+              {
+                "label": "2019",
+                "value": 409,
+                "status": "A"
+              },
+              {
+                "label": "2020",
+                "value": 447,
+                "status": "A"
+              },
+              {
+                "label": "2021",
+                "value": 468,
+                "status": "A"
+              },
+              {
+                "label": "2022",
+                "value": 480,
+                "status": "A"
+              },
+              {
+                "label": "2023",
+                "value": 559,
+                "status": "A"
+              },
+              {
+                "label": "2024",
+                "value": 736,
+                "status": "A"
+              },
+              {
+                "label": "9T2024",
+                "value": 519,
+                "status": "A"
+              },
+              {
+                "label": "9T2025",
+                "value": 790,
+                "status": "A"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "CTCP Nhựa Bình Minh",
+        "ticker": "BMP",
+        "exchange": "HOSE",
+        "trading": {
+          "as_of": "2025-12-12",
+          "price": 176000,
+          "high_52w": 172200,
+          "low_52w": 98300,
+          "avg_volume_10d": 86950,
+          "eps_ttm": 14639,
+          "pe_ttm": 12,
+          "target_price": 169000,
+          "target_upside": -1.7,
+          "target_source": {
+            "organization": "FPTS Research (mẫu người dùng cung cấp)",
+            "date": "2025-12"
+          }
+        },
+        "business_points": [
+          "Công suất nguồn: 150.000 tấn/năm.",
+          "Nhãn đơn vị LNST gốc sai: giữ trong audit để kiểm tra."
+        ],
+        "series": [
+          {
+            "title": "LNST BMP · nhãn gốc cần kiểm tra",
+            "unit": "nghìn tấn",
+            "metric": "net_income",
+            "source": {
+              "organization": "FPTS Research (mẫu người dùng cung cấp)",
+              "date": "2025-12"
+            },
+            "polarity": "neutral",
+            "points": [
+              {
+                "label": "2019",
+                "value": 423,
+                "status": "A"
+              },
+              {
+                "label": "2020",
+                "value": 523,
+                "status": "A"
+              },
+              {
+                "label": "2021",
+                "value": 214,
+                "status": "A"
+              },
+              {
+                "label": "2022",
+                "value": 694,
+                "status": "A"
+              },
+              {
+                "label": "2023",
+                "value": 1041,
+                "status": "A"
+              },
+              {
+                "label": "2024",
+                "value": 991,
+                "status": "A"
+              },
+              {
+                "label": "9T2024",
+                "value": 760,
+                "status": "A"
+              },
+              {
+                "label": "9T2025",
+                "value": 967,
+                "status": "A"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "CTCP Nhựa An Phát Xanh",
+        "ticker": "AAA",
+        "exchange": "HOSE",
+        "trading": {
+          "as_of": "2025-12-12",
+          "price": 7950,
+          "high_52w": 8900,
+          "low_52w": 6200,
+          "avg_volume_10d": 3584570,
+          "eps_ttm": 924,
+          "pe_ttm": 8.6,
+          "target_price": null,
+          "target_upside": null
+        },
+        "business_points": [
+          "Cơ cấu lợi nhuận gộp hợp nhất 9T2025 theo mẫu."
+        ],
+        "structure": [
+          {
+            "name": "Bao bì",
+            "pct": 44
+          },
+          {
+            "name": "Thương mại",
+            "pct": 17
+          },
+          {
+            "name": "Kỹ thuật",
+            "pct": 16
+          },
+          {
+            "name": "Xây dựng",
+            "pct": 9
+          },
+          {
+            "name": "BĐS KCN",
+            "pct": 6
+          },
+          {
+            "name": "Khác",
+            "pct": 8,
+            "derived": true,
+            "formula": "100% - 44% - 17% - 16% - 9% - 6% = 8%"
+          }
+        ],
+        "series": [
+          {
+            "title": "Biên lợi nhuận gộp AAA",
+            "unit": "%",
+            "source": {
+              "organization": "FPTS Research (mẫu người dùng cung cấp)",
+              "date": "2025-12"
+            },
+            "polarity": "neutral",
+            "points": [
+              {
+                "label": "2019",
+                "value": 11.3,
+                "status": "A"
+              },
+              {
+                "label": "2020",
+                "value": 10.5,
+                "status": "A"
+              },
+              {
+                "label": "2021",
+                "value": 9.9,
+                "status": "A"
+              },
+              {
+                "label": "2022",
+                "value": 7.1,
+                "status": "A"
+              },
+              {
+                "label": "2023",
+                "value": 8.8,
+                "status": "A"
+              },
+              {
+                "label": "2024",
+                "value": 11.6,
+                "status": "A"
+              },
+              {
+                "label": "9T2024",
+                "value": 11.6,
+                "status": "A"
+              },
+              {
+                "label": "9T2025",
+                "value": 13.7,
+                "status": "A"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "disclaimer": {
+    "text": "Dữ liệu minh họa từ file người dùng đính kèm, chưa xác nhận bản quyền hoặc đối chiếu độc lập nguồn gốc. Không dùng như báo cáo nghiên cứu hiện tại hoặc khuyến nghị đầu tư.",
+    "holdings_disclosure": null
+  },
+  "units": {
+    "domestic.regulations.1.tables.0.rows.0.1": "%",
+    "domestic.regulations.1.tables.0.rows.1.1": "%",
+    "domestic.regulations.1.tables.0.rows.2.1": "%",
+    "domestic.regulations.1.tables.0.rows.3.1": "%",
+    "domestic.regulations.2.tables.0.rows.0.1": "%",
+    "domestic.regulations.2.tables.0.rows.1.1": "%",
+    "domestic.regulations.2.tables.0.rows.2.1": "%",
+    "summary.hero.metric_value": "triệu tấn",
+    "domestic.overview.revenue": "tỷ USD",
+    "domestic.overview.volume": "triệu tấn",
+    "domestic.overview.market_split.import_value": "tỷ USD",
+    "domestic.value_chain.domestic_supply.capacity": "triệu tấn/năm",
+    "domestic.outlook.output_forecast.from": "triệu tấn",
+    "domestic.outlook.output_forecast.to": "triệu tấn",
+    "domestic.outlook.output_forecast.start_value": "triệu tấn",
+    "domestic.outlook.output_forecast.end_value": "triệu tấn",
+    "summary.kpis.0.value": "tỷ USD",
+    "summary.kpis.1.value": "%",
+    "summary.kpis.2.value": "tỷ USD",
+    "summary.kpis.3.value": "USD/tấn",
+    "global.overview.phases.0.cagr": "%",
+    "global.overview.phases.1.cagr": "%",
+    "global.overview.phases.2.cagr": "%",
+    "global.overview.size.value": "triệu tấn",
+    "global.overview.size.year": "năm",
+    "global.overview.per_capita.0.kg": "kg/người/năm",
+    "global.overview.per_capita.0.cagr_forecast": "%",
+    "global.overview.per_capita.1.kg": "kg/người/năm",
+    "global.overview.per_capita.1.cagr_forecast": "%",
+    "global.overview.per_capita.2.kg": "kg/người/năm",
+    "global.overview.per_capita.2.cagr_forecast": "%",
+    "global.overview.per_capita.3.kg": "kg/người/năm",
+    "global.overview.per_capita.3.cagr_forecast": "%",
+    "global.overview.per_capita.4.kg": "kg/người/năm",
+    "global.overview.per_capita.4.cagr_forecast": "%",
+    "global.overview.per_capita.5.kg": "kg/người/năm",
+    "global.overview.per_capita.5.cagr_forecast": "%",
+    "global.value_chain.cost_structure.0.pct": "%",
+    "global.value_chain.cost_structure.1.pct": "%",
+    "global.value_chain.cost_structure.2.pct": "%",
+    "global.value_chain.cost_structure.3.pct": "%",
+    "global.value_chain.output_structure.0.pct": "%",
+    "global.value_chain.output_structure.1.pct": "%",
+    "global.value_chain.output_structure.2.pct": "%",
+    "global.value_chain.output_structure.3.pct": "%",
+    "global.value_chain.output_structure.4.pct": "%",
+    "global.value_chain.input_mix.0.pct": "%",
+    "global.value_chain.input_mix.1.pct": "%",
+    "global.value_chain.input_mix.2.pct": "%",
+    "global.value_chain.input_mix.3.pct": "%",
+    "global.value_chain.input_mix.4.pct": "%",
+    "global.value_chain.input_mix.5.pct": "%",
+    "global.value_chain.input_mix.6.pct": "%",
+    "global.value_chain.price_forecast.series.0.values.0": "USD/tấn",
+    "global.value_chain.price_forecast.series.0.values.1": "USD/tấn",
+    "global.value_chain.price_forecast.series.0.values.2": "USD/tấn",
+    "global.value_chain.price_forecast.series.0.values.3": "USD/tấn",
+    "global.value_chain.price_forecast.series.0.values.4": "USD/tấn",
+    "global.value_chain.price_forecast.series.0.values.5": "USD/tấn",
+    "global.value_chain.price_forecast.series.0.values.6": "USD/tấn",
+    "global.value_chain.price_forecast.series.0.values.7": "USD/tấn",
+    "global.value_chain.price_forecast.series.0.values.8": "USD/tấn",
+    "global.value_chain.price_forecast.series.1.values.0": "USD/tấn",
+    "global.value_chain.price_forecast.series.1.values.1": "USD/tấn",
+    "global.value_chain.price_forecast.series.1.values.2": "USD/tấn",
+    "global.value_chain.price_forecast.series.1.values.3": "USD/tấn",
+    "global.value_chain.price_forecast.series.1.values.4": "USD/tấn",
+    "global.value_chain.price_forecast.series.1.values.5": "USD/tấn",
+    "global.value_chain.price_forecast.series.1.values.6": "USD/tấn",
+    "global.value_chain.price_forecast.series.1.values.7": "USD/tấn",
+    "global.value_chain.price_forecast.series.1.values.8": "USD/tấn",
+    "global.value_chain.price_forecast.series.2.values.0": "USD/tấn",
+    "global.value_chain.price_forecast.series.2.values.1": "USD/tấn",
+    "global.value_chain.price_forecast.series.2.values.2": "USD/tấn",
+    "global.value_chain.price_forecast.series.2.values.3": "USD/tấn",
+    "global.value_chain.price_forecast.series.2.values.4": "USD/tấn",
+    "global.value_chain.price_forecast.series.2.values.5": "USD/tấn",
+    "global.value_chain.price_forecast.series.2.values.6": "USD/tấn",
+    "global.value_chain.price_forecast.series.2.values.7": "USD/tấn",
+    "global.value_chain.price_forecast.series.2.values.8": "USD/tấn",
+    "global.value_chain.commodity_price.forecast": "USD/thùng",
+    "global.supply_demand.0.utilization": "%",
+    "global.supply_demand.0.capacity": "triệu tấn/năm",
+    "global.supply_demand.0.supply_cagr_hist": "%",
+    "global.supply_demand.0.supply_cagr_fwd": "%",
+    "global.supply_demand.0.demand_cagr_hist": "%",
+    "global.supply_demand.0.demand_cagr_fwd": "%",
+    "global.supply_demand.1.utilization": "%",
+    "global.supply_demand.1.capacity": "triệu tấn/năm",
+    "global.supply_demand.1.supply_cagr_hist": "%",
+    "global.supply_demand.1.supply_cagr_fwd": "%",
+    "global.supply_demand.1.demand_cagr_hist": "%",
+    "global.supply_demand.1.demand_cagr_fwd": "%",
+    "global.supply_demand.2.utilization": "%",
+    "global.supply_demand.2.supply_cagr_hist": "%",
+    "global.supply_demand.2.supply_cagr_fwd": "%",
+    "global.supply_demand.2.demand_cagr_hist": "%",
+    "global.supply_demand.2.demand_cagr_fwd": "%",
+    "global.segments.0.share_pct": "%",
+    "global.segments.0.volume": "triệu tấn",
+    "global.segments.0.regional_split.0.pct": "%",
+    "global.segments.0.regional_split.1.pct": "%",
+    "global.segments.0.regional_split.2.pct": "%",
+    "global.segments.0.regional_split.3.pct": "%",
+    "global.segments.0.regional_split.4.pct": "%",
+    "global.segments.0.demand_split.0.pct": "%",
+    "global.segments.0.demand_split.1.pct": "%",
+    "global.segments.0.demand_split.2.pct": "%",
+    "global.segments.0.demand_split.3.pct": "%",
+    "global.segments.0.demand_split.4.pct": "%",
+    "global.segments.1.share_pct": "%",
+    "global.segments.1.volume": "triệu tấn",
+    "global.segments.1.forecast_regions.0.cagr": "%",
+    "global.segments.1.forecast_regions.1.cagr": "%",
+    "global.segments.1.forecast_regions.2.cagr": "%",
+    "global.segments.1.forecast_regions.3.cagr": "%",
+    "global.segments.1.forecast_regions.4.cagr": "%",
+    "global.segments.1.forecast_regions.5.cagr": "%",
+    "domestic.overview.gdp_share": "%",
+    "domestic.overview.cagr_revenue": "%",
+    "domestic.overview.cagr_volume": "%",
+    "domestic.overview.yoy_volume": "%",
+    "domestic.overview.output_structure.0.pct": "%",
+    "domestic.overview.output_structure.1.pct": "%",
+    "domestic.overview.output_structure.2.pct": "%",
+    "domestic.overview.output_structure.3.pct": "%",
+    "domestic.overview.export_structure.0.pct": "%",
+    "domestic.overview.export_structure.1.pct": "%",
+    "domestic.overview.export_structure.2.pct": "%",
+    "domestic.overview.export_structure.3.pct": "%",
+    "domestic.overview.export_structure.4.pct": "%",
+    "domestic.overview.market_split.domestic_pct": "%",
+    "domestic.overview.market_split.export_pct": "%",
+    "domestic.overview.per_capita.0.kg": "kg/người/năm",
+    "domestic.overview.per_capita.1.kg": "kg/người/năm",
+    "domestic.overview.per_capita.2.kg": "kg/người/năm",
+    "domestic.overview.per_capita.3.kg": "kg/người/năm",
+    "domestic.overview.per_capita.4.kg": "kg/người/năm",
+    "domestic.overview.per_capita.5.kg": "kg/người/năm",
+    "domestic.overview.per_capita.6.kg": "kg/người/năm",
+    "domestic.value_chain.cost_structure.0.pct": "%",
+    "domestic.value_chain.cost_structure.1.pct": "%",
+    "domestic.value_chain.cost_structure.2.pct": "%",
+    "domestic.value_chain.cost_structure.3.pct": "%",
+    "domestic.value_chain.cost_structure.4.pct": "%",
+    "domestic.value_chain.input_mix.0.pct": "%",
+    "domestic.value_chain.input_mix.1.pct": "%",
+    "domestic.value_chain.input_mix.2.pct": "%",
+    "domestic.value_chain.input_mix.3.pct": "%",
+    "domestic.value_chain.domestic_supply.self_sufficiency": "%",
+    "domestic.value_chain.machinery_imports.cagr_periods.0.cagr": "%",
+    "domestic.value_chain.machinery_imports.cagr_periods.1.cagr": "%",
+    "domestic.value_chain.machinery_imports.cagr_periods.2.cagr": "%",
+    "domestic.value_chain.machinery_imports.origin_split.0.pct": "%",
+    "domestic.value_chain.machinery_imports.origin_split.1.pct": "%",
+    "domestic.value_chain.machinery_imports.origin_split.2.pct": "%",
+    "domestic.value_chain.machinery_imports.origin_split.3.pct": "%",
+    "domestic.value_chain.machinery_imports.origin_split.4.pct": "%",
+    "domestic.value_chain.machinery_imports.origin_split.5.pct": "%",
+    "domestic.segments.0.share_pct": "%",
+    "domestic.segments.0.structure.0.pct": "%",
+    "domestic.segments.0.structure.1.pct": "%",
+    "domestic.segments.0.structure.2.pct": "%",
+    "domestic.segments.0.export.structure.0.pct": "%",
+    "domestic.segments.0.export.structure.1.pct": "%",
+    "domestic.segments.0.export.structure.2.pct": "%",
+    "domestic.segments.0.export.structure.3.pct": "%",
+    "domestic.segments.1.share_pct": "%",
+    "domestic.segments.1.structure.0.pct": "%",
+    "domestic.segments.1.structure.1.pct": "%",
+    "domestic.segments.1.structure.2.pct": "%",
+    "domestic.segments.1.market_share.0.pct": "%",
+    "domestic.segments.1.market_share.1.pct": "%",
+    "domestic.segments.1.market_share.2.pct": "%",
+    "domestic.segments.1.market_share.3.pct": "%",
+    "domestic.segments.1.market_share.4.pct": "%",
+    "domestic.segments.1.growth_series.0.points.0.value": "%",
+    "domestic.segments.1.growth_series.0.points.1.value": "%",
+    "domestic.segments.1.growth_series.0.points.2.value": "%",
+    "domestic.segments.1.growth_series.0.points.3.value": "%",
+    "domestic.segments.2.market_share.0.pct": "%",
+    "domestic.segments.2.market_share.1.pct": "%",
+    "domestic.segments.2.market_share.2.pct": "%",
+    "domestic.segments.2.growth_series.0.points.0.value": "%",
+    "domestic.segments.2.growth_series.0.points.1.value": "%",
+    "domestic.segments.2.growth_series.0.points.2.value": "%",
+    "domestic.segments.2.growth_series.0.points.3.value": "%",
+    "domestic.segments.2.growth_series.0.points.4.value": "%",
+    "domestic.segments.2.growth_series.0.points.5.value": "%",
+    "domestic.segments.2.growth_series.0.points.6.value": "%",
+    "domestic.segments.2.growth_series.0.points.7.value": "%",
+    "domestic.segments.2.growth_series.0.points.8.value": "%",
+    "domestic.outlook.output_forecast.cagr": "%",
+    "domestic.outlook.output_forecast.n_years": "năm",
+    "domestic.outlook.series.0.points.0.value": "%",
+    "domestic.outlook.series.0.points.1.value": "%",
+    "domestic.outlook.series.0.points.2.value": "%",
+    "domestic.outlook.series.0.points.3.value": "%",
+    "domestic.outlook.series.0.points.4.value": "%",
+    "domestic.outlook.series.0.points.5.value": "%",
+    "domestic.outlook.series.0.points.6.value": "%",
+    "domestic.outlook.series.1.points.0.value": "triệu USD",
+    "domestic.outlook.series.1.points.1.value": "triệu USD",
+    "domestic.outlook.series.1.points.2.value": "triệu USD",
+    "domestic.outlook.series.1.points.3.value": "triệu USD",
+    "companies.table.rows.0.market_cap": "tỷ VND",
+    "companies.table.rows.0.total_assets": "tỷ VND",
+    "companies.table.rows.0.revenue": "tỷ VND",
+    "companies.table.rows.0.revenue_yoy": "%",
+    "companies.table.rows.0.net_income": "tỷ VND",
+    "companies.table.rows.0.net_income_yoy": "%",
+    "companies.table.rows.1.market_cap": "tỷ VND",
+    "companies.table.rows.1.total_assets": "tỷ VND",
+    "companies.table.rows.1.revenue": "tỷ VND",
+    "companies.table.rows.1.revenue_yoy": "%",
+    "companies.table.rows.1.net_income": "tỷ VND",
+    "companies.table.rows.1.net_income_yoy": "%",
+    "companies.table.rows.2.market_cap": "tỷ VND",
+    "companies.table.rows.2.total_assets": "tỷ VND",
+    "companies.table.rows.2.revenue": "tỷ VND",
+    "companies.table.rows.2.revenue_yoy": "%",
+    "companies.table.rows.2.net_income": "tỷ VND",
+    "companies.table.rows.2.net_income_yoy": "%",
+    "companies.table.rows.3.market_cap": "tỷ VND",
+    "companies.table.rows.3.total_assets": "tỷ VND",
+    "companies.table.rows.3.revenue": "tỷ VND",
+    "companies.table.rows.3.revenue_yoy": "%",
+    "companies.table.rows.3.net_income": "tỷ VND",
+    "companies.table.rows.3.net_income_yoy": "%",
+    "companies.table.rows.4.market_cap": "tỷ VND",
+    "companies.table.rows.4.total_assets": "tỷ VND",
+    "companies.table.rows.4.revenue": "tỷ VND",
+    "companies.table.rows.4.revenue_yoy": "%",
+    "companies.table.rows.4.net_income": "tỷ VND",
+    "companies.table.rows.4.net_income_yoy": "%",
+    "companies.table.rows.5.market_cap": "tỷ VND",
+    "companies.table.rows.5.total_assets": "tỷ VND",
+    "companies.table.rows.5.revenue": "tỷ VND",
+    "companies.table.rows.5.revenue_yoy": "%",
+    "companies.table.rows.5.net_income": "tỷ VND",
+    "companies.table.rows.5.net_income_yoy": "%",
+    "companies.table.rows.6.market_cap": "tỷ VND",
+    "companies.table.rows.6.total_assets": "tỷ VND",
+    "companies.table.rows.6.revenue": "tỷ VND",
+    "companies.table.rows.6.revenue_yoy": "%",
+    "companies.table.rows.6.net_income": "tỷ VND",
+    "companies.table.rows.6.net_income_yoy": "%",
+    "companies.table.rows.7.market_cap": "tỷ VND",
+    "companies.table.rows.7.total_assets": "tỷ VND",
+    "companies.table.rows.7.revenue": "tỷ VND",
+    "companies.table.rows.7.revenue_yoy": "%",
+    "companies.table.rows.7.net_income": "tỷ VND",
+    "companies.table.rows.7.net_income_yoy": "%",
+    "companies.table.rows.8.market_cap": "tỷ VND",
+    "companies.table.rows.8.total_assets": "tỷ VND",
+    "companies.table.rows.8.revenue": "tỷ VND",
+    "companies.table.rows.8.revenue_yoy": "%",
+    "companies.table.rows.8.net_income": "tỷ VND",
+    "companies.table.rows.8.net_income_yoy": "%",
+    "companies.table.rows.9.market_cap": "tỷ VND",
+    "companies.table.rows.9.total_assets": "tỷ VND",
+    "companies.table.rows.9.revenue": "tỷ VND",
+    "companies.table.rows.9.revenue_yoy": "%",
+    "companies.table.rows.9.net_income": "tỷ VND",
+    "companies.table.rows.9.net_income_yoy": "%",
+    "companies.table.rows.10.market_cap": "tỷ VND",
+    "companies.table.rows.10.total_assets": "tỷ VND",
+    "companies.table.rows.10.revenue": "tỷ VND",
+    "companies.table.rows.10.revenue_yoy": "%",
+    "companies.table.rows.10.net_income": "tỷ VND",
+    "companies.table.rows.10.net_income_yoy": "%",
+    "companies.table.rows.11.market_cap": "tỷ VND",
+    "companies.table.rows.11.total_assets": "tỷ VND",
+    "companies.table.rows.11.revenue": "tỷ VND",
+    "companies.table.rows.11.revenue_yoy": "%",
+    "companies.table.rows.11.net_income": "tỷ VND",
+    "companies.table.rows.11.net_income_yoy": "%",
+    "companies.table.rows.12.market_cap": "tỷ VND",
+    "companies.table.rows.12.total_assets": "tỷ VND",
+    "companies.table.rows.12.revenue": "tỷ VND",
+    "companies.table.rows.12.revenue_yoy": "%",
+    "companies.table.rows.12.net_income": "tỷ VND",
+    "companies.table.rows.12.net_income_yoy": "%",
+    "companies.table.rows.12.net_income_prior": "tỷ VND",
+    "companies.table.rows.13.market_cap": "tỷ VND",
+    "companies.table.rows.13.total_assets": "tỷ VND",
+    "companies.table.rows.13.revenue": "tỷ VND",
+    "companies.table.rows.13.revenue_yoy": "%",
+    "companies.table.rows.13.net_income": "tỷ VND",
+    "companies.table.rows.13.net_income_yoy": "%",
+    "companies.table.rows.13.net_income_prior": "tỷ VND",
+    "companies.table.rows.14.market_cap": "tỷ VND",
+    "companies.table.rows.14.total_assets": "tỷ VND",
+    "companies.table.rows.14.revenue": "tỷ VND",
+    "companies.table.rows.14.revenue_yoy": "%",
+    "companies.table.rows.14.net_income": "tỷ VND",
+    "companies.table.rows.14.net_income_yoy": "%",
+    "companies.table.rows.15.market_cap": "tỷ VND",
+    "companies.table.rows.15.total_assets": "tỷ VND",
+    "companies.table.rows.15.revenue": "tỷ VND",
+    "companies.table.rows.15.revenue_yoy": "%",
+    "companies.table.rows.15.net_income": "tỷ VND",
+    "companies.table.rows.15.net_income_yoy": "%",
+    "companies.table.rows.16.market_cap": "tỷ VND",
+    "companies.table.rows.16.total_assets": "tỷ VND",
+    "companies.table.rows.16.revenue": "tỷ VND",
+    "companies.table.rows.16.revenue_yoy": "%",
+    "companies.table.rows.16.net_income": "tỷ VND",
+    "companies.table.rows.16.net_income_prior": "tỷ VND",
+    "companies.table.rows.17.market_cap": "tỷ VND",
+    "companies.table.rows.17.total_assets": "tỷ VND",
+    "companies.table.rows.17.revenue": "tỷ VND",
+    "companies.table.rows.17.revenue_yoy": "%",
+    "companies.table.rows.17.net_income": "tỷ VND",
+    "companies.table.rows.17.net_income_yoy": "%",
+    "companies.table.rows.18.market_cap": "tỷ VND",
+    "companies.table.rows.18.total_assets": "tỷ VND",
+    "companies.table.rows.18.revenue": "tỷ VND",
+    "companies.table.rows.18.revenue_yoy": "%",
+    "companies.table.rows.18.net_income": "tỷ VND",
+    "companies.table.rows.18.net_income_yoy": "%",
+    "companies.profiles.0.trading.price": "VND/cp",
+    "companies.profiles.0.trading.high_52w": "VND/cp",
+    "companies.profiles.0.trading.low_52w": "VND/cp",
+    "companies.profiles.0.trading.avg_volume_10d": "cp",
+    "companies.profiles.0.trading.eps_ttm": "VND/cp",
+    "companies.profiles.0.trading.pe_ttm": "lần",
+    "companies.profiles.0.trading.target_price": "VND/cp",
+    "companies.profiles.0.trading.target_upside": "%",
+    "companies.profiles.0.series.0.points.0.value": "tỷ VND",
+    "companies.profiles.0.series.0.points.1.value": "tỷ VND",
+    "companies.profiles.0.series.0.points.2.value": "tỷ VND",
+    "companies.profiles.0.series.0.points.3.value": "tỷ VND",
+    "companies.profiles.0.series.0.points.4.value": "tỷ VND",
+    "companies.profiles.0.series.0.points.5.value": "tỷ VND",
+    "companies.profiles.0.series.0.points.6.value": "tỷ VND",
+    "companies.profiles.0.series.0.points.7.value": "tỷ VND",
+    "companies.profiles.1.trading.price": "VND/cp",
+    "companies.profiles.1.trading.high_52w": "VND/cp",
+    "companies.profiles.1.trading.low_52w": "VND/cp",
+    "companies.profiles.1.trading.avg_volume_10d": "cp",
+    "companies.profiles.1.trading.eps_ttm": "VND/cp",
+    "companies.profiles.1.trading.pe_ttm": "lần",
+    "companies.profiles.1.trading.target_price": "VND/cp",
+    "companies.profiles.1.trading.target_upside": "%",
+    "companies.profiles.1.series.0.points.0.value": "nghìn tấn",
+    "companies.profiles.1.series.0.points.1.value": "nghìn tấn",
+    "companies.profiles.1.series.0.points.2.value": "nghìn tấn",
+    "companies.profiles.1.series.0.points.3.value": "nghìn tấn",
+    "companies.profiles.1.series.0.points.4.value": "nghìn tấn",
+    "companies.profiles.1.series.0.points.5.value": "nghìn tấn",
+    "companies.profiles.1.series.0.points.6.value": "nghìn tấn",
+    "companies.profiles.1.series.0.points.7.value": "nghìn tấn",
+    "companies.profiles.2.trading.price": "VND/cp",
+    "companies.profiles.2.trading.high_52w": "VND/cp",
+    "companies.profiles.2.trading.low_52w": "VND/cp",
+    "companies.profiles.2.trading.avg_volume_10d": "cp",
+    "companies.profiles.2.trading.eps_ttm": "VND/cp",
+    "companies.profiles.2.trading.pe_ttm": "lần",
+    "companies.profiles.2.structure.0.pct": "%",
+    "companies.profiles.2.structure.1.pct": "%",
+    "companies.profiles.2.structure.2.pct": "%",
+    "companies.profiles.2.structure.3.pct": "%",
+    "companies.profiles.2.structure.4.pct": "%",
+    "companies.profiles.2.structure.5.pct": "%",
+    "companies.profiles.2.series.0.points.0.value": "%",
+    "companies.profiles.2.series.0.points.1.value": "%",
+    "companies.profiles.2.series.0.points.2.value": "%",
+    "companies.profiles.2.series.0.points.3.value": "%",
+    "companies.profiles.2.series.0.points.4.value": "%",
+    "companies.profiles.2.series.0.points.5.value": "%",
+    "companies.profiles.2.series.0.points.6.value": "%",
+    "companies.profiles.2.series.0.points.7.value": "%"
+  },
+  "provenance": {
+    "summary": {
+      "source_id": "ref"
+    },
+    "global": {
+      "source_id": "ref"
+    },
+    "domestic": {
+      "source_id": "ref"
+    },
+    "companies": {
+      "source_id": "ref"
+    },
+    "summary.hero.metric_value": {
+      "source_id": "ref",
+      "unit": "triệu tấn"
+    },
+    "summary.kpis.0.value": {
+      "source_id": "ref",
+      "unit": "tỷ USD"
+    },
+    "summary.kpis.1.value": {
+      "source_id": "ref",
+      "unit": "%"
+    },
+    "summary.kpis.2.value": {
+      "source_id": "ref",
+      "unit": "tỷ USD"
+    },
+    "summary.kpis.3.value": {
+      "source_id": "ref",
+      "unit": "USD/tấn"
+    },
+    "global.overview.phases.0.cagr": {
+      "source_id": "ref",
+      "unit": "%"
+    },
+    "global.overview.phases.1.cagr": {
+      "source_id": "ref",
+      "unit": "%"
+    },
+    "global.overview.phases.2.cagr": {
+      "source_id": "ref",
+      "unit": "%"
+    },
+    "global.overview.size.value": {
+      "source_id": "ref",
+      "unit": "triệu tấn"
+    },
+    "global.overview.size.year": {
+      "source_id": "ref",
+      "unit": "năm"
+    },
+    "global.overview.per_capita.0.kg": {
+      "source_id": "ref",
+      "unit": "kg/người/năm"
+    },
+    "global.overview.per_capita.0.cagr_forecast": {
+      "source_id": "ref",
+      "unit": "%"
+    },
+    "global.overview.per_capita.1.kg": {
+      "source_id": "ref",
+      "unit": "kg/người/năm"
+    },
+    "global.overview.per_capita.1.cagr_forecast": {
+      "source_id": "ref",
+      "unit": "%"
+    },
+    "global.overview.per_capita.2.kg": {
+      "source_id": "ref",
+      "unit": "kg/người/năm"
+    },
+    "global.overview.per_capita.2.cagr_forecast": {
+      "source_id": "ref",
+      "unit": "%"
+    },
+    "global.overview.per_capita.3.kg": {
+      "source_id": "ref",
+      "unit": "kg/người/năm"
+    },
+    "global.overview.per_capita.3.cagr_forecast": {
+      "source_id": "ref",
+      "unit": "%"
+    },
+    "global.overview.per_capita.4.kg": {
+      "source_id": "ref",
+      "unit": "kg/người/năm"
+    },
+    "global.overview.per_capita.4.cagr_forecast": {
+      "source_id": "ref",
+      "unit": "%"
+    },
+    "global.overview.per_capita.5.kg": {
+      "source_id": "ref",
+      "unit": "kg/người/năm"
+    },
+    "global.overview.per_capita.5.cagr_forecast": {
+      "source_id": "ref",
+      "unit": "%"
+    },
+    "global.value_chain.cost_structure.0.pct": {
+      "source_id": "ref",
+      "unit": "%"
+    },
+    "global.value_chain.cost_structure.1.pct": {
+      "source_id": "ref",
+      "unit": "%"
+    },
+    "global.value_chain.cost_structure.2.pct": {
+      "source_id": "ref",
+      "unit": "%"
+    },
+    "global.value_chain.cost_structure.3.pct": {
+      "source_id": "ref",
+      "unit": "%"
+    },
+    "global.value_chain.output_structure.0.pct": {
+      "source_id": "ref",
+      "unit": "%"
+    },
+    "global.value_chain.output_structure.1.pct": {
+      "source_id": "ref",
+      "unit": "%"
+    },
+    "global.value_chain.output_structure.2.pct": {
+      "source_id": "ref",
+      "unit": "%"
+    },
+    "global.value_chain.output_structure.3.pct": {
+      "source_id": "ref",
+      "unit": "%"
+    },
+    "global.value_chain.output_structure.4.pct": {
+      "source_id": "ref",
+      "unit": "%"
+    },
+    "global.value_chain.input_mix.0.pct": {
+      "source_id": "ref",
+      "unit": "%"
+    },
+    "global.value_chain.input_mix.1.pct": {
+      "source_id": "ref",
+      "unit": "%"
+    },
+    "global.value_chain.input_mix.2.pct": {
+      "source_id": "ref",
+      "unit": "%"
+    },
+    "global.value_chain.input_mix.3.pct": {
+      "source_id": "ref",
+      "unit": "%"
+    },
+    "global.value_chain.input_mix.4.pct": {
+      "source_id": "ref",
+      "unit": "%"
+    },
+    "global.value_chain.input_mix.5.pct": {
+      "source_id": "ref",
+      "unit": "%"
+    },
+    "global.value_chain.input_mix.6.pct": {
+      "source_id": "ref",
+      "unit": "%"
+    },
+    "global.value_chain.price_forecast.series.0.values.0": {
+      "source_id": "ref",
+      "unit": "USD/tấn"
+    },
+    "global.value_chain.price_forecast.series.0.values.1": {
+      "source_id": "ref",
+      "unit": "USD/tấn"
+    },
+    "global.value_chain.price_forecast.series.0.values.2": {
+      "source_id": "ref",
+      "unit": "USD/tấn"
+    },
+    "global.value_chain.price_forecast.series.0.values.3": {
+      "source_id": "ref",
+      "unit": "USD/tấn"
+    },
+    "global.value_chain.price_forecast.series.0.values.4": {
+      "source_id": "ref",
+      "unit": "USD/tấn"
+    },
+    "global.value_chain.price_forecast.series.0.values.5": {
+      "source_id": "ref",
+      "unit": "USD/tấn"
+    },
+    "global.value_chain.price_forecast.series.0.values.6": {
+      "source_id": "ref",
+      "unit": "USD/tấn"
+    },
+    "global.value_chain.price_forecast.series.0.values.7": {
+      "source_id": "ref",
+      "unit": "USD/tấn"
+    },
+    "global.value_chain.price_forecast.series.0.values.8": {
+      "source_id": "ref",
+      "unit": "USD/tấn"
+    },
+    "global.value_chain.price_forecast.series.1.values.0": {
+      "source_id": "ref",
+      "unit": "USD/tấn"
+    },
+    "global.value_chain.price_forecast.series.1.values.1": {
+      "source_id": "ref",
+      "unit": "USD/tấn"
+    },
+    "global.value_chain.price_forecast.series.1.values.2": {
+      "source_id": "ref",
+      "unit": "USD/tấn"
+    },
+    "global.value_chain.price_forecast.series.1.values.3": {
+      "source_id": "ref",
+      "unit": "USD/tấn"
+    },
+    "global.value_chain.price_forecast.series.1.values.4": {
+      "source_id": "ref",
+      "unit": "USD/tấn"
+    },
+    "global.value_chain.price_forecast.series.1.values.5": {
+      "source_id": "ref",
+      "unit": "USD/tấn"
+    },
+    "global.value_chain.price_forecast.series.1.values.6": {
+      "source_id": "ref",
+      "unit": "USD/tấn"
+    },
+    "global.value_chain.price_forecast.series.1.values.7": {
+      "source_id": "ref",
+      "unit": "USD/tấn"
+    },
+    "global.value_chain.price_forecast.series.1.values.8": {
+      "source_id": "ref",
+      "unit": "USD/tấn"
+    },
+    "global.value_chain.price_forecast.series.2.values.0": {
+      "source_id": "ref",
+      "unit": "USD/tấn"
+    },
+    "global.value_chain.price_forecast.series.2.values.1": {
+      "source_id": "ref",
+      "unit": "USD/tấn"
+    },
+    "global.value_chain.price_forecast.series.2.values.2": {
+      "source_id": "ref",
+      "unit": "USD/tấn"
+    },
+    "global.value_chain.price_forecast.series.2.values.3": {
+      "source_id": "ref",
+      "unit": "USD/tấn"
+    },
+    "global.value_chain.price_forecast.series.2.values.4": {
+      "source_id": "ref",
+      "unit": "USD/tấn"
+    },
+    "global.value_chain.price_forecast.series.2.values.5": {
+      "source_id": "ref",
+      "unit": "USD/tấn"
+    },
+    "global.value_chain.price_forecast.series.2.values.6": {
+      "source_id": "ref",
+      "unit": "USD/tấn"
+    },
+    "global.value_chain.price_forecast.series.2.values.7": {
+      "source_id": "ref",
+      "unit": "USD/tấn"
+    },
+    "global.value_chain.price_forecast.series.2.values.8": {
+      "source_id": "ref",
+      "unit": "USD/tấn"
+    },
+    "global.value_chain.commodity_price.forecast": {
+      "source_id": "ref",
+      "unit": "USD/thùng"
+    },
+    "global.supply_demand.0.utilization": {
+      "source_id": "ref",
+      "unit": "%"
+    },
+    "global.supply_demand.0.capacity": {
+      "source_id": "ref",
+      "unit": "triệu tấn/năm"
+    },
+    "global.supply_demand.0.supply_cagr_hist": {
+      "source_id": "ref",
+      "unit": "%"
+    },
+    "global.supply_demand.0.supply_cagr_fwd": {
+      "source_id": "ref",
+      "unit": "%"
+    },
+    "global.supply_demand.0.demand_cagr_hist": {
+      "source_id": "ref",
+      "unit": "%"
+    },
+    "global.supply_demand.0.demand_cagr_fwd": {
+      "source_id": "ref",
+      "unit": "%"
+    },
+    "global.supply_demand.1.utilization": {
+      "source_id": "ref",
+      "unit": "%"
+    },
+    "global.supply_demand.1.capacity": {
+      "source_id": "ref",
+      "unit": "triệu tấn/năm"
+    },
+    "global.supply_demand.1.supply_cagr_hist": {
+      "source_id": "ref",
+      "unit": "%"
+    },
+    "global.supply_demand.1.supply_cagr_fwd": {
+      "source_id": "ref",
+      "unit": "%"
+    },
+    "global.supply_demand.1.demand_cagr_hist": {
+      "source_id": "ref",
+      "unit": "%"
+    },
+    "global.supply_demand.1.demand_cagr_fwd": {
+      "source_id": "ref",
+      "unit": "%"
+    },
+    "global.supply_demand.2.utilization": {
+      "source_id": "ref",
+      "unit": "%"
+    },
+    "global.supply_demand.2.supply_cagr_hist": {
+      "source_id": "ref",
+      "unit": "%"
+    },
+    "global.supply_demand.2.supply_cagr_fwd": {
+      "source_id": "ref",
+      "unit": "%"
+    },
+    "global.supply_demand.2.demand_cagr_hist": {
+      "source_id": "ref",
+      "unit": "%"
+    },
+    "global.supply_demand.2.demand_cagr_fwd": {
+      "source_id": "ref",
+      "unit": "%"
+    },
+    "global.segments.0.share_pct": {
+      "source_id": "ref",
+      "unit": "%"
+    },
+    "global.segments.0.volume": {
+      "source_id": "ref",
+      "unit": "triệu tấn"
+    },
+    "global.segments.0.regional_split.0.pct": {
+      "source_id": "ref",
+      "unit": "%"
+    },
+    "global.segments.0.regional_split.1.pct": {
+      "source_id": "ref",
+      "unit": "%"
+    },
+    "global.segments.0.regional_split.2.pct": {
+      "source_id": "ref",
+      "unit": "%"
+    },
+    "global.segments.0.regional_split.3.pct": {
+      "source_id": "ref",
+      "unit": "%"
+    },
+    "global.segments.0.regional_split.4.pct": {
+      "source_id": "ref",
+      "unit": "%"
+    },
+    "global.segments.0.demand_split.0.pct": {
+      "source_id": "ref",
+      "unit": "%"
+    },
+    "global.segments.0.demand_split.1.pct": {
+      "source_id": "ref",
+      "unit": "%"
+    },
+    "global.segments.0.demand_split.2.pct": {
+      "source_id": "ref",
+      "unit": "%"
+    },
+    "global.segments.0.demand_split.3.pct": {
+      "source_id": "ref",
+      "unit": "%"
+    },
+    "global.segments.0.demand_split.4.pct": {
+      "source_id": "ref",
+      "unit": "%"
+    },
+    "global.segments.1.share_pct": {
+      "source_id": "ref",
+      "unit": "%"
+    },
+    "global.segments.1.volume": {
+      "source_id": "ref",
+      "unit": "triệu tấn"
+    },
+    "global.segments.1.forecast_regions.0.cagr": {
+      "source_id": "ref",
+      "unit": "%"
+    },
+    "global.segments.1.forecast_regions.1.cagr": {
+      "source_id": "ref",
+      "unit": "%"
+    },
+    "global.segments.1.forecast_regions.2.cagr": {
+      "source_id": "ref",
+      "unit": "%"
+    },
+    "global.segments.1.forecast_regions.3.cagr": {
+      "source_id": "ref",
+      "unit": "%"
+    },
+    "global.segments.1.forecast_regions.4.cagr": {
+      "source_id": "ref",
+      "unit": "%"
+    },
+    "global.segments.1.forecast_regions.5.cagr": {
+      "source_id": "ref",
+      "unit": "%"
+    },
+    "domestic.overview.revenue": {
+      "source_id": "ref",
+      "unit": "tỷ USD"
+    },
+    "domestic.overview.gdp_share": {
+      "source_id": "ref",
+      "unit": "%"
+    },
+    "domestic.overview.volume": {
+      "source_id": "ref",
+      "unit": "triệu tấn"
+    },
+    "domestic.overview.cagr_revenue": {
+      "source_id": "ref",
+      "unit": "%"
+    },
+    "domestic.overview.cagr_volume": {
+      "source_id": "ref",
+      "unit": "%"
+    },
+    "domestic.overview.yoy_volume": {
+      "source_id": "ref",
+      "unit": "%"
+    },
+    "domestic.overview.output_structure.0.pct": {
+      "source_id": "ref",
+      "unit": "%"
+    },
+    "domestic.overview.output_structure.1.pct": {
+      "source_id": "ref",
+      "unit": "%"
+    },
+    "domestic.overview.output_structure.2.pct": {
+      "source_id": "ref",
+      "unit": "%"
+    },
+    "domestic.overview.output_structure.3.pct": {
+      "source_id": "ref",
+      "unit": "%"
+    },
+    "domestic.overview.export_structure.0.pct": {
+      "source_id": "ref",
+      "unit": "%"
+    },
+    "domestic.overview.export_structure.1.pct": {
+      "source_id": "ref",
+      "unit": "%"
+    },
+    "domestic.overview.export_structure.2.pct": {
+      "source_id": "ref",
+      "unit": "%"
+    },
+    "domestic.overview.export_structure.3.pct": {
+      "source_id": "ref",
+      "unit": "%"
+    },
+    "domestic.overview.export_structure.4.pct": {
+      "source_id": "ref",
+      "unit": "%"
+    },
+    "domestic.overview.market_split.domestic_pct": {
+      "source_id": "ref",
+      "unit": "%"
+    },
+    "domestic.overview.market_split.export_pct": {
+      "source_id": "ref",
+      "unit": "%"
+    },
+    "domestic.overview.market_split.import_value": {
+      "source_id": "ref",
+      "unit": "tỷ USD"
+    },
+    "domestic.overview.per_capita.0.kg": {
+      "source_id": "ref",
+      "unit": "kg/người/năm"
+    },
+    "domestic.overview.per_capita.1.kg": {
+      "source_id": "ref",
+      "unit": "kg/người/năm"
+    },
+    "domestic.overview.per_capita.2.kg": {
+      "source_id": "ref",
+      "unit": "kg/người/năm"
+    },
+    "domestic.overview.per_capita.3.kg": {
+      "source_id": "ref",
+      "unit": "kg/người/năm"
+    },
+    "domestic.overview.per_capita.4.kg": {
+      "source_id": "ref",
+      "unit": "kg/người/năm"
+    },
+    "domestic.overview.per_capita.5.kg": {
+      "source_id": "ref",
+      "unit": "kg/người/năm"
+    },
+    "domestic.overview.per_capita.6.kg": {
+      "source_id": "ref",
+      "unit": "kg/người/năm"
+    },
+    "domestic.value_chain.cost_structure.0.pct": {
+      "source_id": "ref",
+      "unit": "%"
+    },
+    "domestic.value_chain.cost_structure.1.pct": {
+      "source_id": "ref",
+      "unit": "%"
+    },
+    "domestic.value_chain.cost_structure.2.pct": {
+      "source_id": "ref",
+      "unit": "%"
+    },
+    "domestic.value_chain.cost_structure.3.pct": {
+      "source_id": "ref",
+      "unit": "%"
+    },
+    "domestic.value_chain.cost_structure.4.pct": {
+      "source_id": "ref",
+      "unit": "%"
+    },
+    "domestic.value_chain.input_mix.0.pct": {
+      "source_id": "ref",
+      "unit": "%"
+    },
+    "domestic.value_chain.input_mix.1.pct": {
+      "source_id": "ref",
+      "unit": "%"
+    },
+    "domestic.value_chain.input_mix.2.pct": {
+      "source_id": "ref",
+      "unit": "%"
+    },
+    "domestic.value_chain.input_mix.3.pct": {
+      "source_id": "ref",
+      "unit": "%"
+    },
+    "domestic.value_chain.domestic_supply.capacity": {
+      "source_id": "ref",
+      "unit": "triệu tấn/năm"
+    },
+    "domestic.value_chain.domestic_supply.self_sufficiency": {
+      "source_id": "ref",
+      "unit": "%"
+    },
+    "domestic.value_chain.machinery_imports.cagr_periods.0.cagr": {
+      "source_id": "ref",
+      "unit": "%"
+    },
+    "domestic.value_chain.machinery_imports.cagr_periods.1.cagr": {
+      "source_id": "ref",
+      "unit": "%"
+    },
+    "domestic.value_chain.machinery_imports.cagr_periods.2.cagr": {
+      "source_id": "ref",
+      "unit": "%"
+    },
+    "domestic.value_chain.machinery_imports.origin_split.0.pct": {
+      "source_id": "ref",
+      "unit": "%"
+    },
+    "domestic.value_chain.machinery_imports.origin_split.1.pct": {
+      "source_id": "ref",
+      "unit": "%"
+    },
+    "domestic.value_chain.machinery_imports.origin_split.2.pct": {
+      "source_id": "ref",
+      "unit": "%"
+    },
+    "domestic.value_chain.machinery_imports.origin_split.3.pct": {
+      "source_id": "ref",
+      "unit": "%"
+    },
+    "domestic.value_chain.machinery_imports.origin_split.4.pct": {
+      "source_id": "ref",
+      "unit": "%"
+    },
+    "domestic.value_chain.machinery_imports.origin_split.5.pct": {
+      "source_id": "ref",
+      "unit": "%"
+    },
+    "domestic.regulations.1.tables.0.rows.0.1": {
+      "source_id": "ref"
+    },
+    "domestic.regulations.1.tables.0.rows.1.1": {
+      "source_id": "ref"
+    },
+    "domestic.regulations.1.tables.0.rows.2.1": {
+      "source_id": "ref"
+    },
+    "domestic.regulations.1.tables.0.rows.3.1": {
+      "source_id": "ref"
+    },
+    "domestic.regulations.2.tables.0.rows.0.1": {
+      "source_id": "ref"
+    },
+    "domestic.regulations.2.tables.0.rows.1.1": {
+      "source_id": "ref"
+    },
+    "domestic.regulations.2.tables.0.rows.2.1": {
+      "source_id": "ref"
+    },
+    "domestic.segments.0.share_pct": {
+      "source_id": "ref",
+      "unit": "%"
+    },
+    "domestic.segments.0.structure.0.pct": {
+      "source_id": "ref",
+      "unit": "%"
+    },
+    "domestic.segments.0.structure.1.pct": {
+      "source_id": "ref",
+      "unit": "%"
+    },
+    "domestic.segments.0.structure.2.pct": {
+      "source_id": "ref",
+      "unit": "%"
+    },
+    "domestic.segments.0.export.structure.0.pct": {
+      "source_id": "ref",
+      "unit": "%"
+    },
+    "domestic.segments.0.export.structure.1.pct": {
+      "source_id": "ref",
+      "unit": "%"
+    },
+    "domestic.segments.0.export.structure.2.pct": {
+      "source_id": "ref",
+      "unit": "%"
+    },
+    "domestic.segments.0.export.structure.3.pct": {
+      "source_id": "ref",
+      "unit": "%"
+    },
+    "domestic.segments.1.share_pct": {
+      "source_id": "ref",
+      "unit": "%"
+    },
+    "domestic.segments.1.structure.0.pct": {
+      "source_id": "ref",
+      "unit": "%"
+    },
+    "domestic.segments.1.structure.1.pct": {
+      "source_id": "ref",
+      "unit": "%"
+    },
+    "domestic.segments.1.structure.2.pct": {
+      "source_id": "ref",
+      "unit": "%"
+    },
+    "domestic.segments.1.market_share.0.pct": {
+      "source_id": "ref",
+      "unit": "%"
+    },
+    "domestic.segments.1.market_share.1.pct": {
+      "source_id": "ref",
+      "unit": "%"
+    },
+    "domestic.segments.1.market_share.2.pct": {
+      "source_id": "ref",
+      "unit": "%"
+    },
+    "domestic.segments.1.market_share.3.pct": {
+      "source_id": "ref",
+      "unit": "%"
+    },
+    "domestic.segments.1.market_share.4.pct": {
+      "source_id": "ref",
+      "unit": "%"
+    },
+    "domestic.segments.1.growth_series.0.points.0.value": {
+      "source_id": "ref",
+      "unit": "%"
+    },
+    "domestic.segments.1.growth_series.0.points.1.value": {
+      "source_id": "ref",
+      "unit": "%"
+    },
+    "domestic.segments.1.growth_series.0.points.2.value": {
+      "source_id": "ref",
+      "unit": "%"
+    },
+    "domestic.segments.1.growth_series.0.points.3.value": {
+      "source_id": "ref",
+      "unit": "%"
+    },
+    "domestic.segments.2.market_share.0.pct": {
+      "source_id": "ref",
+      "unit": "%"
+    },
+    "domestic.segments.2.market_share.1.pct": {
+      "source_id": "ref",
+      "unit": "%"
+    },
+    "domestic.segments.2.market_share.2.pct": {
+      "source_id": "ref",
+      "unit": "%"
+    },
+    "domestic.segments.2.growth_series.0.points.0.value": {
+      "source_id": "ref",
+      "unit": "%"
+    },
+    "domestic.segments.2.growth_series.0.points.1.value": {
+      "source_id": "ref",
+      "unit": "%"
+    },
+    "domestic.segments.2.growth_series.0.points.2.value": {
+      "source_id": "ref",
+      "unit": "%"
+    },
+    "domestic.segments.2.growth_series.0.points.3.value": {
+      "source_id": "ref",
+      "unit": "%"
+    },
+    "domestic.segments.2.growth_series.0.points.4.value": {
+      "source_id": "ref",
+      "unit": "%"
+    },
+    "domestic.segments.2.growth_series.0.points.5.value": {
+      "source_id": "ref",
+      "unit": "%"
+    },
+    "domestic.segments.2.growth_series.0.points.6.value": {
+      "source_id": "ref",
+      "unit": "%"
+    },
+    "domestic.segments.2.growth_series.0.points.7.value": {
+      "source_id": "ref",
+      "unit": "%"
+    },
+    "domestic.segments.2.growth_series.0.points.8.value": {
+      "source_id": "ref",
+      "unit": "%"
+    },
+    "domestic.outlook.output_forecast.from": {
+      "source_id": "ref",
+      "unit": "triệu tấn"
+    },
+    "domestic.outlook.output_forecast.to": {
+      "source_id": "ref",
+      "unit": "triệu tấn"
+    },
+    "domestic.outlook.output_forecast.cagr": {
+      "source_id": "ref",
+      "unit": "%"
+    },
+    "domestic.outlook.output_forecast.start_value": {
+      "source_id": "ref",
+      "unit": "triệu tấn"
+    },
+    "domestic.outlook.output_forecast.end_value": {
+      "source_id": "ref",
+      "unit": "triệu tấn"
+    },
+    "domestic.outlook.output_forecast.n_years": {
+      "source_id": "ref",
+      "unit": "năm"
+    },
+    "domestic.outlook.series.0.points.0.value": {
+      "source_id": "ref",
+      "unit": "%"
+    },
+    "domestic.outlook.series.0.points.1.value": {
+      "source_id": "ref",
+      "unit": "%"
+    },
+    "domestic.outlook.series.0.points.2.value": {
+      "source_id": "ref",
+      "unit": "%"
+    },
+    "domestic.outlook.series.0.points.3.value": {
+      "source_id": "ref",
+      "unit": "%"
+    },
+    "domestic.outlook.series.0.points.4.value": {
+      "source_id": "ref",
+      "unit": "%"
+    },
+    "domestic.outlook.series.0.points.5.value": {
+      "source_id": "ref",
+      "unit": "%"
+    },
+    "domestic.outlook.series.0.points.6.value": {
+      "source_id": "ref",
+      "unit": "%"
+    },
+    "domestic.outlook.series.1.points.0.value": {
+      "source_id": "ref",
+      "unit": "triệu USD"
+    },
+    "domestic.outlook.series.1.points.1.value": {
+      "source_id": "ref",
+      "unit": "triệu USD"
+    },
+    "domestic.outlook.series.1.points.2.value": {
+      "source_id": "ref",
+      "unit": "triệu USD"
+    },
+    "domestic.outlook.series.1.points.3.value": {
+      "source_id": "ref",
+      "unit": "triệu USD"
+    },
+    "companies.table.rows.0.market_cap": {
+      "source_id": "ref",
+      "unit": "tỷ VND"
+    },
+    "companies.table.rows.0.total_assets": {
+      "source_id": "ref",
+      "unit": "tỷ VND"
+    },
+    "companies.table.rows.0.revenue": {
+      "source_id": "ref",
+      "unit": "tỷ VND"
+    },
+    "companies.table.rows.0.revenue_yoy": {
+      "source_id": "ref",
+      "unit": "%"
+    },
+    "companies.table.rows.0.net_income": {
+      "source_id": "ref",
+      "unit": "tỷ VND"
+    },
+    "companies.table.rows.0.net_income_yoy": {
+      "source_id": "ref",
+      "unit": "%"
+    },
+    "companies.table.rows.1.market_cap": {
+      "source_id": "ref",
+      "unit": "tỷ VND"
+    },
+    "companies.table.rows.1.total_assets": {
+      "source_id": "ref",
+      "unit": "tỷ VND"
+    },
+    "companies.table.rows.1.revenue": {
+      "source_id": "ref",
+      "unit": "tỷ VND"
+    },
+    "companies.table.rows.1.revenue_yoy": {
+      "source_id": "ref",
+      "unit": "%"
+    },
+    "companies.table.rows.1.net_income": {
+      "source_id": "ref",
+      "unit": "tỷ VND"
+    },
+    "companies.table.rows.1.net_income_yoy": {
+      "source_id": "ref",
+      "unit": "%"
+    },
+    "companies.table.rows.2.market_cap": {
+      "source_id": "ref",
+      "unit": "tỷ VND"
+    },
+    "companies.table.rows.2.total_assets": {
+      "source_id": "ref",
+      "unit": "tỷ VND"
+    },
+    "companies.table.rows.2.revenue": {
+      "source_id": "ref",
+      "unit": "tỷ VND"
+    },
+    "companies.table.rows.2.revenue_yoy": {
+      "source_id": "ref",
+      "unit": "%"
+    },
+    "companies.table.rows.2.net_income": {
+      "source_id": "ref",
+      "unit": "tỷ VND"
+    },
+    "companies.table.rows.2.net_income_yoy": {
+      "source_id": "ref",
+      "unit": "%"
+    },
+    "companies.table.rows.3.market_cap": {
+      "source_id": "ref",
+      "unit": "tỷ VND"
+    },
+    "companies.table.rows.3.total_assets": {
+      "source_id": "ref",
+      "unit": "tỷ VND"
+    },
+    "companies.table.rows.3.revenue": {
+      "source_id": "ref",
+      "unit": "tỷ VND"
+    },
+    "companies.table.rows.3.revenue_yoy": {
+      "source_id": "ref",
+      "unit": "%"
+    },
+    "companies.table.rows.3.net_income": {
+      "source_id": "ref",
+      "unit": "tỷ VND"
+    },
+    "companies.table.rows.3.net_income_yoy": {
+      "source_id": "ref",
+      "unit": "%"
+    },
+    "companies.table.rows.4.market_cap": {
+      "source_id": "ref",
+      "unit": "tỷ VND"
+    },
+    "companies.table.rows.4.total_assets": {
+      "source_id": "ref",
+      "unit": "tỷ VND"
+    },
+    "companies.table.rows.4.revenue": {
+      "source_id": "ref",
+      "unit": "tỷ VND"
+    },
+    "companies.table.rows.4.revenue_yoy": {
+      "source_id": "ref",
+      "unit": "%"
+    },
+    "companies.table.rows.4.net_income": {
+      "source_id": "ref",
+      "unit": "tỷ VND"
+    },
+    "companies.table.rows.4.net_income_yoy": {
+      "source_id": "ref",
+      "unit": "%"
+    },
+    "companies.table.rows.5.market_cap": {
+      "source_id": "ref",
+      "unit": "tỷ VND"
+    },
+    "companies.table.rows.5.total_assets": {
+      "source_id": "ref",
+      "unit": "tỷ VND"
+    },
+    "companies.table.rows.5.revenue": {
+      "source_id": "ref",
+      "unit": "tỷ VND"
+    },
+    "companies.table.rows.5.revenue_yoy": {
+      "source_id": "ref",
+      "unit": "%"
+    },
+    "companies.table.rows.5.net_income": {
+      "source_id": "ref",
+      "unit": "tỷ VND"
+    },
+    "companies.table.rows.5.net_income_yoy": {
+      "source_id": "ref",
+      "unit": "%"
+    },
+    "companies.table.rows.6.market_cap": {
+      "source_id": "ref",
+      "unit": "tỷ VND"
+    },
+    "companies.table.rows.6.total_assets": {
+      "source_id": "ref",
+      "unit": "tỷ VND"
+    },
+    "companies.table.rows.6.revenue": {
+      "source_id": "ref",
+      "unit": "tỷ VND"
+    },
+    "companies.table.rows.6.revenue_yoy": {
+      "source_id": "ref",
+      "unit": "%"
+    },
+    "companies.table.rows.6.net_income": {
+      "source_id": "ref",
+      "unit": "tỷ VND"
+    },
+    "companies.table.rows.6.net_income_yoy": {
+      "source_id": "ref",
+      "unit": "%"
+    },
+    "companies.table.rows.7.market_cap": {
+      "source_id": "ref",
+      "unit": "tỷ VND"
+    },
+    "companies.table.rows.7.total_assets": {
+      "source_id": "ref",
+      "unit": "tỷ VND"
+    },
+    "companies.table.rows.7.revenue": {
+      "source_id": "ref",
+      "unit": "tỷ VND"
+    },
+    "companies.table.rows.7.revenue_yoy": {
+      "source_id": "ref",
+      "unit": "%"
+    },
+    "companies.table.rows.7.net_income": {
+      "source_id": "ref",
+      "unit": "tỷ VND"
+    },
+    "companies.table.rows.7.net_income_yoy": {
+      "source_id": "ref",
+      "unit": "%"
+    },
+    "companies.table.rows.8.market_cap": {
+      "source_id": "ref",
+      "unit": "tỷ VND"
+    },
+    "companies.table.rows.8.total_assets": {
+      "source_id": "ref",
+      "unit": "tỷ VND"
+    },
+    "companies.table.rows.8.revenue": {
+      "source_id": "ref",
+      "unit": "tỷ VND"
+    },
+    "companies.table.rows.8.revenue_yoy": {
+      "source_id": "ref",
+      "unit": "%"
+    },
+    "companies.table.rows.8.net_income": {
+      "source_id": "ref",
+      "unit": "tỷ VND"
+    },
+    "companies.table.rows.8.net_income_yoy": {
+      "source_id": "ref",
+      "unit": "%"
+    },
+    "companies.table.rows.9.market_cap": {
+      "source_id": "ref",
+      "unit": "tỷ VND"
+    },
+    "companies.table.rows.9.total_assets": {
+      "source_id": "ref",
+      "unit": "tỷ VND"
+    },
+    "companies.table.rows.9.revenue": {
+      "source_id": "ref",
+      "unit": "tỷ VND"
+    },
+    "companies.table.rows.9.revenue_yoy": {
+      "source_id": "ref",
+      "unit": "%"
+    },
+    "companies.table.rows.9.net_income": {
+      "source_id": "ref",
+      "unit": "tỷ VND"
+    },
+    "companies.table.rows.9.net_income_yoy": {
+      "source_id": "ref",
+      "unit": "%"
+    },
+    "companies.table.rows.10.market_cap": {
+      "source_id": "ref",
+      "unit": "tỷ VND"
+    },
+    "companies.table.rows.10.total_assets": {
+      "source_id": "ref",
+      "unit": "tỷ VND"
+    },
+    "companies.table.rows.10.revenue": {
+      "source_id": "ref",
+      "unit": "tỷ VND"
+    },
+    "companies.table.rows.10.revenue_yoy": {
+      "source_id": "ref",
+      "unit": "%"
+    },
+    "companies.table.rows.10.net_income": {
+      "source_id": "ref",
+      "unit": "tỷ VND"
+    },
+    "companies.table.rows.10.net_income_yoy": {
+      "source_id": "ref",
+      "unit": "%"
+    },
+    "companies.table.rows.11.market_cap": {
+      "source_id": "ref",
+      "unit": "tỷ VND"
+    },
+    "companies.table.rows.11.total_assets": {
+      "source_id": "ref",
+      "unit": "tỷ VND"
+    },
+    "companies.table.rows.11.revenue": {
+      "source_id": "ref",
+      "unit": "tỷ VND"
+    },
+    "companies.table.rows.11.revenue_yoy": {
+      "source_id": "ref",
+      "unit": "%"
+    },
+    "companies.table.rows.11.net_income": {
+      "source_id": "ref",
+      "unit": "tỷ VND"
+    },
+    "companies.table.rows.11.net_income_yoy": {
+      "source_id": "ref",
+      "unit": "%"
+    },
+    "companies.table.rows.12.market_cap": {
+      "source_id": "ref",
+      "unit": "tỷ VND"
+    },
+    "companies.table.rows.12.total_assets": {
+      "source_id": "ref",
+      "unit": "tỷ VND"
+    },
+    "companies.table.rows.12.revenue": {
+      "source_id": "ref",
+      "unit": "tỷ VND"
+    },
+    "companies.table.rows.12.revenue_yoy": {
+      "source_id": "ref",
+      "unit": "%"
+    },
+    "companies.table.rows.12.net_income": {
+      "source_id": "ref",
+      "unit": "tỷ VND"
+    },
+    "companies.table.rows.12.net_income_yoy": {
+      "source_id": "ref",
+      "unit": "%"
+    },
+    "companies.table.rows.12.net_income_prior": {
+      "source_id": "ref",
+      "unit": "tỷ VND"
+    },
+    "companies.table.rows.13.market_cap": {
+      "source_id": "ref",
+      "unit": "tỷ VND"
+    },
+    "companies.table.rows.13.total_assets": {
+      "source_id": "ref",
+      "unit": "tỷ VND"
+    },
+    "companies.table.rows.13.revenue": {
+      "source_id": "ref",
+      "unit": "tỷ VND"
+    },
+    "companies.table.rows.13.revenue_yoy": {
+      "source_id": "ref",
+      "unit": "%"
+    },
+    "companies.table.rows.13.net_income": {
+      "source_id": "ref",
+      "unit": "tỷ VND"
+    },
+    "companies.table.rows.13.net_income_yoy": {
+      "source_id": "ref",
+      "unit": "%"
+    },
+    "companies.table.rows.13.net_income_prior": {
+      "source_id": "ref",
+      "unit": "tỷ VND"
+    },
+    "companies.table.rows.14.market_cap": {
+      "source_id": "ref",
+      "unit": "tỷ VND"
+    },
+    "companies.table.rows.14.total_assets": {
+      "source_id": "ref",
+      "unit": "tỷ VND"
+    },
+    "companies.table.rows.14.revenue": {
+      "source_id": "ref",
+      "unit": "tỷ VND"
+    },
+    "companies.table.rows.14.revenue_yoy": {
+      "source_id": "ref",
+      "unit": "%"
+    },
+    "companies.table.rows.14.net_income": {
+      "source_id": "ref",
+      "unit": "tỷ VND"
+    },
+    "companies.table.rows.14.net_income_yoy": {
+      "source_id": "ref",
+      "unit": "%"
+    },
+    "companies.table.rows.15.market_cap": {
+      "source_id": "ref",
+      "unit": "tỷ VND"
+    },
+    "companies.table.rows.15.total_assets": {
+      "source_id": "ref",
+      "unit": "tỷ VND"
+    },
+    "companies.table.rows.15.revenue": {
+      "source_id": "ref",
+      "unit": "tỷ VND"
+    },
+    "companies.table.rows.15.revenue_yoy": {
+      "source_id": "ref",
+      "unit": "%"
+    },
+    "companies.table.rows.15.net_income": {
+      "source_id": "ref",
+      "unit": "tỷ VND"
+    },
+    "companies.table.rows.15.net_income_yoy": {
+      "source_id": "ref",
+      "unit": "%"
+    },
+    "companies.table.rows.16.market_cap": {
+      "source_id": "ref",
+      "unit": "tỷ VND"
+    },
+    "companies.table.rows.16.total_assets": {
+      "source_id": "ref",
+      "unit": "tỷ VND"
+    },
+    "companies.table.rows.16.revenue": {
+      "source_id": "ref",
+      "unit": "tỷ VND"
+    },
+    "companies.table.rows.16.revenue_yoy": {
+      "source_id": "ref",
+      "unit": "%"
+    },
+    "companies.table.rows.16.net_income": {
+      "source_id": "ref",
+      "unit": "tỷ VND"
+    },
+    "companies.table.rows.16.net_income_prior": {
+      "source_id": "ref",
+      "unit": "tỷ VND"
+    },
+    "companies.table.rows.17.market_cap": {
+      "source_id": "ref",
+      "unit": "tỷ VND"
+    },
+    "companies.table.rows.17.total_assets": {
+      "source_id": "ref",
+      "unit": "tỷ VND"
+    },
+    "companies.table.rows.17.revenue": {
+      "source_id": "ref",
+      "unit": "tỷ VND"
+    },
+    "companies.table.rows.17.revenue_yoy": {
+      "source_id": "ref",
+      "unit": "%"
+    },
+    "companies.table.rows.17.net_income": {
+      "source_id": "ref",
+      "unit": "tỷ VND"
+    },
+    "companies.table.rows.17.net_income_yoy": {
+      "source_id": "ref",
+      "unit": "%"
+    },
+    "companies.table.rows.18.market_cap": {
+      "source_id": "ref",
+      "unit": "tỷ VND"
+    },
+    "companies.table.rows.18.total_assets": {
+      "source_id": "ref",
+      "unit": "tỷ VND"
+    },
+    "companies.table.rows.18.revenue": {
+      "source_id": "ref",
+      "unit": "tỷ VND"
+    },
+    "companies.table.rows.18.revenue_yoy": {
+      "source_id": "ref",
+      "unit": "%"
+    },
+    "companies.table.rows.18.net_income": {
+      "source_id": "ref",
+      "unit": "tỷ VND"
+    },
+    "companies.table.rows.18.net_income_yoy": {
+      "source_id": "ref",
+      "unit": "%"
+    },
+    "companies.profiles.0.trading.price": {
+      "source_id": "ref",
+      "unit": "VND/cp"
+    },
+    "companies.profiles.0.trading.high_52w": {
+      "source_id": "ref",
+      "unit": "VND/cp"
+    },
+    "companies.profiles.0.trading.low_52w": {
+      "source_id": "ref",
+      "unit": "VND/cp"
+    },
+    "companies.profiles.0.trading.avg_volume_10d": {
+      "source_id": "ref",
+      "unit": "cp"
+    },
+    "companies.profiles.0.trading.eps_ttm": {
+      "source_id": "ref",
+      "unit": "VND/cp"
+    },
+    "companies.profiles.0.trading.pe_ttm": {
+      "source_id": "ref",
+      "unit": "lần"
+    },
+    "companies.profiles.0.trading.target_price": {
+      "source_id": "ref",
+      "unit": "VND/cp"
+    },
+    "companies.profiles.0.trading.target_upside": {
+      "source_id": "ref",
+      "unit": "%"
+    },
+    "companies.profiles.0.series.0.points.0.value": {
+      "source_id": "ref",
+      "unit": "tỷ VND"
+    },
+    "companies.profiles.0.series.0.points.1.value": {
+      "source_id": "ref",
+      "unit": "tỷ VND"
+    },
+    "companies.profiles.0.series.0.points.2.value": {
+      "source_id": "ref",
+      "unit": "tỷ VND"
+    },
+    "companies.profiles.0.series.0.points.3.value": {
+      "source_id": "ref",
+      "unit": "tỷ VND"
+    },
+    "companies.profiles.0.series.0.points.4.value": {
+      "source_id": "ref",
+      "unit": "tỷ VND"
+    },
+    "companies.profiles.0.series.0.points.5.value": {
+      "source_id": "ref",
+      "unit": "tỷ VND"
+    },
+    "companies.profiles.0.series.0.points.6.value": {
+      "source_id": "ref",
+      "unit": "tỷ VND"
+    },
+    "companies.profiles.0.series.0.points.7.value": {
+      "source_id": "ref",
+      "unit": "tỷ VND"
+    },
+    "companies.profiles.1.trading.price": {
+      "source_id": "ref",
+      "unit": "VND/cp"
+    },
+    "companies.profiles.1.trading.high_52w": {
+      "source_id": "ref",
+      "unit": "VND/cp"
+    },
+    "companies.profiles.1.trading.low_52w": {
+      "source_id": "ref",
+      "unit": "VND/cp"
+    },
+    "companies.profiles.1.trading.avg_volume_10d": {
+      "source_id": "ref",
+      "unit": "cp"
+    },
+    "companies.profiles.1.trading.eps_ttm": {
+      "source_id": "ref",
+      "unit": "VND/cp"
+    },
+    "companies.profiles.1.trading.pe_ttm": {
+      "source_id": "ref",
+      "unit": "lần"
+    },
+    "companies.profiles.1.trading.target_price": {
+      "source_id": "ref",
+      "unit": "VND/cp"
+    },
+    "companies.profiles.1.trading.target_upside": {
+      "source_id": "ref",
+      "unit": "%"
+    },
+    "companies.profiles.1.series.0.points.0.value": {
+      "source_id": "ref",
+      "unit": "nghìn tấn"
+    },
+    "companies.profiles.1.series.0.points.1.value": {
+      "source_id": "ref",
+      "unit": "nghìn tấn"
+    },
+    "companies.profiles.1.series.0.points.2.value": {
+      "source_id": "ref",
+      "unit": "nghìn tấn"
+    },
+    "companies.profiles.1.series.0.points.3.value": {
+      "source_id": "ref",
+      "unit": "nghìn tấn"
+    },
+    "companies.profiles.1.series.0.points.4.value": {
+      "source_id": "ref",
+      "unit": "nghìn tấn"
+    },
+    "companies.profiles.1.series.0.points.5.value": {
+      "source_id": "ref",
+      "unit": "nghìn tấn"
+    },
+    "companies.profiles.1.series.0.points.6.value": {
+      "source_id": "ref",
+      "unit": "nghìn tấn"
+    },
+    "companies.profiles.1.series.0.points.7.value": {
+      "source_id": "ref",
+      "unit": "nghìn tấn"
+    },
+    "companies.profiles.2.trading.price": {
+      "source_id": "ref",
+      "unit": "VND/cp"
+    },
+    "companies.profiles.2.trading.high_52w": {
+      "source_id": "ref",
+      "unit": "VND/cp"
+    },
+    "companies.profiles.2.trading.low_52w": {
+      "source_id": "ref",
+      "unit": "VND/cp"
+    },
+    "companies.profiles.2.trading.avg_volume_10d": {
+      "source_id": "ref",
+      "unit": "cp"
+    },
+    "companies.profiles.2.trading.eps_ttm": {
+      "source_id": "ref",
+      "unit": "VND/cp"
+    },
+    "companies.profiles.2.trading.pe_ttm": {
+      "source_id": "ref",
+      "unit": "lần"
+    },
+    "companies.profiles.2.structure.0.pct": {
+      "source_id": "ref",
+      "unit": "%"
+    },
+    "companies.profiles.2.structure.1.pct": {
+      "source_id": "ref",
+      "unit": "%"
+    },
+    "companies.profiles.2.structure.2.pct": {
+      "source_id": "ref",
+      "unit": "%"
+    },
+    "companies.profiles.2.structure.3.pct": {
+      "source_id": "ref",
+      "unit": "%"
+    },
+    "companies.profiles.2.structure.4.pct": {
+      "source_id": "ref",
+      "unit": "%"
+    },
+    "companies.profiles.2.structure.5.pct": {
+      "source_id": "ref",
+      "unit": "%"
+    },
+    "companies.profiles.2.series.0.points.0.value": {
+      "source_id": "ref",
+      "unit": "%"
+    },
+    "companies.profiles.2.series.0.points.1.value": {
+      "source_id": "ref",
+      "unit": "%"
+    },
+    "companies.profiles.2.series.0.points.2.value": {
+      "source_id": "ref",
+      "unit": "%"
+    },
+    "companies.profiles.2.series.0.points.3.value": {
+      "source_id": "ref",
+      "unit": "%"
+    },
+    "companies.profiles.2.series.0.points.4.value": {
+      "source_id": "ref",
+      "unit": "%"
+    },
+    "companies.profiles.2.series.0.points.5.value": {
+      "source_id": "ref",
+      "unit": "%"
+    },
+    "companies.profiles.2.series.0.points.6.value": {
+      "source_id": "ref",
+      "unit": "%"
+    },
+    "companies.profiles.2.series.0.points.7.value": {
+      "source_id": "ref",
+      "unit": "%"
+    }
+  },
+  "missing_reasons": {
+    "global.supply_demand.2.capacity": "Mẫu nguồn không công bố công suất PVC",
+    "companies.profiles.2.trading.target_price": "Mẫu không công bố giá mục tiêu AAA",
+    "summary.thesis": "Không sao chép diễn giải của bên thứ ba; chờ biên tập viên có quyền sử dụng",
+    "meta.attribution.published_at": "Mẫu chỉ nêu tháng 12/2025; không có ngày xuất bản chính xác",
+    "meta.sources.0.published_at": "Mẫu chỉ nêu tháng báo cáo; 12/12/2025 là ngày giao dịch, không tự gán ngày xuất bản"
+  },
+  "derived": {
+    "domestic.overview.export_structure.4.pct": {
+      "formula": "100% - 34% - 19% - 18% - 17% = 12%"
+    },
+    "companies.profiles.2.structure.5.pct": {
+      "formula": "100% - 44% - 17% - 16% - 9% - 6% = 8%"
+    }
+  },
+  "assertions": [
+    {
+      "metric_path": "global.supply_demand.0.utilization",
+      "text_path": "global.supply_demand.0.notes",
+      "value": 75,
+      "tolerance": 0.3
+    }
+  ]
+}

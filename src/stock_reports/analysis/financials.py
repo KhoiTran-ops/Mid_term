@@ -2,6 +2,7 @@
 
 from contextlib import closing
 from dataclasses import dataclass, field
+from functools import lru_cache
 from decimal import Decimal
 import json
 from pathlib import Path
@@ -15,35 +16,42 @@ from stock_reports.data_sources.news.normalize import fold
 from stock_reports.domain.research import SourceReference
 
 
-FORMULA_VERSION = 'financials-1.0'
+FORMULA_VERSION = 'financials-1.4'
 ALIASES = {
     'assets': ('BSheet', [r'^tong cong tai san$', r'^tong tai san co$']),
     'equity': ('BSheet', [r'^von chu so huu$']),
+    'parent_equity': ('BSheet', [r'^von chu so huu cua co dong cong ty me$', r'^von chu so huu thuoc co dong cong ty me$']),
+    'minority_equity': ('BSheet', [r'^loi ich (?:cua )?co dong khong kiem soat$']),
     'liabilities': ('BSheet', [r'^no phai tra$', r'^tong no phai tra$']),
     'current_assets': ('BSheet', [r'^tai san ngan han$']),
     'current_liabilities': ('BSheet', [r'^no ngan han$']),
     'inventory': ('BSheet', [r'^hang ton kho$']),
     'receivables': ('BSheet', [r'^cac khoan phai thu ngan han$']),
     'loans': ('BSheet', [r'^cac khoan cho vay$', r'^cho vay khach hang$']),
+    'loans_gross': ('BSheet', [r'^cho vay khach hang$']),
     'deposits': ('BSheet', [r'^tien gui cua khach hang$']),
     'fvtpl': ('BSheet', [r'^cac tai san tai chinh ghi nhan thong qua lai lo']),
     'short_debt': ('BSheet', [r'^vay va no thue tai chinh ngan han$', r'^vay va no ngan han$']),
     'long_debt': ('BSheet', [r'^vay va no thue tai chinh dai han$', r'^vay va no dai han$']),
-    'revenue': ('IncSta', [r'^doanh thu thuan ve ban hang va cung cap dich vu', r'^cong doanh thu hoat dong$', r'^tong thu nhap hoat dong$']),
+    'revenue': ('IncSta', [r'^doanh thu thuan ve ban hang va cung cap dich vu', r'^cong doanh thu hoat dong$', r'^tong thu nhap hoat dong$', r'^tong thu nhap kinh doanh$']),
     'gross_profit': ('IncSta', [r'^loi nhuan gop ve ban hang va cung cap dich vu']),
     'net_profit': ('IncSta', [r'^loi nhuan ke toan sau thue tndn$', r'^loi nhuan sau thue thu nhap doanh nghiep', r'^loi nhuan sau thue$']),
-    'parent_profit': ('IncSta', [r'^loi nhuan sau thue cua co dong cong ty me', r'^loi nhuan sau thue cua chu so huu']),
+    'parent_profit': ('IncSta', [r'^loi nhuan sau thue cua co dong cong ty me', r'^loi nhuan sau thue cong ty me$', r'^loi nhuan sau thue cua chu so huu', r'^loi ich cua co dong cong ty me$']),
     'brokerage': ('IncSta', [r'^doanh thu moi gioi chung khoan$']),
     'loan_income': ('IncSta', [r'^lai tu cac khoan cho vay va phai thu$']),
     'investment_income': ('IncSta', [r'^lai tu cac tai san tai chinh ghi nhan thong qua lai lo']),
     'unrealized_profit': ('IncSta', [r'^loi nhuan chua thuc hien$']),
-    'pretax_profit': ('IncSta', [r'^tong loi nhuan ke toan truoc thue$', r'^tong loi nhuan truoc thue']),
+    'pretax_profit': ('IncSta', [r'^(?:tong )?loi nhuan ke toan truoc thue$', r'^tong loi nhuan truoc thue']),
     'interest_income_net': ('IncSta', [r'^thu nhap lai thuan$']),
     'operating_cost': ('IncSta', [r'^chi phi hoat dong$']),
-    'cfo': ('CashFlow', [r'^luu chuyen tien thuan tu hoat dong kinh doanh']),
+    'cfo': ('CashFlow', [r'^luu chuyen tien thuan tu hoat dong kinh doanh(?:\s*\(\d+\))?$',
+                         r'^tien thuan.*hoat dong kinh doanh$']),
 }
 LABELS = {
+    'loans_gross':'Cho vay khách hàng trước dự phòng',
     'assets':'Tổng tài sản', 'equity':'Vốn chủ sở hữu', 'liabilities':'Nợ phải trả',
+    'parent_equity':'Vốn cổ đông công ty mẹ',
+    'minority_equity':'Lợi ích cổ đông không kiểm soát',
     'current_assets':'Tài sản ngắn hạn', 'current_liabilities':'Nợ ngắn hạn',
     'inventory':'Hàng tồn kho', 'receivables':'Phải thu ngắn hạn', 'loans':'Các khoản cho vay',
     'deposits':'Tiền gửi khách hàng', 'fvtpl':'Tài sản FVTPL', 'short_debt':'Vay ngắn hạn',
@@ -56,6 +64,15 @@ LABELS = {
 }
 
 
+class VerifiedFact(BaseModel):
+    model_config = ConfigDict(extra='forbid')
+    period: str
+    key: str
+    value_vnd: Decimal = Field(allow_inf_nan=False)
+    source: SourceReference
+    reason: str = Field(min_length=8)
+
+
 class FinancialReview(BaseModel):
     """Explicit, sourced analyst verification; never inferred from a UI unit label."""
     model_config = ConfigDict(extra='forbid')
@@ -66,7 +83,12 @@ class FinancialReview(BaseModel):
     money_multiplier: Decimal = Field(gt=0, allow_inf_nan=False)
     income_basis: Literal['quarter', 'ytd']
     cash_flow_basis: Literal['quarter', 'ytd'] | None = None
+    cash_flow_quarters_comparable: bool = True
     source: SourceReference
+    verification_sources: tuple[SourceReference,...] = ()
+    review_note: str | None = None
+    verified_facts: tuple[VerifiedFact,...] = ()
+    period_disclosures: dict[str, str] = Field(default_factory=dict)
     notes_reviewed: bool = False
     price_multiplier: Decimal | None = Field(default=None, gt=0, allow_inf_nan=False)
     shares_outstanding: Decimal | None = Field(default=None, gt=0, allow_inf_nan=False)
@@ -90,8 +112,11 @@ def parse_period(value: str):
     return int(match[1]), int(match[2])
 
 
+@lru_cache(maxsize=16384)
 def normalized_name(value):
-    value = re.sub(r'^(?:[A-Z]+|\d+(?:\.\d+)*)[.)]\s*', '', value.strip())
+    value = re.sub(r'^(?:[A-Z]+|\d+(?:\.\d+)*)\s*[.)\-:]\s*', '', value.strip())
+    # Printed accounting equations are labels, not separate economic metrics.
+    value = re.sub(r'\s*[({][^(){}]*=[^(){}]*[)}]\s*$', '', value)
     return fold(re.sub(r'\s+', ' ', value)).strip()
 
 
@@ -128,6 +153,10 @@ class FinancialData:
             return None
         if basis == 'quarter' or period[1] == 1:
             return value
+        if statement == 'CashFlow' and not self.review.cash_flow_quarters_comparable:
+            # YTD disclosures with different revision vintages are not safely
+            # subtractable. Keep the original YTD value available for display.
+            return None
         previous = self.value(key, (period[0], period[1]-1))
         return value - previous if previous is not None else None
 
@@ -154,11 +183,39 @@ def load_financials(database: Path, symbol: str, *, period=None, review=None):
     if review and not set(periods) <= {parse_period(p) for p in review.periods}:
         raise ValueError('Hồ sơ kiểm chứng phải bao phủ tất cả kỳ tài chính được sử dụng')
     series, warnings = {}, []
+    by_period_statement = {}
+    for row in rows:
+        group = (row['fiscal_year'], row['fiscal_quarter'], row['statement_type'])
+        by_period_statement.setdefault(group, []).append(row)
     for key, (statement, patterns) in ALIASES.items():
         series[key] = {}
         for p in periods:
-            candidates = [r for r in rows if (r['fiscal_year'],r['fiscal_quarter']) == p and
-                r['statement_type'] in ([statement,'CashFlowDirect'] if statement=='CashFlow' else [statement])]
+            candidates = [r for kind in ([statement,'CashFlowDirect'] if statement=='CashFlow' else [statement])
+                          for r in by_period_statement.get((*p, kind), ())]
+            if statement=='CashFlow':
+                primary=[r for r in candidates if 'www.vietcombank.com.vn/' in r['source']]
+                if primary:candidates=primary
+            if key == 'inventory':
+                # Net balance (Roman-numbered parent) is distinct from gross
+                # inventory (child 1.). Never resolve this by magnitude.
+                parents = [r for r in candidates if re.match(r'^[IVXLCDM]+[.)]\s*', r['item_name'], re.I)
+                           and normalized_name(r['item_name']) == 'hang ton kho']
+                if parents:candidates=parents
+            if key == 'equity':
+                # Lettered total includes other funds; Roman I may be a subtotal.
+                parents=[r for r in candidates if re.match(r'^[BCD][.)]\s*',r['item_name'],re.I)
+                         and normalized_name(r['item_name'])=='von chu so huu']
+                if parents:candidates=parents
+            if key == 'loans_gross':
+                # CafeF's bank total (VI.) is net of provision; its child (1.) is gross.
+                # Retain ambiguity checks for all other mappings, never choose by magnitude.
+                candidates = [r for r in candidates if re.fullmatch(
+                    r'1[.)]\s*cho vay khach hang', fold(r['item_name']).strip())]
+            if key == 'loans':
+                # Banks disclose gross loans as child 1. and net loans as VI.
+                # Select the explicitly labelled parent, not the largest number.
+                candidates = [r for r in candidates if normalized_name(r['item_name']) != 'cho vay khach hang'
+                    or re.fullmatch(r'VI[.)]\s*cho vay khach hang',fold(r['item_name']).strip(),re.I)]
             for pattern in patterns:
                 matches = [r for r in candidates if re.search(pattern, normalized_name(r['item_name'])) and r['value_numeric'] is not None]
                 if not matches:
@@ -168,16 +225,31 @@ def load_financials(database: Path, symbol: str, *, period=None, review=None):
                     warnings.append(f'{LABELS[key]} {p[0]}Q{p[1]}: ánh xạ không duy nhất, chưa sử dụng.')
                     break
                 row = matches[0]
-                source = SourceReference(source_name='CafeF', url=row['source'], retrieved_at=row['retrieved_at'],
+                source = SourceReference(source_name='Vietcombank BCTC gốc' if 'www.vietcombank.com.vn/' in row['source'] else 'CafeF', url=row['source'], retrieved_at=row['retrieved_at'],
                     locator=f"{row['statement_type']} {p[0]}Q{p[1]}, dòng {row['row_order']}: {row['item_name']}")
                 multiplier = review.money_multiplier if review else Decimal(1)
                 series[key][p] = Fact(Decimal(str(row['value_numeric'])) * multiplier, source, row['item_name'])
                 break
+    if review:
+        used=set()
+        for override in review.verified_facts:
+            p=parse_period(override.period)
+            if override.key not in ALIASES or (p,override.key) in used:
+                raise ValueError('Invalid or duplicate verified financial metric')
+            used.add((p,override.key))
+            if p in periods:
+                series[override.key][p]=Fact(override.value_vnd,override.source,LABELS[override.key])
     if not review:
         warnings.extend(['Đơn vị tiền tệ, hợp nhất/riêng và cơ sở quý/lũy kế CafeF chưa được kiểm chứng với BCTC gốc.',
-            'Chỉ trình bày dữ liệu gốc và tỷ lệ trong cùng bảng; ROE/ROA TTM, định giá và khuyến nghị mua/bán bị chặn.'])
+            'Tỷ lệ cùng bảng chỉ là sơ bộ; ROE/ROA TTM và định giá từ BCTC cần hồ sơ đối chiếu. Giá và chỉ tiêu do nguồn tổng hợp vẫn hiển thị riêng.'])
+    elif review.review_note:
+        warnings.append(review.review_note)
     if len(periods) < 8:
         warnings.append(f'Chỉ có {len(periods)}/8 kỳ đã công bố trong cửa sổ dữ liệu.')
+    for p in periods:
+        if not any(r['value_numeric'] is not None for r in rows
+                if (r['fiscal_year'],r['fiscal_quarter'])==p):
+            warnings.append(f'{p[0]}Q{p[1]}: có metadata công bố nhưng chưa tải được số liệu BCTC; không thay bằng kỳ cũ hoặc số 0.')
     audit_statuses = {(r['fiscal_year'],r['fiscal_quarter']):r for r in audit_rows
                      if (r['fiscal_year'],r['fiscal_quarter']) in periods}
     data=FinancialData(symbol, periods, series, review, warnings, audit_statuses,
@@ -195,7 +267,7 @@ def validate_balance(data):
             invalid=invalid or abs(assets-liabilities-equity)>assets*Decimal('0.005')
         if invalid:
             data.invalid_balance_periods.add(p)
-            message=f'{p[0]}Q{p[1]}: bảng cân đối ánh xạ không khớp tài sản = nợ + vốn (dung sai 0,5%); chặn tỷ lệ dùng BS và định giá, cần đối chiếu nguồn gốc.'
+            message=f'{p[0]}Q{p[1]}: bảng cân đối ánh xạ không khớp tài sản = nợ + vốn (dung sai 0,5%); chặn tỷ lệ và định giá dùng BS, không ẩn giá/chỉ tiêu thị trường riêng; cần đối chiếu nguồn gốc.'
             if message not in data.warnings:data.warnings.append(message)
 
 
@@ -221,8 +293,8 @@ def financial_metrics(data, profile):
 
     add('Biên lợi nhuận sau thuế', ratio(v('net_profit'),v('revenue'),percent=True), '%', 'LNST / doanh thu cùng kỳ x 100', ['net_profit','revenue'])
     if profile == 'banking':
-        add('Cho vay / tiền gửi theo BCTC',ratio(v('loans'),v('deposits'),percent=True),'%',
-            'Cho vay khách hàng / tiền gửi khách hàng; không phải LDR theo quy định', ['loans','deposits'])
+        add('Cho vay trước dự phòng / tiền gửi theo BCTC',ratio(v('loans_gross'),v('deposits'),percent=True),'%',
+            'Cho vay khách hàng trước dự phòng / tiền gửi khách hàng; không phải LDR theo quy định', ['loans_gross','deposits'])
         add('Chi phí / thu nhập hoạt động',ratio(v('operating_cost'),v('revenue'),percent=True),'%',
             'Chi phí hoạt động / tổng thu nhập hoạt động', ['operating_cost','revenue'])
     elif profile == 'securities':
@@ -252,7 +324,7 @@ def financial_metrics(data, profile):
         profit = data.ttm('net_profit',p)
         add(label,ratio(profit,average,percent=True),'%', 'LNST 4 quý liên tiếp / bình quân đầu-cuối 12 tháng', ['net_profit',key])
         if data.review:
-            metrics[-1]['sources'] = tuple(dict.fromkeys([data.review.source, *[f.source for k in ['net_profit',key] for f in data.series[k].values()]]))
+            metrics[-1]['sources'] = tuple(dict.fromkeys([data.review.source, *[f.source for k in ['net_profit',key] for f in data.series.get(k,{}).values()]]))
     if data.review and profile not in ('banking','securities','other_financial'):
         add('CFO / LNST cùng quý',ratio(data.quarter_value('cfo',p),data.quarter_value('net_profit',p)),'lần',
             'CFO quý riêng / LNST quý riêng sau chuyển YTD', ['cfo','net_profit'])

@@ -1,0 +1,15 @@
+{
+  "accent": "#1F5EFF",
+  "auto_price_refresh": true,
+  "horizon": "medium",
+  "risk_level": "Cân bằng / Vừa phải",
+  "priority": "Theo khung thời gian",
+  "depth": "Đầy đủ",
+  "liquidity_threshold": 2000000000,
+  "scores": null,
+  "horizons": {
+    "short": {"label": "Ngắn hạn", "focus": [3,3,1,1,3]},
+    "medium": {"label": "Trung hạn", "focus": [2,2,2,2,3]},
+    "long": {"label": "Dài hạn", "focus": [1,2,3,3,2]}
+  }
+}

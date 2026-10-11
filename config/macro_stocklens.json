@@ -1,0 +1,14 @@
+{
+ "enabled":true,
+ "default_period":"2026-9T",
+ "cache_hours":12,
+ "releases":[
+  {"period":"2022-9T","url":"https://www.nso.gov.vn/du-lieu-va-so-lieu-thong-ke/2022/09/bao-cao-tinh-hinh-kinh-te-xa-hoi-quy-iii-va-9-thang-nam-2022/","published":"2022-09-29"},
+  {"period":"2023-9T","url":"https://www.nso.gov.vn/du-lieu-va-so-lieu-thong-ke/2023/09/bao-cao-tinh-hinh-kinh-te-xa-hoi-quy-iii-va-9-thang-nam-2023/","published":"2023-09-29"},
+  {"period":"2024-9T","url":"https://www.nso.gov.vn/du-lieu-va-so-lieu-thong-ke/2024/10/bao-cao-tinh-hinh-kinh-te-xa-hoi-quy-iii-va-9-thang-nam-2024/","published":"2024-10-06"},
+  {"period":"2025-9T","url":"https://www.nso.gov.vn/bai-top/2025/10/bao-cao-tinh-hinh-kinh-te-xa-hoi-quy-iii-va-9-thang-nam-2025/","published":"2025-10-06"},
+  {"period":"2026-9T","url":"https://www.nso.gov.vn/bai-top/2026/10/bao-cao-tinh-hinh-kinh-te-xa-hoi-quy-iii-va-9-thang-nam-2026/","published":"2026-10-03"}
+ ],
+ "pmi_releases":[{"period":"2026-9T","month":"September","year":2026,"url":"https://www.cimigo.com/en/trends/vietnam-pmi/","published":"2026-10-01"}],
+ "licensed_json_sources":[]
+}

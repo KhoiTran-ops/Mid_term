@@ -3,20 +3,23 @@
 import argparse
 from concurrent.futures import ThreadPoolExecutor
 from dataclasses import asdict
-from datetime import datetime
+from datetime import date, datetime
 import json
 import logging
 from pathlib import Path
 from stock_reports.core.config import Settings
+from stock_reports.core.locking import ProcessLock
 
 from stock_reports.data_sources.archive import ArchivedCafeFTransport, ArchivedDNSEGateway, ResponseArchive
 from stock_reports.data_sources.cafef.client import CafeFClient
-from stock_reports.data_sources.cafef.sync import sync_financial_history
+from stock_reports.data_sources.cafef.sync import CafeFSynchronizer, sync_financial_history
 from stock_reports.storage.market import MarketStore
 from stock_reports.data_sources.dnse.market import VIETNAM
 from stock_reports.data_sources.dnse.market import DNSEInstrument
 from stock_reports.data_sources.dnse.catalog import select_symbols
+from stock_reports.pipeline.industries import public_company_instruments, refresh_public_catalog
 from stock_reports.pipeline.market_refresh import refresh_market
+from stock_reports.storage.industries import IndustryStore
 
 
 def progress(provider, path=None):
@@ -27,6 +30,20 @@ def progress(provider, path=None):
         if done == 1 or done % 25 == 0 or done == total:
             print(f'{provider}: {done}/{total} ({symbol})', flush=True)
     return notify
+
+
+def resolve_financial_catalog(settings, store, archive):
+    """Resolve a CafeF universe without requiring authenticated DNSE market data."""
+    existing = [DNSEInstrument(symbol, exchange, name, 0)
+                for symbol, exchange, name in store.list_instrument_details()]
+    industry_store = IndustryStore(settings.industries_database)
+    instruments = public_company_instruments(industry_store)
+    if not instruments:
+        if existing:
+            return existing
+        instruments = refresh_public_catalog(settings, archive)
+    store.replace_instruments(instruments, source='dnse-public-catalog')
+    return instruments
 
 
 def build_parser(settings: Settings):
@@ -47,6 +64,17 @@ def build_parser(settings: Settings):
     export = commands.add_parser('export')
     export.add_argument('--symbols', nargs='+')
     export.add_argument('--output', type=Path, default=settings.outputs_directory)
+    annual = commands.add_parser('import-annual')
+    annual.add_argument('--xlsx', type=Path, required=True)
+    annual.add_argument('--source-url', default=(
+        'https://github.com/BuiHang-stp/Crawl-CafeF-Data/blob/main/'
+        'indicators_all_firms_2010-2024.xlsx'
+    ))
+    daily = commands.add_parser('daily')
+    daily.add_argument('--date', type=date.fromisoformat,
+                       default=datetime.now(VIETNAM).date(),
+                       help='Trading date in YYYY-MM-DD; default: today in Vietnam')
+    daily.add_argument('--cafef-rate', type=float, default=1)
     return parser
 
 
@@ -57,6 +85,41 @@ def main(argv=None, settings: Settings | None = None):
     logging.basicConfig(level=logging.WARNING, format='%(levelname)s %(message)s')
     store = MarketStore(args.database)
     store.initialize()
+    if args.command == 'import-annual':
+        from stock_reports.pipeline.annual_financials import import_annual_workbook
+        result = import_annual_workbook(
+            args.database, (settings.root / args.xlsx).resolve(),
+            source_url=args.source_url,
+        )
+        print(json.dumps(result, ensure_ascii=False, indent=2))
+        return
+    if args.command == 'daily':
+        if not 0 < args.cafef_rate <= 1:
+            raise ValueError('--cafef-rate must be in (0, 1]')
+        started = datetime.now(VIETNAM)
+        run_dir = settings.runs_directory / started.strftime('%Y%m%dT%H%M%S%f')
+        archive = ResponseArchive(run_dir / 'raw')
+        client = CafeFClient(transport=ArchivedCafeFTransport(
+            archive, requests_per_second=args.cafef_rate
+        ))
+        results = [asdict(result) for result in CafeFSynchronizer(
+            client=client, store=store
+        ).sync_daily(args.date)]
+        manifest = dict(status='completed_with_issues' if any(
+            result['rejected'] for result in results
+        ) else 'completed', started_at=started.isoformat(),
+            completed_at=datetime.now(VIETNAM).isoformat(), command='daily',
+            requested_date=args.date.isoformat(), database=str(args.database),
+            results=results)
+        (run_dir / 'manifest.json').write_text(
+            json.dumps(manifest, ensure_ascii=False, indent=2), encoding='utf-8'
+        )
+        print(json.dumps(manifest, ensure_ascii=False, indent=2), flush=True)
+        from stock_reports.storage.inventory import write_inventory
+        write_inventory(store, settings.outputs_directory)
+        if any(result['rejected'] for result in results):
+            raise SystemExit(2)
+        return
     if args.command in ('status', 'export'):
         from stock_reports.storage.inventory import export_data, write_inventory
         result = write_inventory(store, settings.outputs_directory) if args.command == 'status' else export_data(
@@ -65,6 +128,8 @@ def main(argv=None, settings: Settings | None = None):
         return
     if args.quarters < 1:
         raise ValueError('--quarters must be positive')
+    if not 0 < args.cafef_rate <= 1:
+        raise ValueError('--cafef-rate must be in (0, 1]')
     symbols = [s.strip().upper() for s in args.symbols] if args.symbols else None
     started = datetime.now(VIETNAM)
     run_dir = settings.runs_directory / started.strftime('%Y%m%dT%H%M%S%f')
@@ -91,15 +156,21 @@ def main(argv=None, settings: Settings | None = None):
             gateway.close()
 
     def financials():
-        financial_catalog = catalog or [DNSEInstrument(s, e, '', 0) for s, e in store.list_instruments()]
-        selected = select_symbols(financial_catalog, exchanges=args.exchanges, symbols=symbols)
-        client = CafeFClient(transport=ArchivedCafeFTransport(archive,
-                requests_per_second=args.cafef_rate))
-        result = sync_financial_history(client, store, max_quarters=args.quarters,
-                symbols=selected, incremental=not args.refresh_financials,
-                on_progress=progress('CafeF', run_dir / 'cafef-progress.json'))
-        return dict(provider='cafef', **asdict(result), incremental=not args.refresh_financials,
-                    symbols=len(selected), exchanges=args.exchanges)
+        lock = ProcessLock(settings.root/'var/cafef-collector.lock')
+        if not lock.acquire():
+            raise ValueError('A CafeF financial collector is already running')
+        try:
+            financial_catalog = catalog or resolve_financial_catalog(settings, store, archive)
+            selected = select_symbols(financial_catalog, exchanges=args.exchanges, symbols=symbols)
+            client = CafeFClient(transport=ArchivedCafeFTransport(archive,
+                    requests_per_second=args.cafef_rate))
+            result = sync_financial_history(client, store, max_quarters=args.quarters,
+                    symbols=selected, incremental=not args.refresh_financials,
+                    on_progress=progress('CafeF', run_dir / 'cafef-progress.json'))
+            return dict(provider='cafef', **asdict(result), incremental=not args.refresh_financials,
+                        symbols=len(selected), exchanges=args.exchanges)
+        finally:
+            lock.release()
 
     results = []
     try:

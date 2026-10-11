@@ -1,0 +1,751 @@
+{
+  "summary": {
+    "hero": {
+      "title": "NGÂN HÀNG",
+      "subtitle": "Phạm vi GICS cấp 2 · 10/2026",
+      "metric_label": "Doanh nghiệp trong danh mục",
+      "metric_value": 28,
+      "metric_note": "Số mã trong danh mục DNSE; không đại diện độ phủ BCTC"
+    },
+    "kpis": [
+      {
+        "label": "Hiệu suất chỉ số nhóm · 1d",
+        "value": 0.31,
+        "unit": "%",
+        "polarity": "higher_good"
+      },
+      {
+        "label": "Hiệu suất chỉ số nhóm · 1m",
+        "value": -3.5,
+        "unit": "%",
+        "polarity": "higher_good"
+      },
+      {
+        "label": "Hiệu suất chỉ số nhóm · 1y",
+        "value": -14.25,
+        "unit": "%",
+        "polarity": "higher_good"
+      },
+      {
+        "label": "Hiệu suất chỉ số nhóm · 5y",
+        "value": 60.23,
+        "unit": "%",
+        "polarity": "higher_good"
+      }
+    ],
+    "stances": [],
+    "global_highlights": [],
+    "domestic_highlights": [],
+    "thesis": null
+  },
+  "global": {
+    "overview": {
+      "phases": [],
+      "size": {
+        "value": null,
+        "unit": null,
+        "year": null
+      },
+      "per_capita": [],
+      "notes": []
+    },
+    "value_chain": {
+      "cost_structure": [],
+      "output_structure": [],
+      "input_mix": [],
+      "price_forecast": {
+        "unit": null,
+        "years": [],
+        "series": []
+      },
+      "commodity_price": {
+        "name": null,
+        "forecast": null,
+        "note": null
+      }
+    },
+    "supply_demand": [],
+    "policy_trends": [],
+    "segments": [],
+    "segment_traits": []
+  },
+  "domestic": {
+    "overview": {
+      "revenue": null,
+      "gdp_share": null,
+      "volume": null,
+      "cagr_revenue": null,
+      "cagr_volume": null,
+      "yoy_volume": null,
+      "output_structure": [],
+      "export_structure": [],
+      "market_split": {
+        "domestic_pct": null,
+        "export_pct": null,
+        "import_value": null
+      },
+      "per_capita": []
+    },
+    "competition": [],
+    "value_chain": {
+      "cost_structure": [],
+      "input_mix": [],
+      "domestic_supply": {
+        "capacity": null,
+        "self_sufficiency": null,
+        "new_capacity_note": null
+      },
+      "machinery_imports": {
+        "cagr_periods": [],
+        "origin_split": []
+      }
+    },
+    "regulations": [],
+    "authorities": [],
+    "segments": [],
+    "outlook": {
+      "output_forecast": {
+        "from": null,
+        "to": null,
+        "cagr": null
+      },
+      "segment_table": [],
+      "series": [],
+      "macro_drivers": []
+    },
+    "risks": []
+  },
+  "companies": {
+    "table": {
+      "as_of": "2026-10-11",
+      "period": "2025",
+      "columns": [
+        "group",
+        "ticker",
+        "exchange",
+        "market_cap",
+        "total_assets",
+        "revenue",
+        "revenue_yoy",
+        "net_income",
+        "net_income_yoy"
+      ],
+      "rows": [
+        {
+          "group": "Ngân hàng",
+          "ticker": "ACB",
+          "exchange": "HOSE",
+          "name": "Ngân hàng TMCP Á Châu",
+          "period": "2025",
+          "market_cap": null,
+          "total_assets": null,
+          "revenue": null,
+          "revenue_yoy": null,
+          "net_income": null,
+          "net_income_yoy": null
+        },
+        {
+          "group": "Ngân hàng",
+          "ticker": "BID",
+          "exchange": "HOSE",
+          "name": "Ngân hàng TMCP Đầu tư và Phát triển Việt Nam",
+          "period": "2025",
+          "market_cap": null,
+          "total_assets": null,
+          "revenue": null,
+          "revenue_yoy": null,
+          "net_income": null,
+          "net_income_yoy": null
+        },
+        {
+          "group": "Ngân hàng",
+          "ticker": "BVB",
+          "exchange": "HOSE",
+          "name": "Ngân hàng Thương mại Cổ phần Bản Việt",
+          "period": "2025",
+          "market_cap": null,
+          "total_assets": null,
+          "revenue": null,
+          "revenue_yoy": null,
+          "net_income": null,
+          "net_income_yoy": null
+        },
+        {
+          "group": "Ngân hàng",
+          "ticker": "CTG",
+          "exchange": "HOSE",
+          "name": "Ngân hàng TMCP Công Thương Việt Nam",
+          "period": "2025",
+          "market_cap": null,
+          "total_assets": null,
+          "revenue": null,
+          "revenue_yoy": null,
+          "net_income": null,
+          "net_income_yoy": null
+        },
+        {
+          "group": "Ngân hàng",
+          "ticker": "EIB",
+          "exchange": "HOSE",
+          "name": "Ngân hàng TMCP Xuất nhập khẩu Việt Nam",
+          "period": "2025",
+          "market_cap": null,
+          "total_assets": null,
+          "revenue": null,
+          "revenue_yoy": null,
+          "net_income": null,
+          "net_income_yoy": null
+        },
+        {
+          "group": "Ngân hàng",
+          "ticker": "HDB",
+          "exchange": "HOSE",
+          "name": "Ngân hàng TMCP Phát triển TP. HCM",
+          "period": "2025",
+          "market_cap": null,
+          "total_assets": null,
+          "revenue": null,
+          "revenue_yoy": null,
+          "net_income": null,
+          "net_income_yoy": null
+        },
+        {
+          "group": "Ngân hàng",
+          "ticker": "KLB",
+          "exchange": "HOSE",
+          "name": "Ngân hàng Thương mại Cổ phần Kiên Long",
+          "period": "2025",
+          "market_cap": null,
+          "total_assets": null,
+          "revenue": null,
+          "revenue_yoy": null,
+          "net_income": null,
+          "net_income_yoy": null
+        },
+        {
+          "group": "Ngân hàng",
+          "ticker": "LPB",
+          "exchange": "HOSE",
+          "name": "Ngân hàng TMCP Bưu điện Liên Việt",
+          "period": "2025",
+          "market_cap": null,
+          "total_assets": null,
+          "revenue": null,
+          "revenue_yoy": null,
+          "net_income": null,
+          "net_income_yoy": null
+        },
+        {
+          "group": "Ngân hàng",
+          "ticker": "MBB",
+          "exchange": "HOSE",
+          "name": "Ngân hàng TMCP Quân Đội",
+          "period": "2025",
+          "market_cap": null,
+          "total_assets": null,
+          "revenue": null,
+          "revenue_yoy": null,
+          "net_income": null,
+          "net_income_yoy": null
+        },
+        {
+          "group": "Ngân hàng",
+          "ticker": "MSB",
+          "exchange": "HOSE",
+          "name": "Ngân hàng TMCP Hàng hải Việt Nam",
+          "period": "2025",
+          "market_cap": null,
+          "total_assets": null,
+          "revenue": null,
+          "revenue_yoy": null,
+          "net_income": null,
+          "net_income_yoy": null
+        },
+        {
+          "group": "Ngân hàng",
+          "ticker": "NAB",
+          "exchange": "HOSE",
+          "name": "Ngân hàng TMCP Nam Á",
+          "period": "2025",
+          "market_cap": null,
+          "total_assets": null,
+          "revenue": null,
+          "revenue_yoy": null,
+          "net_income": null,
+          "net_income_yoy": null
+        },
+        {
+          "group": "Ngân hàng",
+          "ticker": "OCB",
+          "exchange": "HOSE",
+          "name": "Ngân hàng TMCP Phương Đông",
+          "period": "2025",
+          "market_cap": null,
+          "total_assets": null,
+          "revenue": null,
+          "revenue_yoy": null,
+          "net_income": null,
+          "net_income_yoy": null
+        },
+        {
+          "group": "Ngân hàng",
+          "ticker": "SHB",
+          "exchange": "HOSE",
+          "name": "Ngân hàng TMCP Sài Gòn - Hà Nội",
+          "period": "2025",
+          "market_cap": null,
+          "total_assets": null,
+          "revenue": null,
+          "revenue_yoy": null,
+          "net_income": null,
+          "net_income_yoy": null
+        },
+        {
+          "group": "Ngân hàng",
+          "ticker": "SSB",
+          "exchange": "HOSE",
+          "name": "Ngân hàng TMCP Đông Nam Á",
+          "period": "2025",
+          "market_cap": null,
+          "total_assets": null,
+          "revenue": null,
+          "revenue_yoy": null,
+          "net_income": null,
+          "net_income_yoy": null
+        },
+        {
+          "group": "Ngân hàng",
+          "ticker": "STB",
+          "exchange": "HOSE",
+          "name": "Ngân hàng TMCP Sài Gòn Tài Lộc",
+          "period": "2025",
+          "market_cap": null,
+          "total_assets": null,
+          "revenue": null,
+          "revenue_yoy": null,
+          "net_income": null,
+          "net_income_yoy": null
+        },
+        {
+          "group": "Ngân hàng",
+          "ticker": "TCB",
+          "exchange": "HOSE",
+          "name": "Ngân hàng TMCP Kỹ thương Việt Nam",
+          "period": "2025",
+          "market_cap": null,
+          "total_assets": null,
+          "revenue": null,
+          "revenue_yoy": null,
+          "net_income": null,
+          "net_income_yoy": null
+        },
+        {
+          "group": "Ngân hàng",
+          "ticker": "TPB",
+          "exchange": "HOSE",
+          "name": "Ngân hàng TMCP Tiên Phong",
+          "period": "2025",
+          "market_cap": null,
+          "total_assets": null,
+          "revenue": null,
+          "revenue_yoy": null,
+          "net_income": null,
+          "net_income_yoy": null
+        },
+        {
+          "group": "Ngân hàng",
+          "ticker": "VAB",
+          "exchange": "HOSE",
+          "name": "Ngân hàng Thương mại cổ phần Việt Á",
+          "period": "2025",
+          "market_cap": null,
+          "total_assets": null,
+          "revenue": null,
+          "revenue_yoy": null,
+          "net_income": null,
+          "net_income_yoy": null
+        },
+        {
+          "group": "Ngân hàng",
+          "ticker": "VBB",
+          "exchange": "HOSE",
+          "name": "Ngân hàng Thương mại Cổ phần Việt Nam Thương Tín",
+          "period": "2025",
+          "market_cap": null,
+          "total_assets": null,
+          "revenue": null,
+          "revenue_yoy": null,
+          "net_income": null,
+          "net_income_yoy": null
+        },
+        {
+          "group": "Ngân hàng",
+          "ticker": "VCB",
+          "exchange": "HOSE",
+          "name": "Ngân hàng TMCP Ngoại thương Việt Nam",
+          "period": "2025",
+          "market_cap": null,
+          "total_assets": 2442279.166,
+          "revenue": 72454.622,
+          "revenue_yoy": 5.652101206768956,
+          "net_income": 35197.94,
+          "net_income_yoy": 3.972523416381435,
+          "revenue_prior": 68578.496,
+          "net_income_prior": 33853.117
+        },
+        {
+          "group": "Ngân hàng",
+          "ticker": "VIB",
+          "exchange": "HOSE",
+          "name": "Ngân hàng TMCP Quốc tế Việt Nam",
+          "period": "2025",
+          "market_cap": null,
+          "total_assets": null,
+          "revenue": null,
+          "revenue_yoy": null,
+          "net_income": null,
+          "net_income_yoy": null
+        },
+        {
+          "group": "Ngân hàng",
+          "ticker": "VPB",
+          "exchange": "HOSE",
+          "name": "Ngân hàng TMCP Việt Nam Thịnh Vượng",
+          "period": "2025",
+          "market_cap": null,
+          "total_assets": null,
+          "revenue": null,
+          "revenue_yoy": null,
+          "net_income": null,
+          "net_income_yoy": null
+        },
+        {
+          "group": "Ngân hàng",
+          "ticker": "ABB",
+          "exchange": "UPCOM",
+          "name": "Ngân hàng TMCP An Bình",
+          "period": "2025",
+          "market_cap": null,
+          "total_assets": null,
+          "revenue": null,
+          "revenue_yoy": null,
+          "net_income": null,
+          "net_income_yoy": null
+        },
+        {
+          "group": "Ngân hàng",
+          "ticker": "BAB",
+          "exchange": "HNX",
+          "name": "Ngân hàng TMCP Bắc Á",
+          "period": "2025",
+          "market_cap": null,
+          "total_assets": null,
+          "revenue": null,
+          "revenue_yoy": null,
+          "net_income": null,
+          "net_income_yoy": null
+        },
+        {
+          "group": "Ngân hàng",
+          "ticker": "NVB",
+          "exchange": "HNX",
+          "name": "Ngân hàng TMCP Quốc Dân",
+          "period": "2025",
+          "market_cap": null,
+          "total_assets": null,
+          "revenue": null,
+          "revenue_yoy": null,
+          "net_income": null,
+          "net_income_yoy": null
+        },
+        {
+          "group": "Ngân hàng",
+          "ticker": "PCB",
+          "exchange": "UPCOM",
+          "name": "Cổ phiếu Ngân hàng Thương mại cổ phần Đại chúng Việt Nam",
+          "period": "2025",
+          "market_cap": null,
+          "total_assets": null,
+          "revenue": null,
+          "revenue_yoy": null,
+          "net_income": null,
+          "net_income_yoy": null
+        },
+        {
+          "group": "Ngân hàng",
+          "ticker": "PGB",
+          "exchange": "UPCOM",
+          "name": "Ngân hàng TMCP Thịnh vượng và Phát triển",
+          "period": "2025",
+          "market_cap": null,
+          "total_assets": null,
+          "revenue": null,
+          "revenue_yoy": null,
+          "net_income": null,
+          "net_income_yoy": null
+        },
+        {
+          "group": "Ngân hàng",
+          "ticker": "SGB",
+          "exchange": "UPCOM",
+          "name": "Ngân hàng TMCP Sài Gòn Công Thương",
+          "period": "2025",
+          "market_cap": null,
+          "total_assets": null,
+          "revenue": null,
+          "revenue_yoy": null,
+          "net_income": null,
+          "net_income_yoy": null
+        }
+      ],
+      "footnotes": [
+        "BCTC năm 2025; không đổi nhãn thành tháng/quý. LNST hợp nhất, không đồng nhất LNST cổ đông công ty mẹ.",
+        "Vốn hóa/giá có ngày xác nhận riêng. Không có ảnh chụp đúng ngày thì để trống; không gán vốn hóa hiện tại cho ngày quá khứ.",
+        "%YoY † = (năm hiện tại / cùng kỳ - 1) × 100; cùng kỳ không dương hiển thị N/A."
+      ]
+    },
+    "profiles": [
+      {
+        "name": "Ngân hàng TMCP Ngoại thương Việt Nam",
+        "ticker": "VCB",
+        "exchange": "HOSE",
+        "trading": {
+          "as_of": "2026-10-09",
+          "price": 56700.0,
+          "high_52w": null,
+          "low_52w": null,
+          "avg_volume_10d": null,
+          "eps_ttm": 4980.0,
+          "pe_ttm": 11.38,
+          "target_price": null,
+          "target_upside": null
+        },
+        "business_points": [],
+        "series": []
+      }
+    ]
+  },
+  "disclaimer": {
+    "text": "Dữ liệu danh mục, chỉ số nhóm và doanh nghiệp niêm yết không đại diện toàn bộ hoạt động kinh tế của ngành. Không tự tạo nhận định, xếp hạng hay giá mục tiêu. Các trang chưa có dữ liệu được ẩn và ghi trong quality_report.",
+    "holdings_disclosure": null
+  },
+  "units": {
+    "summary.hero.metric_value": "doanh nghiệp",
+    "companies.table.rows.19.total_assets": "tỷ VND",
+    "companies.table.rows.19.revenue": "tỷ VND",
+    "companies.table.rows.19.revenue_yoy": "%",
+    "companies.table.rows.19.revenue_prior": "tỷ VND",
+    "companies.table.rows.19.net_income": "tỷ VND",
+    "companies.table.rows.19.net_income_yoy": "%",
+    "companies.table.rows.19.net_income_prior": "tỷ VND",
+    "companies.profiles.0.trading.price": "VND/cp",
+    "companies.profiles.0.trading.high_52w": "VND/cp",
+    "companies.profiles.0.trading.low_52w": "VND/cp",
+    "companies.profiles.0.trading.eps_ttm": "VND/cp",
+    "companies.profiles.0.trading.target_price": "VND/cp",
+    "companies.profiles.0.trading.avg_volume_10d": "cp",
+    "companies.profiles.0.trading.pe_ttm": "lần"
+  },
+  "provenance": {
+    "summary.hero.metric_value": {
+      "source_id": "dnse-catalog",
+      "unit": "doanh nghiệp"
+    },
+    "summary.kpis": {
+      "source_id": "dnse-index",
+      "unit": "%"
+    },
+    "companies.table.rows.19": {
+      "source_id": "bctc-VCB",
+      "unit": "tỷ VND",
+      "period": "2025"
+    },
+    "companies.table.rows.19.total_assets": {
+      "source_id": "bctc-VCB-total_assets",
+      "unit": "tỷ VND",
+      "period": "2025"
+    },
+    "companies.table.rows.19.revenue": {
+      "source_id": "bctc-VCB-revenue",
+      "unit": "tỷ VND",
+      "period": "2025"
+    },
+    "companies.table.rows.19.revenue_prior": {
+      "source_id": "bctc-VCB-revenue",
+      "unit": "tỷ VND",
+      "period": "2024"
+    },
+    "companies.table.rows.19.net_income": {
+      "source_id": "bctc-VCB-revenue",
+      "unit": "tỷ VND",
+      "period": "2025"
+    },
+    "companies.table.rows.19.net_income_prior": {
+      "source_id": "bctc-VCB-revenue",
+      "unit": "tỷ VND",
+      "period": "2024"
+    },
+    "companies.profiles.0.trading": {
+      "source_id": "market-VCB"
+    }
+  },
+  "missing_reasons": {
+    "companies.table.rows.0": "Chưa đối chiếu đơn vị BCTC",
+    "companies.table.rows.0.market_cap": "Chưa có vốn hóa đúng ngày",
+    "companies.table.rows.1": "Chưa đối chiếu đơn vị BCTC",
+    "companies.table.rows.1.market_cap": "Chưa có vốn hóa đúng ngày",
+    "companies.table.rows.2": "Chưa đối chiếu đơn vị BCTC",
+    "companies.table.rows.2.market_cap": "Chưa có vốn hóa đúng ngày",
+    "companies.table.rows.3": "Chưa đối chiếu đơn vị BCTC",
+    "companies.table.rows.3.market_cap": "Chưa có vốn hóa đúng ngày",
+    "companies.table.rows.4": "Chưa đối chiếu đơn vị BCTC",
+    "companies.table.rows.4.market_cap": "Chưa có vốn hóa đúng ngày",
+    "companies.table.rows.5": "Chưa đối chiếu đơn vị BCTC",
+    "companies.table.rows.5.market_cap": "Chưa có vốn hóa đúng ngày",
+    "companies.table.rows.6": "Chưa đối chiếu đơn vị BCTC",
+    "companies.table.rows.6.market_cap": "Chưa có vốn hóa đúng ngày",
+    "companies.table.rows.7": "Chưa đối chiếu đơn vị BCTC",
+    "companies.table.rows.7.market_cap": "Chưa có vốn hóa đúng ngày",
+    "companies.table.rows.8": "Chưa đối chiếu đơn vị BCTC",
+    "companies.table.rows.8.market_cap": "Chưa có vốn hóa đúng ngày",
+    "companies.table.rows.9": "Chưa đối chiếu đơn vị BCTC",
+    "companies.table.rows.9.market_cap": "Chưa có vốn hóa đúng ngày",
+    "companies.table.rows.10": "Chưa đối chiếu đơn vị BCTC",
+    "companies.table.rows.10.market_cap": "Chưa có vốn hóa đúng ngày",
+    "companies.table.rows.11": "Chưa đối chiếu đơn vị BCTC",
+    "companies.table.rows.11.market_cap": "Chưa có vốn hóa đúng ngày",
+    "companies.table.rows.12": "Chưa đối chiếu đơn vị BCTC",
+    "companies.table.rows.12.market_cap": "Chưa có vốn hóa đúng ngày",
+    "companies.table.rows.13": "Chưa đối chiếu đơn vị BCTC",
+    "companies.table.rows.13.market_cap": "Chưa có vốn hóa đúng ngày",
+    "companies.table.rows.14": "Chưa đối chiếu đơn vị BCTC",
+    "companies.table.rows.14.market_cap": "Chưa có vốn hóa đúng ngày",
+    "companies.table.rows.15": "Chưa đối chiếu đơn vị BCTC",
+    "companies.table.rows.15.market_cap": "Chưa có vốn hóa đúng ngày",
+    "companies.table.rows.16": "Chưa đối chiếu đơn vị BCTC",
+    "companies.table.rows.16.market_cap": "Chưa có vốn hóa đúng ngày",
+    "companies.table.rows.17": "Chưa đối chiếu đơn vị BCTC",
+    "companies.table.rows.17.market_cap": "Chưa có vốn hóa đúng ngày",
+    "companies.table.rows.18": "Chưa đối chiếu đơn vị BCTC",
+    "companies.table.rows.18.market_cap": "Chưa có vốn hóa đúng ngày",
+    "companies.table.rows.19.market_cap": "Chưa có vốn hóa đúng ngày",
+    "companies.table.rows.20": "Chưa đối chiếu đơn vị BCTC",
+    "companies.table.rows.20.market_cap": "Chưa có vốn hóa đúng ngày",
+    "companies.table.rows.21": "Chưa đối chiếu đơn vị BCTC",
+    "companies.table.rows.21.market_cap": "Chưa có vốn hóa đúng ngày",
+    "companies.table.rows.22": "Chưa đối chiếu đơn vị BCTC",
+    "companies.table.rows.22.market_cap": "Chưa có vốn hóa đúng ngày",
+    "companies.table.rows.23": "Chưa đối chiếu đơn vị BCTC",
+    "companies.table.rows.23.market_cap": "Chưa có vốn hóa đúng ngày",
+    "companies.table.rows.24": "Chưa đối chiếu đơn vị BCTC",
+    "companies.table.rows.24.market_cap": "Chưa có vốn hóa đúng ngày",
+    "companies.table.rows.25": "Chưa đối chiếu đơn vị BCTC",
+    "companies.table.rows.25.market_cap": "Chưa có vốn hóa đúng ngày",
+    "companies.table.rows.26": "Chưa đối chiếu đơn vị BCTC",
+    "companies.table.rows.26.market_cap": "Chưa có vốn hóa đúng ngày",
+    "companies.table.rows.27": "Chưa đối chiếu đơn vị BCTC",
+    "companies.table.rows.27.market_cap": "Chưa có vốn hóa đúng ngày",
+    "global": "Chưa có bộ thống kê chuyên ngành/chuỗi quốc tế được cấp quyền cho ngành và kỳ này; không thay bằng mẫu nhựa hoặc báo cáo vĩ mô",
+    "domestic": "Chưa có bộ thống kê chuyên ngành/chuỗi quốc tế được cấp quyền cho ngành và kỳ này; không thay bằng mẫu nhựa hoặc báo cáo vĩ mô"
+  },
+  "derived": {
+    "companies.table.rows.19.revenue_yoy": {
+      "formula": "(Hiện tại / cùng kỳ - 1) × 100",
+      "inputs": [
+        "companies.table.rows.19.revenue",
+        "companies.table.rows.19.revenue_prior"
+      ]
+    },
+    "companies.table.rows.19.net_income_yoy": {
+      "formula": "(Hiện tại / cùng kỳ - 1) × 100",
+      "inputs": [
+        "companies.table.rows.19.net_income",
+        "companies.table.rows.19.net_income_prior"
+      ]
+    }
+  },
+  "assertions": [],
+  "meta": {
+    "industry_id": "ngan-hang",
+    "industry_name": "Ngân hàng",
+    "period_code": "2026-10",
+    "period_label": "10/2026",
+    "report_date": "2026-10-11",
+    "language": "vi",
+    "sources": [
+      {
+        "id": "dnse-catalog",
+        "name": "DNSE GICS / danh mục",
+        "url": "https://api.dnse.com.vn/market-api/sectors?classificationType=gics&level=2",
+        "retrieved_at": "2026-10-10T04:19:11.242569+00:00"
+      },
+      {
+        "id": "dnse-index",
+        "name": "DNSE biến động chỉ số nhóm",
+        "url": "https://banggia.dnse.com.vn/v2/nganh/danh-muc-nganh/ngan-hang",
+        "retrieved_at": "2026-10-10T04:19:12.248809+00:00"
+      },
+      {
+        "id": "bctc-VCB",
+        "name": "VCB · BCTC 2025",
+        "url": "https://www.vietcombank.com.vn/-/media/Project/VCB-Sites/VCB/Nha-Dau-tu/Files/BC-dinh-ky/BCTC/2025/20260327---VCB---BCTC-hop-nhat-kiem-toan-nam-2025.pdf?ts=00010101000000",
+        "retrieved_at": "2026-10-10T06:36:45.586349+00:00"
+      },
+      {
+        "id": "bctc-VCB-total_assets",
+        "name": "VCB · 2025 · total_assets",
+        "url": "https://cafef.vn/du-lieu/BaoCaoTaiChinh_V2.aspx?quarter=0&symbol=VCB&type=BSheet&year=2025&showtype=1",
+        "retrieved_at": "2026-10-10T06:32:12.425870+00:00"
+      },
+      {
+        "id": "bctc-VCB-revenue",
+        "name": "VCB · 2025 · revenue",
+        "url": "https://cafef.vn/du-lieu/BaoCaoTaiChinh_V2.aspx?quarter=0&symbol=VCB&type=IncSta&year=2025&showtype=1",
+        "retrieved_at": "2026-10-10T06:32:14.370462+00:00"
+      },
+      {
+        "id": "market-VCB",
+        "name": "VCB · CafeF thị trường",
+        "url": "https://cafef.vn/du-lieu/Ajax/PageNew/PriceRealTimeHeader.ashx?Symbol=VCB",
+        "retrieved_at": "2026-10-10T17:39:59.791545+00:00"
+      }
+    ],
+    "attribution": {
+      "publisher": "StockLens",
+      "report_title": "Dữ liệu ngành Ngân hàng",
+      "published_at": "2026-10-11",
+      "license_status": "own"
+    },
+    "exchange_catalog": {
+      "ACB": "HOSE",
+      "BID": "HOSE",
+      "BVB": "HOSE",
+      "CTG": "HOSE",
+      "EIB": "HOSE",
+      "HDB": "HOSE",
+      "KLB": "HOSE",
+      "LPB": "HOSE",
+      "MBB": "HOSE",
+      "MSB": "HOSE",
+      "NAB": "HOSE",
+      "OCB": "HOSE",
+      "SHB": "HOSE",
+      "SSB": "HOSE",
+      "STB": "HOSE",
+      "TCB": "HOSE",
+      "TPB": "HOSE",
+      "VAB": "HOSE",
+      "VBB": "HOSE",
+      "VCB": "HOSE",
+      "VIB": "HOSE",
+      "VPB": "HOSE",
+      "ABB": "UPCOM",
+      "BAB": "HNX",
+      "NVB": "HNX",
+      "PCB": "UPCOM",
+      "PGB": "UPCOM",
+      "SGB": "UPCOM"
+    },
+    "data_note": "Phạm vi: doanh nghiệp thuộc GICS cấp 2 của DNSE, không phải tổng quy mô kinh tế của ngành. Chỉ trình bày BCTC đã có hồ sơ đơn vị; không lấy FA/TA hoặc tự sinh quan điểm. Bảng năm và giá thị trường có ngày riêng."
+  }
+}

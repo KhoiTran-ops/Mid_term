@@ -3,7 +3,7 @@
 from decimal import Decimal
 from enum import StrEnum
 
-from pydantic import AwareDatetime, BaseModel, ConfigDict, HttpUrl
+from pydantic import AwareDatetime, BaseModel, ConfigDict, HttpUrl, model_validator
 
 
 class Quality(StrEnum):
@@ -18,10 +18,16 @@ class ResearchModel(BaseModel):
 
 class SourceReference(ResearchModel):
     source_name: str
-    url: HttpUrl
+    url: HttpUrl | None
     retrieved_at: AwareDatetime
     published_at: AwareDatetime | None = None
     locator: str | None = None
+
+    @model_validator(mode='after')
+    def require_location(self):
+        if self.url is None and not self.locator:
+            raise ValueError('A local source requires a document locator')
+        return self
 
 
 class Observation(ResearchModel):

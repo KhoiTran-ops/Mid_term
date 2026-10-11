@@ -1,0 +1,335 @@
+{
+  "symbol": "VCB",
+  "facts": [
+    {
+      "category": "overview",
+      "label": "Địa chỉ",
+      "value": "198 Trần Quang Khải, Hoàn Kiếm, Hà Nội (theo BCTC năm 2025)",
+      "period": "2025",
+      "source": {
+        "source_name": "Vietcombank - BCTC 2025 Hợp nhất đã kiểm toán",
+        "url": "https://www.vietcombank.com.vn/-/media/Project/VCB-Sites/VCB/Nha-Dau-tu/Files/BC-dinh-ky/BCTC/2025/20260327---VCB---BCTC-hop-nhat-kiem-toan-nam-2025.pdf?ts=00010101000000",
+        "retrieved_at": "2026-10-10T06:36:45.586349+00:00",
+        "locator": "Đầu trang PDF 8-9; PDF SHA-256 295f397de287f84c26dafbfa06f668604aa696a013e236253149d8547d032d1f"
+      }
+    },
+    {
+      "category": "operations",
+      "label": "NIM quý",
+      "value": "3,0%; quý 2/2026, không phải số lũy kế",
+      "numeric": "3.0",
+      "unit": "%",
+      "period": "2026Q2",
+      "source": {
+        "source_name": "Vietcombank - Tài liệu nhà đầu tư Q2.2026",
+        "url": "https://www.vietcombank.com.vn/-/media/Project/VCB-Sites/VCB/Nha-Dau-tu/Files/KQKD-quy/2026/Vie-2Q2026_VCB-Investors-Presentation---Upload.pdf?ts=00010101000000",
+        "retrieved_at": "2026-10-10T06:36:41.976953+00:00",
+        "locator": "Tài liệu nhà đầu tư Q2/2026, trang PDF 9; PDF SHA-256 1d5b4a0dccce5f8c79acd35b0e7f65540d7b4380e4926781544eca6c726cd104"
+      }
+    },
+    {
+      "category": "operations",
+      "label": "NIM lũy kế quy năm",
+      "value": "2,9%; 6 tháng 2026, chỉ tiêu hiệu quả tính lũy kế và quy năm",
+      "numeric": "2.9",
+      "unit": "%",
+      "period": "2026H1",
+      "source": {
+        "source_name": "Vietcombank - Tài liệu nhà đầu tư Q2.2026",
+        "url": "https://www.vietcombank.com.vn/-/media/Project/VCB-Sites/VCB/Nha-Dau-tu/Files/KQKD-quy/2026/Vie-2Q2026_VCB-Investors-Presentation---Upload.pdf?ts=00010101000000",
+        "retrieved_at": "2026-10-10T06:36:41.976953+00:00",
+        "locator": "Tài liệu nhà đầu tư Q2/2026, trang PDF 13; PDF SHA-256 1d5b4a0dccce5f8c79acd35b0e7f65540d7b4380e4926781544eca6c726cd104"
+      }
+    },
+    {
+      "category": "operations",
+      "label": "CASA",
+      "value": "32,3% tại quý 2/2026",
+      "numeric": "32.3",
+      "unit": "%",
+      "period": "2026Q2",
+      "source": {
+        "source_name": "Vietcombank - Tài liệu nhà đầu tư Q2.2026",
+        "url": "https://www.vietcombank.com.vn/-/media/Project/VCB-Sites/VCB/Nha-Dau-tu/Files/KQKD-quy/2026/Vie-2Q2026_VCB-Investors-Presentation---Upload.pdf?ts=00010101000000",
+        "retrieved_at": "2026-10-10T06:36:41.976953+00:00",
+        "locator": "Tài liệu nhà đầu tư Q2/2026, trang PDF 9; PDF SHA-256 1d5b4a0dccce5f8c79acd35b0e7f65540d7b4380e4926781544eca6c726cd104"
+      }
+    },
+    {
+      "category": "operations",
+      "label": "Thu nhập ngoài lãi / tổng thu nhập",
+      "value": "23%; lũy kế 6 tháng 2026",
+      "numeric": "23",
+      "unit": "%",
+      "period": "2026H1",
+      "source": {
+        "source_name": "Vietcombank - Tài liệu nhà đầu tư Q2.2026",
+        "url": "https://www.vietcombank.com.vn/-/media/Project/VCB-Sites/VCB/Nha-Dau-tu/Files/KQKD-quy/2026/Vie-2Q2026_VCB-Investors-Presentation---Upload.pdf?ts=00010101000000",
+        "retrieved_at": "2026-10-10T06:36:41.976953+00:00",
+        "locator": "Tài liệu nhà đầu tư Q2/2026, trang PDF 13; PDF SHA-256 1d5b4a0dccce5f8c79acd35b0e7f65540d7b4380e4926781544eca6c726cd104"
+      }
+    },
+    {
+      "category": "operations",
+      "label": "Chi phí tín dụng / nợ xấu",
+      "value": "Chi phí tín dụng 0,35% lũy kế quy năm; nợ xấu 0,98% (bao gồm trái phiếu doanh nghiệp); bao phủ nợ xấu 182%",
+      "period": "2026H1",
+      "source": {
+        "source_name": "Vietcombank - Tài liệu nhà đầu tư Q2.2026",
+        "url": "https://www.vietcombank.com.vn/-/media/Project/VCB-Sites/VCB/Nha-Dau-tu/Files/KQKD-quy/2026/Vie-2Q2026_VCB-Investors-Presentation---Upload.pdf?ts=00010101000000",
+        "retrieved_at": "2026-10-10T06:36:41.976953+00:00",
+        "locator": "Tài liệu nhà đầu tư Q2/2026, trang PDF 13; PDF SHA-256 1d5b4a0dccce5f8c79acd35b0e7f65540d7b4380e4926781544eca6c726cd104"
+      }
+    },
+    {
+      "category": "operations",
+      "label": "CAR",
+      "value": "11,64% tại 30/06/2026. Nguồn lưu ý cơ sở TT14/2025 từ 2026 khác TT41/2016 năm 2025; không coi chuỗi CAR là đồng nhất phạm vi",
+      "numeric": "11.64",
+      "unit": "%",
+      "period": "2026H1",
+      "source": {
+        "source_name": "Vietcombank - Tài liệu nhà đầu tư Q2.2026",
+        "url": "https://www.vietcombank.com.vn/-/media/Project/VCB-Sites/VCB/Nha-Dau-tu/Files/KQKD-quy/2026/Vie-2Q2026_VCB-Investors-Presentation---Upload.pdf?ts=00010101000000",
+        "retrieved_at": "2026-10-10T06:36:41.976953+00:00",
+        "locator": "Tài liệu nhà đầu tư Q2/2026, trang PDF 6; PDF SHA-256 1d5b4a0dccce5f8c79acd35b0e7f65540d7b4380e4926781544eca6c726cd104"
+      }
+    },
+    {
+      "category": "operations",
+      "label": "Tăng trưởng tín dụng từ đầu năm",
+      "value": "+5,0%; dư nợ tín dụng gồm trái phiếu doanh nghiệp 1.765 nghìn tỷ VND. Không thay cho tăng trưởng cùng kỳ",
+      "period": "2026H1",
+      "source": {
+        "source_name": "Vietcombank - Tài liệu nhà đầu tư Q2.2026",
+        "url": "https://www.vietcombank.com.vn/-/media/Project/VCB-Sites/VCB/Nha-Dau-tu/Files/KQKD-quy/2026/Vie-2Q2026_VCB-Investors-Presentation---Upload.pdf?ts=00010101000000",
+        "retrieved_at": "2026-10-10T06:36:41.976953+00:00",
+        "locator": "Tài liệu nhà đầu tư Q2/2026, trang PDF 6; PDF SHA-256 1d5b4a0dccce5f8c79acd35b0e7f65540d7b4380e4926781544eca6c726cd104"
+      }
+    },
+    {
+      "category": "operations",
+      "label": "ROAA / ROAE công bố",
+      "value": "1,9% / 20,3%, lũy kế 6 tháng 2026 quy năm; không đồng nhất ROA/ROE TTM tự tính",
+      "period": "2026H1",
+      "source": {
+        "source_name": "Vietcombank - Tài liệu nhà đầu tư Q2.2026",
+        "url": "https://www.vietcombank.com.vn/-/media/Project/VCB-Sites/VCB/Nha-Dau-tu/Files/KQKD-quy/2026/Vie-2Q2026_VCB-Investors-Presentation---Upload.pdf?ts=00010101000000",
+        "retrieved_at": "2026-10-10T06:36:41.976953+00:00",
+        "locator": "Tài liệu nhà đầu tư Q2/2026, trang PDF 13; PDF SHA-256 1d5b4a0dccce5f8c79acd35b0e7f65540d7b4380e4926781544eca6c726cd104"
+      }
+    },
+    {
+      "category": "operations",
+      "label": "CIR công bố",
+      "value": "32,2%, lũy kế 6 tháng 2026",
+      "numeric": "32.2",
+      "unit": "%",
+      "period": "2026H1",
+      "source": {
+        "source_name": "Vietcombank - Tài liệu nhà đầu tư Q2.2026",
+        "url": "https://www.vietcombank.com.vn/-/media/Project/VCB-Sites/VCB/Nha-Dau-tu/Files/KQKD-quy/2026/Vie-2Q2026_VCB-Investors-Presentation---Upload.pdf?ts=00010101000000",
+        "retrieved_at": "2026-10-10T06:36:41.976953+00:00",
+        "locator": "Tài liệu nhà đầu tư Q2/2026, trang PDF 13; PDF SHA-256 1d5b4a0dccce5f8c79acd35b0e7f65540d7b4380e4926781544eca6c726cd104"
+      }
+    },
+    {
+      "category": "operations",
+      "label": "NIM năm (%)",
+      "value": "2,6",
+      "numeric": "2.6",
+      "unit": "%",
+      "period": "2025",
+      "source": {
+        "source_name": "Vietcombank - Tài liệu nhà đầu tư Q2.2026",
+        "url": "https://www.vietcombank.com.vn/-/media/Project/VCB-Sites/VCB/Nha-Dau-tu/Files/KQKD-quy/2026/Vie-2Q2026_VCB-Investors-Presentation---Upload.pdf?ts=00010101000000",
+        "retrieved_at": "2026-10-10T06:36:41.976953+00:00",
+        "locator": "Tài liệu nhà đầu tư Q2/2026, trang PDF 13; PDF SHA-256 1d5b4a0dccce5f8c79acd35b0e7f65540d7b4380e4926781544eca6c726cd104"
+      }
+    },
+    {
+      "category": "operations",
+      "label": "Nợ xấu cuối năm (%)",
+      "value": "0,97 (gồm TPDN)",
+      "numeric": "0.97",
+      "unit": "%",
+      "period": "2025",
+      "source": {
+        "source_name": "Vietcombank - Tài liệu nhà đầu tư Q2.2026",
+        "url": "https://www.vietcombank.com.vn/-/media/Project/VCB-Sites/VCB/Nha-Dau-tu/Files/KQKD-quy/2026/Vie-2Q2026_VCB-Investors-Presentation---Upload.pdf?ts=00010101000000",
+        "retrieved_at": "2026-10-10T06:36:41.976953+00:00",
+        "locator": "Tài liệu nhà đầu tư Q2/2026, trang PDF 13; PDF SHA-256 1d5b4a0dccce5f8c79acd35b0e7f65540d7b4380e4926781544eca6c726cd104"
+      }
+    },
+    {
+      "category": "operations",
+      "label": "EPS năm (VND/cp)",
+      "value": "3.854",
+      "numeric": "3854",
+      "unit": "VND/cp",
+      "period": "2025",
+      "source": {
+        "source_name": "Vietcombank BCTC hợp nhất đã kiểm toán 2025",
+        "url": "https://www.vietcombank.com.vn/-/media/Project/VCB-Sites/VCB/Nha-Dau-tu/Files/BC-dinh-ky/BCTC/2025/20260327---VCB---BCTC-hop-nhat-kiem-toan-nam-2025.pdf?ts=00010101000000",
+        "retrieved_at": "2026-10-10T06:36:45.586349+00:00",
+        "locator": "Trang PDF 12, EPS năm 2025; cột 2024 trình bày lại EPS 3.727 VND/cp; PDF SHA-256 295f397de287f84c26dafbfa06f668604aa696a013e236253149d8547d032d1f"
+      }
+    },
+    {
+      "category": "history",
+      "label": "Mạng lưới tại ngày 31/12/2025",
+      "value": "128 chi nhánh; 5 công ty con tại Việt Nam, 3 công ty con tại nước ngoài, 2 liên doanh và 1 liên kết (theo danh sách sở hữu trong BCTC, không đồng nhất phạm vi hợp nhất)",
+      "period": "2025",
+      "source": {
+        "source_name": "Vietcombank BCTC hợp nhất đã kiểm toán 2025",
+        "url": "https://www.vietcombank.com.vn/-/media/Project/VCB-Sites/VCB/Nha-Dau-tu/Files/BC-dinh-ky/BCTC/2025/20260327---VCB---BCTC-hop-nhat-kiem-toan-nam-2025.pdf?ts=00010101000000",
+        "retrieved_at": "2026-10-10T06:36:45.586349+00:00",
+        "locator": "Thuyết minh 1(c)-(e), trang PDF 16; SHA-256 295f397de287f84c26dafbfa06f668604aa696a013e236253149d8547d032d1f"
+      }
+    },
+    {
+      "category": "overview",
+      "label": "Nhân sự cuối năm",
+      "value": "23.457 người tại 31/12/2025; 24.306 người tại 31/12/2024",
+      "period": "2025",
+      "source": {
+        "source_name": "Vietcombank BCTC hợp nhất đã kiểm toán 2025",
+        "url": "https://www.vietcombank.com.vn/-/media/Project/VCB-Sites/VCB/Nha-Dau-tu/Files/BC-dinh-ky/BCTC/2025/20260327---VCB---BCTC-hop-nhat-kiem-toan-nam-2025.pdf?ts=00010101000000",
+        "retrieved_at": "2026-10-10T06:36:45.586349+00:00",
+        "locator": "Thuyết minh 1(c)-(e), trang PDF 18; SHA-256 295f397de287f84c26dafbfa06f668604aa696a013e236253149d8547d032d1f"
+      }
+    },
+    {
+      "category": "subsidiaries",
+      "label": "Cho thuê Tài chính Vietcombank",
+      "value": "100%; cho thuê tài chính",
+      "period": "2025",
+      "source": {
+        "source_name": "Vietcombank BCTC hợp nhất đã kiểm toán 2025",
+        "url": "https://www.vietcombank.com.vn/-/media/Project/VCB-Sites/VCB/Nha-Dau-tu/Files/BC-dinh-ky/BCTC/2025/20260327---VCB---BCTC-hop-nhat-kiem-toan-nam-2025.pdf?ts=00010101000000",
+        "retrieved_at": "2026-10-10T06:36:45.586349+00:00",
+        "locator": "Thuyết minh 1(c)-(e), trang PDF 16; SHA-256 295f397de287f84c26dafbfa06f668604aa696a013e236253149d8547d032d1f"
+      }
+    },
+    {
+      "category": "subsidiaries",
+      "label": "Chứng khoán Vietcombank",
+      "value": "100%; chứng khoán",
+      "period": "2025",
+      "source": {
+        "source_name": "Vietcombank BCTC hợp nhất đã kiểm toán 2025",
+        "url": "https://www.vietcombank.com.vn/-/media/Project/VCB-Sites/VCB/Nha-Dau-tu/Files/BC-dinh-ky/BCTC/2025/20260327---VCB---BCTC-hop-nhat-kiem-toan-nam-2025.pdf?ts=00010101000000",
+        "retrieved_at": "2026-10-10T06:36:45.586349+00:00",
+        "locator": "Thuyết minh 1(c)-(e), trang PDF 16; SHA-256 295f397de287f84c26dafbfa06f668604aa696a013e236253149d8547d032d1f"
+      }
+    },
+    {
+      "category": "subsidiaries",
+      "label": "Tài chính Việt Nam tại Hong Kong (VFC)",
+      "value": "100%; dịch vụ tài chính",
+      "period": "2025",
+      "source": {
+        "source_name": "Vietcombank BCTC hợp nhất đã kiểm toán 2025",
+        "url": "https://www.vietcombank.com.vn/-/media/Project/VCB-Sites/VCB/Nha-Dau-tu/Files/BC-dinh-ky/BCTC/2025/20260327---VCB---BCTC-hop-nhat-kiem-toan-nam-2025.pdf?ts=00010101000000",
+        "retrieved_at": "2026-10-10T06:36:45.586349+00:00",
+        "locator": "Thuyết minh 1(c)-(e), trang PDF 16; SHA-256 295f397de287f84c26dafbfa06f668604aa696a013e236253149d8547d032d1f"
+      }
+    },
+    {
+      "category": "subsidiaries",
+      "label": "Kiều hối Vietcombank",
+      "value": "100%; chuyển tiền kiều hối",
+      "period": "2025",
+      "source": {
+        "source_name": "Vietcombank BCTC hợp nhất đã kiểm toán 2025",
+        "url": "https://www.vietcombank.com.vn/-/media/Project/VCB-Sites/VCB/Nha-Dau-tu/Files/BC-dinh-ky/BCTC/2025/20260327---VCB---BCTC-hop-nhat-kiem-toan-nam-2025.pdf?ts=00010101000000",
+        "retrieved_at": "2026-10-10T06:36:45.586349+00:00",
+        "locator": "Thuyết minh 1(c)-(e), trang PDF 16; SHA-256 295f397de287f84c26dafbfa06f668604aa696a013e236253149d8547d032d1f"
+      }
+    },
+    {
+      "category": "subsidiaries",
+      "label": "Ngân hàng Ngoại thương Việt Nam tại Lào",
+      "value": "100%; ngân hàng",
+      "period": "2025",
+      "source": {
+        "source_name": "Vietcombank BCTC hợp nhất đã kiểm toán 2025",
+        "url": "https://www.vietcombank.com.vn/-/media/Project/VCB-Sites/VCB/Nha-Dau-tu/Files/BC-dinh-ky/BCTC/2025/20260327---VCB---BCTC-hop-nhat-kiem-toan-nam-2025.pdf?ts=00010101000000",
+        "retrieved_at": "2026-10-10T06:36:45.586349+00:00",
+        "locator": "Thuyết minh 1(c)-(e), trang PDF 16; SHA-256 295f397de287f84c26dafbfa06f668604aa696a013e236253149d8547d032d1f"
+      }
+    },
+    {
+      "category": "subsidiaries",
+      "label": "Chuyển tiền Vietcombank",
+      "value": "87,5%; chuyển tiền",
+      "period": "2025",
+      "source": {
+        "source_name": "Vietcombank BCTC hợp nhất đã kiểm toán 2025",
+        "url": "https://www.vietcombank.com.vn/-/media/Project/VCB-Sites/VCB/Nha-Dau-tu/Files/BC-dinh-ky/BCTC/2025/20260327---VCB---BCTC-hop-nhat-kiem-toan-nam-2025.pdf?ts=00010101000000",
+        "retrieved_at": "2026-10-10T06:36:45.586349+00:00",
+        "locator": "Thuyết minh 1(c)-(e), trang PDF 16; SHA-256 295f397de287f84c26dafbfa06f668604aa696a013e236253149d8547d032d1f"
+      }
+    },
+    {
+      "category": "subsidiaries",
+      "label": "Cao ốc Vietcombank 198",
+      "value": "70%; cho thuê văn phòng",
+      "period": "2025",
+      "source": {
+        "source_name": "Vietcombank BCTC hợp nhất đã kiểm toán 2025",
+        "url": "https://www.vietcombank.com.vn/-/media/Project/VCB-Sites/VCB/Nha-Dau-tu/Files/BC-dinh-ky/BCTC/2025/20260327---VCB---BCTC-hop-nhat-kiem-toan-nam-2025.pdf?ts=00010101000000",
+        "retrieved_at": "2026-10-10T06:36:45.586349+00:00",
+        "locator": "Thuyết minh 1(c)-(e), trang PDF 16; SHA-256 295f397de287f84c26dafbfa06f668604aa696a013e236253149d8547d032d1f"
+      }
+    },
+    {
+      "category": "subsidiaries",
+      "label": "Ngân hàng Ngoại thương Công nghệ số",
+      "value": "100%; ngân hàng. Thuyết minh cho biết được miễn hợp nhất BCTC và loại trừ khi tính CAR hợp nhất; không cộng máy móc vào số hợp nhất",
+      "period": "2025",
+      "source": {
+        "source_name": "Vietcombank BCTC hợp nhất đã kiểm toán 2025",
+        "url": "https://www.vietcombank.com.vn/-/media/Project/VCB-Sites/VCB/Nha-Dau-tu/Files/BC-dinh-ky/BCTC/2025/20260327---VCB---BCTC-hop-nhat-kiem-toan-nam-2025.pdf?ts=00010101000000",
+        "retrieved_at": "2026-10-10T06:36:45.586349+00:00",
+        "locator": "Thuyết minh 1(c)-(e), trang PDF 16-17; SHA-256 295f397de287f84c26dafbfa06f668604aa696a013e236253149d8547d032d1f"
+      }
+    },
+    {
+      "category": "subsidiaries",
+      "label": "Liên doanh Vietcombank-Bonday-Benthanh",
+      "value": "52%; cho thuê văn phòng; được trình bày là liên doanh, không tự đổi thành công ty con",
+      "period": "2025",
+      "source": {
+        "source_name": "Vietcombank BCTC hợp nhất đã kiểm toán 2025",
+        "url": "https://www.vietcombank.com.vn/-/media/Project/VCB-Sites/VCB/Nha-Dau-tu/Files/BC-dinh-ky/BCTC/2025/20260327---VCB---BCTC-hop-nhat-kiem-toan-nam-2025.pdf?ts=00010101000000",
+        "retrieved_at": "2026-10-10T06:36:45.586349+00:00",
+        "locator": "Thuyết minh 1(c)-(e), trang PDF 17; SHA-256 295f397de287f84c26dafbfa06f668604aa696a013e236253149d8547d032d1f"
+      }
+    },
+    {
+      "category": "subsidiaries",
+      "label": "Quản lý Quỹ đầu tư Chứng khoán Vietcombank",
+      "value": "51%; quản lý quỹ; được trình bày là liên doanh, không tự đổi thành công ty con",
+      "period": "2025",
+      "source": {
+        "source_name": "Vietcombank BCTC hợp nhất đã kiểm toán 2025",
+        "url": "https://www.vietcombank.com.vn/-/media/Project/VCB-Sites/VCB/Nha-Dau-tu/Files/BC-dinh-ky/BCTC/2025/20260327---VCB---BCTC-hop-nhat-kiem-toan-nam-2025.pdf?ts=00010101000000",
+        "retrieved_at": "2026-10-10T06:36:45.586349+00:00",
+        "locator": "Thuyết minh 1(c)-(e), trang PDF 17; SHA-256 295f397de287f84c26dafbfa06f668604aa696a013e236253149d8547d032d1f"
+      }
+    },
+    {
+      "category": "subsidiaries",
+      "label": "Liên kết Vietcombank-Bonday",
+      "value": "16%; cho thuê văn phòng; phân loại liên kết theo BCTC",
+      "period": "2025",
+      "source": {
+        "source_name": "Vietcombank BCTC hợp nhất đã kiểm toán 2025",
+        "url": "https://www.vietcombank.com.vn/-/media/Project/VCB-Sites/VCB/Nha-Dau-tu/Files/BC-dinh-ky/BCTC/2025/20260327---VCB---BCTC-hop-nhat-kiem-toan-nam-2025.pdf?ts=00010101000000",
+        "retrieved_at": "2026-10-10T06:36:45.586349+00:00",
+        "locator": "Thuyết minh 1(c)-(e), trang PDF 18; SHA-256 295f397de287f84c26dafbfa06f668604aa696a013e236253149d8547d032d1f"
+      }
+    }
+  ]
+}

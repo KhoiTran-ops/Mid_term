@@ -1,0 +1,179 @@
+{
+  "status": "needs_review",
+  "flags": [
+    {
+      "code": "share_total",
+      "path": "domestic.value_chain.cost_structure",
+      "message": "Tổng cơ cấu 101.00% không trong 100% ± 0,5",
+      "severity": "error"
+    },
+    {
+      "code": "share_total",
+      "path": "domestic.segments.1.market_share",
+      "message": "Tổng cơ cấu 99.20% không trong 100% ± 0,5",
+      "severity": "error"
+    },
+    {
+      "code": "unit_mismatch",
+      "path": "companies.profiles.1.series.0",
+      "message": "Chuỗi tiền tệ gán đơn vị sai",
+      "severity": "error"
+    },
+    {
+      "code": "text_number_mismatch",
+      "path": "global.supply_demand.0.notes",
+      "message": "Số trong diễn giải khác bảng/biểu đồ của cùng đối tượng",
+      "severity": "error"
+    },
+    {
+      "code": "target_upside_mismatch",
+      "path": "companies.profiles.1.trading",
+      "message": "Mức chênh giá mục tiêu của nguồn không khớp giá thị trường cùng hồ sơ; không tự sửa",
+      "severity": "error"
+    },
+    {
+      "code": "quote_range",
+      "path": "companies.profiles.1.trading",
+      "message": "Giá hiện tại vượt cao 52 tuần trong hồ sơ; kiểm tra mốc cập nhật/điều chỉnh",
+      "severity": "warning"
+    },
+    {
+      "code": "license_unknown",
+      "path": "meta.attribution",
+      "message": "Chưa xác nhận bản quyền: chỉ xuất bản nháp có watermark",
+      "severity": "warning"
+    }
+  ],
+  "missing_fields": [
+    {
+      "path": "summary.thesis",
+      "reason": "Không sao chép diễn giải của bên thứ ba; chờ biên tập viên có quyền sử dụng"
+    },
+    {
+      "path": "global.supply_demand.1.notes",
+      "reason": "Nguồn chưa cung cấp số liệu được xác nhận cho đối tượng và kỳ này"
+    },
+    {
+      "path": "global.supply_demand.2.capacity",
+      "reason": "Mẫu nguồn không công bố công suất PVC"
+    },
+    {
+      "path": "global.supply_demand.2.notes",
+      "reason": "Nguồn chưa cung cấp số liệu được xác nhận cho đối tượng và kỳ này"
+    },
+    {
+      "path": "domestic.segments.2.share_pct",
+      "reason": "Nguồn chưa cung cấp số liệu được xác nhận cho đối tượng và kỳ này"
+    },
+    {
+      "path": "companies.table.rows.16.net_income_yoy",
+      "reason": "Nguồn chưa cung cấp số liệu được xác nhận cho đối tượng và kỳ này"
+    },
+    {
+      "path": "companies.profiles.2.trading.target_price",
+      "reason": "Mẫu không công bố giá mục tiêu AAA"
+    },
+    {
+      "path": "companies.profiles.2.trading.target_upside",
+      "reason": "Nguồn chưa cung cấp số liệu được xác nhận cho đối tượng và kỳ này"
+    },
+    {
+      "path": "disclaimer.holdings_disclosure",
+      "reason": "Nguồn chưa cung cấp số liệu được xác nhận cho đối tượng và kỳ này"
+    },
+    {
+      "path": "meta.sources.0.published_at",
+      "reason": "Mẫu chỉ nêu tháng báo cáo; 12/12/2025 là ngày giao dịch, không tự gán ngày xuất bản"
+    },
+    {
+      "path": "meta.attribution.published_at",
+      "reason": "Mẫu chỉ nêu tháng 12/2025; không có ngày xuất bản chính xác"
+    }
+  ],
+  "industry": "plastics",
+  "period": "2025-12",
+  "checked_at": "2026-10-11T20:54:49.667427+07:00",
+  "pages": [
+    {
+      "number": 1,
+      "partial": "01_summary",
+      "title": "Tóm tắt ngành"
+    },
+    {
+      "number": 2,
+      "partial": "02_global_overview",
+      "title": "Thế giới: tổng quan"
+    },
+    {
+      "number": 3,
+      "partial": "03_global_value_chain",
+      "title": "Thế giới: chuỗi giá trị"
+    },
+    {
+      "number": 4,
+      "partial": "04_global_supply",
+      "title": "Thế giới: cung - cầu và chính sách"
+    },
+    {
+      "number": 5,
+      "partial": "05_global_segments",
+      "title": "Thế giới: các mảng chủ lực"
+    },
+    {
+      "number": 6,
+      "partial": "06_domestic_overview",
+      "title": "Việt Nam: tổng quan"
+    },
+    {
+      "number": 7,
+      "partial": "07_domestic_competition",
+      "title": "Việt Nam: cạnh tranh và chuỗi giá trị"
+    },
+    {
+      "number": 8,
+      "partial": "08_domestic_regulations",
+      "title": "Việt Nam: pháp lý"
+    },
+    {
+      "number": 9,
+      "partial": "09_domestic_segment",
+      "title": "Nhựa bao bì"
+    },
+    {
+      "number": 10,
+      "partial": "10_domestic_segment",
+      "title": "Nhựa xây dựng · ống nhựa"
+    },
+    {
+      "number": 11,
+      "partial": "11_domestic_segment",
+      "title": "Nhựa xây dựng · sàn SPC"
+    },
+    {
+      "number": 12,
+      "partial": "12_outlook",
+      "title": "Triển vọng và dự phóng"
+    },
+    {
+      "number": 13,
+      "partial": "13_views_risks",
+      "title": "Quan điểm của nguồn và rủi ro"
+    },
+    {
+      "number": 14,
+      "partial": "14_companies",
+      "title": "Doanh nghiệp niêm yết"
+    },
+    {
+      "number": 15,
+      "partial": "15_profiles",
+      "title": "Hồ sơ doanh nghiệp nổi bật"
+    },
+    {
+      "number": 16,
+      "partial": "16_profiles",
+      "title": "Hồ sơ doanh nghiệp nổi bật"
+    }
+  ],
+  "overflow": []
+}

@@ -65,9 +65,13 @@ Tất cả tác vụ dùng cùng `run.ps1`. Mỗi lệnh dưới đây chủ đ�
 .\run.ps1 data market --timeframes 1D 1m --foreign
 .\run.ps1 data financials --exchanges HOSE --quarters 8
 .\run.ps1 data financials --symbols HPG --refresh-financials
+.\run.ps1 data daily
+.\run.ps1 data daily --date 2026-10-09
+.\run.ps1 data import-annual --xlsx var/imports/cafef-indicators-2010-2024.xlsx
 
 # Danh mục ngành và một snapshot thống kê ngành từ bảng giá DNSE
 .\run.ps1 industries update
+.\run.ps1 industries update --catalog-only
 .\run.ps1 industries status
 
 # Giữ thu thập snapshot mỗi phút; Ctrl+C để dừng
@@ -79,10 +83,19 @@ Tất cả tác vụ dùng cùng `run.ps1`. Mỗi lệnh dưới đây chủ đ�
 .\run.ps1 news watch
 ```
 
-`update` cập nhật danh mục trước rồi chạy hai nguồn đồng thời. Khi chạy riêng,
-chạy `market` trước `financials` để nhận mã mới. Không chạy hai lượt cập nhật
-cùng nguồn đồng thời. `--database` là tùy chọn chung của nhóm `data`, đặt trước
+`update` cập nhật danh mục trước rồi chạy hai nguồn đồng thời. `data financials`
+tự dùng danh mục doanh nghiệp/ngành DNSE công khai và không cần khóa DNSE.
+`data market` và `data update` cần đủ `DNSE_API_KEY`/`DNSE_API_SECRET` trong `.env`.
+Khi chưa có secret, `data daily` vẫn tải EOD công khai CafeF cho ngày hiện tại
+theo múi giờ Việt Nam; có thể truyền `--date YYYY-MM-DD` để bù một ngày cụ thể.
+Không chạy hai lượt cập nhật cùng nguồn đồng thời. `--database` là tùy chọn chung của nhóm `data`, đặt trước
 `market`, `financials`, `status` hoặc `export`.
+
+`industries update --catalog-only` tải toàn bộ doanh nghiệp niêm yết và GICS cấp 2,
+đồng thời đồng bộ danh mục cho CafeF nhưng bỏ qua snapshot MQTT. File năm 2010–2024
+từ dự án Crawl-CafeF-Data được nhập vào `annual_financial_facts`; chương trình chuẩn hóa
+header lệch giữa sheet, bỏ dòng trùng và ghi xung đột vào `data_anomalies`. Chuỗi năm này
+không bị trộn vào `financial_facts` theo quý.
 
 `--exchanges HOSE` chỉ giới hạn mã được tải, vẫn giữ danh mục đầy đủ của các sàn.
 8 quý là 8 kỳ **đã công bố gần nhất của từng công ty**, có thể khác nhau giữa các mã;
@@ -100,7 +113,8 @@ Nguồn và lịch tin ở `config/news_sources.json`; danh sách gợi ý mã/n
 `config/news_entities.json`. RSS cập nhật theo lịch 10–360 phút tùy nguồn;
 trang tin làm mới danh sách mỗi phút. Đây là polling, không phải tin đẩy ngay tức thời.
 
-Thông tin DNSE giữ tại `.env`. Không chia sẻ tệp này. Cơ sở dữ liệu, phản hồi gốc,
+Sao chép `.env.example` thành `.env` rồi điền hai biến DNSE nếu cần dữ liệu giá.
+Không dán khóa vào chat và không commit `.env`. Cơ sở dữ liệu, phản hồi gốc,
 cấu hình bí mật và PDF đầu ra được loại khỏi Git. `.env.example` chỉ chứa mẫu cấu hình.
 
 ## Đưa PDF có sẵn vào thư viện
@@ -166,10 +180,13 @@ Xem [kiến trúc](docs/ARCHITECTURE.md), [đối chiếu module](docs/RESTRUCTU
 # Chọn kỳ cuối và doanh nghiệp so sánh cùng nhóm/mô hình
 .\run.ps1 reports generate --kind stock --symbol SSI --period 2026Q2 --peers HCM VCI VND
 
-# Bổ sung chuỗi vĩ mô năm từ nguồn World Bank chính thức
+# Bổ sung chuỗi vĩ mô năm từ World Bank cho Việt Nam và 7 nền kinh tế so sánh
 .\run.ps1 macro update
 .\run.ps1 macro status
 ```
+
+Báo cáo vĩ mô hiện chỉ dùng chuỗi Việt Nam; dữ liệu Hoa Kỳ, Trung Quốc, Nhật Bản,
+Hàn Quốc, Singapore, Thái Lan và Indonesia được giữ trong kho để đối chiếu.
 
 PDF được đăng ký tự động trong kho hiện có; mở web để xem. Không tải lại toàn thị trường
 khi tạo báo cáo. Tác vụ web chạy trong hàng đợi có giới hạn; đóng hộp tạo không hủy tác vụ.
@@ -210,8 +227,9 @@ DCF, NAV, NIM/NPL và an toàn vốn cần thêm đầu vào riêng, chưa đư�
 - DNSE giữ OHLCV, thời gian nguồn và trạng thái nến; bộ thu thập hỗ trợ danh mục,
   VNINDEX và dữ liệu nước ngoài. Nến ngày đang diễn ra có thể chưa được REST công bố.
   `requested_until` là mốc yêu cầu; xem inventory để biết thời điểm dữ liệu thực.
-- Nến phút cập nhật ngày hiện tại, chưa tự lấp ngày phút còn thiếu trong lịch sử.
-  `--foreign` lấy snapshot ngày hiện tại và giữ lịch sử đã có.
+- Nến phút cập nhật ngày hiện tại; cuối tuần lấy thứ Sáu gần nhất. Chưa tự lấp
+  mọi ngày phút còn thiếu trong lịch sử, và chưa tự nhận diện ngày nghỉ lễ.
+  `--foreign` lấy hết các trang snapshot của phiên này và giữ lịch sử đã có.
 - CafeF giữ tối đa 8 kỳ quý gần nhất đã công bố của từng doanh nghiệp.
   Metadata kỳ báo cáo không bảo đảm mọi bảng đủ chỉ tiêu. Kiểm tra
   `outputs/coverage.csv` và `outputs/DATA_STATUS.md` trước khi phân tích.
@@ -248,3 +266,60 @@ Mã nguồn tách theo giấy phép MIT đi kèm trong `LICENSE`.
 
 Chi tiết phần chuyển tin và nguồn ngành: [DATA_NEWS.md](docs/DATA_NEWS.md).
 Kết quả kiểm tra: [VALIDATION.md](docs/VALIDATION.md).
+
+## Tải lại toàn bộ dữ liệu và kiểm tra DNSE
+
+Các tác vụ hữu hạn dưới `tasks/` dùng cùng `.env`, không in khóa ra nhật ký:
+
+```powershell
+python tasks/probe_dnse_capabilities.py
+python tasks/refresh_all_data.py
+python tasks/refresh_market_all.py
+# Tiếp tục lượt BCTC đã bị gián đoạn (dùng đúng thư mục manifest):
+python tasks/refresh_all_data.py --resume var/runs/full-refresh-YYYYMMDDTHHMMSS
+```
+
+Lượt BCTC sao lưu SQLite trước khi tải lại 8 quý đã công bố, ưu tiên 28 mã ngân hàng.
+Lượt DNSE ưu tiên ngân hàng, tải lịch sử nến ngày/VNINDEX, nến phút và nước ngoài
+của phiên gần nhất. Hai nguồn có thể chạy đồng thời; mỗi nguồn có khóa collector.
+Tiến độ ở `outputs/FULL_REFRESH_PROGRESS.json` và `outputs/MARKET_REFRESH_PROGRESS.json`;
+manifest và phản hồi gốc ở `var/runs/`. Cả hai lượt tạo lại báo cáo ngành ngân hàng
+sau khi hoàn tất nhóm ưu tiên; dữ liệu thay đổi tạo phiên bản mới, không xóa bản cũ.
+
+`outputs/coverage.csv` phản ánh độ phủ thực tế, không chỉ số request thành công.
+Không coi ô trống là 0; không coi metadata 8 quý là đã đủ cả ba bảng BCTC.
+Trong lúc lượt BCTC chạy, tạo báo cáo dùng dữ liệu đã ghi thành công; mã chưa tải
+sẽ có thông báo chờ, không khởi động thêm collector CafeF cạnh tranh.
+
+## Báo cáo vĩ mô theo bản nội dung được duyệt
+
+Ngày chốt `2026-10-09` có bản tham chiếu tại
+`config/report_content/macro-2026-10-09.md`, được dàn thành PDF riêng 8 trang.
+Chọn Vĩ mô và đúng ngày này trên web, hoặc chạy:
+
+```powershell
+python tasks/design_macro_from_markdown.py
+```
+
+PDF xuất thêm tại `output/pdf/bao-cao-vi-mo-viet-nam-10-2026-ban-markdown.pdf`;
+bản đối chiếu thay đổi ở `output/pdf/doi-chieu-ban-markdown-vi-mo.md`.
+Đầu vào và SHA-256 của Markdown được lưu trong hồ sơ phân tích. Agriseco và
+tin tức được ghi là dẫn lại từ tài liệu người dùng, chưa kiểm chứng độc lập;
+không tạo URL nguồn giả và không trộn dữ liệu live vào bản có ngày chốt này.
+Ngày khác vẫn dùng bộ tạo vĩ mô từ kho dữ liệu, không tái sử dụng snapshot cũ.
+
+## Khuôn báo cáo doanh nghiệp có định giá
+
+Các báo cáo cổ phiếu qua web/CLI dùng `config/report_content/company-template.md`:
+bìa kết luận trước, đủ mục I–VIII và 7.1–7.10. Xuất bản kiểm tra cho một mã:
+
+```powershell
+python tasks/design_company_report.py --symbol VCB --as-of 2026-10-09
+```
+
+Giá mục tiêu/khuyến nghị chỉ xuất sau kiểm chứng; không có giả định mặc định.
+Hỗ trợ FCFF, FCFE, NAV, P/B theo ROE, P/E/P/B kịch bản và tổng hợp có trọng số nhập rõ.
+Đầu vào, đơn vị, công thức và kiểm tra phát hành: [hướng dẫn định giá](config/valuation/README.md).
+Thông tin cổ đông, cơ cấu doanh thu và chỉ tiêu công bố:
+[hồ sơ doanh nghiệp có nguồn](config/company_profiles/README.md).
+Ô thiếu không điền 0; nguồn và dấu SHA-256 của khuôn được lưu trong hồ sơ phân tích.

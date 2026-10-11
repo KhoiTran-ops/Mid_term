@@ -1,0 +1,8 @@
+<div class="page-title"><div class="kicker">HỒ SƠ DOANH NGHIỆP</div><h1>Tổng quan {{ d.meta.ticker }}</h1></div>
+<div class="hero"><div><div class="ticker">{{ d.meta.ticker }}</div><div class="company">{{ d.meta.company_name|txt }}</div><p class="small muted">{{ d.meta.exchange|txt }} · {{ d.meta.sector|txt }}</p><span class="badge">BÁO CÁO DỮ KIỆN</span></div><div class="right"><div class="unit">GIÁ THAM CHIẾU / VND</div><div class="price mono">{{ d.price.close|num(0) }}</div><div class="unit">{{ d.meta.price_date|txt }}</div></div></div>
+<div class="table-card"><table><tr><th>Hồ sơ / nội dung công bố</th><th>Thông tin</th><th>Kỳ / cơ sở</th></tr>{% for r in v.profile_rows %}<tr><td>{{ r.label|txt }}</td><td>{{ r.value|txt }}</td><td class="small">{{ r.period|txt }}</td></tr>{% else %}<tr><td colspan="3">Chưa có</td></tr>{% endfor %}</table></div>
+{% if v.profile_omitted %}<p class="ellipsis-note">{{ v.profile_omitted }} dòng hồ sơ bổ sung được giữ trong JSON đầu vào.</p>{% endif %}
+<div class="grid three">{{ kpi('Biến động 3 tháng',d.price.change_3m,'%',true,derived=true) }}{{ kpi('Biến động 6 tháng',d.price.change_6m,'%',true,derived=true) }}{{ kpi('Biến động 12 tháng',d.price.change_12m,'%',true,derived=true) }}</div>
+<div class="grid three">{{ kpi('FA hiệu dụng',d.scores.fa,'/100') }}{{ kpi('Kỹ thuật / TA',d.scores.ta,'/100') }}{{ kpi('Điểm thống nhất',d.scores.unified,'/100') }}</div>
+{{ callout('Phạm vi dữ liệu',d.valuation.period,'warn') }}
+<p class="small muted">FA thô: {{ d.scores.get('fa_raw')|num }}; độ phủ: {{ d.scores.fa_coverage|num }}{% if d.scores.fa_coverage is not none %}%{% endif %}. Điểm thống nhất dùng FA hiệu dụng, không dùng FA thô.</p>

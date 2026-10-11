@@ -1,0 +1,16 @@
+name: Independent macro report
+on: [push, pull_request, workflow_dispatch]
+jobs:
+  macro:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install report dependencies and offline Chromium
+        run: |
+          python -m pip install -r requirements.txt pytest
+          python -m playwright install --with-deps chromium
+      - name: JSON, sources, quality gates and PDF layout regressions
+        run: python -m pytest -q tests/test_macro_stocklens.py tests/test_macro_reference.py

@@ -7,7 +7,7 @@ from pathlib import Path
 import threading
 
 from stock_reports.data_sources.news.adapters import collect_source
-from stock_reports.data_sources.news.normalize import normalize_article
+from stock_reports.data_sources.news.normalize import normalize_article, CompanyMatcher
 
 
 def load_news_config(root: Path):
@@ -27,6 +27,7 @@ class NewsCollector:
     def __init__(self, store, entities, *, adapter=collect_source, clock=lambda: datetime.now(UTC),
                  concurrency=4):
         self.store, self.entities, self.adapter, self.clock = store, entities, adapter, clock
+        self.company_matcher = CompanyMatcher(entities['companies'])
         self.concurrency = concurrency
         self.lock = threading.Lock()
 
@@ -52,7 +53,7 @@ class NewsCollector:
                 try:
                     result = self.adapter(config, state)
                     if not result.get('not_modified'):
-                        rows = [normalize_article(r, config, self.entities) for r in result.get('articles', [])]
+                        rows = [normalize_article(r, config, self.entities, company_matcher=self.company_matcher) for r in result.get('articles', [])]
                         items = [r for r in rows if r]
                         if rows and not items:
                             raise ValueError('No valid article URLs or titles')

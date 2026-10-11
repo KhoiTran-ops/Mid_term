@@ -1,6 +1,6 @@
 # Phương pháp phân tích và kiểm chứng đầu vào
 
-Phiên bản 09/10/2026; công thức `financials-1.0`, định dạng `research-a4-1.1`.
+Phiên bản 09/10/2026; công thức `financials-1.0`, định dạng `research-a4-1.2`.
 Quy tắc người dùng và mẫu SSI là đầu vào thiết kế. Không chép số liệu, giá mục tiêu
 hoặc khuyến nghị của mẫu vào báo cáo mới. Chưa tự tải PDF BCTC gốc/thuyết minh cho mọi mã.
 
@@ -88,6 +88,9 @@ Mỗi case có `name` duy nhất (`bear`, `base`, `bull`), `multiple` dương,
 - Profile tài chính chỉ hỗ trợ P/B ở phiên bản này. P/E không nhận forecast_shares
   riêng, phải dùng EPS đã xét pha loãng. EPS không dương thì không dùng P/E.
 - Thiếu hồ sơ/đơn vị/cổ phiếu/EPS hoặc kịch bản thì không tạo giá mục tiêu.
+- Báo cáo luôn có bảng mức độ sẵn sàng định giá. Khi hồ sơ có đủ đầu vào đã kiểm chứng,
+  báo cáo trình bày giá chuẩn hóa cùng P/B và/hoặc P/E hiện tại ngay cả khi chưa nhập
+  ba kịch bản; các bội số mô tả này không được gọi là giá mục tiêu hay khuyến nghị.
 - Chưa đối chiếu thuyết minh thì chỉ đánh giá theo dõi. Sau kiểm chứng:
   upside cơ sở ≥15% là tích cực, ≤−15% là thận trọng, còn lại trung lập.
   Ngưỡng này là quy tắc phiên bản 1 do phần mềm đặt, không phải chuẩn cơ quan quản lý,

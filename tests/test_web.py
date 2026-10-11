@@ -29,6 +29,14 @@ def test_web_empty_state_and_filters_pdf_and_no_private_files(tmp_path):
     assert client.get(f'/api/reports/{record.id}/pdf').headers['content-type'] == 'application/pdf'
     assert client.get('/.env').status_code == 404
     assert client.get('/var/market_data.db').status_code == 404
+    assert client.get('/api/data-status').json()=={'status':'not_started'}
+    settings.outputs_directory.mkdir(parents=True,exist_ok=True)
+    (settings.outputs_directory/'FINANCIAL_COMPLETE_PROGRESS.json').write_text(
+        '{"status":"running","completed":2,"total":10,"secret":"must-not-appear","backup":"private-path"}',encoding='utf-8')
+    assert client.get('/api/data-status').json()=={'status':'running','completed':2,'total':10}
+    (settings.outputs_directory/'FINANCIAL_COMPLETE_PROGRESS.json').write_text(
+        '{"status":"running","updated_at":"2020-01-01T00:00:00Z"}',encoding='utf-8')
+    assert client.get('/api/data-status').json()['status']=='stale'
     assert client.get('/api/reports/not-a-uuid/pdf').status_code == 404
     with sqlite3.connect(settings.reports_database) as db:
         db.execute('UPDATE reports SET pdf_filename=? WHERE id=?',('../../.env',record.id))

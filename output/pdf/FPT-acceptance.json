@@ -1,0 +1,217 @@
+{
+  "ticker": "FPT",
+  "price_date": "2026-10-09",
+  "tolerance": 0.02,
+  "all_targets_met": false,
+  "counts": {
+    "pass": 24,
+    "different_basis": 2,
+    "unavailable": 3,
+    "fail": 0
+  },
+  "rows": [
+    {
+      "field": "price.close",
+      "expected": 57900,
+      "actual": 57900.0,
+      "status": "pass",
+      "reason": null
+    },
+    {
+      "field": "price.change_3m",
+      "expected": -11.7,
+      "actual": -11.67048054919908,
+      "status": "pass",
+      "reason": null
+    },
+    {
+      "field": "price.change_6m",
+      "expected": -17.5,
+      "actual": -17.533114940891615,
+      "status": "pass",
+      "reason": null
+    },
+    {
+      "field": "price.change_12m",
+      "expected": -30.7,
+      "actual": -30.74162679425837,
+      "status": "pass",
+      "reason": null
+    },
+    {
+      "field": "technical.ma50",
+      "expected": 64108,
+      "actual": 64108.6,
+      "status": "pass",
+      "reason": null
+    },
+    {
+      "field": "technical.ma200",
+      "expected": 70867,
+      "actual": 70866.8,
+      "status": "pass",
+      "reason": null
+    },
+    {
+      "field": "technical.rsi14",
+      "expected": 23.7,
+      "actual": 23.662726464128042,
+      "status": "pass",
+      "reason": null
+    },
+    {
+      "field": "technical.macd_hist",
+      "expected": -737.5,
+      "actual": -737.4407377571112,
+      "status": "pass",
+      "reason": null
+    },
+    {
+      "field": "technical.turnover_ma20",
+      "expected": 353300000000.0,
+      "actual": 367955150595.0,
+      "status": "different_basis",
+      "reason": "X10 chưa điều chỉnh KL thưởng: 353283553950.0; hiện hành điều chỉnh ×1,1 theo yêu cầu mục 1."
+    },
+    {
+      "field": "technical.volume_vs_ma20",
+      "expected": 1.99,
+      "actual": 1.9000377759383469,
+      "status": "different_basis",
+      "reason": "X10 chưa điều chỉnh KL thưởng: 1.9768228780035941; hiện hành điều chỉnh ×1,1 theo yêu cầu mục 1."
+    },
+    {
+      "field": "scores.fa_raw",
+      "expected": 75.9,
+      "actual": 75.91340250029361,
+      "status": "pass",
+      "reason": null
+    },
+    {
+      "field": "scores.fa",
+      "expected": 70.7,
+      "actual": 70.73072200023489,
+      "status": "pass",
+      "reason": null
+    },
+    {
+      "field": "scores.fa_coverage",
+      "expected": 80,
+      "actual": 80.0,
+      "status": "pass",
+      "reason": null
+    },
+    {
+      "field": "scores.ta",
+      "expected": 5,
+      "actual": 5.0,
+      "status": "pass",
+      "reason": null
+    },
+    {
+      "field": "scores.unified",
+      "expected": 18.1,
+      "actual": 18.1,
+      "status": "pass",
+      "reason": null
+    },
+    {
+      "field": "financials.ratios.roe.3",
+      "expected": 28.3,
+      "actual": 28.266139939519363,
+      "status": "pass",
+      "reason": null
+    },
+    {
+      "field": "financials.ratios.roa.3",
+      "expected": 14,
+      "actual": 14.02797559738413,
+      "status": "pass",
+      "reason": null
+    },
+    {
+      "field": "financials.ratios.debt_to_equity",
+      "expected": 0.48,
+      "actual": 0.48170128595586226,
+      "status": "pass",
+      "reason": null
+    },
+    {
+      "field": "financials.ratios.current_ratio",
+      "expected": 1.4,
+      "actual": 1.4000611210004246,
+      "status": "pass",
+      "reason": null
+    },
+    {
+      "field": "financials.ratios.ocf_to_ni.3",
+      "expected": 0.9,
+      "actual": 0.902398290255432,
+      "status": "pass",
+      "reason": null
+    },
+    {
+      "field": "valuation.eps_ttm",
+      "expected": 5303,
+      "actual": 5302.648868629729,
+      "status": "pass",
+      "reason": null
+    },
+    {
+      "field": "valuation.pe_ttm",
+      "expected": 10.92,
+      "actual": 10.9190710971896,
+      "status": "pass",
+      "reason": null
+    },
+    {
+      "field": "valuation.pb",
+      "expected": 2.74,
+      "actual": 2.7397646450524373,
+      "status": "pass",
+      "reason": null
+    },
+    {
+      "field": "valuation.peer_median_pe",
+      "expected": 10.82,
+      "actual": null,
+      "status": "unavailable",
+      "reason": "Không có snapshot cùng ngày gồm từng thành viên, P/E và phân loại sector/industry; PDF tổng hợp không thay thế dữ liệu gốc."
+    },
+    {
+      "field": "valuation.peer_count",
+      "expected": 23,
+      "actual": null,
+      "status": "unavailable",
+      "reason": "Không có snapshot cùng ngày gồm từng thành viên, P/E và phân loại sector/industry; PDF tổng hợp không thay thế dữ liệu gốc."
+    },
+    {
+      "field": "valuation.peer_snapshot_date",
+      "expected": "2026-10-02",
+      "actual": null,
+      "status": "unavailable",
+      "reason": "Không có snapshot cùng ngày gồm từng thành viên, P/E và phân loại sector/industry; PDF tổng hợp không thay thế dữ liệu gốc."
+    },
+    {
+      "field": "annual_report.total_matches",
+      "expected": 1141,
+      "actual": 1141,
+      "status": "pass",
+      "reason": null
+    },
+    {
+      "field": "annual_report.distinct_keywords",
+      "expected": 7,
+      "actual": 7,
+      "status": "pass",
+      "reason": null
+    },
+    {
+      "field": "annual_report.density_per_10000",
+      "expected": 97.38,
+      "actual": 97.37904430277116,
+      "status": "pass",
+      "reason": null
+    }
+  ]
+}

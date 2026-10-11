@@ -1,0 +1,7 @@
+{% macro kpi(label,path,unit='%',polarity='higher_good',places=2,signed=true) -%}
+<div class="card kpi"><div class="label">{{ label }}</div><div class="value {{ tone(path,polarity) }}">{{ cell(path,places,signed) }}</div><div class="unit">{{ unit }}</div>{% if missing(path) %}<div class="reason">{{ reason(path) }}</div>{% endif %}</div>
+{%- endmacro %}
+{% macro note(value,title='Nhận định') -%}{% if value %}<div class="callout"><h3>{{ title }}</h3>{{ value }}</div>{% endif %}{%- endmacro %}
+{% macro plot(key,title,groups,unit) -%}<div class="card chart-card"><h2>{{ title }}</h2>{% if charts[key] %}{{ charts[key]|safe }}{% else %}<div class="empty">Chưa có chuỗi số liệu<small>{{ reason(chart_paths[key]) }}</small></div>{% endif %}<div class="source">Đơn vị: {{ unit }} · Nguồn: {{ sources(groups) }}, tổng hợp</div></div>{%- endmacro %}
+{% macro progress(label,value,unit='%') -%}<div class="progress-row"><div class="progress-label"><span>{{ label }}</span><span class="mono">{{ value|num(1) }} {{ unit if value is not none else '' }}</span></div>{% if value is not none %}<div class="progress-track"><div class="progress-fill" style="width:{{ value|clamp }}%"></div></div>{% else %}<div class="reason">Chưa có số liệu nguồn được xác nhận</div>{% endif %}</div>{%- endmacro %}
+{% macro omitted(count) -%}{% if count %}<p class="small muted">Còn {{ count }} dòng · xem thêm trong JSON.</p>{% endif %}{%- endmacro %}

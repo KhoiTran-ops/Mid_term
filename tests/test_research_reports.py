@@ -27,15 +27,42 @@ def review():
         shares_outstanding=100,parent_equity_vnd=1000000,eps_ttm_vnd=2000)
 
 
+def test_report_does_not_start_competing_financial_collector(tmp_path,monkeypatch):
+    from stock_reports.core.locking import ProcessLock
+    from stock_reports.storage.market import MarketStore
+    from stock_reports.data_sources.dnse.market import DNSEInstrument
+    from stock_reports.pipeline.research_reports import ensure_financials
+    settings=Settings.from_root(tmp_path)
+    store=MarketStore(settings.market_database); store.initialize()
+    store.replace_instruments([DNSEInstrument('VCB','HOSE','',1)],source='test')
+    lock=ProcessLock(tmp_path/'var/cafef-collector.lock')
+    assert lock.acquire()
+    monkeypatch.setattr('stock_reports.pipeline.research_reports.sync_financial_history',
+        lambda *a,**kw:pytest.fail('Concurrent collector must not be called'))
+    try:
+        with pytest.raises(ValueError,match='Đang tải lại BCTC'):
+            ensure_financials(settings,['VCB'])
+        store.replace_financial_facts('VCB','BSheet',[
+            {'row_order':0,'item_name':'Tổng tài sản có','values':{(2026,2):('100',100)}}
+        ],source=str(SOURCE.url))
+        assert ensure_financials(settings,['VCB']) is None
+    finally:
+        lock.release()
+
+
 def test_pb_has_consistent_currency_dilution_and_requires_notes():
     data=FinancialData('SSI',[(2026,2)],{},review(),[])
     result=evaluate_scenarios(data,'securities',20,scenarios())
     assert result['current']==20000
     base=next(r for r in result['rows'] if r['name']=='base')
     assert base['target']==22000 and base['upside']==10
-    assert result['assessment']=='Trung lập theo kịch bản cơ sở'
+    assert result['assessment']=='TRUNG LẬP'
+    snapshot=evaluate_scenarios(data,'securities',20,None)
+    assert {m['label'] for m in snapshot['metrics']}=={'Giá tham chiếu chuẩn hóa','P/B hiện tại','BVPS hiện tại','P/E hiện tại','EPS TTM'}
+    assert snapshot['rows']==[] and snapshot['current']==20000
     data.review=data.review.model_copy(update={'notes_reviewed':False})
-    assert 'thuyết minh' in evaluate_scenarios(data,'securities',20,scenarios())['assessment']
+    unchecked=evaluate_scenarios(data,'securities',20,scenarios())
+    assert unchecked['assessment']=='Chưa đủ cơ sở khuyến nghị' and 'Thuyết minh' in unchecked['reason']
     cases=scenarios().model_dump()
     cases['cases'][1]['forecast_shares']=200
     assert evaluate_scenarios(data,'securities',20,Scenarios.model_validate(cases))['rows'][1]['target']==11000
@@ -89,6 +116,37 @@ def test_pdf_publication_reuses_identical_analysis_and_records_provenance(tmp_pa
     assert any('/FontFile2' in font.get_object().get('/FontDescriptor',{}).get_object() for page in reader.pages for font in page['/Resources']['/Font'].values() if font.get_object().get('/FontDescriptor'))
 
 
+def test_generation_recovers_missing_analysis_without_duplicate_pdf(tmp_path,monkeypatch):
+    settings=Settings.from_root(tmp_path)
+    monkeypatch.setattr('stock_reports.pipeline.research_reports.build_document',lambda *a,**k:macro_document())
+    monkeypatch.setattr('stock_reports.pipeline.research_reports.ResearchRepository.macro',lambda self:[])
+    monkeypatch.setattr('stock_reports.pipeline.research_reports.ResearchRepository.snapshots',lambda self:[])
+    request=GenerationRequest(kind='macro')
+    first=generate_reports(settings,request)[0]
+    (settings.outputs_directory/'analysis'/f"{first['report']['id']}.json").unlink()
+    second=generate_reports(settings,request)[0]
+    assert second['reused'] and second['report']['id']==first['report']['id']
+    assert ReportCatalog(settings.reports_database,settings.reports_directory).list_reports().total==1
+    assert report_analysis(settings,first['report']['id']) is not None
+
+
+def test_four_macro_charts_are_split_two_per_page_and_formula_version_is_current(tmp_path):
+    from stock_reports.reports.render import ResearchPdfRenderer
+    from stock_reports.analysis.financials import FORMULA_VERSION
+    doc=ReportDocument(kind='industry',title='Ngân hàng',industry_id='ngan-hang',industry_name='Ngân hàng',as_of=date(2026,10,9),
+        sections=(AnalysisSection(kind=SectionKind.INDUSTRY,title='Ngành',findings=(Finding(text='Dữ liệu thử ngành',is_assumption=True),)),
+            AnalysisSection(kind=SectionKind.MACRO,title='Vĩ mô',findings=(Finding(text='Dữ liệu thử biểu đồ',is_assumption=True),),blocks=tuple(
+            ReportBlock(kind='chart',title=f'CHART_{i}',labels=('2024','2025'),values=(1,2))
+                for i in range(4))),
+            AnalysisSection(kind=SectionKind.RISKS,title='Rủi ro',findings=(Finding(text='Dữ liệu thử rủi ro',is_assumption=True),))))
+    path=ResearchPdfRenderer().render(doc,tmp_path/'report.pdf')
+    texts=[p.extract_text() for p in PdfReader(path).pages]
+    chart_pages=[t for t in texts if 'CHART_' in t]
+    assert len(chart_pages)==2
+    assert all(sum(f'CHART_{i}' in t for i in range(4))==2 for t in chart_pages)
+    assert FORMULA_VERSION in ''.join(texts)
+
+
 def test_local_web_generation_rejects_foreign_origin_and_reports_errors(tmp_path,monkeypatch):
     monkeypatch.setenv('NEWS_AUTO_UPDATE','false')
     settings=Settings.from_root(tmp_path)
@@ -137,3 +195,19 @@ def test_macro_partial_failure_preserves_old_series_without_partial_invalid_rows
     saved=json.loads((folder/'worldbank.json').read_text(encoding='utf-8'))
     assert len(result['issues'])==2 and result['observations']==4
     assert [r for r in saved['observations'] if r['metric'] in {old[0]['metric'],old[1]['metric']}]==old
+
+
+def test_repository_uses_cafef_eod_when_dnse_daily_bars_are_missing(tmp_path):
+    from stock_reports.analysis.repository import ResearchRepository
+    from stock_reports.storage.market import MarketStore
+    settings=Settings.from_root(tmp_path)
+    store=MarketStore(settings.market_database);store.initialize()
+    store.upsert_eod_rows('HOSE',[dict(Symbol='FPT',Ngay='09/10/2026',
+        GiaMoCua=100,GiaCaoNhat=105,GiaThapNhat=99,GiaDongCua=104,
+        KhoiLuongKhopLenh=1234)],source='cafef')
+
+    repo=ResearchRepository(settings,date(2026,10,9))
+    rows=repo.bars('FPT')
+
+    assert rows[0]['close']==104 and rows[0]['trade_date']=='2026-10-09'
+    assert repo.price_source('FPT',rows).source_name=='CafeF EOD'

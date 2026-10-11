@@ -182,9 +182,22 @@ class DNSEGateway:
         })
 
     def get_foreign_trading(self, symbol: str, start: int, end: int) -> dict[str, object]:
-        return self._get(f"/price/{symbol}/foreign-trading", {
-            "from": start, "to": end,
-        })
+        params = {"from": start, "to": end, "limit": 100, "order": "DESC"}
+        rows, seen = [], set()
+        for _ in range(1000):
+            payload = self._get(f"/price/{symbol}/foreign-trading", params)
+            block = payload.get('foreigners')
+            if not isinstance(block, list):
+                raise ValueError('DNSE foreign-trading response schema changed')
+            rows.extend(block)
+            token = payload.get('nextPageToken')
+            if not token:
+                return {'foreigners':rows, 'nextPageToken':None}
+            if token in seen:
+                raise ValueError('DNSE foreign-trading pagination did not advance')
+            seen.add(token)
+            params = {**params, 'nextPageToken':token}
+        raise ValueError('DNSE foreign-trading pagination limit reached')
 
     def close(self) -> None:
         self.client.close()

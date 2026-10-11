@@ -1,0 +1,7 @@
+{
+  "enabled": true,
+  "tick_seconds": 60,
+  "minimum_interval_seconds": 300,
+  "scope": "latest existing stock reports; new companies are supported on demand",
+  "snapshot_policy": "publish a new dated snapshot only when inputs change; retain old reports"
+}

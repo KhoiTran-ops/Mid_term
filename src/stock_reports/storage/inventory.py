@@ -17,8 +17,9 @@ def inventory(store):
     with sqlite3.connect(store.path) as db:
         db.execute('BEGIN')
         counts = {table: db.execute(f'SELECT COUNT(*) FROM {table}').fetchone()[0]
-                  for table in ('instruments', 'ohlcv_bars', 'financial_facts',
-                                'financial_periods', 'foreign_snapshots')}
+                  for table in ('instruments', 'eod_prices', 'ohlcv_bars', 'financial_facts',
+                                'financial_periods', 'annual_financial_facts', 'annual_statement_facts',
+                                'foreign_snapshots')}
         bars = db.execute('SELECT symbol,timeframe,COUNT(*),MIN(ts),MAX(ts) '
                           'FROM ohlcv_bars GROUP BY symbol,timeframe').fetchall()
         periods = db.execute('SELECT symbol,fiscal_year,fiscal_quarter FROM financial_periods').fetchall()
@@ -30,6 +31,12 @@ def inventory(store):
             WHERE low>high OR open<low OR open>high OR close<low OR close>high
                OR low<0 OR volume<0''').fetchone()[0]
         foreign_latest = db.execute('SELECT MAX(ts) FROM foreign_snapshots').fetchone()[0]
+        eod_min, eod_max = db.execute(
+            'SELECT MIN(trade_date),MAX(trade_date) FROM eod_prices'
+        ).fetchone()
+        eod_latest_symbols = db.execute(
+            'SELECT COUNT(DISTINCT symbol) FROM eod_prices WHERE trade_date=(SELECT MAX(trade_date) FROM eod_prices)'
+        ).fetchone()[0]
     by_bar = {(symbol, frame): (count, first, last) for symbol, frame, count, first, last in bars}
     by_period, by_statement = {}, {}
     for symbol, year, quarter in periods:
@@ -58,6 +65,8 @@ def inventory(store):
     summary = dict(checked_at=datetime.now(VIETNAM).isoformat(), tables=counts,
         latest_daily=local_time(latest_daily), latest_minute=local_time(latest_minute),
         latest_foreign_snapshot=local_time(foreign_latest / 1000) if foreign_latest else None,
+        eod_min_date=eod_min, eod_max_date=eod_max,
+        eod_symbols_on_latest_date=eod_latest_symbols,
         symbols_with_financial_numbers=sum(r['financial_status']=='available' for r in coverage),
         symbols_with_eight_reported_quarters=sum(r['reported_quarters']>=8 for r in coverage),
         symbols_with_eight_quarters_of_three_statements=sum(r['quarters_with_three_statements']>=8 for r in coverage),
@@ -86,9 +95,13 @@ Kiểm tra: {summary['checked_at']}
 
 - Danh mục: {summary['tables']['instruments']:,} mã.
 - OHLCV DNSE: {summary['tables']['ohlcv_bars']:,} bản ghi.
+- EOD CafeF: {summary['tables']['eod_prices']:,} bản ghi; ngày mới nhất {summary['eod_max_date']}
+  có {summary['eod_symbols_on_latest_date']:,} mã.
 - Nến ngày mới nhất: {summary['latest_daily']}.
 - Nến phút mới nhất: {summary['latest_minute']}.
 - Số liệu tài chính CafeF: {summary['tables']['financial_facts']:,} dòng.
+- Chỉ tiêu năm CafeF 2010–2024: {summary['tables']['annual_financial_facts']:,} dòng.
+- Thành phần BCTC năm tải trực tiếp 2021–2025: {summary['tables']['annual_statement_facts']:,} dòng.
 - Mã có số liệu tài chính: {summary['symbols_with_financial_numbers']:,}.
 - Mã có 8 kỳ báo cáo: {summary['symbols_with_eight_reported_quarters']:,}.
 - Mã có số liệu ở cả 3 báo cáo trong 8 quý: {summary['symbols_with_eight_quarters_of_three_statements']:,}.
@@ -96,7 +109,7 @@ Kiểm tra: {summary['checked_at']}
 - OHLCV có giá ngoài khoảng thấp/cao: {summary['ohlcv_rows_with_inconsistent_range']:,}; giữ nguyên dữ liệu nguồn để kiểm tra.
 
 Xem `coverage.csv` để kiểm tra từng mã. “Có 3 báo cáo” chỉ xác nhận mỗi báo cáo
-có số liệu; không khẳng định mọi chỉ tiêu đều đầy đủ. Tối đa 8 quý mới nhất
+ có số liệu; không khẳng định mọi chỉ tiêu đều đầy đủ. Kiểm tra cửa sổ 8 quý mới nhất
 đã công bố của từng doanh nghiệp; có thể thiếu hoặc cũ với mã ngừng giao dịch.
 
 Số liệu cũ nhập từ dự án nguồn giữ ngày tải gốc. Các phản hồi tải mới được lưu
@@ -111,7 +124,8 @@ theo nhãn “tỷ đồng” trên giao diện: giá trị HTML gốc có thể
 
 def export_data(store, output: Path, symbols=None):
     output.mkdir(parents=True, exist_ok=True)
-    tables = ('instruments', 'ohlcv_bars', 'financial_periods', 'financial_facts', 'foreign_snapshots')
+    tables = ('instruments', 'ohlcv_bars', 'financial_periods', 'financial_facts',
+              'annual_financial_facts', 'foreign_snapshots')
     result = {}
     with sqlite3.connect(store.path) as db:
         for table in tables:

@@ -5,8 +5,8 @@ from decimal import Decimal
 import json
 
 from stock_reports.analysis.contracts import AnalysisSection, Finding, ReportBlock, SectionKind
-from stock_reports.analysis.financials import FORMULA_VERSION, LABELS, financial_metrics
-from stock_reports.analysis.profiles import PROFILES, detect_profile, securities_segments
+from stock_reports.analysis.financials import FORMULA_VERSION, LABELS, financial_metrics, load_review
+from stock_reports.analysis.profiles import PROFILES, detect_profile
 from stock_reports.analysis.repository import ResearchRepository, VIETNAM
 from stock_reports.analysis.valuation import evaluate_scenarios
 from stock_reports.domain.research import SourceReference
@@ -127,7 +127,7 @@ def technical_section(repo,symbol):
     foreign=repo.foreign(symbol)
     if foreign:
         row=foreign[0]
-        fref=SourceReference(source_name='DNSE giao dịch nước ngoài',url=f'https://openapi.dnse.com.vn/price/foreigner?symbol={symbol}',retrieved_at=row['updated_at'],
+        fref=SourceReference(source_name='DNSE giao dịch nước ngoài',url=f'https://openapi.dnse.com.vn/price/{symbol}/foreign-trading',retrieved_at=row['updated_at'],
             locator='Board G1, timestamp '+str(row['ts']))
         findings.append(finding(f"Snapshot nước ngoài G1: mua {fmt(row['buy_volume'],0)}, bán {fmt(row['sell_volume'],0)} cổ phiếu; không cộng lặp các board.",[fref]))
     chart=ReportBlock(kind='chart',title=f'{symbol}: giá đóng cửa gốc DNSE',labels=tuple(datetime.fromtimestamp(r['ts'],VIETNAM).strftime('%d/%m/%y') for r in bars),
@@ -157,7 +157,9 @@ def financial_section(data,profile):
     for offset in range(0,len(data.periods),4):
         periods=list(reversed(data.periods[offset:offset+4]))
         refs=tuple(dict.fromkeys(data.fact(k,p).source for k in keys for p in periods if data.fact(k,p)))
-        rows=tuple((LABELS[k],*[fmt(data.value(k,p)/Decimal(1e9)) if data.value(k,p) is not None else 'Thiếu' for p in periods]) for k in keys)
+        rows=tuple((LABELS[k],*[fmt(data.value(k,p)/Decimal(1e9)) if data.value(k,p) is not None
+            and not (p in data.invalid_balance_periods and k in ('assets','equity','liabilities','current_assets','current_liabilities','inventory','receivables','short_debt','long_debt'))
+            else 'Chưa đủ dữ liệu' for p in periods]) for k in keys)
         if data.review:
             basis={'quarter':'quý riêng','ytd':'lũy kế từ đầu năm',None:'chưa kiểm chứng'}
             note=f'Tỷ VND, đã đối chiếu hồ sơ review. KQKD: {basis[data.review.income_basis]}; CF: {basis[data.review.cash_flow_basis]}. BS là số cuối kỳ. Ô thiếu giữ thiếu.'
@@ -165,7 +167,7 @@ def financial_section(data,profile):
             note='Giá trị nguồn chia 10^9 để trình bày; chưa khẳng định đơn vị VND. Ô thiếu giữ thiếu. KQKD/CF chưa mặc định là quý riêng.'
         invalid=[f'{y}Q{q}' for y,q in periods if (y,q) in data.invalid_balance_periods]
         if invalid:
-            note+=' CẢNH BÁO: BS không khớp tại '+', '.join(invalid)+'; các số này giữ để đối chiếu, không dùng định giá.'
+            note+=' BS không khớp tại '+', '.join(invalid)+'; số lỗi không hiển thị, bản gốc giữ trong snapshot để đối chiếu.'
         blocks.append(ReportBlock(kind='table',title='BCTC: cửa sổ '+', '.join(f'{y}Q{q}' for y,q in periods),headers=('Chỉ tiêu',*[f'{y}Q{q}' for y,q in periods]),rows=rows,note=note,sources=refs))
     findings.extend(finding('Kiểm tra chất lượng lợi nhuận: '+q,assumption=True) for q in PROFILES[profile]['questions'])
     if data.periods and data.series.get('net_profit'):
@@ -181,6 +183,10 @@ def build_document(settings, *, kind, as_of, symbol=None, industry_id=None, peri
     risk_notes=['Dữ liệu có độ trễ và có thể được nguồn điều chỉnh. Ngày chốt lọc kỳ/thời điểm nguồn; báo cáo không phải bộ dữ liệu backtest không có look-ahead.',
         'Tin tức cung cấp sự kiện và nguồn, chưa xác minh quan hệ nhân quả hay tác động định lượng tới lợi nhuận.']
     if kind==ReportKind.MACRO:
+        reference=settings.root/'config/report_content'/f'macro-{as_of.isoformat()}.md'
+        if reference.is_file():
+            from stock_reports.reports.macro_reference import reference_document
+            return reference_document(reference,as_of)
         macro=macro_section(repo)
         market=technical_section(repo,'VNINDEX')
         snapshots=repo.snapshots()
@@ -208,7 +214,11 @@ def build_document(settings, *, kind, as_of, symbol=None, industry_id=None, peri
         profile=detect_profile(data,industry['name'])
     else:
         data=None;profile=None
-    choices=list(dict.fromkeys(peers)) if peers else [r['symbol'] for r in members if not company or r['symbol']!=symbol]
+    layout_path=settings.root/'config/company_report_layouts'/f'{symbol}.json' if company else None
+    layout=json.loads(layout_path.read_text(encoding='utf-8')) if layout_path and layout_path.exists() else {}
+    # GICS level 2 is too broad for selecting operating competitors by alphabet.
+    # Company reports use an explicitly curated peer group or no automatic peers.
+    choices=list(dict.fromkeys(peers)) if peers else layout.get('peer_symbols',[]) if company else [r['symbol'] for r in members]
     by_symbol={r['symbol']:r for r in members}
     comparison_period=data.periods[0] if data and data.periods else period
     for ticker in choices:
@@ -217,7 +227,9 @@ def build_document(settings, *, kind, as_of, symbol=None, industry_id=None, peri
         if company and ticker==symbol:
             continue
         try:
-            other=repo.financials(ticker,period=comparison_period)
+            peer_review=settings.root/'var/financial_reviews'/f'{ticker}.json'
+            other=repo.financials(ticker,period=comparison_period,
+                review=load_review(peer_review) if peer_review.exists() else None)
         except ValueError:
             if peers:raise
             continue
@@ -245,37 +257,12 @@ def build_document(settings, *, kind, as_of, symbol=None, industry_id=None, peri
     if not data.periods:
         raise ValueError('Chưa có BCTC cho mã đã chọn; tải BCTC trước khi tạo báo cáo cổ phiếu')
     bars=repo.bars(symbol)
-    valuation=evaluate_scenarios(data,profile,bars[-1]['close'] if bars else None,scenarios)
-    company_source=SourceReference(source_name='DNSE hồ sơ doanh nghiệp',url=company['source_url'],retrieved_at=company['retrieved_at'])
-    model_findings=[finding(f"{company['company_name'] or symbol} ({symbol}, {company['exchange']}) thuộc {industry['name']} theo DNSE.",[company_source]),
-        finding('Khung mô hình: '+PROFILES[profile]['business'],assumption=True)]
-    segments=securities_segments(data) if profile=='securities' else []
-    if segments:
-        p=data.periods[0]
-        refs=[data.fact(k,p).source for k in ('brokerage','loan_income','investment_income','revenue') if data.fact(k,p)]
-        model_findings.append(finding('Cơ cấu doanh thu quan sát: '+', '.join(f'{label} {fmt(value)}%' for label,value in segments)+
-            '. Công ty có thể thuộc nhiều nhóm; tỷ trọng doanh thu không phải tỷ trọng lợi nhuận.',refs))
-    model_findings.extend(news_findings(repo.news(symbol=symbol)))
-    vf=[finding(valuation['reason'],assumption=True)]
-    vb=[]
-    if valuation['rows']:
-        vf.append(finding(f"Giá tham chiếu được chuẩn hóa: {fmt(valuation['current'])} VND. Đầu vào định giá được kiểm chứng theo hồ sơ nguồn.",[review.source]))
-        vb.append(ReportBlock(kind='table',title=f'Kịch bản {scenarios.method.upper()} - {scenarios.horizon_months} tháng',headers=('Kịch bản','Bội số','Tăng trưởng giả định','Giá (VND)','So với giá','Cơ sở giả định'),
-            rows=tuple((r['name'],fmt(r['multiple']),fmt(r['growth']*100)+'%',fmt(r['target']),fmt(r['upside'])+'%',r['rationale']) for r in valuation['rows']),sources=(review.source,),
-            note='P/B: VCSH dự phóng / cổ phiếu dự phóng x P/B; P/E: EPS TTM x (1+g) x P/E. Mọi bội số/tăng trưởng là giả định, không phải dự báo đã xác minh.'))
-    for message in PROFILES[profile]['risks']:
-        risk_notes.append(message)
-    risk_notes.extend(data.warnings)
-    if not review or not review.notes_reviewed:
-        risk_notes.append('Chưa đối chiếu thuyết minh, giao dịch liên quan và báo cáo an toàn tài chính (nếu thuộc doanh nghiệp tài chính).')
-    recommendations=[finding(valuation['assessment']+'. '+valuation['reason'],assumption=True),
-        finding('Điều kiện xem xét lại: BCTC mới/điều chỉnh, thay đổi cơ cấu lợi nhuận, chi phí vốn, thanh khoản ngành hoặc giả định định giá. Không suy ra khuyến nghị chỉ từ SMA hay một tin mới.',assumption=True)]
-    p=data.periods[0]
-    return ReportDocument(kind=kind,title=f'{symbol} - {PROFILES[profile]["name"]}: phân tích cơ hội đầu tư',as_of=as_of,
-        symbol=symbol,company_name=company['company_name'],industry_id=industry['slug'],industry_name=industry['name'],financial_period=f'{p[0]}Q{p[1]}',
-        assessment=valuation['assessment'],data_quality=tuple(dict.fromkeys(risk_notes)),sections=(
-            section(SectionKind.RECOMMENDATION,'Tóm tắt đánh giá và điều kiện đầu tư',recommendations),
-            section(SectionKind.COMPANY,'Doanh nghiệp và mô hình kinh doanh',model_findings),macro_section(repo,profile),
-            industry_section(repo,industry,profile,candidates=candidates),financial_section(data,profile),technical_section(repo,symbol),
-            section(SectionKind.VALUATION,'Định giá và ba kịch bản',vf,vb),
-            section(SectionKind.RISKS,'Rủi ro và dữ liệu còn thiếu',[finding(w,assumption=True) for w in dict.fromkeys(risk_notes)])))
+    from stock_reports.analysis.market_fundamentals import load_market_snapshot, market_quote
+    snapshot=load_market_snapshot(settings,symbol,as_of)
+    valuation=evaluate_scenarios(data,profile,bars[-1]['close'] if bars else None,scenarios,
+        quote=market_quote(snapshot,repo.cutoff))
+    from stock_reports.analysis.company_template import build_company_document
+    if layout.get('layout','compact')=='compact':
+        from stock_reports.analysis.company_compact import build_compact_company_document
+        return build_compact_company_document(settings,repo,company,data,profile,candidates,bars,valuation,scenarios,risk_notes)
+    return build_company_document(settings,repo,company,data,profile,candidates,bars,valuation,scenarios,risk_notes)

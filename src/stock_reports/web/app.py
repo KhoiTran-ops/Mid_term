@@ -1,5 +1,6 @@
 from datetime import date, datetime
 import asyncio
+import json
 from contextlib import asynccontextmanager
 from pathlib import Path
 from zoneinfo import ZoneInfo
@@ -15,10 +16,12 @@ from stock_reports.core.config import Settings
 from stock_reports.reports.models import ReportKind, ReportPage, StoredReport
 from stock_reports.storage.reports import ReportCatalog
 from stock_reports.pipeline.news_runtime import configured_news, NewsRunner
+from stock_reports.pipeline.report_refresh import ReportRefreshRunner
 from stock_reports.web.news import news_router
 from stock_reports.web.generation import ReportJobs, generation_router
 from stock_reports.pipeline.research_reports import report_analysis
 from stock_reports.analysis.repository import ResearchRepository, VIETNAM
+from stock_reports.storage.market import MarketStore
 from starlette.middleware.trustedhost import TrustedHostMiddleware
 
 
@@ -33,14 +36,17 @@ def create_app(settings: Settings) -> FastAPI:
     news_store, collector = configured_news(settings)
     runner = NewsRunner(settings, collector)
     jobs = ReportJobs(settings)
+    report_runner=ReportRefreshRunner(settings)
 
     @asynccontextmanager
     async def lifespan(app):
         if settings.news_auto_update:
             runner.start()
+        report_runner.start()
         yield
         await asyncio.to_thread(runner.stop)
         await asyncio.to_thread(jobs.stop)
+        await asyncio.to_thread(report_runner.stop)
 
     app = FastAPI(title='Thư viện báo cáo đầu tư', version='0.2.0', docs_url=None, redoc_url=None, lifespan=lifespan)
     app.include_router(news_router(news_store, templates))
@@ -71,6 +77,31 @@ def create_app(settings: Settings) -> FastAPI:
     @app.get('/api/health')
     def health():
         return {'status': 'ok'}
+
+    @app.get('/api/data-status')
+    def data_status():
+        path=settings.outputs_directory/'FINANCIAL_COMPLETE_PROGRESS.json'
+        try:
+            payload=json.loads(path.read_text(encoding='utf-8'))
+        except (OSError, ValueError):
+            return {'status':'not_started'}
+        allowed=('status','stage','completed','total','current_symbol','updated_at',
+                 'annual_complete_companies','quarterly_complete_latest_eight','max_quarters')
+        result={k:payload[k] for k in allowed if k in payload}
+        # Do not keep advertising a crashed collector as running indefinitely.
+        if result.get('status')=='running' and result.get('updated_at'):
+            from datetime import datetime,UTC
+            try:
+                if (datetime.now(UTC)-datetime.fromisoformat(result['updated_at'])).total_seconds()>600:
+                    result['status']='stale'
+            except (ValueError,TypeError):result['status']='stale'
+        return result
+
+    @app.get('/api/report-refresh-status')
+    def report_refresh_status():
+        path=settings.outputs_directory/'REPORT_REFRESH_STATUS.json'
+        try:return json.loads(path.read_text(encoding='utf-8'))
+        except (OSError,ValueError):return dict(enabled=False,status='not_started')
 
     @app.get('/favicon.ico', include_in_schema=False)
     def favicon():
@@ -110,6 +141,63 @@ def create_app(settings: Settings) -> FastAPI:
         return FileResponse(path, media_type='application/pdf', filename=filename,
                             content_disposition_type='attachment' if download else 'inline')
 
+    @app.get('/api/reports/{report_id}/stocklens-data')
+    def stocklens_data(report_id:str):
+        try:payload=report_analysis(settings,report_id,catalog)
+        except (ValueError,FileNotFoundError):payload=None
+        data=payload['document'].get('stocklens_data') if payload else None
+        if not data:raise HTTPException(404,'Báo cáo không có JSON StockLens.')
+        return Response(json.dumps(data,ensure_ascii=False,indent=2),media_type='application/json',
+            headers={'Content-Disposition':f'attachment; filename="{data["meta"]["ticker"]}-stocklens.json"'})
+
+    @app.get('/api/reports/{report_id}/industry-data')
+    def industry_data(report_id:str):
+        try:payload=report_analysis(settings,report_id,catalog)
+        except (ValueError,FileNotFoundError):payload=None
+        data=payload['document'].get('industry_stocklens_data') if payload else None
+        if not data:raise HTTPException(404,'Báo cáo không có JSON ngành StockLens.')
+        return Response(json.dumps(data,ensure_ascii=False,indent=2),media_type='application/json',
+            headers={'Content-Disposition':f'attachment; filename="industry-{data["meta"]["industry_id"]}-{data["meta"]["period_code"]}.json"'})
+
+    @app.get('/api/reports/{report_id}/industry-quality')
+    def industry_quality(report_id:str):
+        try:payload=report_analysis(settings,report_id,catalog)
+        except (ValueError,FileNotFoundError):payload=None
+        data=payload['document'].get('industry_stocklens_data') if payload else None
+        if not data:raise HTTPException(404,'Báo cáo không có dữ liệu ngành StockLens.')
+        from stock_reports.reports.industry_stocklens.quality import inspect
+        return Response(json.dumps(inspect(data),ensure_ascii=False,indent=2),media_type='application/json',
+            headers={'Content-Disposition':'attachment; filename="quality_report.json"'})
+
+    @app.get('/api/reports/{report_id}/macro-data')
+    def macro_data(report_id:str):
+        try:payload=report_analysis(settings,report_id,catalog)
+        except (ValueError,FileNotFoundError):payload=None
+        data=payload['document'].get('macro_stocklens_data') if payload else None
+        if not data:raise HTTPException(404,'Báo cáo không có JSON vĩ mô StockLens.')
+        return Response(json.dumps(data,ensure_ascii=False,indent=2),media_type='application/json',
+            headers={'Content-Disposition':f'attachment; filename="macro-{data["meta"]["period_code"]}.json"'})
+
+    @app.get('/api/reports/{report_id}/macro-quality')
+    def macro_quality(report_id:str):
+        try:payload=report_analysis(settings,report_id,catalog)
+        except (ValueError,FileNotFoundError):payload=None
+        data=payload['document'].get('macro_stocklens_data') if payload else None
+        if not data:raise HTTPException(404,'Báo cáo không có dữ liệu vĩ mô StockLens.')
+        from stock_reports.reports.macro_stocklens.quality import inspect
+        return Response(json.dumps(inspect(data),ensure_ascii=False,indent=2),media_type='application/json',
+            headers={'Content-Disposition':'attachment; filename="quality_report.json"'})
+
+    @app.get('/api/reports/{report_id}/missing-report')
+    def missing_data_report(report_id:str):
+        try:payload=report_analysis(settings,report_id,catalog)
+        except (ValueError,FileNotFoundError):payload=None
+        data=payload['document'].get('stocklens_data') if payload else None
+        if not data:raise HTTPException(404,'Báo cáo không có dữ liệu StockLens.')
+        from stock_reports.reports.stocklens.evidence import missing_report
+        return Response(json.dumps(missing_report(data),ensure_ascii=False,indent=2),media_type='application/json',
+            headers={'Content-Disposition':'attachment; filename="missing_report.json"'})
+
     @app.get('/')
     def library(request: Request, kind: str = Query('', max_length=20),
                 symbol: str = Query('', max_length=12), industry_id: str = Query('', max_length=80),
@@ -134,11 +222,21 @@ def create_app(settings: Settings) -> FastAPI:
             details[record.id] = dict(pages=payload['page_count'] if payload else None,
                 assessment=payload['document']['assessment'] if payload else '')
         counts = {key:catalog.list_reports(kind=ReportKind(key),page_size=1).total for key in LABELS}
+        companies = repo.companies()
+        industries = repo.industries()
+        market_store = MarketStore(settings.market_database)
+        market_store.initialize()
+        financial_symbols = market_store.financial_symbols()
+        coverage = dict(companies=len(companies), industries=len(industries),
+                        macro_observations=len(repo.macro()),
+                        financial_companies=len(financial_symbols))
         return templates.TemplateResponse(request=request, name='library.html',
             context=dict(result=result, filters=filters, options=catalog.filter_options(),
                 latest_news=news_store.list_news(page_size=3)['items'],
                 labels=LABELS, error=error, total_pages=total_pages, active='reports',
-                details=details, counts=counts, industry_options=repo.industries(), companies=repo.companies(),
+                details=details, counts=counts, coverage=coverage,
+                industry_options=industries, companies=companies,
+                financial_symbols=financial_symbols,
                 previous_url=str(request.url.include_query_params(page=page-1)) if page>1 else None,
                 next_url=str(request.url.include_query_params(page=page+1)) if page<total_pages else None),
             status_code=422 if error else 200)

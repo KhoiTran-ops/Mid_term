@@ -18,4 +18,4 @@ async function refreshNews() {
     document.querySelector('#refresh-message').textContent = 'Chưa làm mới được danh sách. Đang giữ các tin đã tải.';
   }
 }
-setInterval(refreshNews, 60000);
+setInterval(refreshNews, 30000);

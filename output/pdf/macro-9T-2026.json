@@ -1,0 +1,1229 @@
+{
+  "meta": {
+    "period_code": "2026-9T",
+    "period_type": "ytd9",
+    "period_label": "9 tháng 2026",
+    "period_start": "2026-01-01",
+    "period_end": "2026-09-30",
+    "report_date": "2026-10-11",
+    "sources": [
+      {
+        "id": "nso-2026-9T",
+        "name": "Cục Thống kê",
+        "url": "https://www.nso.gov.vn/bai-top/2026/10/bao-cao-tinh-hinh-kinh-te-xa-hoi-quy-iii-va-9-thang-nam-2026/",
+        "source_published_at": "2026-10-03",
+        "retrieved_at": "2026-10-11T17:06:21.628019+07:00",
+        "period_code": "2026-9T"
+      },
+      {
+        "id": "nso-2022-9T",
+        "name": "Cục Thống kê",
+        "url": "https://www.nso.gov.vn/du-lieu-va-so-lieu-thong-ke/2022/09/bao-cao-tinh-hinh-kinh-te-xa-hoi-quy-iii-va-9-thang-nam-2022/",
+        "source_published_at": "2022-09-29",
+        "retrieved_at": "2026-10-11T17:06:23.300671+07:00",
+        "period_code": "2022-9T"
+      },
+      {
+        "id": "nso-2023-9T",
+        "name": "Cục Thống kê",
+        "url": "https://www.nso.gov.vn/du-lieu-va-so-lieu-thong-ke/2023/09/bao-cao-tinh-hinh-kinh-te-xa-hoi-quy-iii-va-9-thang-nam-2023/",
+        "source_published_at": "2023-09-29",
+        "retrieved_at": "2026-10-11T17:06:24.717358+07:00",
+        "period_code": "2023-9T"
+      },
+      {
+        "id": "nso-2024-9T",
+        "name": "Cục Thống kê",
+        "url": "https://www.nso.gov.vn/du-lieu-va-so-lieu-thong-ke/2024/10/bao-cao-tinh-hinh-kinh-te-xa-hoi-quy-iii-va-9-thang-nam-2024/",
+        "source_published_at": "2024-10-06",
+        "retrieved_at": "2026-10-11T17:06:26.165611+07:00",
+        "period_code": "2024-9T"
+      },
+      {
+        "id": "nso-2025-9T",
+        "name": "Cục Thống kê",
+        "url": "https://www.nso.gov.vn/bai-top/2025/10/bao-cao-tinh-hinh-kinh-te-xa-hoi-quy-iii-va-9-thang-nam-2025/",
+        "source_published_at": "2025-10-06",
+        "retrieved_at": "2026-10-11T17:06:27.567114+07:00",
+        "period_code": "2025-9T"
+      },
+      {
+        "id": "pmi-2026-9T",
+        "name": "S&P Global · Cimigo",
+        "url": "https://www.cimigo.com/en/trends/vietnam-pmi/",
+        "source_published_at": "2026-10-01",
+        "retrieved_at": "2026-10-11T17:12:15.431092+07:00",
+        "period_code": "2026-9T"
+      }
+    ],
+    "publisher_note": "Dữ liệu thống kê ước tính / sơ bộ theo thời điểm công bố; không dùng số minh họa của mẫu thiết kế."
+  },
+  "gdp": {
+    "q": {
+      "label": "Q3/2026",
+      "yoy": 9.95
+    },
+    "ytd": {
+      "label": "9T/2026",
+      "yoy": 9.01
+    },
+    "history": [
+      {
+        "year": 2022,
+        "ytd_yoy": 8.83
+      },
+      {
+        "year": 2023,
+        "ytd_yoy": 4.24
+      },
+      {
+        "year": 2024,
+        "ytd_yoy": 6.82
+      },
+      {
+        "year": 2025,
+        "ytd_yoy": 7.85
+      },
+      {
+        "year": 2026,
+        "ytd_yoy": 9.01
+      }
+    ],
+    "sectors": [
+      {
+        "name": "Nông, lâm nghiệp và thủy sản",
+        "yoy": 4.02,
+        "contribution_pct": 5.35
+      },
+      {
+        "name": "Công nghiệp và xây dựng",
+        "yoy": 11.21,
+        "contribution_pct": 49.62
+      },
+      {
+        "name": "Dịch vụ",
+        "yoy": 8.69,
+        "contribution_pct": 45.03
+      }
+    ],
+    "note": null
+  },
+  "iip": {
+    "q_yoy": 14.8,
+    "ytd_yoy": 12.3,
+    "prev_ytd_yoy": 9.1,
+    "manufacturing_yoy": 12.9,
+    "note": null,
+    "history": [
+      {
+        "year": 2025,
+        "ytd_yoy": 9.1
+      },
+      {
+        "year": 2026,
+        "ytd_yoy": 12.3
+      }
+    ],
+    "top_products": []
+  },
+  "cpi": {
+    "month_mom": 0.62,
+    "month_yoy": 5.08,
+    "quarter_yoy": 4.8,
+    "ytd_avg_yoy": 4.52,
+    "core_ytd_yoy": 4.26,
+    "note": null,
+    "history_ytd": [
+      {
+        "year": 2022,
+        "yoy": 2.73
+      },
+      {
+        "year": 2023,
+        "yoy": 3.16
+      },
+      {
+        "year": 2024,
+        "yoy": 3.88
+      },
+      {
+        "year": 2025,
+        "yoy": 3.27
+      },
+      {
+        "year": 2026,
+        "yoy": 4.52
+      }
+    ],
+    "monthly_series": []
+  },
+  "retail": {
+    "q": {
+      "value_bn_vnd": 2039000.0,
+      "qoq": 3.3,
+      "yoy": 14.5
+    },
+    "ytd": {
+      "value_bn_vnd": 5925700.0,
+      "yoy": 13.4
+    },
+    "history": [
+      {
+        "year": 2022,
+        "value_bn_vnd": 4170200.0,
+        "yoy": 21.0
+      },
+      {
+        "year": 2023,
+        "value_bn_vnd": 4567800.0,
+        "yoy": 9.7
+      },
+      {
+        "year": 2024,
+        "value_bn_vnd": 4703400.0,
+        "yoy": 8.8
+      },
+      {
+        "year": 2025,
+        "value_bn_vnd": 5176000.0,
+        "yoy": 9.5
+      },
+      {
+        "year": 2026,
+        "value_bn_vnd": 5925700.0,
+        "yoy": 13.4
+      }
+    ],
+    "monthly_series": [],
+    "note": null
+  },
+  "trade": {
+    "q": {
+      "total_usd_bn": 338.18,
+      "total_yoy": null,
+      "export_usd_bn": 167.85,
+      "import_usd_bn": 170.33,
+      "export_yoy": 30.4,
+      "import_yoy": 42.2,
+      "export_qoq": 17.0,
+      "import_qoq": 8.8
+    },
+    "ytd": {
+      "total_usd_bn": 888.02,
+      "total_yoy": 30.4,
+      "export_usd_bn": 434.3,
+      "export_yoy": 24.5,
+      "import_usd_bn": 453.72,
+      "import_yoy": 36.7,
+      "balance_usd_bn": -19.42
+    },
+    "month_balance_usd_bn": 1.27,
+    "domestic_balance_usd_bn": -34.28,
+    "fdi_balance_usd_bn": 14.86,
+    "history_ytd": [
+      {
+        "year": 2022,
+        "export_usd_bn": 282.52,
+        "import_usd_bn": 276.0
+      },
+      {
+        "year": 2023,
+        "export_usd_bn": 259.67,
+        "import_usd_bn": 237.99
+      },
+      {
+        "year": 2024,
+        "export_usd_bn": 299.63,
+        "import_usd_bn": 278.84
+      },
+      {
+        "year": 2025,
+        "export_usd_bn": 348.74,
+        "import_usd_bn": 331.92
+      },
+      {
+        "year": 2026,
+        "export_usd_bn": 434.3,
+        "import_usd_bn": 453.72
+      }
+    ],
+    "quarterly_yoy": [],
+    "import_structure": [
+      {
+        "name": "Tư liệu sản xuất",
+        "pct": 94.1
+      },
+      {
+        "name": "Hàng tiêu dùng",
+        "pct": 5.9
+      }
+    ],
+    "note": null
+  },
+  "fdi": {
+    "registered_usd_bn": 50.36,
+    "registered_yoy": 76.4,
+    "disbursed_usd_bn": 21.07,
+    "disbursed_yoy": 12.1,
+    "note": null,
+    "history_ytd": [
+      {
+        "year": 2022,
+        "registered": 18.75,
+        "disbursed": 15.43,
+        "registered_as_of": "2022-09-20"
+      },
+      {
+        "year": 2023,
+        "registered": 20.21,
+        "disbursed": 15.91,
+        "registered_as_of": "2023-09-20"
+      },
+      {
+        "year": 2024,
+        "registered": 24.78,
+        "disbursed": 17.34,
+        "registered_as_of": "2024-09-30"
+      },
+      {
+        "year": 2025,
+        "registered": 28.54,
+        "disbursed": 18.8,
+        "registered_as_of": "2025-09-30"
+      },
+      {
+        "year": 2026,
+        "registered": 50.36,
+        "disbursed": 21.07,
+        "registered_as_of": "2026-09-30"
+      }
+    ],
+    "top_countries": [],
+    "top_projects": []
+  },
+  "budget": {
+    "month": {
+      "revenue": 162.7,
+      "expenditure": 256.8,
+      "balance": -94.1
+    },
+    "ytd": {
+      "revenue": 2187.3,
+      "revenue_pct_plan": 86.5,
+      "revenue_yoy": 12.1,
+      "expenditure": 1873.7,
+      "expenditure_pct_plan": 59.3,
+      "expenditure_yoy": 14.5,
+      "balance": 313.6
+    },
+    "plan": {
+      "revenue": null,
+      "expenditure": null,
+      "deficit": null,
+      "borrowing": null
+    },
+    "domestic_revenue_share_pct": null,
+    "note": null
+  },
+  "public_investment": {
+    "month_disbursed": null,
+    "ytd_disbursed": null,
+    "ytd_pct_plan": null,
+    "ytd_yoy": null,
+    "plan_total": null,
+    "note": null,
+    "monthly_series": []
+  },
+  "monetary": {
+    "credit_growth_ytd": 10.89,
+    "credit_as_of": "2026-09-28",
+    "fx_change_ytd": null,
+    "note_credit": null,
+    "note_fx": null,
+    "series": {
+      "credit": [],
+      "usd_vnd": [],
+      "interbank": []
+    }
+  },
+  "pmi": {
+    "value": 51.9,
+    "previous": 53.3,
+    "series": [],
+    "note": null
+  },
+  "business": {
+    "new_and_returned_k": 223.9,
+    "new_yoy": -3.2,
+    "exited_k": 172.0,
+    "exited_yoy": -1.7,
+    "exit_ratio_pct": 76.820009,
+    "note": null,
+    "exit_ratio_history": []
+  },
+  "conclusion": {
+    "overall": [],
+    "outlook": [],
+    "opportunities": [],
+    "risks": [],
+    "disclaimer": "Chỉ mang tính tham khảo, không phải khuyến nghị đầu tư"
+  },
+  "provenance": {
+    "gdp.ytd.yoy": {
+      "id": "nso-2026-9T",
+      "name": "Cục Thống kê",
+      "url": "https://www.nso.gov.vn/bai-top/2026/10/bao-cao-tinh-hinh-kinh-te-xa-hoi-quy-iii-va-9-thang-nam-2026/",
+      "source_published_at": "2026-10-03",
+      "retrieved_at": "2026-10-11T17:06:21.628019+07:00",
+      "period_code": "2026-9T",
+      "source_id": "nso-2026-9T",
+      "raw_sha256": "e1246217fadea63f31b9be5f2d990e709cd3a2dc0074275d3052379ad390c04a"
+    },
+    "gdp.q.yoy": {
+      "id": "nso-2026-9T",
+      "name": "Cục Thống kê",
+      "url": "https://www.nso.gov.vn/bai-top/2026/10/bao-cao-tinh-hinh-kinh-te-xa-hoi-quy-iii-va-9-thang-nam-2026/",
+      "source_published_at": "2026-10-03",
+      "retrieved_at": "2026-10-11T17:06:21.628019+07:00",
+      "period_code": "2026-9T",
+      "source_id": "nso-2026-9T",
+      "raw_sha256": "e1246217fadea63f31b9be5f2d990e709cd3a2dc0074275d3052379ad390c04a"
+    },
+    "gdp.sectors": {
+      "id": "nso-2026-9T",
+      "name": "Cục Thống kê",
+      "url": "https://www.nso.gov.vn/bai-top/2026/10/bao-cao-tinh-hinh-kinh-te-xa-hoi-quy-iii-va-9-thang-nam-2026/",
+      "source_published_at": "2026-10-03",
+      "retrieved_at": "2026-10-11T17:06:21.628019+07:00",
+      "period_code": "2026-9T",
+      "source_id": "nso-2026-9T"
+    },
+    "iip.q_yoy": {
+      "id": "nso-2026-9T",
+      "name": "Cục Thống kê",
+      "url": "https://www.nso.gov.vn/bai-top/2026/10/bao-cao-tinh-hinh-kinh-te-xa-hoi-quy-iii-va-9-thang-nam-2026/",
+      "source_published_at": "2026-10-03",
+      "retrieved_at": "2026-10-11T17:06:21.628019+07:00",
+      "period_code": "2026-9T",
+      "source_id": "nso-2026-9T",
+      "raw_sha256": "e1246217fadea63f31b9be5f2d990e709cd3a2dc0074275d3052379ad390c04a"
+    },
+    "iip.ytd_yoy": {
+      "id": "nso-2026-9T",
+      "name": "Cục Thống kê",
+      "url": "https://www.nso.gov.vn/bai-top/2026/10/bao-cao-tinh-hinh-kinh-te-xa-hoi-quy-iii-va-9-thang-nam-2026/",
+      "source_published_at": "2026-10-03",
+      "retrieved_at": "2026-10-11T17:06:21.628019+07:00",
+      "period_code": "2026-9T",
+      "source_id": "nso-2026-9T",
+      "raw_sha256": "e1246217fadea63f31b9be5f2d990e709cd3a2dc0074275d3052379ad390c04a"
+    },
+    "iip.manufacturing_yoy": {
+      "id": "nso-2026-9T",
+      "name": "Cục Thống kê",
+      "url": "https://www.nso.gov.vn/bai-top/2026/10/bao-cao-tinh-hinh-kinh-te-xa-hoi-quy-iii-va-9-thang-nam-2026/",
+      "source_published_at": "2026-10-03",
+      "retrieved_at": "2026-10-11T17:06:21.628019+07:00",
+      "period_code": "2026-9T",
+      "source_id": "nso-2026-9T",
+      "raw_sha256": "e1246217fadea63f31b9be5f2d990e709cd3a2dc0074275d3052379ad390c04a"
+    },
+    "business.new_and_returned_k": {
+      "id": "nso-2026-9T",
+      "name": "Cục Thống kê",
+      "url": "https://www.nso.gov.vn/bai-top/2026/10/bao-cao-tinh-hinh-kinh-te-xa-hoi-quy-iii-va-9-thang-nam-2026/",
+      "source_published_at": "2026-10-03",
+      "retrieved_at": "2026-10-11T17:06:21.628019+07:00",
+      "period_code": "2026-9T",
+      "source_id": "nso-2026-9T",
+      "raw_sha256": "e1246217fadea63f31b9be5f2d990e709cd3a2dc0074275d3052379ad390c04a"
+    },
+    "business.new_yoy": {
+      "id": "nso-2026-9T",
+      "name": "Cục Thống kê",
+      "url": "https://www.nso.gov.vn/bai-top/2026/10/bao-cao-tinh-hinh-kinh-te-xa-hoi-quy-iii-va-9-thang-nam-2026/",
+      "source_published_at": "2026-10-03",
+      "retrieved_at": "2026-10-11T17:06:21.628019+07:00",
+      "period_code": "2026-9T",
+      "source_id": "nso-2026-9T",
+      "raw_sha256": "e1246217fadea63f31b9be5f2d990e709cd3a2dc0074275d3052379ad390c04a"
+    },
+    "business.exited_k": {
+      "id": "nso-2026-9T",
+      "name": "Cục Thống kê",
+      "url": "https://www.nso.gov.vn/bai-top/2026/10/bao-cao-tinh-hinh-kinh-te-xa-hoi-quy-iii-va-9-thang-nam-2026/",
+      "source_published_at": "2026-10-03",
+      "retrieved_at": "2026-10-11T17:06:21.628019+07:00",
+      "period_code": "2026-9T",
+      "source_id": "nso-2026-9T",
+      "raw_sha256": "e1246217fadea63f31b9be5f2d990e709cd3a2dc0074275d3052379ad390c04a"
+    },
+    "business.exited_yoy": {
+      "id": "nso-2026-9T",
+      "name": "Cục Thống kê",
+      "url": "https://www.nso.gov.vn/bai-top/2026/10/bao-cao-tinh-hinh-kinh-te-xa-hoi-quy-iii-va-9-thang-nam-2026/",
+      "source_published_at": "2026-10-03",
+      "retrieved_at": "2026-10-11T17:06:21.628019+07:00",
+      "period_code": "2026-9T",
+      "source_id": "nso-2026-9T",
+      "raw_sha256": "e1246217fadea63f31b9be5f2d990e709cd3a2dc0074275d3052379ad390c04a"
+    },
+    "retail.q.value_bn_vnd": {
+      "id": "nso-2026-9T",
+      "name": "Cục Thống kê",
+      "url": "https://www.nso.gov.vn/bai-top/2026/10/bao-cao-tinh-hinh-kinh-te-xa-hoi-quy-iii-va-9-thang-nam-2026/",
+      "source_published_at": "2026-10-03",
+      "retrieved_at": "2026-10-11T17:06:21.628019+07:00",
+      "period_code": "2026-9T",
+      "source_id": "nso-2026-9T",
+      "raw_sha256": "e1246217fadea63f31b9be5f2d990e709cd3a2dc0074275d3052379ad390c04a"
+    },
+    "retail.q.qoq": {
+      "id": "nso-2026-9T",
+      "name": "Cục Thống kê",
+      "url": "https://www.nso.gov.vn/bai-top/2026/10/bao-cao-tinh-hinh-kinh-te-xa-hoi-quy-iii-va-9-thang-nam-2026/",
+      "source_published_at": "2026-10-03",
+      "retrieved_at": "2026-10-11T17:06:21.628019+07:00",
+      "period_code": "2026-9T",
+      "source_id": "nso-2026-9T",
+      "raw_sha256": "e1246217fadea63f31b9be5f2d990e709cd3a2dc0074275d3052379ad390c04a"
+    },
+    "retail.q.yoy": {
+      "id": "nso-2026-9T",
+      "name": "Cục Thống kê",
+      "url": "https://www.nso.gov.vn/bai-top/2026/10/bao-cao-tinh-hinh-kinh-te-xa-hoi-quy-iii-va-9-thang-nam-2026/",
+      "source_published_at": "2026-10-03",
+      "retrieved_at": "2026-10-11T17:06:21.628019+07:00",
+      "period_code": "2026-9T",
+      "source_id": "nso-2026-9T",
+      "raw_sha256": "e1246217fadea63f31b9be5f2d990e709cd3a2dc0074275d3052379ad390c04a"
+    },
+    "retail.ytd.value_bn_vnd": {
+      "id": "nso-2026-9T",
+      "name": "Cục Thống kê",
+      "url": "https://www.nso.gov.vn/bai-top/2026/10/bao-cao-tinh-hinh-kinh-te-xa-hoi-quy-iii-va-9-thang-nam-2026/",
+      "source_published_at": "2026-10-03",
+      "retrieved_at": "2026-10-11T17:06:21.628019+07:00",
+      "period_code": "2026-9T",
+      "source_id": "nso-2026-9T",
+      "raw_sha256": "e1246217fadea63f31b9be5f2d990e709cd3a2dc0074275d3052379ad390c04a"
+    },
+    "retail.ytd.yoy": {
+      "id": "nso-2026-9T",
+      "name": "Cục Thống kê",
+      "url": "https://www.nso.gov.vn/bai-top/2026/10/bao-cao-tinh-hinh-kinh-te-xa-hoi-quy-iii-va-9-thang-nam-2026/",
+      "source_published_at": "2026-10-03",
+      "retrieved_at": "2026-10-11T17:06:21.628019+07:00",
+      "period_code": "2026-9T",
+      "source_id": "nso-2026-9T",
+      "raw_sha256": "e1246217fadea63f31b9be5f2d990e709cd3a2dc0074275d3052379ad390c04a"
+    },
+    "monetary.credit_growth_ytd": {
+      "id": "nso-2026-9T",
+      "name": "Cục Thống kê",
+      "url": "https://www.nso.gov.vn/bai-top/2026/10/bao-cao-tinh-hinh-kinh-te-xa-hoi-quy-iii-va-9-thang-nam-2026/",
+      "source_published_at": "2026-10-03",
+      "retrieved_at": "2026-10-11T17:06:21.628019+07:00",
+      "period_code": "2026-9T",
+      "source_id": "nso-2026-9T",
+      "raw_sha256": "e1246217fadea63f31b9be5f2d990e709cd3a2dc0074275d3052379ad390c04a"
+    },
+    "fdi.registered_usd_bn": {
+      "id": "nso-2026-9T",
+      "name": "Cục Thống kê",
+      "url": "https://www.nso.gov.vn/bai-top/2026/10/bao-cao-tinh-hinh-kinh-te-xa-hoi-quy-iii-va-9-thang-nam-2026/",
+      "source_published_at": "2026-10-03",
+      "retrieved_at": "2026-10-11T17:06:21.628019+07:00",
+      "period_code": "2026-9T",
+      "source_id": "nso-2026-9T",
+      "raw_sha256": "e1246217fadea63f31b9be5f2d990e709cd3a2dc0074275d3052379ad390c04a",
+      "observation_date": "2026-09-30"
+    },
+    "fdi.registered_yoy": {
+      "id": "nso-2026-9T",
+      "name": "Cục Thống kê",
+      "url": "https://www.nso.gov.vn/bai-top/2026/10/bao-cao-tinh-hinh-kinh-te-xa-hoi-quy-iii-va-9-thang-nam-2026/",
+      "source_published_at": "2026-10-03",
+      "retrieved_at": "2026-10-11T17:06:21.628019+07:00",
+      "period_code": "2026-9T",
+      "source_id": "nso-2026-9T",
+      "raw_sha256": "e1246217fadea63f31b9be5f2d990e709cd3a2dc0074275d3052379ad390c04a"
+    },
+    "fdi.disbursed_usd_bn": {
+      "id": "nso-2026-9T",
+      "name": "Cục Thống kê",
+      "url": "https://www.nso.gov.vn/bai-top/2026/10/bao-cao-tinh-hinh-kinh-te-xa-hoi-quy-iii-va-9-thang-nam-2026/",
+      "source_published_at": "2026-10-03",
+      "retrieved_at": "2026-10-11T17:06:21.628019+07:00",
+      "period_code": "2026-9T",
+      "source_id": "nso-2026-9T",
+      "raw_sha256": "e1246217fadea63f31b9be5f2d990e709cd3a2dc0074275d3052379ad390c04a"
+    },
+    "fdi.disbursed_yoy": {
+      "id": "nso-2026-9T",
+      "name": "Cục Thống kê",
+      "url": "https://www.nso.gov.vn/bai-top/2026/10/bao-cao-tinh-hinh-kinh-te-xa-hoi-quy-iii-va-9-thang-nam-2026/",
+      "source_published_at": "2026-10-03",
+      "retrieved_at": "2026-10-11T17:06:21.628019+07:00",
+      "period_code": "2026-9T",
+      "source_id": "nso-2026-9T",
+      "raw_sha256": "e1246217fadea63f31b9be5f2d990e709cd3a2dc0074275d3052379ad390c04a"
+    },
+    "budget.month.revenue": {
+      "id": "nso-2026-9T",
+      "name": "Cục Thống kê",
+      "url": "https://www.nso.gov.vn/bai-top/2026/10/bao-cao-tinh-hinh-kinh-te-xa-hoi-quy-iii-va-9-thang-nam-2026/",
+      "source_published_at": "2026-10-03",
+      "retrieved_at": "2026-10-11T17:06:21.628019+07:00",
+      "period_code": "2026-9T",
+      "source_id": "nso-2026-9T",
+      "raw_sha256": "e1246217fadea63f31b9be5f2d990e709cd3a2dc0074275d3052379ad390c04a"
+    },
+    "budget.ytd.revenue": {
+      "id": "nso-2026-9T",
+      "name": "Cục Thống kê",
+      "url": "https://www.nso.gov.vn/bai-top/2026/10/bao-cao-tinh-hinh-kinh-te-xa-hoi-quy-iii-va-9-thang-nam-2026/",
+      "source_published_at": "2026-10-03",
+      "retrieved_at": "2026-10-11T17:06:21.628019+07:00",
+      "period_code": "2026-9T",
+      "source_id": "nso-2026-9T",
+      "raw_sha256": "e1246217fadea63f31b9be5f2d990e709cd3a2dc0074275d3052379ad390c04a"
+    },
+    "budget.ytd.revenue_pct_plan": {
+      "id": "nso-2026-9T",
+      "name": "Cục Thống kê",
+      "url": "https://www.nso.gov.vn/bai-top/2026/10/bao-cao-tinh-hinh-kinh-te-xa-hoi-quy-iii-va-9-thang-nam-2026/",
+      "source_published_at": "2026-10-03",
+      "retrieved_at": "2026-10-11T17:06:21.628019+07:00",
+      "period_code": "2026-9T",
+      "source_id": "nso-2026-9T",
+      "raw_sha256": "e1246217fadea63f31b9be5f2d990e709cd3a2dc0074275d3052379ad390c04a"
+    },
+    "budget.ytd.revenue_yoy": {
+      "id": "nso-2026-9T",
+      "name": "Cục Thống kê",
+      "url": "https://www.nso.gov.vn/bai-top/2026/10/bao-cao-tinh-hinh-kinh-te-xa-hoi-quy-iii-va-9-thang-nam-2026/",
+      "source_published_at": "2026-10-03",
+      "retrieved_at": "2026-10-11T17:06:21.628019+07:00",
+      "period_code": "2026-9T",
+      "source_id": "nso-2026-9T",
+      "raw_sha256": "e1246217fadea63f31b9be5f2d990e709cd3a2dc0074275d3052379ad390c04a"
+    },
+    "budget.month.expenditure": {
+      "id": "nso-2026-9T",
+      "name": "Cục Thống kê",
+      "url": "https://www.nso.gov.vn/bai-top/2026/10/bao-cao-tinh-hinh-kinh-te-xa-hoi-quy-iii-va-9-thang-nam-2026/",
+      "source_published_at": "2026-10-03",
+      "retrieved_at": "2026-10-11T17:06:21.628019+07:00",
+      "period_code": "2026-9T",
+      "source_id": "nso-2026-9T",
+      "raw_sha256": "e1246217fadea63f31b9be5f2d990e709cd3a2dc0074275d3052379ad390c04a"
+    },
+    "budget.ytd.expenditure": {
+      "id": "nso-2026-9T",
+      "name": "Cục Thống kê",
+      "url": "https://www.nso.gov.vn/bai-top/2026/10/bao-cao-tinh-hinh-kinh-te-xa-hoi-quy-iii-va-9-thang-nam-2026/",
+      "source_published_at": "2026-10-03",
+      "retrieved_at": "2026-10-11T17:06:21.628019+07:00",
+      "period_code": "2026-9T",
+      "source_id": "nso-2026-9T",
+      "raw_sha256": "e1246217fadea63f31b9be5f2d990e709cd3a2dc0074275d3052379ad390c04a"
+    },
+    "budget.ytd.expenditure_pct_plan": {
+      "id": "nso-2026-9T",
+      "name": "Cục Thống kê",
+      "url": "https://www.nso.gov.vn/bai-top/2026/10/bao-cao-tinh-hinh-kinh-te-xa-hoi-quy-iii-va-9-thang-nam-2026/",
+      "source_published_at": "2026-10-03",
+      "retrieved_at": "2026-10-11T17:06:21.628019+07:00",
+      "period_code": "2026-9T",
+      "source_id": "nso-2026-9T",
+      "raw_sha256": "e1246217fadea63f31b9be5f2d990e709cd3a2dc0074275d3052379ad390c04a"
+    },
+    "budget.ytd.expenditure_yoy": {
+      "id": "nso-2026-9T",
+      "name": "Cục Thống kê",
+      "url": "https://www.nso.gov.vn/bai-top/2026/10/bao-cao-tinh-hinh-kinh-te-xa-hoi-quy-iii-va-9-thang-nam-2026/",
+      "source_published_at": "2026-10-03",
+      "retrieved_at": "2026-10-11T17:06:21.628019+07:00",
+      "period_code": "2026-9T",
+      "source_id": "nso-2026-9T",
+      "raw_sha256": "e1246217fadea63f31b9be5f2d990e709cd3a2dc0074275d3052379ad390c04a"
+    },
+    "trade.q.export_usd_bn": {
+      "id": "nso-2026-9T",
+      "name": "Cục Thống kê",
+      "url": "https://www.nso.gov.vn/bai-top/2026/10/bao-cao-tinh-hinh-kinh-te-xa-hoi-quy-iii-va-9-thang-nam-2026/",
+      "source_published_at": "2026-10-03",
+      "retrieved_at": "2026-10-11T17:06:21.628019+07:00",
+      "period_code": "2026-9T",
+      "source_id": "nso-2026-9T",
+      "raw_sha256": "e1246217fadea63f31b9be5f2d990e709cd3a2dc0074275d3052379ad390c04a"
+    },
+    "trade.q.export_yoy": {
+      "id": "nso-2026-9T",
+      "name": "Cục Thống kê",
+      "url": "https://www.nso.gov.vn/bai-top/2026/10/bao-cao-tinh-hinh-kinh-te-xa-hoi-quy-iii-va-9-thang-nam-2026/",
+      "source_published_at": "2026-10-03",
+      "retrieved_at": "2026-10-11T17:06:21.628019+07:00",
+      "period_code": "2026-9T",
+      "source_id": "nso-2026-9T",
+      "raw_sha256": "e1246217fadea63f31b9be5f2d990e709cd3a2dc0074275d3052379ad390c04a"
+    },
+    "trade.q.export_qoq": {
+      "id": "nso-2026-9T",
+      "name": "Cục Thống kê",
+      "url": "https://www.nso.gov.vn/bai-top/2026/10/bao-cao-tinh-hinh-kinh-te-xa-hoi-quy-iii-va-9-thang-nam-2026/",
+      "source_published_at": "2026-10-03",
+      "retrieved_at": "2026-10-11T17:06:21.628019+07:00",
+      "period_code": "2026-9T",
+      "source_id": "nso-2026-9T",
+      "raw_sha256": "e1246217fadea63f31b9be5f2d990e709cd3a2dc0074275d3052379ad390c04a"
+    },
+    "trade.ytd.export_usd_bn": {
+      "id": "nso-2026-9T",
+      "name": "Cục Thống kê",
+      "url": "https://www.nso.gov.vn/bai-top/2026/10/bao-cao-tinh-hinh-kinh-te-xa-hoi-quy-iii-va-9-thang-nam-2026/",
+      "source_published_at": "2026-10-03",
+      "retrieved_at": "2026-10-11T17:06:21.628019+07:00",
+      "period_code": "2026-9T",
+      "source_id": "nso-2026-9T",
+      "raw_sha256": "e1246217fadea63f31b9be5f2d990e709cd3a2dc0074275d3052379ad390c04a"
+    },
+    "trade.ytd.export_yoy": {
+      "id": "nso-2026-9T",
+      "name": "Cục Thống kê",
+      "url": "https://www.nso.gov.vn/bai-top/2026/10/bao-cao-tinh-hinh-kinh-te-xa-hoi-quy-iii-va-9-thang-nam-2026/",
+      "source_published_at": "2026-10-03",
+      "retrieved_at": "2026-10-11T17:06:21.628019+07:00",
+      "period_code": "2026-9T",
+      "source_id": "nso-2026-9T",
+      "raw_sha256": "e1246217fadea63f31b9be5f2d990e709cd3a2dc0074275d3052379ad390c04a"
+    },
+    "trade.q.import_usd_bn": {
+      "id": "nso-2026-9T",
+      "name": "Cục Thống kê",
+      "url": "https://www.nso.gov.vn/bai-top/2026/10/bao-cao-tinh-hinh-kinh-te-xa-hoi-quy-iii-va-9-thang-nam-2026/",
+      "source_published_at": "2026-10-03",
+      "retrieved_at": "2026-10-11T17:06:21.628019+07:00",
+      "period_code": "2026-9T",
+      "source_id": "nso-2026-9T",
+      "raw_sha256": "e1246217fadea63f31b9be5f2d990e709cd3a2dc0074275d3052379ad390c04a"
+    },
+    "trade.q.import_yoy": {
+      "id": "nso-2026-9T",
+      "name": "Cục Thống kê",
+      "url": "https://www.nso.gov.vn/bai-top/2026/10/bao-cao-tinh-hinh-kinh-te-xa-hoi-quy-iii-va-9-thang-nam-2026/",
+      "source_published_at": "2026-10-03",
+      "retrieved_at": "2026-10-11T17:06:21.628019+07:00",
+      "period_code": "2026-9T",
+      "source_id": "nso-2026-9T",
+      "raw_sha256": "e1246217fadea63f31b9be5f2d990e709cd3a2dc0074275d3052379ad390c04a"
+    },
+    "trade.q.import_qoq": {
+      "id": "nso-2026-9T",
+      "name": "Cục Thống kê",
+      "url": "https://www.nso.gov.vn/bai-top/2026/10/bao-cao-tinh-hinh-kinh-te-xa-hoi-quy-iii-va-9-thang-nam-2026/",
+      "source_published_at": "2026-10-03",
+      "retrieved_at": "2026-10-11T17:06:21.628019+07:00",
+      "period_code": "2026-9T",
+      "source_id": "nso-2026-9T",
+      "raw_sha256": "e1246217fadea63f31b9be5f2d990e709cd3a2dc0074275d3052379ad390c04a"
+    },
+    "trade.ytd.import_usd_bn": {
+      "id": "nso-2026-9T",
+      "name": "Cục Thống kê",
+      "url": "https://www.nso.gov.vn/bai-top/2026/10/bao-cao-tinh-hinh-kinh-te-xa-hoi-quy-iii-va-9-thang-nam-2026/",
+      "source_published_at": "2026-10-03",
+      "retrieved_at": "2026-10-11T17:06:21.628019+07:00",
+      "period_code": "2026-9T",
+      "source_id": "nso-2026-9T",
+      "raw_sha256": "e1246217fadea63f31b9be5f2d990e709cd3a2dc0074275d3052379ad390c04a"
+    },
+    "trade.ytd.import_yoy": {
+      "id": "nso-2026-9T",
+      "name": "Cục Thống kê",
+      "url": "https://www.nso.gov.vn/bai-top/2026/10/bao-cao-tinh-hinh-kinh-te-xa-hoi-quy-iii-va-9-thang-nam-2026/",
+      "source_published_at": "2026-10-03",
+      "retrieved_at": "2026-10-11T17:06:21.628019+07:00",
+      "period_code": "2026-9T",
+      "source_id": "nso-2026-9T",
+      "raw_sha256": "e1246217fadea63f31b9be5f2d990e709cd3a2dc0074275d3052379ad390c04a"
+    },
+    "trade.ytd.total_usd_bn": {
+      "id": "nso-2026-9T",
+      "name": "Cục Thống kê",
+      "url": "https://www.nso.gov.vn/bai-top/2026/10/bao-cao-tinh-hinh-kinh-te-xa-hoi-quy-iii-va-9-thang-nam-2026/",
+      "source_published_at": "2026-10-03",
+      "retrieved_at": "2026-10-11T17:06:21.628019+07:00",
+      "period_code": "2026-9T",
+      "source_id": "nso-2026-9T",
+      "raw_sha256": "e1246217fadea63f31b9be5f2d990e709cd3a2dc0074275d3052379ad390c04a"
+    },
+    "trade.ytd.total_yoy": {
+      "id": "nso-2026-9T",
+      "name": "Cục Thống kê",
+      "url": "https://www.nso.gov.vn/bai-top/2026/10/bao-cao-tinh-hinh-kinh-te-xa-hoi-quy-iii-va-9-thang-nam-2026/",
+      "source_published_at": "2026-10-03",
+      "retrieved_at": "2026-10-11T17:06:21.628019+07:00",
+      "period_code": "2026-9T",
+      "source_id": "nso-2026-9T",
+      "raw_sha256": "e1246217fadea63f31b9be5f2d990e709cd3a2dc0074275d3052379ad390c04a"
+    },
+    "trade.month_balance_usd_bn": {
+      "id": "nso-2026-9T",
+      "name": "Cục Thống kê",
+      "url": "https://www.nso.gov.vn/bai-top/2026/10/bao-cao-tinh-hinh-kinh-te-xa-hoi-quy-iii-va-9-thang-nam-2026/",
+      "source_published_at": "2026-10-03",
+      "retrieved_at": "2026-10-11T17:06:21.628019+07:00",
+      "period_code": "2026-9T",
+      "source_id": "nso-2026-9T",
+      "raw_sha256": "e1246217fadea63f31b9be5f2d990e709cd3a2dc0074275d3052379ad390c04a"
+    },
+    "trade.ytd.balance_usd_bn": {
+      "id": "nso-2026-9T",
+      "name": "Cục Thống kê",
+      "url": "https://www.nso.gov.vn/bai-top/2026/10/bao-cao-tinh-hinh-kinh-te-xa-hoi-quy-iii-va-9-thang-nam-2026/",
+      "source_published_at": "2026-10-03",
+      "retrieved_at": "2026-10-11T17:06:21.628019+07:00",
+      "period_code": "2026-9T",
+      "source_id": "nso-2026-9T",
+      "raw_sha256": "e1246217fadea63f31b9be5f2d990e709cd3a2dc0074275d3052379ad390c04a"
+    },
+    "trade.domestic_balance_usd_bn": {
+      "id": "nso-2026-9T",
+      "name": "Cục Thống kê",
+      "url": "https://www.nso.gov.vn/bai-top/2026/10/bao-cao-tinh-hinh-kinh-te-xa-hoi-quy-iii-va-9-thang-nam-2026/",
+      "source_published_at": "2026-10-03",
+      "retrieved_at": "2026-10-11T17:06:21.628019+07:00",
+      "period_code": "2026-9T",
+      "source_id": "nso-2026-9T",
+      "raw_sha256": "e1246217fadea63f31b9be5f2d990e709cd3a2dc0074275d3052379ad390c04a"
+    },
+    "trade.fdi_balance_usd_bn": {
+      "id": "nso-2026-9T",
+      "name": "Cục Thống kê",
+      "url": "https://www.nso.gov.vn/bai-top/2026/10/bao-cao-tinh-hinh-kinh-te-xa-hoi-quy-iii-va-9-thang-nam-2026/",
+      "source_published_at": "2026-10-03",
+      "retrieved_at": "2026-10-11T17:06:21.628019+07:00",
+      "period_code": "2026-9T",
+      "source_id": "nso-2026-9T",
+      "raw_sha256": "e1246217fadea63f31b9be5f2d990e709cd3a2dc0074275d3052379ad390c04a"
+    },
+    "trade.import_structure": {
+      "id": "nso-2026-9T",
+      "name": "Cục Thống kê",
+      "url": "https://www.nso.gov.vn/bai-top/2026/10/bao-cao-tinh-hinh-kinh-te-xa-hoi-quy-iii-va-9-thang-nam-2026/",
+      "source_published_at": "2026-10-03",
+      "retrieved_at": "2026-10-11T17:06:21.628019+07:00",
+      "period_code": "2026-9T",
+      "source_id": "nso-2026-9T"
+    },
+    "cpi.month_mom": {
+      "id": "nso-2026-9T",
+      "name": "Cục Thống kê",
+      "url": "https://www.nso.gov.vn/bai-top/2026/10/bao-cao-tinh-hinh-kinh-te-xa-hoi-quy-iii-va-9-thang-nam-2026/",
+      "source_published_at": "2026-10-03",
+      "retrieved_at": "2026-10-11T17:06:21.628019+07:00",
+      "period_code": "2026-9T",
+      "source_id": "nso-2026-9T",
+      "raw_sha256": "e1246217fadea63f31b9be5f2d990e709cd3a2dc0074275d3052379ad390c04a"
+    },
+    "cpi.month_yoy": {
+      "id": "nso-2026-9T",
+      "name": "Cục Thống kê",
+      "url": "https://www.nso.gov.vn/bai-top/2026/10/bao-cao-tinh-hinh-kinh-te-xa-hoi-quy-iii-va-9-thang-nam-2026/",
+      "source_published_at": "2026-10-03",
+      "retrieved_at": "2026-10-11T17:06:21.628019+07:00",
+      "period_code": "2026-9T",
+      "source_id": "nso-2026-9T",
+      "raw_sha256": "e1246217fadea63f31b9be5f2d990e709cd3a2dc0074275d3052379ad390c04a"
+    },
+    "cpi.quarter_yoy": {
+      "id": "nso-2026-9T",
+      "name": "Cục Thống kê",
+      "url": "https://www.nso.gov.vn/bai-top/2026/10/bao-cao-tinh-hinh-kinh-te-xa-hoi-quy-iii-va-9-thang-nam-2026/",
+      "source_published_at": "2026-10-03",
+      "retrieved_at": "2026-10-11T17:06:21.628019+07:00",
+      "period_code": "2026-9T",
+      "source_id": "nso-2026-9T",
+      "raw_sha256": "e1246217fadea63f31b9be5f2d990e709cd3a2dc0074275d3052379ad390c04a"
+    },
+    "cpi.ytd_avg_yoy": {
+      "id": "nso-2026-9T",
+      "name": "Cục Thống kê",
+      "url": "https://www.nso.gov.vn/bai-top/2026/10/bao-cao-tinh-hinh-kinh-te-xa-hoi-quy-iii-va-9-thang-nam-2026/",
+      "source_published_at": "2026-10-03",
+      "retrieved_at": "2026-10-11T17:06:21.628019+07:00",
+      "period_code": "2026-9T",
+      "source_id": "nso-2026-9T",
+      "raw_sha256": "e1246217fadea63f31b9be5f2d990e709cd3a2dc0074275d3052379ad390c04a"
+    },
+    "cpi.core_ytd_yoy": {
+      "id": "nso-2026-9T",
+      "name": "Cục Thống kê",
+      "url": "https://www.nso.gov.vn/bai-top/2026/10/bao-cao-tinh-hinh-kinh-te-xa-hoi-quy-iii-va-9-thang-nam-2026/",
+      "source_published_at": "2026-10-03",
+      "retrieved_at": "2026-10-11T17:06:21.628019+07:00",
+      "period_code": "2026-9T",
+      "source_id": "nso-2026-9T",
+      "raw_sha256": "e1246217fadea63f31b9be5f2d990e709cd3a2dc0074275d3052379ad390c04a"
+    },
+    "gdp.history.0": {
+      "id": "nso-2022-9T",
+      "name": "Cục Thống kê",
+      "url": "https://www.nso.gov.vn/du-lieu-va-so-lieu-thong-ke/2022/09/bao-cao-tinh-hinh-kinh-te-xa-hoi-quy-iii-va-9-thang-nam-2022/",
+      "source_published_at": "2022-09-29",
+      "retrieved_at": "2026-10-11T17:06:23.300671+07:00",
+      "period_code": "2022-9T",
+      "source_id": "nso-2022-9T",
+      "historical": true
+    },
+    "cpi.history_ytd.0": {
+      "id": "nso-2022-9T",
+      "name": "Cục Thống kê",
+      "url": "https://www.nso.gov.vn/du-lieu-va-so-lieu-thong-ke/2022/09/bao-cao-tinh-hinh-kinh-te-xa-hoi-quy-iii-va-9-thang-nam-2022/",
+      "source_published_at": "2022-09-29",
+      "retrieved_at": "2026-10-11T17:06:23.300671+07:00",
+      "period_code": "2022-9T",
+      "source_id": "nso-2022-9T",
+      "historical": true
+    },
+    "retail.history.0": {
+      "id": "nso-2022-9T",
+      "name": "Cục Thống kê",
+      "url": "https://www.nso.gov.vn/du-lieu-va-so-lieu-thong-ke/2022/09/bao-cao-tinh-hinh-kinh-te-xa-hoi-quy-iii-va-9-thang-nam-2022/",
+      "source_published_at": "2022-09-29",
+      "retrieved_at": "2026-10-11T17:06:23.300671+07:00",
+      "period_code": "2022-9T",
+      "source_id": "nso-2022-9T",
+      "historical": true
+    },
+    "trade.history_ytd.0": {
+      "id": "nso-2022-9T",
+      "name": "Cục Thống kê",
+      "url": "https://www.nso.gov.vn/du-lieu-va-so-lieu-thong-ke/2022/09/bao-cao-tinh-hinh-kinh-te-xa-hoi-quy-iii-va-9-thang-nam-2022/",
+      "source_published_at": "2022-09-29",
+      "retrieved_at": "2026-10-11T17:06:23.300671+07:00",
+      "period_code": "2022-9T",
+      "source_id": "nso-2022-9T",
+      "historical": true
+    },
+    "fdi.history_ytd.0": {
+      "id": "nso-2022-9T",
+      "name": "Cục Thống kê",
+      "url": "https://www.nso.gov.vn/du-lieu-va-so-lieu-thong-ke/2022/09/bao-cao-tinh-hinh-kinh-te-xa-hoi-quy-iii-va-9-thang-nam-2022/",
+      "source_published_at": "2022-09-29",
+      "retrieved_at": "2026-10-11T17:06:23.300671+07:00",
+      "period_code": "2022-9T",
+      "source_id": "nso-2022-9T",
+      "historical": true
+    },
+    "gdp.history.1": {
+      "id": "nso-2023-9T",
+      "name": "Cục Thống kê",
+      "url": "https://www.nso.gov.vn/du-lieu-va-so-lieu-thong-ke/2023/09/bao-cao-tinh-hinh-kinh-te-xa-hoi-quy-iii-va-9-thang-nam-2023/",
+      "source_published_at": "2023-09-29",
+      "retrieved_at": "2026-10-11T17:06:24.717358+07:00",
+      "period_code": "2023-9T",
+      "source_id": "nso-2023-9T",
+      "historical": true
+    },
+    "cpi.history_ytd.1": {
+      "id": "nso-2023-9T",
+      "name": "Cục Thống kê",
+      "url": "https://www.nso.gov.vn/du-lieu-va-so-lieu-thong-ke/2023/09/bao-cao-tinh-hinh-kinh-te-xa-hoi-quy-iii-va-9-thang-nam-2023/",
+      "source_published_at": "2023-09-29",
+      "retrieved_at": "2026-10-11T17:06:24.717358+07:00",
+      "period_code": "2023-9T",
+      "source_id": "nso-2023-9T",
+      "historical": true
+    },
+    "retail.history.1": {
+      "id": "nso-2023-9T",
+      "name": "Cục Thống kê",
+      "url": "https://www.nso.gov.vn/du-lieu-va-so-lieu-thong-ke/2023/09/bao-cao-tinh-hinh-kinh-te-xa-hoi-quy-iii-va-9-thang-nam-2023/",
+      "source_published_at": "2023-09-29",
+      "retrieved_at": "2026-10-11T17:06:24.717358+07:00",
+      "period_code": "2023-9T",
+      "source_id": "nso-2023-9T",
+      "historical": true
+    },
+    "trade.history_ytd.1": {
+      "id": "nso-2023-9T",
+      "name": "Cục Thống kê",
+      "url": "https://www.nso.gov.vn/du-lieu-va-so-lieu-thong-ke/2023/09/bao-cao-tinh-hinh-kinh-te-xa-hoi-quy-iii-va-9-thang-nam-2023/",
+      "source_published_at": "2023-09-29",
+      "retrieved_at": "2026-10-11T17:06:24.717358+07:00",
+      "period_code": "2023-9T",
+      "source_id": "nso-2023-9T",
+      "historical": true
+    },
+    "fdi.history_ytd.1": {
+      "id": "nso-2023-9T",
+      "name": "Cục Thống kê",
+      "url": "https://www.nso.gov.vn/du-lieu-va-so-lieu-thong-ke/2023/09/bao-cao-tinh-hinh-kinh-te-xa-hoi-quy-iii-va-9-thang-nam-2023/",
+      "source_published_at": "2023-09-29",
+      "retrieved_at": "2026-10-11T17:06:24.717358+07:00",
+      "period_code": "2023-9T",
+      "source_id": "nso-2023-9T",
+      "historical": true
+    },
+    "gdp.history.2": {
+      "id": "nso-2024-9T",
+      "name": "Cục Thống kê",
+      "url": "https://www.nso.gov.vn/du-lieu-va-so-lieu-thong-ke/2024/10/bao-cao-tinh-hinh-kinh-te-xa-hoi-quy-iii-va-9-thang-nam-2024/",
+      "source_published_at": "2024-10-06",
+      "retrieved_at": "2026-10-11T17:06:26.165611+07:00",
+      "period_code": "2024-9T",
+      "source_id": "nso-2024-9T",
+      "historical": true
+    },
+    "cpi.history_ytd.2": {
+      "id": "nso-2024-9T",
+      "name": "Cục Thống kê",
+      "url": "https://www.nso.gov.vn/du-lieu-va-so-lieu-thong-ke/2024/10/bao-cao-tinh-hinh-kinh-te-xa-hoi-quy-iii-va-9-thang-nam-2024/",
+      "source_published_at": "2024-10-06",
+      "retrieved_at": "2026-10-11T17:06:26.165611+07:00",
+      "period_code": "2024-9T",
+      "source_id": "nso-2024-9T",
+      "historical": true
+    },
+    "retail.history.2": {
+      "id": "nso-2024-9T",
+      "name": "Cục Thống kê",
+      "url": "https://www.nso.gov.vn/du-lieu-va-so-lieu-thong-ke/2024/10/bao-cao-tinh-hinh-kinh-te-xa-hoi-quy-iii-va-9-thang-nam-2024/",
+      "source_published_at": "2024-10-06",
+      "retrieved_at": "2026-10-11T17:06:26.165611+07:00",
+      "period_code": "2024-9T",
+      "source_id": "nso-2024-9T",
+      "historical": true
+    },
+    "trade.history_ytd.2": {
+      "id": "nso-2024-9T",
+      "name": "Cục Thống kê",
+      "url": "https://www.nso.gov.vn/du-lieu-va-so-lieu-thong-ke/2024/10/bao-cao-tinh-hinh-kinh-te-xa-hoi-quy-iii-va-9-thang-nam-2024/",
+      "source_published_at": "2024-10-06",
+      "retrieved_at": "2026-10-11T17:06:26.165611+07:00",
+      "period_code": "2024-9T",
+      "source_id": "nso-2024-9T",
+      "historical": true
+    },
+    "fdi.history_ytd.2": {
+      "id": "nso-2024-9T",
+      "name": "Cục Thống kê",
+      "url": "https://www.nso.gov.vn/du-lieu-va-so-lieu-thong-ke/2024/10/bao-cao-tinh-hinh-kinh-te-xa-hoi-quy-iii-va-9-thang-nam-2024/",
+      "source_published_at": "2024-10-06",
+      "retrieved_at": "2026-10-11T17:06:26.165611+07:00",
+      "period_code": "2024-9T",
+      "source_id": "nso-2024-9T",
+      "historical": true
+    },
+    "gdp.history.3": {
+      "id": "nso-2025-9T",
+      "name": "Cục Thống kê",
+      "url": "https://www.nso.gov.vn/bai-top/2025/10/bao-cao-tinh-hinh-kinh-te-xa-hoi-quy-iii-va-9-thang-nam-2025/",
+      "source_published_at": "2025-10-06",
+      "retrieved_at": "2026-10-11T17:06:27.567114+07:00",
+      "period_code": "2025-9T",
+      "source_id": "nso-2025-9T",
+      "historical": true
+    },
+    "iip.history.0": {
+      "id": "nso-2025-9T",
+      "name": "Cục Thống kê",
+      "url": "https://www.nso.gov.vn/bai-top/2025/10/bao-cao-tinh-hinh-kinh-te-xa-hoi-quy-iii-va-9-thang-nam-2025/",
+      "source_published_at": "2025-10-06",
+      "retrieved_at": "2026-10-11T17:06:27.567114+07:00",
+      "period_code": "2025-9T",
+      "source_id": "nso-2025-9T",
+      "historical": true
+    },
+    "cpi.history_ytd.3": {
+      "id": "nso-2025-9T",
+      "name": "Cục Thống kê",
+      "url": "https://www.nso.gov.vn/bai-top/2025/10/bao-cao-tinh-hinh-kinh-te-xa-hoi-quy-iii-va-9-thang-nam-2025/",
+      "source_published_at": "2025-10-06",
+      "retrieved_at": "2026-10-11T17:06:27.567114+07:00",
+      "period_code": "2025-9T",
+      "source_id": "nso-2025-9T",
+      "historical": true
+    },
+    "retail.history.3": {
+      "id": "nso-2025-9T",
+      "name": "Cục Thống kê",
+      "url": "https://www.nso.gov.vn/bai-top/2025/10/bao-cao-tinh-hinh-kinh-te-xa-hoi-quy-iii-va-9-thang-nam-2025/",
+      "source_published_at": "2025-10-06",
+      "retrieved_at": "2026-10-11T17:06:27.567114+07:00",
+      "period_code": "2025-9T",
+      "source_id": "nso-2025-9T",
+      "historical": true
+    },
+    "trade.history_ytd.3": {
+      "id": "nso-2025-9T",
+      "name": "Cục Thống kê",
+      "url": "https://www.nso.gov.vn/bai-top/2025/10/bao-cao-tinh-hinh-kinh-te-xa-hoi-quy-iii-va-9-thang-nam-2025/",
+      "source_published_at": "2025-10-06",
+      "retrieved_at": "2026-10-11T17:06:27.567114+07:00",
+      "period_code": "2025-9T",
+      "source_id": "nso-2025-9T",
+      "historical": true
+    },
+    "fdi.history_ytd.3": {
+      "id": "nso-2025-9T",
+      "name": "Cục Thống kê",
+      "url": "https://www.nso.gov.vn/bai-top/2025/10/bao-cao-tinh-hinh-kinh-te-xa-hoi-quy-iii-va-9-thang-nam-2025/",
+      "source_published_at": "2025-10-06",
+      "retrieved_at": "2026-10-11T17:06:27.567114+07:00",
+      "period_code": "2025-9T",
+      "source_id": "nso-2025-9T",
+      "historical": true
+    },
+    "gdp.history.4": {
+      "id": "nso-2026-9T",
+      "name": "Cục Thống kê",
+      "url": "https://www.nso.gov.vn/bai-top/2026/10/bao-cao-tinh-hinh-kinh-te-xa-hoi-quy-iii-va-9-thang-nam-2026/",
+      "source_published_at": "2026-10-03",
+      "retrieved_at": "2026-10-11T17:06:21.628019+07:00",
+      "period_code": "2026-9T",
+      "source_id": "nso-2026-9T",
+      "historical": false
+    },
+    "iip.history.1": {
+      "id": "nso-2026-9T",
+      "name": "Cục Thống kê",
+      "url": "https://www.nso.gov.vn/bai-top/2026/10/bao-cao-tinh-hinh-kinh-te-xa-hoi-quy-iii-va-9-thang-nam-2026/",
+      "source_published_at": "2026-10-03",
+      "retrieved_at": "2026-10-11T17:06:21.628019+07:00",
+      "period_code": "2026-9T",
+      "source_id": "nso-2026-9T",
+      "historical": false
+    },
+    "cpi.history_ytd.4": {
+      "id": "nso-2026-9T",
+      "name": "Cục Thống kê",
+      "url": "https://www.nso.gov.vn/bai-top/2026/10/bao-cao-tinh-hinh-kinh-te-xa-hoi-quy-iii-va-9-thang-nam-2026/",
+      "source_published_at": "2026-10-03",
+      "retrieved_at": "2026-10-11T17:06:21.628019+07:00",
+      "period_code": "2026-9T",
+      "source_id": "nso-2026-9T",
+      "historical": false
+    },
+    "retail.history.4": {
+      "id": "nso-2026-9T",
+      "name": "Cục Thống kê",
+      "url": "https://www.nso.gov.vn/bai-top/2026/10/bao-cao-tinh-hinh-kinh-te-xa-hoi-quy-iii-va-9-thang-nam-2026/",
+      "source_published_at": "2026-10-03",
+      "retrieved_at": "2026-10-11T17:06:21.628019+07:00",
+      "period_code": "2026-9T",
+      "source_id": "nso-2026-9T",
+      "historical": false
+    },
+    "trade.history_ytd.4": {
+      "id": "nso-2026-9T",
+      "name": "Cục Thống kê",
+      "url": "https://www.nso.gov.vn/bai-top/2026/10/bao-cao-tinh-hinh-kinh-te-xa-hoi-quy-iii-va-9-thang-nam-2026/",
+      "source_published_at": "2026-10-03",
+      "retrieved_at": "2026-10-11T17:06:21.628019+07:00",
+      "period_code": "2026-9T",
+      "source_id": "nso-2026-9T",
+      "historical": false
+    },
+    "fdi.history_ytd.4": {
+      "id": "nso-2026-9T",
+      "name": "Cục Thống kê",
+      "url": "https://www.nso.gov.vn/bai-top/2026/10/bao-cao-tinh-hinh-kinh-te-xa-hoi-quy-iii-va-9-thang-nam-2026/",
+      "source_published_at": "2026-10-03",
+      "retrieved_at": "2026-10-11T17:06:21.628019+07:00",
+      "period_code": "2026-9T",
+      "source_id": "nso-2026-9T",
+      "historical": false
+    },
+    "iip.prev_ytd_yoy": {
+      "id": "nso-2025-9T",
+      "name": "Cục Thống kê",
+      "url": "https://www.nso.gov.vn/bai-top/2025/10/bao-cao-tinh-hinh-kinh-te-xa-hoi-quy-iii-va-9-thang-nam-2025/",
+      "source_published_at": "2025-10-06",
+      "retrieved_at": "2026-10-11T17:06:27.567114+07:00",
+      "period_code": "2025-9T",
+      "source_id": "nso-2025-9T",
+      "historical": true
+    },
+    "pmi.value": {
+      "id": "pmi-2026-9T",
+      "name": "S&P Global · Cimigo",
+      "url": "https://www.cimigo.com/en/trends/vietnam-pmi/",
+      "source_published_at": "2026-10-01",
+      "retrieved_at": "2026-10-11T17:12:15.431092+07:00",
+      "period_code": "2026-9T",
+      "source_id": "pmi-2026-9T"
+    },
+    "pmi.previous": {
+      "id": "pmi-2026-9T",
+      "name": "S&P Global · Cimigo",
+      "url": "https://www.cimigo.com/en/trends/vietnam-pmi/",
+      "source_published_at": "2026-10-01",
+      "retrieved_at": "2026-10-11T17:12:15.431092+07:00",
+      "period_code": "2026-9T",
+      "source_id": "pmi-2026-9T"
+    }
+  },
+  "missing_reasons": {
+    "iip.prev_ytd_yoy": "Phải đối chiếu IIP kỳ trước; 9,1% trong mẫu là chỉ số tiêu thụ, không phải IIP",
+    "monetary.fx_change_ytd": "Chưa có tỷ giá giao ngay NHNN cùng cơ sở so sánh; không thay bằng chỉ số giá USD của NSO",
+    "budget.plan": "Chưa có công bố nguồn sơ cấp đúng kỳ / bộ dữ liệu được cấp phép cho nhóm này",
+    "public_investment": "Chưa có công bố nguồn sơ cấp đúng kỳ / bộ dữ liệu được cấp phép cho nhóm này",
+    "fdi.top_projects": "Chưa có công bố nguồn sơ cấp đúng kỳ / bộ dữ liệu được cấp phép cho nhóm này",
+    "fdi.top_countries": "Chưa có công bố nguồn sơ cấp đúng kỳ / bộ dữ liệu được cấp phép cho nhóm này"
+  },
+  "derived": {
+    "trade.q.total_usd_bn": {
+      "formula": "XK quý + NK quý",
+      "inputs": [
+        "trade.q.export_usd_bn",
+        "trade.q.import_usd_bn"
+      ]
+    },
+    "budget.month.balance": {
+      "formula": "Thu − Chi",
+      "inputs": [
+        "budget.month.revenue",
+        "budget.month.expenditure"
+      ]
+    },
+    "budget.ytd.balance": {
+      "formula": "Thu − Chi",
+      "inputs": [
+        "budget.ytd.revenue",
+        "budget.ytd.expenditure"
+      ]
+    },
+    "business.exit_ratio_pct": {
+      "formula": "DN rút lui / (DN mới + quay lại) × 100",
+      "inputs": [
+        "business.exited_k",
+        "business.new_and_returned_k"
+      ]
+    }
+  },
+  "units": {
+    "trade": "tỷ USD",
+    "fdi": "tỷ USD",
+    "budget": "nghìn tỷ VND",
+    "public_investment": "nghìn tỷ VND",
+    "retail": "tỷ VND"
+  },
+  "source_differences": [
+    {
+      "path": "monetary.credit_growth_ytd",
+      "design_value": 11.59,
+      "primary_value": 10.89,
+      "reason": "Mẫu dùng 30/9; NSO công bố ngày chốt 28/9. Không trộn ngày."
+    },
+    {
+      "path": "iip.prev_ytd_yoy",
+      "design_value": 9.1,
+      "primary_value": 9.1,
+      "reason": "Đối chiếu riêng công bố IIP 9T/2025, không dùng đoạn chỉ số tiêu thụ trong công bố 2026."
+    }
+  ]
+}

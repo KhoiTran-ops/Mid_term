@@ -1,0 +1,810 @@
+{
+  "status": "passed_with_gaps",
+  "flags": [],
+  "missing_fields": [
+    {
+      "path": "summary.thesis",
+      "reason": "Nguồn chưa cung cấp số liệu được xác nhận cho đối tượng và kỳ này"
+    },
+    {
+      "path": "global.overview.size.value",
+      "reason": "Chưa có bộ thống kê chuyên ngành/chuỗi quốc tế được cấp quyền cho ngành và kỳ này; không thay bằng mẫu nhựa hoặc báo cáo vĩ mô"
+    },
+    {
+      "path": "global.overview.size.unit",
+      "reason": "Chưa có bộ thống kê chuyên ngành/chuỗi quốc tế được cấp quyền cho ngành và kỳ này; không thay bằng mẫu nhựa hoặc báo cáo vĩ mô"
+    },
+    {
+      "path": "global.overview.size.year",
+      "reason": "Chưa có bộ thống kê chuyên ngành/chuỗi quốc tế được cấp quyền cho ngành và kỳ này; không thay bằng mẫu nhựa hoặc báo cáo vĩ mô"
+    },
+    {
+      "path": "global.value_chain.price_forecast.unit",
+      "reason": "Chưa có bộ thống kê chuyên ngành/chuỗi quốc tế được cấp quyền cho ngành và kỳ này; không thay bằng mẫu nhựa hoặc báo cáo vĩ mô"
+    },
+    {
+      "path": "global.value_chain.commodity_price.name",
+      "reason": "Chưa có bộ thống kê chuyên ngành/chuỗi quốc tế được cấp quyền cho ngành và kỳ này; không thay bằng mẫu nhựa hoặc báo cáo vĩ mô"
+    },
+    {
+      "path": "global.value_chain.commodity_price.forecast",
+      "reason": "Chưa có bộ thống kê chuyên ngành/chuỗi quốc tế được cấp quyền cho ngành và kỳ này; không thay bằng mẫu nhựa hoặc báo cáo vĩ mô"
+    },
+    {
+      "path": "global.value_chain.commodity_price.note",
+      "reason": "Chưa có bộ thống kê chuyên ngành/chuỗi quốc tế được cấp quyền cho ngành và kỳ này; không thay bằng mẫu nhựa hoặc báo cáo vĩ mô"
+    },
+    {
+      "path": "domestic.overview.revenue",
+      "reason": "Chưa có bộ thống kê chuyên ngành/chuỗi quốc tế được cấp quyền cho ngành và kỳ này; không thay bằng mẫu nhựa hoặc báo cáo vĩ mô"
+    },
+    {
+      "path": "domestic.overview.gdp_share",
+      "reason": "Chưa có bộ thống kê chuyên ngành/chuỗi quốc tế được cấp quyền cho ngành và kỳ này; không thay bằng mẫu nhựa hoặc báo cáo vĩ mô"
+    },
+    {
+      "path": "domestic.overview.volume",
+      "reason": "Chưa có bộ thống kê chuyên ngành/chuỗi quốc tế được cấp quyền cho ngành và kỳ này; không thay bằng mẫu nhựa hoặc báo cáo vĩ mô"
+    },
+    {
+      "path": "domestic.overview.cagr_revenue",
+      "reason": "Chưa có bộ thống kê chuyên ngành/chuỗi quốc tế được cấp quyền cho ngành và kỳ này; không thay bằng mẫu nhựa hoặc báo cáo vĩ mô"
+    },
+    {
+      "path": "domestic.overview.cagr_volume",
+      "reason": "Chưa có bộ thống kê chuyên ngành/chuỗi quốc tế được cấp quyền cho ngành và kỳ này; không thay bằng mẫu nhựa hoặc báo cáo vĩ mô"
+    },
+    {
+      "path": "domestic.overview.yoy_volume",
+      "reason": "Chưa có bộ thống kê chuyên ngành/chuỗi quốc tế được cấp quyền cho ngành và kỳ này; không thay bằng mẫu nhựa hoặc báo cáo vĩ mô"
+    },
+    {
+      "path": "domestic.overview.market_split.domestic_pct",
+      "reason": "Chưa có bộ thống kê chuyên ngành/chuỗi quốc tế được cấp quyền cho ngành và kỳ này; không thay bằng mẫu nhựa hoặc báo cáo vĩ mô"
+    },
+    {
+      "path": "domestic.overview.market_split.export_pct",
+      "reason": "Chưa có bộ thống kê chuyên ngành/chuỗi quốc tế được cấp quyền cho ngành và kỳ này; không thay bằng mẫu nhựa hoặc báo cáo vĩ mô"
+    },
+    {
+      "path": "domestic.overview.market_split.import_value",
+      "reason": "Chưa có bộ thống kê chuyên ngành/chuỗi quốc tế được cấp quyền cho ngành và kỳ này; không thay bằng mẫu nhựa hoặc báo cáo vĩ mô"
+    },
+    {
+      "path": "domestic.value_chain.domestic_supply.capacity",
+      "reason": "Chưa có bộ thống kê chuyên ngành/chuỗi quốc tế được cấp quyền cho ngành và kỳ này; không thay bằng mẫu nhựa hoặc báo cáo vĩ mô"
+    },
+    {
+      "path": "domestic.value_chain.domestic_supply.self_sufficiency",
+      "reason": "Chưa có bộ thống kê chuyên ngành/chuỗi quốc tế được cấp quyền cho ngành và kỳ này; không thay bằng mẫu nhựa hoặc báo cáo vĩ mô"
+    },
+    {
+      "path": "domestic.value_chain.domestic_supply.new_capacity_note",
+      "reason": "Chưa có bộ thống kê chuyên ngành/chuỗi quốc tế được cấp quyền cho ngành và kỳ này; không thay bằng mẫu nhựa hoặc báo cáo vĩ mô"
+    },
+    {
+      "path": "domestic.outlook.output_forecast.from",
+      "reason": "Chưa có bộ thống kê chuyên ngành/chuỗi quốc tế được cấp quyền cho ngành và kỳ này; không thay bằng mẫu nhựa hoặc báo cáo vĩ mô"
+    },
+    {
+      "path": "domestic.outlook.output_forecast.to",
+      "reason": "Chưa có bộ thống kê chuyên ngành/chuỗi quốc tế được cấp quyền cho ngành và kỳ này; không thay bằng mẫu nhựa hoặc báo cáo vĩ mô"
+    },
+    {
+      "path": "domestic.outlook.output_forecast.cagr",
+      "reason": "Chưa có bộ thống kê chuyên ngành/chuỗi quốc tế được cấp quyền cho ngành và kỳ này; không thay bằng mẫu nhựa hoặc báo cáo vĩ mô"
+    },
+    {
+      "path": "companies.table.rows.0.market_cap",
+      "reason": "Chưa có vốn hóa đúng ngày"
+    },
+    {
+      "path": "companies.table.rows.0.total_assets",
+      "reason": "Chưa đối chiếu đơn vị BCTC"
+    },
+    {
+      "path": "companies.table.rows.0.revenue",
+      "reason": "Chưa đối chiếu đơn vị BCTC"
+    },
+    {
+      "path": "companies.table.rows.0.revenue_yoy",
+      "reason": "Chưa đối chiếu đơn vị BCTC"
+    },
+    {
+      "path": "companies.table.rows.0.net_income",
+      "reason": "Chưa đối chiếu đơn vị BCTC"
+    },
+    {
+      "path": "companies.table.rows.0.net_income_yoy",
+      "reason": "Chưa đối chiếu đơn vị BCTC"
+    },
+    {
+      "path": "companies.table.rows.1.market_cap",
+      "reason": "Chưa có vốn hóa đúng ngày"
+    },
+    {
+      "path": "companies.table.rows.1.total_assets",
+      "reason": "Chưa đối chiếu đơn vị BCTC"
+    },
+    {
+      "path": "companies.table.rows.1.revenue",
+      "reason": "Chưa đối chiếu đơn vị BCTC"
+    },
+    {
+      "path": "companies.table.rows.1.revenue_yoy",
+      "reason": "Chưa đối chiếu đơn vị BCTC"
+    },
+    {
+      "path": "companies.table.rows.1.net_income",
+      "reason": "Chưa đối chiếu đơn vị BCTC"
+    },
+    {
+      "path": "companies.table.rows.1.net_income_yoy",
+      "reason": "Chưa đối chiếu đơn vị BCTC"
+    },
+    {
+      "path": "companies.table.rows.2.market_cap",
+      "reason": "Chưa có vốn hóa đúng ngày"
+    },
+    {
+      "path": "companies.table.rows.2.total_assets",
+      "reason": "Chưa đối chiếu đơn vị BCTC"
+    },
+    {
+      "path": "companies.table.rows.2.revenue",
+      "reason": "Chưa đối chiếu đơn vị BCTC"
+    },
+    {
+      "path": "companies.table.rows.2.revenue_yoy",
+      "reason": "Chưa đối chiếu đơn vị BCTC"
+    },
+    {
+      "path": "companies.table.rows.2.net_income",
+      "reason": "Chưa đối chiếu đơn vị BCTC"
+    },
+    {
+      "path": "companies.table.rows.2.net_income_yoy",
+      "reason": "Chưa đối chiếu đơn vị BCTC"
+    },
+    {
+      "path": "companies.table.rows.3.market_cap",
+      "reason": "Chưa có vốn hóa đúng ngày"
+    },
+    {
+      "path": "companies.table.rows.3.total_assets",
+      "reason": "Chưa đối chiếu đơn vị BCTC"
+    },
+    {
+      "path": "companies.table.rows.3.revenue",
+      "reason": "Chưa đối chiếu đơn vị BCTC"
+    },
+    {
+      "path": "companies.table.rows.3.revenue_yoy",
+      "reason": "Chưa đối chiếu đơn vị BCTC"
+    },
+    {
+      "path": "companies.table.rows.3.net_income",
+      "reason": "Chưa đối chiếu đơn vị BCTC"
+    },
+    {
+      "path": "companies.table.rows.3.net_income_yoy",
+      "reason": "Chưa đối chiếu đơn vị BCTC"
+    },
+    {
+      "path": "companies.table.rows.4.market_cap",
+      "reason": "Chưa có vốn hóa đúng ngày"
+    },
+    {
+      "path": "companies.table.rows.4.total_assets",
+      "reason": "Chưa đối chiếu đơn vị BCTC"
+    },
+    {
+      "path": "companies.table.rows.4.revenue",
+      "reason": "Chưa đối chiếu đơn vị BCTC"
+    },
+    {
+      "path": "companies.table.rows.4.revenue_yoy",
+      "reason": "Chưa đối chiếu đơn vị BCTC"
+    },
+    {
+      "path": "companies.table.rows.4.net_income",
+      "reason": "Chưa đối chiếu đơn vị BCTC"
+    },
+    {
+      "path": "companies.table.rows.4.net_income_yoy",
+      "reason": "Chưa đối chiếu đơn vị BCTC"
+    },
+    {
+      "path": "companies.table.rows.5.market_cap",
+      "reason": "Chưa có vốn hóa đúng ngày"
+    },
+    {
+      "path": "companies.table.rows.5.total_assets",
+      "reason": "Chưa đối chiếu đơn vị BCTC"
+    },
+    {
+      "path": "companies.table.rows.5.revenue",
+      "reason": "Chưa đối chiếu đơn vị BCTC"
+    },
+    {
+      "path": "companies.table.rows.5.revenue_yoy",
+      "reason": "Chưa đối chiếu đơn vị BCTC"
+    },
+    {
+      "path": "companies.table.rows.5.net_income",
+      "reason": "Chưa đối chiếu đơn vị BCTC"
+    },
+    {
+      "path": "companies.table.rows.5.net_income_yoy",
+      "reason": "Chưa đối chiếu đơn vị BCTC"
+    },
+    {
+      "path": "companies.table.rows.6.market_cap",
+      "reason": "Chưa có vốn hóa đúng ngày"
+    },
+    {
+      "path": "companies.table.rows.6.total_assets",
+      "reason": "Chưa đối chiếu đơn vị BCTC"
+    },
+    {
+      "path": "companies.table.rows.6.revenue",
+      "reason": "Chưa đối chiếu đơn vị BCTC"
+    },
+    {
+      "path": "companies.table.rows.6.revenue_yoy",
+      "reason": "Chưa đối chiếu đơn vị BCTC"
+    },
+    {
+      "path": "companies.table.rows.6.net_income",
+      "reason": "Chưa đối chiếu đơn vị BCTC"
+    },
+    {
+      "path": "companies.table.rows.6.net_income_yoy",
+      "reason": "Chưa đối chiếu đơn vị BCTC"
+    },
+    {
+      "path": "companies.table.rows.7.market_cap",
+      "reason": "Chưa có vốn hóa đúng ngày"
+    },
+    {
+      "path": "companies.table.rows.7.total_assets",
+      "reason": "Chưa đối chiếu đơn vị BCTC"
+    },
+    {
+      "path": "companies.table.rows.7.revenue",
+      "reason": "Chưa đối chiếu đơn vị BCTC"
+    },
+    {
+      "path": "companies.table.rows.7.revenue_yoy",
+      "reason": "Chưa đối chiếu đơn vị BCTC"
+    },
+    {
+      "path": "companies.table.rows.7.net_income",
+      "reason": "Chưa đối chiếu đơn vị BCTC"
+    },
+    {
+      "path": "companies.table.rows.7.net_income_yoy",
+      "reason": "Chưa đối chiếu đơn vị BCTC"
+    },
+    {
+      "path": "companies.table.rows.8.market_cap",
+      "reason": "Chưa có vốn hóa đúng ngày"
+    },
+    {
+      "path": "companies.table.rows.8.total_assets",
+      "reason": "Chưa đối chiếu đơn vị BCTC"
+    },
+    {
+      "path": "companies.table.rows.8.revenue",
+      "reason": "Chưa đối chiếu đơn vị BCTC"
+    },
+    {
+      "path": "companies.table.rows.8.revenue_yoy",
+      "reason": "Chưa đối chiếu đơn vị BCTC"
+    },
+    {
+      "path": "companies.table.rows.8.net_income",
+      "reason": "Chưa đối chiếu đơn vị BCTC"
+    },
+    {
+      "path": "companies.table.rows.8.net_income_yoy",
+      "reason": "Chưa đối chiếu đơn vị BCTC"
+    },
+    {
+      "path": "companies.table.rows.9.market_cap",
+      "reason": "Chưa có vốn hóa đúng ngày"
+    },
+    {
+      "path": "companies.table.rows.9.total_assets",
+      "reason": "Chưa đối chiếu đơn vị BCTC"
+    },
+    {
+      "path": "companies.table.rows.9.revenue",
+      "reason": "Chưa đối chiếu đơn vị BCTC"
+    },
+    {
+      "path": "companies.table.rows.9.revenue_yoy",
+      "reason": "Chưa đối chiếu đơn vị BCTC"
+    },
+    {
+      "path": "companies.table.rows.9.net_income",
+      "reason": "Chưa đối chiếu đơn vị BCTC"
+    },
+    {
+      "path": "companies.table.rows.9.net_income_yoy",
+      "reason": "Chưa đối chiếu đơn vị BCTC"
+    },
+    {
+      "path": "companies.table.rows.10.market_cap",
+      "reason": "Chưa có vốn hóa đúng ngày"
+    },
+    {
+      "path": "companies.table.rows.10.total_assets",
+      "reason": "Chưa đối chiếu đơn vị BCTC"
+    },
+    {
+      "path": "companies.table.rows.10.revenue",
+      "reason": "Chưa đối chiếu đơn vị BCTC"
+    },
+    {
+      "path": "companies.table.rows.10.revenue_yoy",
+      "reason": "Chưa đối chiếu đơn vị BCTC"
+    },
+    {
+      "path": "companies.table.rows.10.net_income",
+      "reason": "Chưa đối chiếu đơn vị BCTC"
+    },
+    {
+      "path": "companies.table.rows.10.net_income_yoy",
+      "reason": "Chưa đối chiếu đơn vị BCTC"
+    },
+    {
+      "path": "companies.table.rows.11.market_cap",
+      "reason": "Chưa có vốn hóa đúng ngày"
+    },
+    {
+      "path": "companies.table.rows.11.total_assets",
+      "reason": "Chưa đối chiếu đơn vị BCTC"
+    },
+    {
+      "path": "companies.table.rows.11.revenue",
+      "reason": "Chưa đối chiếu đơn vị BCTC"
+    },
+    {
+      "path": "companies.table.rows.11.revenue_yoy",
+      "reason": "Chưa đối chiếu đơn vị BCTC"
+    },
+    {
+      "path": "companies.table.rows.11.net_income",
+      "reason": "Chưa đối chiếu đơn vị BCTC"
+    },
+    {
+      "path": "companies.table.rows.11.net_income_yoy",
+      "reason": "Chưa đối chiếu đơn vị BCTC"
+    },
+    {
+      "path": "companies.table.rows.12.market_cap",
+      "reason": "Chưa có vốn hóa đúng ngày"
+    },
+    {
+      "path": "companies.table.rows.12.total_assets",
+      "reason": "Chưa đối chiếu đơn vị BCTC"
+    },
+    {
+      "path": "companies.table.rows.12.revenue",
+      "reason": "Chưa đối chiếu đơn vị BCTC"
+    },
+    {
+      "path": "companies.table.rows.12.revenue_yoy",
+      "reason": "Chưa đối chiếu đơn vị BCTC"
+    },
+    {
+      "path": "companies.table.rows.12.net_income",
+      "reason": "Chưa đối chiếu đơn vị BCTC"
+    },
+    {
+      "path": "companies.table.rows.12.net_income_yoy",
+      "reason": "Chưa đối chiếu đơn vị BCTC"
+    },
+    {
+      "path": "companies.table.rows.13.market_cap",
+      "reason": "Chưa có vốn hóa đúng ngày"
+    },
+    {
+      "path": "companies.table.rows.13.total_assets",
+      "reason": "Chưa đối chiếu đơn vị BCTC"
+    },
+    {
+      "path": "companies.table.rows.13.revenue",
+      "reason": "Chưa đối chiếu đơn vị BCTC"
+    },
+    {
+      "path": "companies.table.rows.13.revenue_yoy",
+      "reason": "Chưa đối chiếu đơn vị BCTC"
+    },
+    {
+      "path": "companies.table.rows.13.net_income",
+      "reason": "Chưa đối chiếu đơn vị BCTC"
+    },
+    {
+      "path": "companies.table.rows.13.net_income_yoy",
+      "reason": "Chưa đối chiếu đơn vị BCTC"
+    },
+    {
+      "path": "companies.table.rows.14.market_cap",
+      "reason": "Chưa có vốn hóa đúng ngày"
+    },
+    {
+      "path": "companies.table.rows.14.total_assets",
+      "reason": "Chưa đối chiếu đơn vị BCTC"
+    },
+    {
+      "path": "companies.table.rows.14.revenue",
+      "reason": "Chưa đối chiếu đơn vị BCTC"
+    },
+    {
+      "path": "companies.table.rows.14.revenue_yoy",
+      "reason": "Chưa đối chiếu đơn vị BCTC"
+    },
+    {
+      "path": "companies.table.rows.14.net_income",
+      "reason": "Chưa đối chiếu đơn vị BCTC"
+    },
+    {
+      "path": "companies.table.rows.14.net_income_yoy",
+      "reason": "Chưa đối chiếu đơn vị BCTC"
+    },
+    {
+      "path": "companies.table.rows.15.market_cap",
+      "reason": "Chưa có vốn hóa đúng ngày"
+    },
+    {
+      "path": "companies.table.rows.15.total_assets",
+      "reason": "Chưa đối chiếu đơn vị BCTC"
+    },
+    {
+      "path": "companies.table.rows.15.revenue",
+      "reason": "Chưa đối chiếu đơn vị BCTC"
+    },
+    {
+      "path": "companies.table.rows.15.revenue_yoy",
+      "reason": "Chưa đối chiếu đơn vị BCTC"
+    },
+    {
+      "path": "companies.table.rows.15.net_income",
+      "reason": "Chưa đối chiếu đơn vị BCTC"
+    },
+    {
+      "path": "companies.table.rows.15.net_income_yoy",
+      "reason": "Chưa đối chiếu đơn vị BCTC"
+    },
+    {
+      "path": "companies.table.rows.16.market_cap",
+      "reason": "Chưa có vốn hóa đúng ngày"
+    },
+    {
+      "path": "companies.table.rows.16.total_assets",
+      "reason": "Chưa đối chiếu đơn vị BCTC"
+    },
+    {
+      "path": "companies.table.rows.16.revenue",
+      "reason": "Chưa đối chiếu đơn vị BCTC"
+    },
+    {
+      "path": "companies.table.rows.16.revenue_yoy",
+      "reason": "Chưa đối chiếu đơn vị BCTC"
+    },
+    {
+      "path": "companies.table.rows.16.net_income",
+      "reason": "Chưa đối chiếu đơn vị BCTC"
+    },
+    {
+      "path": "companies.table.rows.16.net_income_yoy",
+      "reason": "Chưa đối chiếu đơn vị BCTC"
+    },
+    {
+      "path": "companies.table.rows.17.market_cap",
+      "reason": "Chưa có vốn hóa đúng ngày"
+    },
+    {
+      "path": "companies.table.rows.17.total_assets",
+      "reason": "Chưa đối chiếu đơn vị BCTC"
+    },
+    {
+      "path": "companies.table.rows.17.revenue",
+      "reason": "Chưa đối chiếu đơn vị BCTC"
+    },
+    {
+      "path": "companies.table.rows.17.revenue_yoy",
+      "reason": "Chưa đối chiếu đơn vị BCTC"
+    },
+    {
+      "path": "companies.table.rows.17.net_income",
+      "reason": "Chưa đối chiếu đơn vị BCTC"
+    },
+    {
+      "path": "companies.table.rows.17.net_income_yoy",
+      "reason": "Chưa đối chiếu đơn vị BCTC"
+    },
+    {
+      "path": "companies.table.rows.18.market_cap",
+      "reason": "Chưa có vốn hóa đúng ngày"
+    },
+    {
+      "path": "companies.table.rows.18.total_assets",
+      "reason": "Chưa đối chiếu đơn vị BCTC"
+    },
+    {
+      "path": "companies.table.rows.18.revenue",
+      "reason": "Chưa đối chiếu đơn vị BCTC"
+    },
+    {
+      "path": "companies.table.rows.18.revenue_yoy",
+      "reason": "Chưa đối chiếu đơn vị BCTC"
+    },
+    {
+      "path": "companies.table.rows.18.net_income",
+      "reason": "Chưa đối chiếu đơn vị BCTC"
+    },
+    {
+      "path": "companies.table.rows.18.net_income_yoy",
+      "reason": "Chưa đối chiếu đơn vị BCTC"
+    },
+    {
+      "path": "companies.table.rows.19.market_cap",
+      "reason": "Chưa có vốn hóa đúng ngày"
+    },
+    {
+      "path": "companies.table.rows.20.market_cap",
+      "reason": "Chưa có vốn hóa đúng ngày"
+    },
+    {
+      "path": "companies.table.rows.20.total_assets",
+      "reason": "Chưa đối chiếu đơn vị BCTC"
+    },
+    {
+      "path": "companies.table.rows.20.revenue",
+      "reason": "Chưa đối chiếu đơn vị BCTC"
+    },
+    {
+      "path": "companies.table.rows.20.revenue_yoy",
+      "reason": "Chưa đối chiếu đơn vị BCTC"
+    },
+    {
+      "path": "companies.table.rows.20.net_income",
+      "reason": "Chưa đối chiếu đơn vị BCTC"
+    },
+    {
+      "path": "companies.table.rows.20.net_income_yoy",
+      "reason": "Chưa đối chiếu đơn vị BCTC"
+    },
+    {
+      "path": "companies.table.rows.21.market_cap",
+      "reason": "Chưa có vốn hóa đúng ngày"
+    },
+    {
+      "path": "companies.table.rows.21.total_assets",
+      "reason": "Chưa đối chiếu đơn vị BCTC"
+    },
+    {
+      "path": "companies.table.rows.21.revenue",
+      "reason": "Chưa đối chiếu đơn vị BCTC"
+    },
+    {
+      "path": "companies.table.rows.21.revenue_yoy",
+      "reason": "Chưa đối chiếu đơn vị BCTC"
+    },
+    {
+      "path": "companies.table.rows.21.net_income",
+      "reason": "Chưa đối chiếu đơn vị BCTC"
+    },
+    {
+      "path": "companies.table.rows.21.net_income_yoy",
+      "reason": "Chưa đối chiếu đơn vị BCTC"
+    },
+    {
+      "path": "companies.table.rows.22.market_cap",
+      "reason": "Chưa có vốn hóa đúng ngày"
+    },
+    {
+      "path": "companies.table.rows.22.total_assets",
+      "reason": "Chưa đối chiếu đơn vị BCTC"
+    },
+    {
+      "path": "companies.table.rows.22.revenue",
+      "reason": "Chưa đối chiếu đơn vị BCTC"
+    },
+    {
+      "path": "companies.table.rows.22.revenue_yoy",
+      "reason": "Chưa đối chiếu đơn vị BCTC"
+    },
+    {
+      "path": "companies.table.rows.22.net_income",
+      "reason": "Chưa đối chiếu đơn vị BCTC"
+    },
+    {
+      "path": "companies.table.rows.22.net_income_yoy",
+      "reason": "Chưa đối chiếu đơn vị BCTC"
+    },
+    {
+      "path": "companies.table.rows.23.market_cap",
+      "reason": "Chưa có vốn hóa đúng ngày"
+    },
+    {
+      "path": "companies.table.rows.23.total_assets",
+      "reason": "Chưa đối chiếu đơn vị BCTC"
+    },
+    {
+      "path": "companies.table.rows.23.revenue",
+      "reason": "Chưa đối chiếu đơn vị BCTC"
+    },
+    {
+      "path": "companies.table.rows.23.revenue_yoy",
+      "reason": "Chưa đối chiếu đơn vị BCTC"
+    },
+    {
+      "path": "companies.table.rows.23.net_income",
+      "reason": "Chưa đối chiếu đơn vị BCTC"
+    },
+    {
+      "path": "companies.table.rows.23.net_income_yoy",
+      "reason": "Chưa đối chiếu đơn vị BCTC"
+    },
+    {
+      "path": "companies.table.rows.24.market_cap",
+      "reason": "Chưa có vốn hóa đúng ngày"
+    },
+    {
+      "path": "companies.table.rows.24.total_assets",
+      "reason": "Chưa đối chiếu đơn vị BCTC"
+    },
+    {
+      "path": "companies.table.rows.24.revenue",
+      "reason": "Chưa đối chiếu đơn vị BCTC"
+    },
+    {
+      "path": "companies.table.rows.24.revenue_yoy",
+      "reason": "Chưa đối chiếu đơn vị BCTC"
+    },
+    {
+      "path": "companies.table.rows.24.net_income",
+      "reason": "Chưa đối chiếu đơn vị BCTC"
+    },
+    {
+      "path": "companies.table.rows.24.net_income_yoy",
+      "reason": "Chưa đối chiếu đơn vị BCTC"
+    },
+    {
+      "path": "companies.table.rows.25.market_cap",
+      "reason": "Chưa có vốn hóa đúng ngày"
+    },
+    {
+      "path": "companies.table.rows.25.total_assets",
+      "reason": "Chưa đối chiếu đơn vị BCTC"
+    },
+    {
+      "path": "companies.table.rows.25.revenue",
+      "reason": "Chưa đối chiếu đơn vị BCTC"
+    },
+    {
+      "path": "companies.table.rows.25.revenue_yoy",
+      "reason": "Chưa đối chiếu đơn vị BCTC"
+    },
+    {
+      "path": "companies.table.rows.25.net_income",
+      "reason": "Chưa đối chiếu đơn vị BCTC"
+    },
+    {
+      "path": "companies.table.rows.25.net_income_yoy",
+      "reason": "Chưa đối chiếu đơn vị BCTC"
+    },
+    {
+      "path": "companies.table.rows.26.market_cap",
+      "reason": "Chưa có vốn hóa đúng ngày"
+    },
+    {
+      "path": "companies.table.rows.26.total_assets",
+      "reason": "Chưa đối chiếu đơn vị BCTC"
+    },
+    {
+      "path": "companies.table.rows.26.revenue",
+      "reason": "Chưa đối chiếu đơn vị BCTC"
+    },
+    {
+      "path": "companies.table.rows.26.revenue_yoy",
+      "reason": "Chưa đối chiếu đơn vị BCTC"
+    },
+    {
+      "path": "companies.table.rows.26.net_income",
+      "reason": "Chưa đối chiếu đơn vị BCTC"
+    },
+    {
+      "path": "companies.table.rows.26.net_income_yoy",
+      "reason": "Chưa đối chiếu đơn vị BCTC"
+    },
+    {
+      "path": "companies.table.rows.27.market_cap",
+      "reason": "Chưa có vốn hóa đúng ngày"
+    },
+    {
+      "path": "companies.table.rows.27.total_assets",
+      "reason": "Chưa đối chiếu đơn vị BCTC"
+    },
+    {
+      "path": "companies.table.rows.27.revenue",
+      "reason": "Chưa đối chiếu đơn vị BCTC"
+    },
+    {
+      "path": "companies.table.rows.27.revenue_yoy",
+      "reason": "Chưa đối chiếu đơn vị BCTC"
+    },
+    {
+      "path": "companies.table.rows.27.net_income",
+      "reason": "Chưa đối chiếu đơn vị BCTC"
+    },
+    {
+      "path": "companies.table.rows.27.net_income_yoy",
+      "reason": "Chưa đối chiếu đơn vị BCTC"
+    },
+    {
+      "path": "companies.profiles.0.trading.high_52w",
+      "reason": "Nguồn chưa cung cấp số liệu được xác nhận cho đối tượng và kỳ này"
+    },
+    {
+      "path": "companies.profiles.0.trading.low_52w",
+      "reason": "Nguồn chưa cung cấp số liệu được xác nhận cho đối tượng và kỳ này"
+    },
+    {
+      "path": "companies.profiles.0.trading.avg_volume_10d",
+      "reason": "Nguồn chưa cung cấp số liệu được xác nhận cho đối tượng và kỳ này"
+    },
+    {
+      "path": "companies.profiles.0.trading.target_price",
+      "reason": "Nguồn chưa cung cấp số liệu được xác nhận cho đối tượng và kỳ này"
+    },
+    {
+      "path": "companies.profiles.0.trading.target_upside",
+      "reason": "Nguồn chưa cung cấp số liệu được xác nhận cho đối tượng và kỳ này"
+    },
+    {
+      "path": "disclaimer.holdings_disclosure",
+      "reason": "Nguồn chưa cung cấp số liệu được xác nhận cho đối tượng và kỳ này"
+    }
+  ],
+  "industry": "ngan-hang",
+  "period": "2026-10",
+  "checked_at": "2026-10-11T20:55:02.668004+07:00",
+  "pages": [
+    {
+      "number": 1,
+      "partial": "01_summary",
+      "title": "Tóm tắt ngành"
+    },
+    {
+      "number": 2,
+      "partial": "13_views_risks",
+      "title": "Nguồn dữ liệu và phạm vi sử dụng"
+    },
+    {
+      "number": 3,
+      "partial": "14_companies",
+      "title": "Doanh nghiệp niêm yết"
+    },
+    {
+      "number": 4,
+      "partial": "14_companies",
+      "title": "Doanh nghiệp niêm yết"
+    },
+    {
+      "number": 5,
+      "partial": "14_companies",
+      "title": "Doanh nghiệp niêm yết"
+    },
+    {
+      "number": 6,
+      "partial": "15_profiles",
+      "title": "Hồ sơ doanh nghiệp nổi bật"
+    }
+  ],
+  "overflow": []
+}

@@ -2,8 +2,9 @@
 
 from contextlib import closing
 from copy import deepcopy
-from datetime import datetime, time, UTC
+from datetime import date, datetime, time, UTC
 import json
+import math
 from pathlib import Path
 import sqlite3
 from zoneinfo import ZoneInfo
@@ -74,9 +75,36 @@ class ResearchRepository:
         rows=self.read(self.settings.market_database,
             "SELECT * FROM ohlcv_bars WHERE symbol=? AND timeframe='1D' AND ts<=? AND is_closed=1 ORDER BY ts DESC LIMIT 252",
             (symbol,int(self.cutoff.timestamp())))
-        return list(reversed([r for r in rows if r['low'] <= r['close'] <= r['high'] and r['volume']>=0]))
+        valid=[r for r in rows if r['low'] <= r['close'] <= r['high'] and r['volume']>=0]
+        if valid:
+            return list(reversed(valid))
+        fallback=self.read(self.settings.market_database,
+            """SELECT symbol,trade_date,open_thousand_vnd,high_thousand_vnd,
+                low_thousand_vnd,close_thousand_vnd,matched_volume,source,retrieved_at
+                FROM eod_prices WHERE symbol=? AND trade_date<=?
+                AND open_thousand_vnd IS NOT NULL AND high_thousand_vnd IS NOT NULL
+                AND low_thousand_vnd IS NOT NULL AND close_thousand_vnd IS NOT NULL
+                AND low_thousand_vnd<=close_thousand_vnd
+                AND close_thousand_vnd<=high_thousand_vnd
+                ORDER BY trade_date DESC LIMIT 252""",
+            (symbol,self.as_of.isoformat()))
+        converted=[]
+        for row in reversed(fallback):
+            trading_day=date.fromisoformat(row['trade_date'])
+            converted.append(dict(symbol=row['symbol'],timeframe='1D',
+                ts=int(datetime.combine(trading_day,time(15),tzinfo=VIETNAM).timestamp()),
+                open=row['open_thousand_vnd'],high=row['high_thousand_vnd'],
+                low=row['low_thousand_vnd'],close=row['close_thousand_vnd'],
+                volume=int(row['matched_volume'] or 0),is_closed=1,
+                source=row['source'],updated_at=row['retrieved_at'],
+                trade_date=row['trade_date']))
+        return converted
 
     def price_source(self, symbol, rows):
+        if rows and rows[-1].get('trade_date'):
+            return SourceReference(source_name='CafeF EOD',url='https://cafef.vn/du-lieu.chn',
+                retrieved_at=max(r['updated_at'] for r in rows),
+                locator=f"var/market_data.db, {symbol}, EOD; {len(rows)} phiên đến {rows[-1]['trade_date']}")
         return SourceReference(source_name='DNSE OHLCV',url=f'https://openapi.dnse.com.vn/price/ohlc?symbol={symbol}&resolution=1D',
             retrieved_at=max((r['updated_at'] for r in rows),default=self.now.isoformat()),
             locator=f'var/market_data.db, {symbol}, 1D; {len(rows)} nến đóng hợp lệ')
@@ -86,6 +114,20 @@ class ResearchRepository:
             "SELECT * FROM foreign_snapshots WHERE symbol=? AND board_id='G1' AND ts<=? ORDER BY ts DESC LIMIT 1",
             (symbol,int(self.cutoff.timestamp()*1000)))
 
+    def annual(self,symbol):
+        tables={r['name'] for r in self.read(self.settings.market_database,
+            "SELECT name FROM sqlite_master WHERE type='table'")}
+        old=self.read(self.settings.market_database,
+            'SELECT * FROM annual_financial_facts WHERE symbol=? AND fiscal_year<? ORDER BY fiscal_year,metric',
+            (symbol,self.as_of.year)) if 'annual_financial_facts' in tables else []
+        fresh=self.read(self.settings.market_database,
+            'SELECT *,item_name AS metric,retrieved_at AS imported_at,'
+            'response_sha256 AS workbook_sha256,statement_type AS sheet_name,'
+            'row_order AS source_row FROM annual_statement_facts '
+            'WHERE symbol=? AND fiscal_year<? ORDER BY fiscal_year,statement_type,row_order',
+            (symbol,self.as_of.year)) if 'annual_statement_facts' in tables else []
+        return fresh+old
+
     def macro(self):
         if self._macro is not None:
             return deepcopy(self._macro)
@@ -94,11 +136,12 @@ class ResearchRepository:
             self._macro=[]
             return []
         payload=json.loads(path.read_text(encoding='utf-8'))
-        self._macro=[r for r in payload['observations'] if int(r['period']) < self.as_of.year and
+        self._macro=[r for r in payload['observations'] if r.get('country', 'VNM') == 'VNM' and
+                int(r['period']) < self.as_of.year and
                 datetime.fromisoformat(r['source']['retrieved_at']).astimezone(UTC) <= self.now]
         return deepcopy(self._macro)
 
-    def news(self, *, symbol=None, macro=False, limit=5):
+    def news(self, *, symbol=None, macro=False, limit=5, distinct_publishers=True):
         conditions=['COALESCE(published_at,first_seen)<=?']
         args=[self.cutoff.astimezone(UTC).isoformat()]
         if symbol:
@@ -111,12 +154,25 @@ class ResearchRepository:
         selected,publishers=[],set()
         for row in rows:
             publisher=row['source_name'].split(' · ')[0]
-            if publisher in publishers:
+            if distinct_publishers and publisher in publishers:
                 continue
             publishers.add(publisher)
             selected.append(row)
             if len(selected)==limit:
                 break
+        return selected
+
+    def macro_context(self):
+        """Dated official current-period facts, kept apart from annual WDI."""
+        path=self.settings.root/'config/macro_observations.json'
+        if not path.is_file():return []
+        selected=[]
+        for row in json.loads(path.read_text(encoding='utf-8'))['observations']:
+            source=SourceReference.model_validate(row['source'])
+            if not source.published_at:raise ValueError('Current macro observation requires publication date')
+            if source.published_at>self.cutoff or date.fromisoformat(row['period_end'])>self.as_of or source.retrieved_at>self.now:continue
+            if not isinstance(row['value'],(int,float)) or not math.isfinite(row['value']):raise ValueError('Invalid macro observation')
+            selected.append(deepcopy(row))
         return selected
 
     def snapshots(self):

@@ -1,0 +1,247 @@
+{
+  "symbol": "HPG",
+  "facts": [
+    {
+      "category": "history",
+      "label": "Ngày niêm yết",
+      "value": "15/11/2007",
+      "period": "Niêm yết",
+      "source": {
+        "source_name": "Hòa Phát BCTN 2025",
+        "url": "https://file.hoaphat.com.vn/hoaphat-com-vn/2026/05/bao-cao-thuong-nien-nam-2025.pdf",
+        "retrieved_at": "2026-10-10T09:52:59.088913+00:00",
+        "locator": "Trang 59; số năm 2025 hoặc kế hoạch 2026 ghi riêng"
+      }
+    },
+    {
+      "category": "shareholders",
+      "label": "Trần Đình Long",
+      "value": "25,80% (1.980 triệu cp)",
+      "period": "31/12/2025",
+      "source": {
+        "source_name": "Hòa Phát BCTN 2025",
+        "url": "https://file.hoaphat.com.vn/hoaphat-com-vn/2026/05/bao-cao-thuong-nien-nam-2025.pdf",
+        "retrieved_at": "2026-10-10T09:52:59.088913+00:00",
+        "locator": "Trang 59; số năm 2025 hoặc kế hoạch 2026 ghi riêng"
+      },
+      "numeric": "25.8",
+      "unit": "%"
+    },
+    {
+      "category": "shareholders",
+      "label": "Vũ Thị Hiền",
+      "value": "6,88% (528 triệu cp)",
+      "period": "31/12/2025",
+      "source": {
+        "source_name": "Hòa Phát BCTN 2025",
+        "url": "https://file.hoaphat.com.vn/hoaphat-com-vn/2026/05/bao-cao-thuong-nien-nam-2025.pdf",
+        "retrieved_at": "2026-10-10T09:52:59.088913+00:00",
+        "locator": "Trang 59; số năm 2025 hoặc kế hoạch 2026 ghi riêng"
+      },
+      "numeric": "6.88",
+      "unit": "%"
+    },
+    {
+      "category": "subsidiaries",
+      "label": "Gang thép Hòa Phát",
+      "value": "HPG sở hữu 99,9989%",
+      "period": "31/12/2025",
+      "source": {
+        "source_name": "Hòa Phát BCTN 2025",
+        "url": "https://file.hoaphat.com.vn/hoaphat-com-vn/2026/05/bao-cao-thuong-nien-nam-2025.pdf",
+        "retrieved_at": "2026-10-10T09:52:59.088913+00:00",
+        "locator": "Trang 12; số năm 2025 hoặc kế hoạch 2026 ghi riêng"
+      }
+    },
+    {
+      "category": "subsidiaries",
+      "label": "Thép Hòa Phát Hải Dương",
+      "value": "HPG sở hữu 99,9972%",
+      "period": "31/12/2025",
+      "source": {
+        "source_name": "Hòa Phát BCTN 2025",
+        "url": "https://file.hoaphat.com.vn/hoaphat-com-vn/2026/05/bao-cao-thuong-nien-nam-2025.pdf",
+        "retrieved_at": "2026-10-10T09:52:59.088913+00:00",
+        "locator": "Trang 12; số năm 2025 hoặc kế hoạch 2026 ghi riêng"
+      }
+    },
+    {
+      "category": "subsidiaries",
+      "label": "Thép Hòa Phát Dung Quất",
+      "value": "HPG sở hữu 99,9989%",
+      "period": "31/12/2025",
+      "source": {
+        "source_name": "Hòa Phát BCTN 2025",
+        "url": "https://file.hoaphat.com.vn/hoaphat-com-vn/2026/05/bao-cao-thuong-nien-nam-2025.pdf",
+        "retrieved_at": "2026-10-10T09:52:59.088913+00:00",
+        "locator": "Trang 12; số năm 2025 hoặc kế hoạch 2026 ghi riêng"
+      }
+    },
+    {
+      "category": "operations",
+      "label": "Sản xuất thép thô",
+      "value": "11 triệu tấn, tăng 26%",
+      "period": "2025",
+      "source": {
+        "source_name": "Hòa Phát BCTN 2025",
+        "url": "https://file.hoaphat.com.vn/hoaphat-com-vn/2026/05/bao-cao-thuong-nien-nam-2025.pdf",
+        "retrieved_at": "2026-10-10T09:52:59.088913+00:00",
+        "locator": "Trang 43; số năm 2025 hoặc kế hoạch 2026 ghi riêng"
+      },
+      "numeric": "11",
+      "unit": "triệu tấn"
+    },
+    {
+      "category": "operations",
+      "label": "Bán HRC/thép xây dựng/phôi",
+      "value": "10,6 triệu tấn, tăng 31%",
+      "period": "2025",
+      "source": {
+        "source_name": "Hòa Phát BCTN 2025",
+        "url": "https://file.hoaphat.com.vn/hoaphat-com-vn/2026/05/bao-cao-thuong-nien-nam-2025.pdf",
+        "retrieved_at": "2026-10-10T09:52:59.088913+00:00",
+        "locator": "Trang 43; số năm 2025 hoặc kế hoạch 2026 ghi riêng"
+      },
+      "numeric": "10.6",
+      "unit": "triệu tấn"
+    },
+    {
+      "category": "operations",
+      "label": "Bán HRC",
+      "value": "Hơn 5 triệu tấn, tăng 73%",
+      "period": "2025",
+      "source": {
+        "source_name": "Hòa Phát BCTN 2025",
+        "url": "https://file.hoaphat.com.vn/hoaphat-com-vn/2026/05/bao-cao-thuong-nien-nam-2025.pdf",
+        "retrieved_at": "2026-10-10T09:52:59.088913+00:00",
+        "locator": "Trang 28; số năm 2025 hoặc kế hoạch 2026 ghi riêng"
+      }
+    },
+    {
+      "category": "operations",
+      "label": "Thị phần thép dài",
+      "value": "36,5%",
+      "period": "Cuối 2025",
+      "source": {
+        "source_name": "Hòa Phát BCTN 2025",
+        "url": "https://file.hoaphat.com.vn/hoaphat-com-vn/2026/05/bao-cao-thuong-nien-nam-2025.pdf",
+        "retrieved_at": "2026-10-10T09:52:59.088913+00:00",
+        "locator": "Trang 28; số năm 2025 hoặc kế hoạch 2026 ghi riêng"
+      },
+      "numeric": "36.5",
+      "unit": "%"
+    },
+    {
+      "category": "operations",
+      "label": "Dung Quất 2",
+      "value": "Thiết kế 6 triệu tấn/năm; vốn đầu tư 85.000 tỷ",
+      "period": "Công bố 2025",
+      "source": {
+        "source_name": "Hòa Phát BCTN 2025",
+        "url": "https://file.hoaphat.com.vn/hoaphat-com-vn/2026/05/bao-cao-thuong-nien-nam-2025.pdf",
+        "retrieved_at": "2026-10-10T09:52:59.088913+00:00",
+        "locator": "Trang 43; số năm 2025 hoặc kế hoạch 2026 ghi riêng"
+      }
+    },
+    {
+      "category": "operations",
+      "label": "Ống thép Long An",
+      "value": "400.000 tấn/năm; vận hành cuối 2025",
+      "period": "2025",
+      "source": {
+        "source_name": "Hòa Phát BCTN 2025",
+        "url": "https://file.hoaphat.com.vn/hoaphat-com-vn/2026/05/bao-cao-thuong-nien-nam-2025.pdf",
+        "retrieved_at": "2026-10-10T09:52:59.088913+00:00",
+        "locator": "Trang 58; số năm 2025 hoặc kế hoạch 2026 ghi riêng"
+      }
+    },
+    {
+      "category": "operations",
+      "label": "Nhà máy ray/thép đặc biệt",
+      "value": "Thiết kế 700.000 tấn/năm; khởi công 12/2025",
+      "period": "Dự án",
+      "source": {
+        "source_name": "Hòa Phát BCTN 2025",
+        "url": "https://file.hoaphat.com.vn/hoaphat-com-vn/2026/05/bao-cao-thuong-nien-nam-2025.pdf",
+        "retrieved_at": "2026-10-10T09:52:59.088913+00:00",
+        "locator": "Trang 58; số năm 2025 hoặc kế hoạch 2026 ghi riêng"
+      }
+    },
+    {
+      "category": "forecast_assumptions",
+      "label": "Doanh thu kế hoạch",
+      "value": "210.000 tỷ đồng",
+      "period": "2026 kế hoạch",
+      "source": {
+        "source_name": "Hòa Phát BCTN 2025",
+        "url": "https://file.hoaphat.com.vn/hoaphat-com-vn/2026/05/bao-cao-thuong-nien-nam-2025.pdf",
+        "retrieved_at": "2026-10-10T09:52:59.088913+00:00",
+        "locator": "Trang 41; số năm 2025 hoặc kế hoạch 2026 ghi riêng"
+      },
+      "numeric": "210000",
+      "unit": "tỷ VND"
+    },
+    {
+      "category": "forecast_assumptions",
+      "label": "Lợi nhuận kế hoạch",
+      "value": "22.000 tỷ đồng (nhãn theo công bố)",
+      "period": "2026 kế hoạch",
+      "source": {
+        "source_name": "Hòa Phát BCTN 2025",
+        "url": "https://file.hoaphat.com.vn/hoaphat-com-vn/2026/05/bao-cao-thuong-nien-nam-2025.pdf",
+        "retrieved_at": "2026-10-10T09:52:59.088913+00:00",
+        "locator": "Trang 41; số năm 2025 hoặc kế hoạch 2026 ghi riêng"
+      },
+      "numeric": "22000",
+      "unit": "tỷ VND"
+    },
+    {
+      "category": "forecast_assumptions",
+      "label": "Năng lực thép toàn tập đoàn",
+      "value": "Dự kiến 16 triệu tấn/năm từ cuối 2026",
+      "period": "Kế hoạch",
+      "source": {
+        "source_name": "Hòa Phát BCTN 2025",
+        "url": "https://file.hoaphat.com.vn/hoaphat-com-vn/2026/05/bao-cao-thuong-nien-nam-2025.pdf",
+        "retrieved_at": "2026-10-10T09:52:59.088913+00:00",
+        "locator": "Trang 43; số năm 2025 hoặc kế hoạch 2026 ghi riêng"
+      }
+    },
+    {
+      "category": "risks",
+      "label": "Thương mại và xuất khẩu",
+      "value": "Rào cản thương mại hạn chế khả năng tiếp cận thị trường thép nước ngoài.",
+      "period": "Kế hoạch 2026",
+      "source": {
+        "source_name": "Hòa Phát BCTN 2025",
+        "url": "https://file.hoaphat.com.vn/hoaphat-com-vn/2026/05/bao-cao-thuong-nien-nam-2025.pdf",
+        "retrieved_at": "2026-10-10T09:52:59.088913+00:00",
+        "locator": "Trang 41; số năm 2025 hoặc kế hoạch 2026 ghi riêng"
+      }
+    },
+    {
+      "category": "risks",
+      "label": "Nguyên liệu và năng lượng",
+      "value": "Biến động giá nguyên liệu, năng lượng có thể ảnh hưởng chi phí sản xuất.",
+      "period": "Kế hoạch 2026",
+      "source": {
+        "source_name": "Hòa Phát BCTN 2025",
+        "url": "https://file.hoaphat.com.vn/hoaphat-com-vn/2026/05/bao-cao-thuong-nien-nam-2025.pdf",
+        "retrieved_at": "2026-10-10T09:52:59.088913+00:00",
+        "locator": "Trang 41; số năm 2025 hoặc kế hoạch 2026 ghi riêng"
+      }
+    },
+    {
+      "category": "risks",
+      "label": "Cung cầu thép",
+      "value": "Tăng trưởng chậm và dư cung thép Trung Quốc làm tăng sức ép cạnh tranh.",
+      "period": "Kế hoạch 2026",
+      "source": {
+        "source_name": "Hòa Phát BCTN 2025",
+        "url": "https://file.hoaphat.com.vn/hoaphat-com-vn/2026/05/bao-cao-thuong-nien-nam-2025.pdf",
+        "retrieved_at": "2026-10-10T09:52:59.088913+00:00",
+        "locator": "Trang 41; số năm 2025 hoặc kế hoạch 2026 ghi riêng"
+      }
+    }
+  ]
+}

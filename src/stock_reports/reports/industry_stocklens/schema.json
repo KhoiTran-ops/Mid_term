@@ -1,0 +1,3236 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": [
+    "meta"
+  ],
+  "properties": {
+    "meta": {
+      "type": "object",
+      "properties": {
+        "industry_id": {
+          "type": "string",
+          "pattern": "^[a-z0-9][a-z0-9-]{0,79}$"
+        },
+        "industry_name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "period_code": {
+          "type": "string",
+          "pattern": "^\\d{4}(?:-9T|-Q[1-4]|-(?:0[1-9]|1[0-2]))?$"
+        },
+        "period_label": {
+          "type": "string"
+        },
+        "report_date": {
+          "type": "string",
+          "format": "date"
+        },
+        "language": {
+          "const": "vi"
+        },
+        "sources": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "url": {
+                "type": "string"
+              },
+              "retrieved_at": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "published_at": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "groups": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            },
+            "required": [
+              "id",
+              "name",
+              "url",
+              "retrieved_at"
+            ],
+            "additionalProperties": true
+          }
+        },
+        "attribution": {
+          "type": "object",
+          "properties": {
+            "publisher": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "report_title": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "published_at": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "license_status": {
+              "enum": [
+                "licensed",
+                "own",
+                "unknown"
+              ]
+            }
+          },
+          "required": [
+            "license_status"
+          ],
+          "additionalProperties": true
+        },
+        "exchange_catalog": {
+          "type": "object",
+          "additionalProperties": {
+            "enum": [
+              "HOSE",
+              "HNX",
+              "UPCOM"
+            ]
+          }
+        }
+      },
+      "required": [
+        "industry_id",
+        "industry_name",
+        "period_code",
+        "period_label",
+        "report_date",
+        "sources",
+        "attribution"
+      ],
+      "additionalProperties": true
+    },
+    "summary": {
+      "type": "object",
+      "properties": {
+        "hero": {
+          "type": "object",
+          "properties": {
+            "title": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "subtitle": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "metric_label": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "metric_note": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "metric_value": {
+              "type": [
+                "number",
+                "null"
+              ]
+            }
+          },
+          "required": [],
+          "additionalProperties": true
+        },
+        "kpis": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "label": {
+                "type": "string"
+              },
+              "value": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "unit": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "polarity": {
+                "enum": [
+                  "higher_good",
+                  "higher_bad",
+                  "neutral"
+                ]
+              },
+              "source_id": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            },
+            "required": [
+              "label",
+              "value",
+              "polarity"
+            ],
+            "additionalProperties": true
+          }
+        },
+        "stances": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "segment": {
+                "type": "string"
+              },
+              "horizon": {
+                "enum": [
+                  "short_mid",
+                  "long"
+                ]
+              },
+              "rating": {
+                "type": "string"
+              },
+              "source": {
+                "type": "object",
+                "properties": {
+                  "organization": {
+                    "type": "string"
+                  },
+                  "name": {
+                    "type": "string"
+                  },
+                  "date": {
+                    "type": "string",
+                    "pattern": "^\\d{4}-(?:0[1-9]|1[0-2])(?:-\\d{2})?$"
+                  },
+                  "published_at": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "url": {
+                    "type": "string"
+                  }
+                },
+                "required": [],
+                "additionalProperties": true
+              }
+            },
+            "required": [
+              "segment",
+              "horizon",
+              "rating"
+            ],
+            "additionalProperties": true
+          }
+        },
+        "global_highlights": {
+          "type": "array",
+          "items": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "text": {
+                    "type": "string"
+                  },
+                  "source_id": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  }
+                },
+                "required": [
+                  "text"
+                ],
+                "additionalProperties": true
+              }
+            ]
+          }
+        },
+        "domestic_highlights": {
+          "type": "array",
+          "items": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "text": {
+                    "type": "string"
+                  },
+                  "source_id": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  }
+                },
+                "required": [
+                  "text"
+                ],
+                "additionalProperties": true
+              }
+            ]
+          }
+        },
+        "thesis": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "required": [],
+      "additionalProperties": true
+    },
+    "global": {
+      "type": "object",
+      "properties": {
+        "overview": {
+          "type": "object",
+          "properties": {
+            "phases": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "label": {
+                    "type": "string"
+                  },
+                  "cagr": {
+                    "type": [
+                      "number",
+                      "null"
+                    ]
+                  },
+                  "source": {
+                    "type": "object",
+                    "properties": {
+                      "organization": {
+                        "type": "string"
+                      },
+                      "name": {
+                        "type": "string"
+                      },
+                      "date": {
+                        "type": "string",
+                        "pattern": "^\\d{4}-(?:0[1-9]|1[0-2])(?:-\\d{2})?$"
+                      },
+                      "published_at": {
+                        "type": "string",
+                        "format": "date-time"
+                      },
+                      "url": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [],
+                    "additionalProperties": true
+                  }
+                },
+                "required": [
+                  "label",
+                  "cagr"
+                ],
+                "additionalProperties": true
+              }
+            },
+            "size": {
+              "type": "object",
+              "properties": {
+                "value": {
+                  "type": [
+                    "number",
+                    "null"
+                  ]
+                },
+                "unit": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "year": {
+                  "type": [
+                    "integer",
+                    "null"
+                  ]
+                }
+              },
+              "required": [],
+              "additionalProperties": true
+            },
+            "per_capita": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "region": {
+                    "type": "string"
+                  },
+                  "kg": {
+                    "type": [
+                      "number",
+                      "null"
+                    ]
+                  },
+                  "cagr_forecast": {
+                    "type": [
+                      "number",
+                      "null"
+                    ]
+                  },
+                  "source": {
+                    "type": "object",
+                    "properties": {
+                      "organization": {
+                        "type": "string"
+                      },
+                      "name": {
+                        "type": "string"
+                      },
+                      "date": {
+                        "type": "string",
+                        "pattern": "^\\d{4}-(?:0[1-9]|1[0-2])(?:-\\d{2})?$"
+                      },
+                      "published_at": {
+                        "type": "string",
+                        "format": "date-time"
+                      },
+                      "url": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [],
+                    "additionalProperties": true
+                  }
+                },
+                "required": [
+                  "region",
+                  "kg"
+                ],
+                "additionalProperties": true
+              }
+            },
+            "notes": {
+              "type": "array",
+              "items": {
+                "oneOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "text": {
+                        "type": "string"
+                      },
+                      "source_id": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      }
+                    },
+                    "required": [
+                      "text"
+                    ],
+                    "additionalProperties": true
+                  }
+                ]
+              }
+            }
+          },
+          "required": [],
+          "additionalProperties": true
+        },
+        "value_chain": {
+          "type": "object",
+          "properties": {
+            "cost_structure": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "pct": {
+                    "type": [
+                      "number",
+                      "null"
+                    ]
+                  },
+                  "derived": {
+                    "type": "boolean"
+                  },
+                  "formula": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "source": {
+                    "type": "object",
+                    "properties": {
+                      "organization": {
+                        "type": "string"
+                      },
+                      "name": {
+                        "type": "string"
+                      },
+                      "date": {
+                        "type": "string",
+                        "pattern": "^\\d{4}-(?:0[1-9]|1[0-2])(?:-\\d{2})?$"
+                      },
+                      "published_at": {
+                        "type": "string",
+                        "format": "date-time"
+                      },
+                      "url": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [],
+                    "additionalProperties": true
+                  }
+                },
+                "required": [
+                  "name",
+                  "pct"
+                ],
+                "additionalProperties": true
+              }
+            },
+            "output_structure": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "pct": {
+                    "type": [
+                      "number",
+                      "null"
+                    ]
+                  },
+                  "derived": {
+                    "type": "boolean"
+                  },
+                  "formula": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "source": {
+                    "type": "object",
+                    "properties": {
+                      "organization": {
+                        "type": "string"
+                      },
+                      "name": {
+                        "type": "string"
+                      },
+                      "date": {
+                        "type": "string",
+                        "pattern": "^\\d{4}-(?:0[1-9]|1[0-2])(?:-\\d{2})?$"
+                      },
+                      "published_at": {
+                        "type": "string",
+                        "format": "date-time"
+                      },
+                      "url": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [],
+                    "additionalProperties": true
+                  }
+                },
+                "required": [
+                  "name",
+                  "pct"
+                ],
+                "additionalProperties": true
+              }
+            },
+            "input_mix": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "pct": {
+                    "type": [
+                      "number",
+                      "null"
+                    ]
+                  },
+                  "derived": {
+                    "type": "boolean"
+                  },
+                  "formula": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "source": {
+                    "type": "object",
+                    "properties": {
+                      "organization": {
+                        "type": "string"
+                      },
+                      "name": {
+                        "type": "string"
+                      },
+                      "date": {
+                        "type": "string",
+                        "pattern": "^\\d{4}-(?:0[1-9]|1[0-2])(?:-\\d{2})?$"
+                      },
+                      "published_at": {
+                        "type": "string",
+                        "format": "date-time"
+                      },
+                      "url": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [],
+                    "additionalProperties": true
+                  }
+                },
+                "required": [
+                  "name",
+                  "pct"
+                ],
+                "additionalProperties": true
+              }
+            },
+            "price_forecast": {
+              "type": "object",
+              "properties": {
+                "unit": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "years": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "source": {
+                  "type": "object",
+                  "properties": {
+                    "organization": {
+                      "type": "string"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "date": {
+                      "type": "string",
+                      "pattern": "^\\d{4}-(?:0[1-9]|1[0-2])(?:-\\d{2})?$"
+                    },
+                    "published_at": {
+                      "type": "string",
+                      "format": "date-time"
+                    },
+                    "url": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [],
+                  "additionalProperties": true
+                },
+                "series": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "name": {
+                        "type": "string"
+                      },
+                      "values": {
+                        "type": "array",
+                        "items": {
+                          "type": [
+                            "number",
+                            "null"
+                          ]
+                        }
+                      },
+                      "source": {
+                        "type": "object",
+                        "properties": {
+                          "organization": {
+                            "type": "string"
+                          },
+                          "name": {
+                            "type": "string"
+                          },
+                          "date": {
+                            "type": "string",
+                            "pattern": "^\\d{4}-(?:0[1-9]|1[0-2])(?:-\\d{2})?$"
+                          },
+                          "published_at": {
+                            "type": "string",
+                            "format": "date-time"
+                          },
+                          "url": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [],
+                        "additionalProperties": true
+                      }
+                    },
+                    "required": [
+                      "name",
+                      "values"
+                    ],
+                    "additionalProperties": true
+                  }
+                }
+              },
+              "required": [],
+              "additionalProperties": true
+            },
+            "commodity_price": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "forecast": {
+                  "type": [
+                    "number",
+                    "null"
+                  ]
+                },
+                "unit": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "note": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "source": {
+                  "type": "object",
+                  "properties": {
+                    "organization": {
+                      "type": "string"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "date": {
+                      "type": "string",
+                      "pattern": "^\\d{4}-(?:0[1-9]|1[0-2])(?:-\\d{2})?$"
+                    },
+                    "published_at": {
+                      "type": "string",
+                      "format": "date-time"
+                    },
+                    "url": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [],
+                  "additionalProperties": true
+                }
+              },
+              "required": [],
+              "additionalProperties": true
+            }
+          },
+          "required": [],
+          "additionalProperties": true
+        },
+        "supply_demand": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "material": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "notes": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "utilization": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "capacity": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "supply_cagr_hist": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "supply_cagr_fwd": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "demand_cagr_hist": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "demand_cagr_fwd": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "source": {
+                "type": "object",
+                "properties": {
+                  "organization": {
+                    "type": "string"
+                  },
+                  "name": {
+                    "type": "string"
+                  },
+                  "date": {
+                    "type": "string",
+                    "pattern": "^\\d{4}-(?:0[1-9]|1[0-2])(?:-\\d{2})?$"
+                  },
+                  "published_at": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "url": {
+                    "type": "string"
+                  }
+                },
+                "required": [],
+                "additionalProperties": true
+              }
+            },
+            "required": [
+              "material"
+            ],
+            "additionalProperties": true
+          }
+        },
+        "policy_trends": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "topic": {
+                "type": "string"
+              },
+              "measures": {
+                "type": "array",
+                "items": {
+                  "oneOf": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "text": {
+                          "type": "string"
+                        },
+                        "source_id": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        }
+                      },
+                      "required": [
+                        "text"
+                      ],
+                      "additionalProperties": true
+                    }
+                  ]
+                }
+              },
+              "markets": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            },
+            "required": [
+              "topic"
+            ],
+            "additionalProperties": true
+          }
+        },
+        "segments": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "share_pct": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "volume": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "drivers": {
+                "type": "array",
+                "items": {
+                  "oneOf": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "text": {
+                          "type": "string"
+                        },
+                        "source_id": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        }
+                      },
+                      "required": [
+                        "text"
+                      ],
+                      "additionalProperties": true
+                    }
+                  ]
+                }
+              },
+              "regional_split": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string"
+                    },
+                    "pct": {
+                      "type": [
+                        "number",
+                        "null"
+                      ]
+                    },
+                    "derived": {
+                      "type": "boolean"
+                    },
+                    "formula": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "source": {
+                      "type": "object",
+                      "properties": {
+                        "organization": {
+                          "type": "string"
+                        },
+                        "name": {
+                          "type": "string"
+                        },
+                        "date": {
+                          "type": "string",
+                          "pattern": "^\\d{4}-(?:0[1-9]|1[0-2])(?:-\\d{2})?$"
+                        },
+                        "published_at": {
+                          "type": "string",
+                          "format": "date-time"
+                        },
+                        "url": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [],
+                      "additionalProperties": true
+                    }
+                  },
+                  "required": [
+                    "name",
+                    "pct"
+                  ],
+                  "additionalProperties": true
+                }
+              },
+              "demand_split": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string"
+                    },
+                    "pct": {
+                      "type": [
+                        "number",
+                        "null"
+                      ]
+                    },
+                    "derived": {
+                      "type": "boolean"
+                    },
+                    "formula": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "source": {
+                      "type": "object",
+                      "properties": {
+                        "organization": {
+                          "type": "string"
+                        },
+                        "name": {
+                          "type": "string"
+                        },
+                        "date": {
+                          "type": "string",
+                          "pattern": "^\\d{4}-(?:0[1-9]|1[0-2])(?:-\\d{2})?$"
+                        },
+                        "published_at": {
+                          "type": "string",
+                          "format": "date-time"
+                        },
+                        "url": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [],
+                      "additionalProperties": true
+                    }
+                  },
+                  "required": [
+                    "name",
+                    "pct"
+                  ],
+                  "additionalProperties": true
+                }
+              },
+              "forecast_regions": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "region": {
+                      "type": "string"
+                    },
+                    "cagr": {
+                      "type": [
+                        "number",
+                        "null"
+                      ]
+                    },
+                    "source": {
+                      "type": "object",
+                      "properties": {
+                        "organization": {
+                          "type": "string"
+                        },
+                        "name": {
+                          "type": "string"
+                        },
+                        "date": {
+                          "type": "string",
+                          "pattern": "^\\d{4}-(?:0[1-9]|1[0-2])(?:-\\d{2})?$"
+                        },
+                        "published_at": {
+                          "type": "string",
+                          "format": "date-time"
+                        },
+                        "url": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [],
+                      "additionalProperties": true
+                    }
+                  },
+                  "required": [],
+                  "additionalProperties": true
+                }
+              }
+            },
+            "required": [
+              "name"
+            ],
+            "additionalProperties": true
+          }
+        },
+        "segment_traits": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "segment": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "materials": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "technology": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "products": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "customers": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            },
+            "required": [
+              "segment"
+            ],
+            "additionalProperties": true
+          }
+        }
+      },
+      "required": [],
+      "additionalProperties": true
+    },
+    "domestic": {
+      "type": "object",
+      "properties": {
+        "overview": {
+          "type": "object",
+          "properties": {
+            "revenue": {
+              "type": [
+                "number",
+                "null"
+              ]
+            },
+            "gdp_share": {
+              "type": [
+                "number",
+                "null"
+              ]
+            },
+            "volume": {
+              "type": [
+                "number",
+                "null"
+              ]
+            },
+            "cagr_revenue": {
+              "type": [
+                "number",
+                "null"
+              ]
+            },
+            "cagr_volume": {
+              "type": [
+                "number",
+                "null"
+              ]
+            },
+            "yoy_volume": {
+              "type": [
+                "number",
+                "null"
+              ]
+            },
+            "output_structure": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "pct": {
+                    "type": [
+                      "number",
+                      "null"
+                    ]
+                  },
+                  "derived": {
+                    "type": "boolean"
+                  },
+                  "formula": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "source": {
+                    "type": "object",
+                    "properties": {
+                      "organization": {
+                        "type": "string"
+                      },
+                      "name": {
+                        "type": "string"
+                      },
+                      "date": {
+                        "type": "string",
+                        "pattern": "^\\d{4}-(?:0[1-9]|1[0-2])(?:-\\d{2})?$"
+                      },
+                      "published_at": {
+                        "type": "string",
+                        "format": "date-time"
+                      },
+                      "url": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [],
+                    "additionalProperties": true
+                  }
+                },
+                "required": [
+                  "name",
+                  "pct"
+                ],
+                "additionalProperties": true
+              }
+            },
+            "export_structure": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "pct": {
+                    "type": [
+                      "number",
+                      "null"
+                    ]
+                  },
+                  "derived": {
+                    "type": "boolean"
+                  },
+                  "formula": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "source": {
+                    "type": "object",
+                    "properties": {
+                      "organization": {
+                        "type": "string"
+                      },
+                      "name": {
+                        "type": "string"
+                      },
+                      "date": {
+                        "type": "string",
+                        "pattern": "^\\d{4}-(?:0[1-9]|1[0-2])(?:-\\d{2})?$"
+                      },
+                      "published_at": {
+                        "type": "string",
+                        "format": "date-time"
+                      },
+                      "url": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [],
+                    "additionalProperties": true
+                  }
+                },
+                "required": [
+                  "name",
+                  "pct"
+                ],
+                "additionalProperties": true
+              }
+            },
+            "market_split": {
+              "type": "object",
+              "properties": {
+                "domestic_pct": {
+                  "type": [
+                    "number",
+                    "null"
+                  ]
+                },
+                "export_pct": {
+                  "type": [
+                    "number",
+                    "null"
+                  ]
+                },
+                "import_value": {
+                  "type": [
+                    "number",
+                    "null"
+                  ]
+                }
+              },
+              "required": [],
+              "additionalProperties": true
+            },
+            "per_capita": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "region": {
+                    "type": "string"
+                  },
+                  "kg": {
+                    "type": [
+                      "number",
+                      "null"
+                    ]
+                  }
+                },
+                "required": [
+                  "region",
+                  "kg"
+                ],
+                "additionalProperties": true
+              }
+            }
+          },
+          "required": [],
+          "additionalProperties": true
+        },
+        "competition": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "force": {
+                "type": "string"
+              },
+              "level": {
+                "enum": [
+                  "high",
+                  "medium",
+                  "low"
+                ]
+              },
+              "comment": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            },
+            "required": [
+              "force",
+              "level"
+            ],
+            "additionalProperties": true
+          }
+        },
+        "value_chain": {
+          "type": "object",
+          "properties": {
+            "cost_structure": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "pct": {
+                    "type": [
+                      "number",
+                      "null"
+                    ]
+                  },
+                  "derived": {
+                    "type": "boolean"
+                  },
+                  "formula": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "source": {
+                    "type": "object",
+                    "properties": {
+                      "organization": {
+                        "type": "string"
+                      },
+                      "name": {
+                        "type": "string"
+                      },
+                      "date": {
+                        "type": "string",
+                        "pattern": "^\\d{4}-(?:0[1-9]|1[0-2])(?:-\\d{2})?$"
+                      },
+                      "published_at": {
+                        "type": "string",
+                        "format": "date-time"
+                      },
+                      "url": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [],
+                    "additionalProperties": true
+                  }
+                },
+                "required": [
+                  "name",
+                  "pct"
+                ],
+                "additionalProperties": true
+              }
+            },
+            "input_mix": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "pct": {
+                    "type": [
+                      "number",
+                      "null"
+                    ]
+                  },
+                  "derived": {
+                    "type": "boolean"
+                  },
+                  "formula": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "source": {
+                    "type": "object",
+                    "properties": {
+                      "organization": {
+                        "type": "string"
+                      },
+                      "name": {
+                        "type": "string"
+                      },
+                      "date": {
+                        "type": "string",
+                        "pattern": "^\\d{4}-(?:0[1-9]|1[0-2])(?:-\\d{2})?$"
+                      },
+                      "published_at": {
+                        "type": "string",
+                        "format": "date-time"
+                      },
+                      "url": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [],
+                    "additionalProperties": true
+                  }
+                },
+                "required": [
+                  "name",
+                  "pct"
+                ],
+                "additionalProperties": true
+              }
+            },
+            "domestic_supply": {
+              "type": "object",
+              "properties": {
+                "capacity": {
+                  "type": [
+                    "number",
+                    "null"
+                  ]
+                },
+                "self_sufficiency": {
+                  "type": [
+                    "number",
+                    "null"
+                  ]
+                },
+                "new_capacity_note": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              },
+              "required": [],
+              "additionalProperties": true
+            },
+            "machinery_imports": {
+              "type": "object",
+              "properties": {
+                "cagr_periods": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "label": {
+                        "type": "string"
+                      },
+                      "cagr": {
+                        "type": [
+                          "number",
+                          "null"
+                        ]
+                      }
+                    },
+                    "required": [
+                      "label",
+                      "cagr"
+                    ],
+                    "additionalProperties": true
+                  }
+                },
+                "origin_split": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "name": {
+                        "type": "string"
+                      },
+                      "pct": {
+                        "type": [
+                          "number",
+                          "null"
+                        ]
+                      },
+                      "derived": {
+                        "type": "boolean"
+                      },
+                      "formula": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "source": {
+                        "type": "object",
+                        "properties": {
+                          "organization": {
+                            "type": "string"
+                          },
+                          "name": {
+                            "type": "string"
+                          },
+                          "date": {
+                            "type": "string",
+                            "pattern": "^\\d{4}-(?:0[1-9]|1[0-2])(?:-\\d{2})?$"
+                          },
+                          "published_at": {
+                            "type": "string",
+                            "format": "date-time"
+                          },
+                          "url": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [],
+                        "additionalProperties": true
+                      }
+                    },
+                    "required": [
+                      "name",
+                      "pct"
+                    ],
+                    "additionalProperties": true
+                  }
+                }
+              },
+              "required": [],
+              "additionalProperties": true
+            }
+          },
+          "required": [],
+          "additionalProperties": true
+        },
+        "regulations": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "summary": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "effective": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "tables": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "headers": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "rows": {
+                      "type": "array",
+                      "items": {
+                        "type": "array",
+                        "items": {
+                          "type": [
+                            "string",
+                            "number",
+                            "null"
+                          ]
+                        }
+                      }
+                    }
+                  },
+                  "required": [
+                    "headers",
+                    "rows"
+                  ],
+                  "additionalProperties": true
+                }
+              }
+            },
+            "required": [
+              "name"
+            ],
+            "additionalProperties": true
+          }
+        },
+        "authorities": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "segments": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "share_pct": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "structure": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string"
+                    },
+                    "pct": {
+                      "type": [
+                        "number",
+                        "null"
+                      ]
+                    },
+                    "derived": {
+                      "type": "boolean"
+                    },
+                    "formula": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "source": {
+                      "type": "object",
+                      "properties": {
+                        "organization": {
+                          "type": "string"
+                        },
+                        "name": {
+                          "type": "string"
+                        },
+                        "date": {
+                          "type": "string",
+                          "pattern": "^\\d{4}-(?:0[1-9]|1[0-2])(?:-\\d{2})?$"
+                        },
+                        "published_at": {
+                          "type": "string",
+                          "format": "date-time"
+                        },
+                        "url": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [],
+                      "additionalProperties": true
+                    }
+                  },
+                  "required": [
+                    "name",
+                    "pct"
+                  ],
+                  "additionalProperties": true
+                }
+              },
+              "customers": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "group": {
+                      "type": "string"
+                    },
+                    "names": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "required": [
+                    "group",
+                    "names"
+                  ],
+                  "additionalProperties": true
+                }
+              },
+              "market_share": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string"
+                    },
+                    "pct": {
+                      "type": [
+                        "number",
+                        "null"
+                      ]
+                    },
+                    "derived": {
+                      "type": "boolean"
+                    },
+                    "formula": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "source": {
+                      "type": "object",
+                      "properties": {
+                        "organization": {
+                          "type": "string"
+                        },
+                        "name": {
+                          "type": "string"
+                        },
+                        "date": {
+                          "type": "string",
+                          "pattern": "^\\d{4}-(?:0[1-9]|1[0-2])(?:-\\d{2})?$"
+                        },
+                        "published_at": {
+                          "type": "string",
+                          "format": "date-time"
+                        },
+                        "url": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [],
+                      "additionalProperties": true
+                    }
+                  },
+                  "required": [
+                    "name",
+                    "pct"
+                  ],
+                  "additionalProperties": true
+                }
+              },
+              "growth_series": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "title": {
+                      "type": "string"
+                    },
+                    "unit": {
+                      "type": "string"
+                    },
+                    "metric": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "polarity": {
+                      "enum": [
+                        "higher_good",
+                        "higher_bad",
+                        "neutral"
+                      ]
+                    },
+                    "source": {
+                      "type": "object",
+                      "properties": {
+                        "organization": {
+                          "type": "string"
+                        },
+                        "name": {
+                          "type": "string"
+                        },
+                        "date": {
+                          "type": "string",
+                          "pattern": "^\\d{4}-(?:0[1-9]|1[0-2])(?:-\\d{2})?$"
+                        },
+                        "published_at": {
+                          "type": "string",
+                          "format": "date-time"
+                        },
+                        "url": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [],
+                      "additionalProperties": true
+                    },
+                    "points": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "label": {
+                            "type": "string"
+                          },
+                          "value": {
+                            "type": [
+                              "number",
+                              "null"
+                            ]
+                          },
+                          "status": {
+                            "enum": [
+                              "A",
+                              "E",
+                              "F"
+                            ]
+                          },
+                          "source": {
+                            "type": "object",
+                            "properties": {
+                              "organization": {
+                                "type": "string"
+                              },
+                              "name": {
+                                "type": "string"
+                              },
+                              "date": {
+                                "type": "string",
+                                "pattern": "^\\d{4}-(?:0[1-9]|1[0-2])(?:-\\d{2})?$"
+                              },
+                              "published_at": {
+                                "type": "string",
+                                "format": "date-time"
+                              },
+                              "url": {
+                                "type": "string"
+                              }
+                            },
+                            "required": [],
+                            "additionalProperties": true
+                          },
+                          "as_of": {
+                            "type": [
+                              "string",
+                              "null"
+                            ]
+                          }
+                        },
+                        "required": [
+                          "label",
+                          "value",
+                          "status"
+                        ],
+                        "additionalProperties": true
+                      }
+                    }
+                  },
+                  "required": [
+                    "title",
+                    "unit",
+                    "points"
+                  ],
+                  "additionalProperties": true
+                }
+              },
+              "export": {
+                "type": "object",
+                "properties": {
+                  "structure": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "name": {
+                          "type": "string"
+                        },
+                        "pct": {
+                          "type": [
+                            "number",
+                            "null"
+                          ]
+                        },
+                        "derived": {
+                          "type": "boolean"
+                        },
+                        "formula": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "source": {
+                          "type": "object",
+                          "properties": {
+                            "organization": {
+                              "type": "string"
+                            },
+                            "name": {
+                              "type": "string"
+                            },
+                            "date": {
+                              "type": "string",
+                              "pattern": "^\\d{4}-(?:0[1-9]|1[0-2])(?:-\\d{2})?$"
+                            },
+                            "published_at": {
+                              "type": "string",
+                              "format": "date-time"
+                            },
+                            "url": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [],
+                          "additionalProperties": true
+                        }
+                      },
+                      "required": [
+                        "name",
+                        "pct"
+                      ],
+                      "additionalProperties": true
+                    }
+                  },
+                  "series": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "title": {
+                          "type": "string"
+                        },
+                        "unit": {
+                          "type": "string"
+                        },
+                        "metric": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "polarity": {
+                          "enum": [
+                            "higher_good",
+                            "higher_bad",
+                            "neutral"
+                          ]
+                        },
+                        "source": {
+                          "type": "object",
+                          "properties": {
+                            "organization": {
+                              "type": "string"
+                            },
+                            "name": {
+                              "type": "string"
+                            },
+                            "date": {
+                              "type": "string",
+                              "pattern": "^\\d{4}-(?:0[1-9]|1[0-2])(?:-\\d{2})?$"
+                            },
+                            "published_at": {
+                              "type": "string",
+                              "format": "date-time"
+                            },
+                            "url": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [],
+                          "additionalProperties": true
+                        },
+                        "points": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "label": {
+                                "type": "string"
+                              },
+                              "value": {
+                                "type": [
+                                  "number",
+                                  "null"
+                                ]
+                              },
+                              "status": {
+                                "enum": [
+                                  "A",
+                                  "E",
+                                  "F"
+                                ]
+                              },
+                              "source": {
+                                "type": "object",
+                                "properties": {
+                                  "organization": {
+                                    "type": "string"
+                                  },
+                                  "name": {
+                                    "type": "string"
+                                  },
+                                  "date": {
+                                    "type": "string",
+                                    "pattern": "^\\d{4}-(?:0[1-9]|1[0-2])(?:-\\d{2})?$"
+                                  },
+                                  "published_at": {
+                                    "type": "string",
+                                    "format": "date-time"
+                                  },
+                                  "url": {
+                                    "type": "string"
+                                  }
+                                },
+                                "required": [],
+                                "additionalProperties": true
+                              },
+                              "as_of": {
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
+                              }
+                            },
+                            "required": [
+                              "label",
+                              "value",
+                              "status"
+                            ],
+                            "additionalProperties": true
+                          }
+                        }
+                      },
+                      "required": [
+                        "title",
+                        "unit",
+                        "points"
+                      ],
+                      "additionalProperties": true
+                    }
+                  },
+                  "notes": {
+                    "type": "array",
+                    "items": {
+                      "oneOf": [
+                        {
+                          "type": "string"
+                        },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "text": {
+                              "type": "string"
+                            },
+                            "source_id": {
+                              "type": [
+                                "string",
+                                "null"
+                              ]
+                            }
+                          },
+                          "required": [
+                            "text"
+                          ],
+                          "additionalProperties": true
+                        }
+                      ]
+                    }
+                  }
+                },
+                "required": [],
+                "additionalProperties": true
+              },
+              "notes": {
+                "type": "array",
+                "items": {
+                  "oneOf": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "text": {
+                          "type": "string"
+                        },
+                        "source_id": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        }
+                      },
+                      "required": [
+                        "text"
+                      ],
+                      "additionalProperties": true
+                    }
+                  ]
+                }
+              },
+              "headwinds": {
+                "type": "array",
+                "items": {
+                  "oneOf": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "text": {
+                          "type": "string"
+                        },
+                        "source_id": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        }
+                      },
+                      "required": [
+                        "text"
+                      ],
+                      "additionalProperties": true
+                    }
+                  ]
+                }
+              },
+              "tailwinds": {
+                "type": "array",
+                "items": {
+                  "oneOf": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "text": {
+                          "type": "string"
+                        },
+                        "source_id": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        }
+                      },
+                      "required": [
+                        "text"
+                      ],
+                      "additionalProperties": true
+                    }
+                  ]
+                }
+              }
+            },
+            "required": [
+              "name"
+            ],
+            "additionalProperties": true
+          }
+        },
+        "outlook": {
+          "type": "object",
+          "properties": {
+            "output_forecast": {
+              "type": "object",
+              "properties": {
+                "from": {
+                  "type": [
+                    "number",
+                    "null"
+                  ]
+                },
+                "to": {
+                  "type": [
+                    "number",
+                    "null"
+                  ]
+                },
+                "cagr": {
+                  "type": [
+                    "number",
+                    "null"
+                  ]
+                },
+                "start_value": {
+                  "type": [
+                    "number",
+                    "null"
+                  ]
+                },
+                "end_value": {
+                  "type": [
+                    "number",
+                    "null"
+                  ]
+                },
+                "n_years": {
+                  "type": [
+                    "number",
+                    "null"
+                  ]
+                },
+                "source": {
+                  "type": "object",
+                  "properties": {
+                    "organization": {
+                      "type": "string"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "date": {
+                      "type": "string",
+                      "pattern": "^\\d{4}-(?:0[1-9]|1[0-2])(?:-\\d{2})?$"
+                    },
+                    "published_at": {
+                      "type": "string",
+                      "format": "date-time"
+                    },
+                    "url": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [],
+                  "additionalProperties": true
+                }
+              },
+              "required": [],
+              "additionalProperties": true
+            },
+            "segment_table": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "segment": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "drivers": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "forecast": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  }
+                },
+                "required": [
+                  "segment"
+                ],
+                "additionalProperties": true
+              }
+            },
+            "series": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "title": {
+                    "type": "string"
+                  },
+                  "unit": {
+                    "type": "string"
+                  },
+                  "metric": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "polarity": {
+                    "enum": [
+                      "higher_good",
+                      "higher_bad",
+                      "neutral"
+                    ]
+                  },
+                  "source": {
+                    "type": "object",
+                    "properties": {
+                      "organization": {
+                        "type": "string"
+                      },
+                      "name": {
+                        "type": "string"
+                      },
+                      "date": {
+                        "type": "string",
+                        "pattern": "^\\d{4}-(?:0[1-9]|1[0-2])(?:-\\d{2})?$"
+                      },
+                      "published_at": {
+                        "type": "string",
+                        "format": "date-time"
+                      },
+                      "url": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [],
+                    "additionalProperties": true
+                  },
+                  "points": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "label": {
+                          "type": "string"
+                        },
+                        "value": {
+                          "type": [
+                            "number",
+                            "null"
+                          ]
+                        },
+                        "status": {
+                          "enum": [
+                            "A",
+                            "E",
+                            "F"
+                          ]
+                        },
+                        "source": {
+                          "type": "object",
+                          "properties": {
+                            "organization": {
+                              "type": "string"
+                            },
+                            "name": {
+                              "type": "string"
+                            },
+                            "date": {
+                              "type": "string",
+                              "pattern": "^\\d{4}-(?:0[1-9]|1[0-2])(?:-\\d{2})?$"
+                            },
+                            "published_at": {
+                              "type": "string",
+                              "format": "date-time"
+                            },
+                            "url": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [],
+                          "additionalProperties": true
+                        },
+                        "as_of": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        }
+                      },
+                      "required": [
+                        "label",
+                        "value",
+                        "status"
+                      ],
+                      "additionalProperties": true
+                    }
+                  }
+                },
+                "required": [
+                  "title",
+                  "unit",
+                  "points"
+                ],
+                "additionalProperties": true
+              }
+            },
+            "macro_drivers": {
+              "type": "array",
+              "items": {
+                "oneOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "text": {
+                        "type": "string"
+                      },
+                      "source_id": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      }
+                    },
+                    "required": [
+                      "text"
+                    ],
+                    "additionalProperties": true
+                  }
+                ]
+              }
+            }
+          },
+          "required": [],
+          "additionalProperties": true
+        },
+        "risks": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "area": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "title": {
+                "type": "string"
+              },
+              "points": {
+                "type": "array",
+                "items": {
+                  "oneOf": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "text": {
+                          "type": "string"
+                        },
+                        "source_id": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        }
+                      },
+                      "required": [
+                        "text"
+                      ],
+                      "additionalProperties": true
+                    }
+                  ]
+                }
+              }
+            },
+            "required": [
+              "title"
+            ],
+            "additionalProperties": true
+          }
+        }
+      },
+      "required": [],
+      "additionalProperties": true
+    },
+    "companies": {
+      "type": "object",
+      "properties": {
+        "table": {
+          "type": "object",
+          "properties": {
+            "as_of": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "period": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "columns": {
+              "type": "array",
+              "items": {
+                "enum": [
+                  "group",
+                  "ticker",
+                  "exchange",
+                  "market_cap",
+                  "total_assets",
+                  "revenue",
+                  "revenue_yoy",
+                  "net_income",
+                  "net_income_yoy",
+                  "note"
+                ]
+              }
+            },
+            "rows": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "group": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "ticker": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "exchange": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "name": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "period": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "note": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "market_cap_as_of": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "price_as_of": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "as_of": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "market_cap": {
+                    "type": [
+                      "number",
+                      "null"
+                    ]
+                  },
+                  "total_assets": {
+                    "type": [
+                      "number",
+                      "null"
+                    ]
+                  },
+                  "revenue": {
+                    "type": [
+                      "number",
+                      "null"
+                    ]
+                  },
+                  "revenue_yoy": {
+                    "type": [
+                      "number",
+                      "null"
+                    ]
+                  },
+                  "revenue_prior": {
+                    "type": [
+                      "number",
+                      "null"
+                    ]
+                  },
+                  "net_income": {
+                    "type": [
+                      "number",
+                      "null"
+                    ]
+                  },
+                  "net_income_yoy": {
+                    "type": [
+                      "number",
+                      "null"
+                    ]
+                  },
+                  "net_income_prior": {
+                    "type": [
+                      "number",
+                      "null"
+                    ]
+                  },
+                  "source_id": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  }
+                },
+                "required": [
+                  "ticker",
+                  "exchange"
+                ],
+                "additionalProperties": true
+              }
+            },
+            "footnotes": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          "required": [],
+          "additionalProperties": true
+        },
+        "profiles": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "ticker": {
+                "type": "string"
+              },
+              "exchange": {
+                "type": "string"
+              },
+              "trading": {
+                "type": "object",
+                "properties": {
+                  "as_of": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "price_as_of": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "market_cap_as_of": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "price": {
+                    "type": [
+                      "number",
+                      "null"
+                    ]
+                  },
+                  "high_52w": {
+                    "type": [
+                      "number",
+                      "null"
+                    ]
+                  },
+                  "low_52w": {
+                    "type": [
+                      "number",
+                      "null"
+                    ]
+                  },
+                  "avg_volume_10d": {
+                    "type": [
+                      "number",
+                      "null"
+                    ]
+                  },
+                  "eps_ttm": {
+                    "type": [
+                      "number",
+                      "null"
+                    ]
+                  },
+                  "pe_ttm": {
+                    "type": [
+                      "number",
+                      "null"
+                    ]
+                  },
+                  "target_price": {
+                    "type": [
+                      "number",
+                      "null"
+                    ]
+                  },
+                  "target_upside": {
+                    "type": [
+                      "number",
+                      "null"
+                    ]
+                  },
+                  "target_source": {
+                    "type": "object",
+                    "properties": {
+                      "organization": {
+                        "type": "string"
+                      },
+                      "name": {
+                        "type": "string"
+                      },
+                      "date": {
+                        "type": "string",
+                        "pattern": "^\\d{4}-(?:0[1-9]|1[0-2])(?:-\\d{2})?$"
+                      },
+                      "published_at": {
+                        "type": "string",
+                        "format": "date-time"
+                      },
+                      "url": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [],
+                    "additionalProperties": true
+                  }
+                },
+                "required": [],
+                "additionalProperties": true
+              },
+              "business_points": {
+                "type": "array",
+                "items": {
+                  "oneOf": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "text": {
+                          "type": "string"
+                        },
+                        "source_id": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        }
+                      },
+                      "required": [
+                        "text"
+                      ],
+                      "additionalProperties": true
+                    }
+                  ]
+                }
+              },
+              "series": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "title": {
+                      "type": "string"
+                    },
+                    "unit": {
+                      "type": "string"
+                    },
+                    "metric": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "polarity": {
+                      "enum": [
+                        "higher_good",
+                        "higher_bad",
+                        "neutral"
+                      ]
+                    },
+                    "source": {
+                      "type": "object",
+                      "properties": {
+                        "organization": {
+                          "type": "string"
+                        },
+                        "name": {
+                          "type": "string"
+                        },
+                        "date": {
+                          "type": "string",
+                          "pattern": "^\\d{4}-(?:0[1-9]|1[0-2])(?:-\\d{2})?$"
+                        },
+                        "published_at": {
+                          "type": "string",
+                          "format": "date-time"
+                        },
+                        "url": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [],
+                      "additionalProperties": true
+                    },
+                    "points": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "label": {
+                            "type": "string"
+                          },
+                          "value": {
+                            "type": [
+                              "number",
+                              "null"
+                            ]
+                          },
+                          "status": {
+                            "enum": [
+                              "A",
+                              "E",
+                              "F"
+                            ]
+                          },
+                          "source": {
+                            "type": "object",
+                            "properties": {
+                              "organization": {
+                                "type": "string"
+                              },
+                              "name": {
+                                "type": "string"
+                              },
+                              "date": {
+                                "type": "string",
+                                "pattern": "^\\d{4}-(?:0[1-9]|1[0-2])(?:-\\d{2})?$"
+                              },
+                              "published_at": {
+                                "type": "string",
+                                "format": "date-time"
+                              },
+                              "url": {
+                                "type": "string"
+                              }
+                            },
+                            "required": [],
+                            "additionalProperties": true
+                          },
+                          "as_of": {
+                            "type": [
+                              "string",
+                              "null"
+                            ]
+                          }
+                        },
+                        "required": [
+                          "label",
+                          "value",
+                          "status"
+                        ],
+                        "additionalProperties": true
+                      }
+                    }
+                  },
+                  "required": [
+                    "title",
+                    "unit",
+                    "points"
+                  ],
+                  "additionalProperties": true
+                }
+              },
+              "structure": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string"
+                    },
+                    "pct": {
+                      "type": [
+                        "number",
+                        "null"
+                      ]
+                    },
+                    "derived": {
+                      "type": "boolean"
+                    },
+                    "formula": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "source": {
+                      "type": "object",
+                      "properties": {
+                        "organization": {
+                          "type": "string"
+                        },
+                        "name": {
+                          "type": "string"
+                        },
+                        "date": {
+                          "type": "string",
+                          "pattern": "^\\d{4}-(?:0[1-9]|1[0-2])(?:-\\d{2})?$"
+                        },
+                        "published_at": {
+                          "type": "string",
+                          "format": "date-time"
+                        },
+                        "url": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [],
+                      "additionalProperties": true
+                    }
+                  },
+                  "required": [
+                    "name",
+                    "pct"
+                  ],
+                  "additionalProperties": true
+                }
+              },
+              "tables": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "title": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "headers": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "rows": {
+                      "type": "array",
+                      "items": {
+                        "type": "array",
+                        "items": {
+                          "type": [
+                            "string",
+                            "number",
+                            "null"
+                          ]
+                        }
+                      }
+                    }
+                  },
+                  "required": [],
+                  "additionalProperties": true
+                }
+              }
+            },
+            "required": [
+              "name",
+              "ticker",
+              "exchange"
+            ],
+            "additionalProperties": true
+          }
+        }
+      },
+      "required": [],
+      "additionalProperties": true
+    },
+    "disclaimer": {
+      "type": "object",
+      "properties": {
+        "text": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "holdings_disclosure": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "required": [],
+      "additionalProperties": true
+    },
+    "units": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      }
+    },
+    "missing_reasons": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      }
+    },
+    "provenance": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "source_id": {
+            "type": "string"
+          },
+          "unit": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "as_of": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "period": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "expected_unit": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "scale": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "required": [
+          "source_id"
+        ],
+        "additionalProperties": true
+      }
+    },
+    "derived": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "formula": {
+            "type": "string"
+          },
+          "inputs": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "formula"
+        ],
+        "additionalProperties": true
+      }
+    },
+    "assertions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "metric_path": {
+            "type": "string"
+          },
+          "text_path": {
+            "type": "string"
+          },
+          "value": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "tolerance": {
+            "type": [
+              "number",
+              "null"
+            ]
+          }
+        },
+        "required": [
+          "metric_path",
+          "text_path",
+          "value"
+        ],
+        "additionalProperties": true
+      }
+    }
+  },
+  "additionalProperties": false
+}

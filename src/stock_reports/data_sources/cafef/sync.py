@@ -190,20 +190,24 @@ def sync_financial_history(client: CafeFClient, store: MarketStore, *,
                             anchor=f'{anchor_year}Q{anchor_quarter}', error_type=type(error).__name__,
                             status_code=getattr(error, 'status_code', None)))
                         # An unavailable anchor can still appear in the next quarter's table.
-                        if anchor == primary and getattr(error, 'status_code', None) == 404 and fallback <= max(available_periods):
-                            anchors.append(fallback)
+                        if anchor == primary and getattr(error, 'status_code', None) == 404:
+                            if fallback <= max(available_periods):
+                                anchors.append(fallback)
+                            # A missing newest HTML table must not discard the
+                            # older published quarters in that four-quarter window.
+                            anchors.extend(sorted(primary_window-{primary}, reverse=True))
                 if html is None:
                     pending.difference_update(primary_window)
                     continue
                 requests += 1
                 number = anchor_year * 4 + anchor_quarter - 1
                 block_periods = {p for p in available_periods if 0 <= number - (p[0]*4+p[1]-1) < 4}
-                pending.difference_update(block_periods)
                 facts = parse_financial_statement(html)
                 source = (
                     "https://cafef.vn/du-lieu/BaoCaoTaiChinh_V2.aspx"
                     f"?quarter={anchor_quarter}&symbol={symbol}"
                     f"&type={statement_type}&year={anchor_year}"
+                    "&showtype=1"
                 )
                 filtered = []
                 for fact in facts:
@@ -217,7 +221,12 @@ def sync_financial_history(client: CafeFClient, store: MarketStore, *,
                     saved += store.replace_financial_facts(
                         symbol, statement_type, filtered, source=source
                     )
-                else:
+                numeric_periods = {p for f in filtered for p, pair in f['values'].items()
+                                   if pair[1] is not None}
+                # Partial windows must not discard older pending quarters.
+                pending.difference_update(numeric_periods)
+                pending.discard(primary)
+                if not numeric_periods:
                     rejected += 1
                     issues.append(dict(symbol=symbol, statement_type=statement_type,
                         anchor=f'{anchor_year}Q{anchor_quarter}', error_type='NoStatementData'))

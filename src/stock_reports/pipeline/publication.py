@@ -13,11 +13,11 @@ class ReportPublisher:
         self.renderer = renderer
         self.catalog = catalog
 
-    def publish(self, document: ReportDocument) -> StoredReport:
+    def publish(self, document: ReportDocument, *, generation_key: str | None = None) -> StoredReport:
         with TemporaryDirectory(dir=self.catalog.directory) as temporary:
             destination = Path(temporary) / 'report.pdf'
             rendered = self.renderer.render(document, destination)
             if Path(rendered).resolve() != destination.resolve():
                 raise ValueError('The renderer must return the requested destination')
             metadata = ReportMetadata.model_validate({key: getattr(document, key) for key in ReportMetadata.model_fields})
-            return self.catalog.register(metadata, destination)
+            return self.catalog.register(metadata, destination, generation_key=generation_key)

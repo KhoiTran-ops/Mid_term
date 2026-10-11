@@ -162,6 +162,27 @@ header {
 .intro-row button {
   white-space:nowrap
 }
+.coverage {
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:12px;
+  margin:20px 0 8px
+}
+.coverage div {
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:12px;
+  padding:14px 16px
+}
+.coverage strong {
+  display:block;
+  color:var(--navy);
+  font-size:22px
+}
+.coverage span {
+  color:var(--muted);
+  font-size:11px
+}
 .tabs {
   display:flex;
   gap:32px;
@@ -612,6 +633,9 @@ dialog::backdrop {
   }
 }
 @media(max-width:760px) {
+  .coverage {
+    grid-template-columns:repeat(2,minmax(0,1fr))
+  }
   .shell {
     width:calc(100% - 32px)
   }

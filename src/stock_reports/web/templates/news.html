@@ -22,10 +22,11 @@
         <option value="">Tất cả nguồn</option>{% for source in sources %}<option value="{{ source.id }}" {% if filters.source_id==source.id %}selected{% endif %}>{{ source.config.name }}</option>{% endfor %}
       </select></div>
       <div class="field"><label for="symbol">Mã doanh nghiệp</label><input id="symbol" name="symbol" value="{{ filters.symbol }}" placeholder="Ví dụ: HPG, FPT" maxlength="12"></div>
+      <div class="field"><label for="category">Chủ đề</label><select id="category" name="category"><option value="">Tất cả chủ đề</option>{% for key,label in [('chungkhoan','Chứng khoán'),('doanhnghiep','Doanh nghiệp'),('nganhang','Ngân hàng'),('taichinh','Tài chính'),('quocte','Quốc tế'),('vimo','Vĩ mô'),('kinhteso','Kinh tế số'),('thitruong','Thị trường'),('diachinhtri','Địa chính trị')] %}<option value="{{ key }}" {% if filters.category==key %}selected{% endif %}>{{ label }}</option>{% endfor %}</select></div>
       <div class="actions"><button type="submit">Lọc tin tức</button><a href="/news">Xóa bộ lọc</a></div>
     </form>
     <div class="news-status">
-      <span id="refresh-message" role="status">{{ sources|length }} nguồn theo dõi · Danh sách cập nhật mỗi phút</span>
+      <span id="refresh-message" role="status">{{ sources|length }} nguồn theo dõi · Danh sách làm mới mỗi 30 giây · Nguồn RSS lấy theo chu kỳ 1–3 phút hoặc lịch riêng</span>
       {% if latest_success %}<span>Lần lấy tin thành công: {{ latest_success|local_time }}</span>{% endif %}
     </div>
     {% if failed_sources %}<details class="source-issues"><summary>{{ failed_sources|length }} nguồn đang gặp lỗi, hệ thống sẽ thử lại</summary>

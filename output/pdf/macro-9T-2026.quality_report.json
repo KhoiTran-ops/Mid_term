@@ -1,0 +1,218 @@
+{
+  "period_code": "2026-9T",
+  "status": "passed_with_gaps",
+  "flags": [
+    {
+      "code": "history_outlier",
+      "path": "gdp.history.1.ytd_yoy",
+      "message": "Điểm nằm ngoài cả hai lân cận, lệch hơn 40% ít nhất một lân cận; cần giải thích",
+      "severity": "warning"
+    }
+  ],
+  "missing": [
+    {
+      "path": "gdp.note",
+      "reason": "Chưa có nguồn được xác nhận cho kỳ này"
+    },
+    {
+      "path": "iip.note",
+      "reason": "Chưa có nguồn được xác nhận cho kỳ này"
+    },
+    {
+      "path": "iip.top_products",
+      "reason": "Nguồn chưa cung cấp chuỗi / nội dung cho kỳ này"
+    },
+    {
+      "path": "cpi.note",
+      "reason": "Chưa có nguồn được xác nhận cho kỳ này"
+    },
+    {
+      "path": "cpi.monthly_series",
+      "reason": "Nguồn chưa cung cấp chuỗi / nội dung cho kỳ này"
+    },
+    {
+      "path": "retail.monthly_series",
+      "reason": "Nguồn chưa cung cấp chuỗi / nội dung cho kỳ này"
+    },
+    {
+      "path": "retail.note",
+      "reason": "Chưa có nguồn được xác nhận cho kỳ này"
+    },
+    {
+      "path": "trade.q.total_yoy",
+      "reason": "Chưa có nguồn được xác nhận cho kỳ này"
+    },
+    {
+      "path": "trade.quarterly_yoy",
+      "reason": "Nguồn chưa cung cấp chuỗi / nội dung cho kỳ này"
+    },
+    {
+      "path": "trade.note",
+      "reason": "Chưa có nguồn được xác nhận cho kỳ này"
+    },
+    {
+      "path": "fdi.note",
+      "reason": "Chưa có nguồn được xác nhận cho kỳ này"
+    },
+    {
+      "path": "fdi.top_countries",
+      "reason": "Chưa có công bố nguồn sơ cấp đúng kỳ / bộ dữ liệu được cấp phép cho nhóm này"
+    },
+    {
+      "path": "fdi.top_projects",
+      "reason": "Chưa có công bố nguồn sơ cấp đúng kỳ / bộ dữ liệu được cấp phép cho nhóm này"
+    },
+    {
+      "path": "budget.plan.revenue",
+      "reason": "Chưa có nguồn được xác nhận cho kỳ này"
+    },
+    {
+      "path": "budget.plan.expenditure",
+      "reason": "Chưa có nguồn được xác nhận cho kỳ này"
+    },
+    {
+      "path": "budget.plan.deficit",
+      "reason": "Chưa có nguồn được xác nhận cho kỳ này"
+    },
+    {
+      "path": "budget.plan.borrowing",
+      "reason": "Chưa có nguồn được xác nhận cho kỳ này"
+    },
+    {
+      "path": "budget.domestic_revenue_share_pct",
+      "reason": "Chưa có nguồn được xác nhận cho kỳ này"
+    },
+    {
+      "path": "budget.note",
+      "reason": "Chưa có nguồn được xác nhận cho kỳ này"
+    },
+    {
+      "path": "public_investment.month_disbursed",
+      "reason": "Chưa có nguồn được xác nhận cho kỳ này"
+    },
+    {
+      "path": "public_investment.ytd_disbursed",
+      "reason": "Chưa có nguồn được xác nhận cho kỳ này"
+    },
+    {
+      "path": "public_investment.ytd_pct_plan",
+      "reason": "Chưa có nguồn được xác nhận cho kỳ này"
+    },
+    {
+      "path": "public_investment.ytd_yoy",
+      "reason": "Chưa có nguồn được xác nhận cho kỳ này"
+    },
+    {
+      "path": "public_investment.plan_total",
+      "reason": "Chưa có nguồn được xác nhận cho kỳ này"
+    },
+    {
+      "path": "public_investment.note",
+      "reason": "Chưa có nguồn được xác nhận cho kỳ này"
+    },
+    {
+      "path": "public_investment.monthly_series",
+      "reason": "Nguồn chưa cung cấp chuỗi / nội dung cho kỳ này"
+    },
+    {
+      "path": "monetary.fx_change_ytd",
+      "reason": "Chưa có tỷ giá giao ngay NHNN cùng cơ sở so sánh; không thay bằng chỉ số giá USD của NSO"
+    },
+    {
+      "path": "monetary.note_credit",
+      "reason": "Chưa có nguồn được xác nhận cho kỳ này"
+    },
+    {
+      "path": "monetary.note_fx",
+      "reason": "Chưa có nguồn được xác nhận cho kỳ này"
+    },
+    {
+      "path": "monetary.series.credit",
+      "reason": "Nguồn chưa cung cấp chuỗi / nội dung cho kỳ này"
+    },
+    {
+      "path": "monetary.series.usd_vnd",
+      "reason": "Nguồn chưa cung cấp chuỗi / nội dung cho kỳ này"
+    },
+    {
+      "path": "monetary.series.interbank",
+      "reason": "Nguồn chưa cung cấp chuỗi / nội dung cho kỳ này"
+    },
+    {
+      "path": "pmi.series",
+      "reason": "Nguồn chưa cung cấp chuỗi / nội dung cho kỳ này"
+    },
+    {
+      "path": "pmi.note",
+      "reason": "Chưa có nguồn được xác nhận cho kỳ này"
+    },
+    {
+      "path": "business.note",
+      "reason": "Chưa có nguồn được xác nhận cho kỳ này"
+    },
+    {
+      "path": "business.exit_ratio_history",
+      "reason": "Nguồn chưa cung cấp chuỗi / nội dung cho kỳ này"
+    },
+    {
+      "path": "conclusion.overall",
+      "reason": "Nguồn chưa cung cấp chuỗi / nội dung cho kỳ này"
+    },
+    {
+      "path": "conclusion.outlook",
+      "reason": "Nguồn chưa cung cấp chuỗi / nội dung cho kỳ này"
+    },
+    {
+      "path": "conclusion.opportunities",
+      "reason": "Nguồn chưa cung cấp chuỗi / nội dung cho kỳ này"
+    },
+    {
+      "path": "conclusion.risks",
+      "reason": "Nguồn chưa cung cấp chuỗi / nội dung cho kỳ này"
+    }
+  ],
+  "derived": {
+    "trade.q.total_usd_bn": {
+      "formula": "XK quý + NK quý",
+      "inputs": [
+        "trade.q.export_usd_bn",
+        "trade.q.import_usd_bn"
+      ]
+    },
+    "budget.month.balance": {
+      "formula": "Thu − Chi",
+      "inputs": [
+        "budget.month.revenue",
+        "budget.month.expenditure"
+      ]
+    },
+    "budget.ytd.balance": {
+      "formula": "Thu − Chi",
+      "inputs": [
+        "budget.ytd.revenue",
+        "budget.ytd.expenditure"
+      ]
+    },
+    "business.exit_ratio_pct": {
+      "formula": "DN rút lui / (DN mới + quay lại) × 100",
+      "inputs": [
+        "business.exited_k",
+        "business.new_and_returned_k"
+      ]
+    }
+  },
+  "source_differences": [
+    {
+      "path": "monetary.credit_growth_ytd",
+      "design_value": 11.59,
+      "primary_value": 10.89,
+      "reason": "Mẫu dùng 30/9; NSO công bố ngày chốt 28/9. Không trộn ngày."
+    },
+    {
+      "path": "iip.prev_ytd_yoy",
+      "design_value": 9.1,
+      "primary_value": 9.1,
+      "reason": "Đối chiếu riêng công bố IIP 9T/2025, không dùng đoạn chỉ số tiêu thụ trong công bố 2026."
+    }
+  ]
+}

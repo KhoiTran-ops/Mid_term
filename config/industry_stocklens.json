@@ -1,0 +1,5 @@
+{
+  "enabled": true,
+  "json_sources": [],
+  "note": "Dùng danh mục DNSE, snapshots và BCTC đối chiếu sẵn có. Các nguồn chuyên ngành bên ngoài cần cấu hình JSON bridge với quyền own/licensed. Không sử dụng dữ liệu ví dụ cho báo cáo thật."
+}

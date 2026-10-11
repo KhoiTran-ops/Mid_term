@@ -6,7 +6,7 @@ import json
 from pathlib import Path
 import sqlite3
 
-from stock_reports.data_sources.news.normalize import fold
+from stock_reports.data_sources.news.normalize import fold, normalize_article, CompanyMatcher
 
 
 class NewsStore:
@@ -102,10 +102,13 @@ class NewsStore:
                 db.execute('INSERT OR IGNORE INTO article_sources VALUES(?,?)', (article_id, item['source_id']))
         return dict(added=added, updated=updated)
 
-    def list_news(self, *, region=None, source_id=None, symbol=None, query=None, page=1, page_size=20) -> dict:
+    def list_news(self, *, region=None, source_id=None, symbol=None, query=None, category=None, page=1, page_size=20) -> dict:
         if region not in (None, 'VN', 'international') or page < 1 or not 1 <= page_size <= 100:
             raise ValueError('Invalid news filters')
         conditions, values = [], []
+        if category:
+            if category not in ('chungkhoan','doanhnghiep','nganhang','taichinh','quocte','vimo','kinhteso','thitruong','kinhte','nganh','diachinhtri'):raise ValueError('Invalid news category')
+            conditions.append('EXISTS(SELECT 1 FROM json_each(a.categories) WHERE value=?)');values.append(category)
         if region:
             conditions.append("a.region='VN'" if region == 'VN' else "a.region<>'VN'")
         if source_id:
@@ -135,6 +138,18 @@ class NewsStore:
             items.append(item)
         return dict(items=items, total=total, page=page, page_size=page_size)
 
+    def company_news(self,symbol,*,as_of=None,limit=8):
+        from zoneinfo import ZoneInfo
+        from stock_reports.data_sources.news.ranking import rank_company_news
+        day=as_of or datetime.now(ZoneInfo('Asia/Ho_Chi_Minh')).date()
+        rows=self.list_news(symbol=symbol,page_size=100)['items']
+        items=rank_company_news(rows,symbol,day,limit)
+        today_count=sum(bool(r['published_at'] and datetime.fromisoformat(r['published_at']).astimezone(ZoneInfo('Asia/Ho_Chi_Minh')).date()==day) for r in items)
+        return dict(symbol=symbol,as_of=day.isoformat(),items=items,updated_at=datetime.now(UTC).isoformat(),
+            today_count=today_count,
+            policy='Ưu tiên tin trong ngày, liên quan doanh nghiệp và sự kiện tài chính, rồi độ mới; không có dữ liệu lượt đọc.',
+            refresh_seconds=30)
+
     def start_run(self, now: str) -> int:
         with self.connect() as db:
             return db.execute('INSERT INTO runs(started_at) VALUES(?)', (now,)).lastrowid
@@ -147,3 +162,33 @@ class NewsStore:
     def revision_count(self) -> int:
         with self.connect() as db:
             return db.execute('SELECT COUNT(*) FROM revisions').fetchone()[0]
+
+    def reclassify_articles(self, entities: dict) -> dict[str, int]:
+        """Apply the current relevance policy to stored rows and remove noise."""
+        kept = removed = 0
+        matcher = CompanyMatcher(entities['companies'])
+        with self.connect() as db:
+            sources = {row['id']: json.loads(row['config']) for row in
+                       db.execute('SELECT id,config FROM sources')}
+            rows = db.execute('SELECT * FROM articles ORDER BY id').fetchall()
+            for row in rows:
+                source = sources.get(row['source_id'])
+                if not source:
+                    continue
+                normalized = normalize_article(dict(
+                    url=row['url'], title=row['title'], excerpt=row['excerpt'],
+                    published_at=row['published_at']), source, entities, company_matcher=matcher)
+                if normalized is None:
+                    db.execute('DELETE FROM article_sources WHERE article_id=?', (row['id'],))
+                    db.execute('DELETE FROM revisions WHERE article_id=?', (row['id'],))
+                    db.execute('DELETE FROM articles WHERE id=?', (row['id'],))
+                    removed += 1
+                    continue
+                db.execute('''UPDATE articles SET companies=?,sectors=?,categories=?,
+                    search_text=? WHERE id=?''', (
+                    json.dumps(normalized['companies'], ensure_ascii=False),
+                    json.dumps(normalized['sectors'], ensure_ascii=False),
+                    json.dumps(normalized['categories'], ensure_ascii=False),
+                    normalized['search_text'], row['id']))
+                kept += 1
+        return dict(kept=kept, removed=removed)

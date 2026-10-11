@@ -1,6 +1,6 @@
 """Finite, resumable DNSE updates for the research database."""
 
-from datetime import datetime
+from datetime import datetime, timedelta
 import logging
 
 from stock_reports.data_sources.dnse.market import BENCHMARK_SYMBOL, DNSESynchronizer, VIETNAM
@@ -14,7 +14,11 @@ def refresh_market(gateway, store, *, symbols=None, timeframes=('1D', '1m'),
                    now=None, include_foreign=False, on_progress=None, instruments=None, exchanges=None):
     now = now or datetime.now(VIETNAM)
     end = int(now.timestamp())
-    day_start = int(now.replace(hour=0, minute=0, second=0, microsecond=0).timestamp())
+    session = now.replace(hour=0, minute=0, second=0, microsecond=0)
+    while session.weekday() >= 5:
+        session -= timedelta(days=1)
+    day_start = int(session.timestamp())
+    session_end = min(end, int((session + timedelta(days=1)).timestamp()) - 1)
     instruments = gateway.list_stock_instruments() if instruments is None else instruments
     if not instruments:
         raise ValueError('DNSE returned an empty instrument catalog')
@@ -40,7 +44,7 @@ def refresh_market(gateway, store, *, symbols=None, timeframes=('1D', '1m'),
             start = (latest if latest is not None else listed) if timeframe == '1D' else day_start
             try:
                 saved += sync._sync_range(symbol, '1D' if timeframe == '1D' else '1',
-                                          timeframe, start, end, asset_type=asset)
+                                          timeframe, start, end if timeframe=='1D' else session_end, asset_type=asset)
             except Exception as error:
                 failures.append(dict(symbol=symbol, timeframe=timeframe,
                                      error_type=type(error).__name__))
@@ -48,12 +52,13 @@ def refresh_market(gateway, store, *, symbols=None, timeframes=('1D', '1m'),
         if include_foreign and asset == 'STOCK':
             from stock_reports.data_sources.dnse.market import parse_foreign_trading
             try:
-                rows = parse_foreign_trading(gateway.get_foreign_trading(symbol, day_start, end))
+                rows = parse_foreign_trading(gateway.get_foreign_trading(symbol, day_start, session_end))
                 store.upsert_foreign_snapshots(rows, source='dnse')
             except Exception as error:
                 failures.append(dict(symbol=symbol, dataset='foreign', error_type=type(error).__name__))
         if on_progress:
             on_progress(symbol, index, len(targets))
     return dict(provider='dnse', requested_until=now.isoformat(),
+                intraday_session=session.date().isoformat(),
                 symbols=len(targets), saved=saved, failures=failures,
                 timeframes=list(timeframes), foreign_refreshed=include_foreign)

@@ -1,0 +1,1477 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": [
+    "meta"
+  ],
+  "properties": {
+    "meta": {
+      "type": "object",
+      "required": [
+        "period_code",
+        "period_label",
+        "period_type",
+        "report_date",
+        "sources"
+      ],
+      "properties": {
+        "period_code": {
+          "type": "string",
+          "pattern": "^[0-9]{4}(-9T|-Q[1-4]|-(0[1-9]|1[0-2]))?$"
+        },
+        "period_label": {
+          "type": "string",
+          "minLength": 1
+        },
+        "period_type": {
+          "enum": [
+            "ytd9",
+            "month",
+            "quarter",
+            "year"
+          ]
+        },
+        "report_date": {
+          "type": "string",
+          "format": "date"
+        },
+        "sources": {
+          "type": "array",
+          "items": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "object",
+                "required": [
+                  "name",
+                  "url",
+                  "source_published_at",
+                  "retrieved_at"
+                ],
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "url": {
+                    "type": "string",
+                    "format": "uri"
+                  },
+                  "source_published_at": {
+                    "type": "string"
+                  },
+                  "retrieved_at": {
+                    "type": "string"
+                  }
+                }
+              }
+            ]
+          }
+        },
+        "publisher_note": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "period_start": {
+          "type": "string",
+          "format": "date"
+        },
+        "period_end": {
+          "type": "string",
+          "format": "date"
+        }
+      }
+    },
+    "gdp": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "q": {
+          "type": [
+            "object",
+            "null"
+          ],
+          "properties": {
+            "label": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "yoy": {
+              "type": [
+                "number",
+                "null"
+              ]
+            }
+          }
+        },
+        "ytd": {
+          "type": [
+            "object",
+            "null"
+          ],
+          "properties": {
+            "label": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "yoy": {
+              "type": [
+                "number",
+                "null"
+              ]
+            }
+          }
+        },
+        "history": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "ytd_yoy": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "year": {
+                "type": "integer"
+              },
+              "explanation": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            },
+            "required": [
+              "year"
+            ]
+          }
+        },
+        "sectors": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "yoy": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "contribution_pct": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "name": {
+                "type": "string",
+                "minLength": 1
+              },
+              "explanation": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            },
+            "required": [
+              "name"
+            ]
+          }
+        },
+        "note": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "iip": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "q_yoy": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "ytd_yoy": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "prev_ytd_yoy": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "manufacturing_yoy": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "history": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "ytd_yoy": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "year": {
+                "type": "integer"
+              },
+              "explanation": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            },
+            "required": [
+              "year"
+            ]
+          }
+        },
+        "top_products": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "yoy": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "name": {
+                "type": "string",
+                "minLength": 1
+              },
+              "explanation": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            },
+            "required": [
+              "name"
+            ]
+          }
+        },
+        "note": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "cpi": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "month_mom": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "month_yoy": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "quarter_yoy": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "ytd_avg_yoy": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "core_ytd_yoy": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "history_ytd": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "yoy": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "year": {
+                "type": "integer"
+              },
+              "explanation": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            },
+            "required": [
+              "year"
+            ]
+          }
+        },
+        "monthly_series": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "yoy": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "month": {
+                "type": "string",
+                "minLength": 1
+              },
+              "explanation": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            },
+            "required": [
+              "month"
+            ]
+          }
+        },
+        "note": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "retail": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "q": {
+          "type": [
+            "object",
+            "null"
+          ],
+          "properties": {
+            "value_bn_vnd": {
+              "type": [
+                "number",
+                "null"
+              ]
+            },
+            "qoq": {
+              "type": [
+                "number",
+                "null"
+              ]
+            },
+            "yoy": {
+              "type": [
+                "number",
+                "null"
+              ]
+            }
+          }
+        },
+        "ytd": {
+          "type": [
+            "object",
+            "null"
+          ],
+          "properties": {
+            "value_bn_vnd": {
+              "type": [
+                "number",
+                "null"
+              ]
+            },
+            "yoy": {
+              "type": [
+                "number",
+                "null"
+              ]
+            }
+          }
+        },
+        "history": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "value_bn_vnd": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "yoy": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "year": {
+                "type": "integer"
+              },
+              "explanation": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            },
+            "required": [
+              "year"
+            ]
+          }
+        },
+        "monthly_series": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "value_bn_vnd": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "yoy": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "month": {
+                "type": "string",
+                "minLength": 1
+              },
+              "explanation": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            },
+            "required": [
+              "month"
+            ]
+          }
+        },
+        "note": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "trade": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "q": {
+          "type": [
+            "object",
+            "null"
+          ],
+          "properties": {
+            "total_usd_bn": {
+              "type": [
+                "number",
+                "null"
+              ]
+            },
+            "total_yoy": {
+              "type": [
+                "number",
+                "null"
+              ]
+            },
+            "export_usd_bn": {
+              "type": [
+                "number",
+                "null"
+              ]
+            },
+            "import_usd_bn": {
+              "type": [
+                "number",
+                "null"
+              ]
+            },
+            "export_yoy": {
+              "type": [
+                "number",
+                "null"
+              ]
+            },
+            "import_yoy": {
+              "type": [
+                "number",
+                "null"
+              ]
+            },
+            "export_qoq": {
+              "type": [
+                "number",
+                "null"
+              ]
+            },
+            "import_qoq": {
+              "type": [
+                "number",
+                "null"
+              ]
+            }
+          }
+        },
+        "ytd": {
+          "type": [
+            "object",
+            "null"
+          ],
+          "properties": {
+            "total_usd_bn": {
+              "type": [
+                "number",
+                "null"
+              ]
+            },
+            "total_yoy": {
+              "type": [
+                "number",
+                "null"
+              ]
+            },
+            "export_usd_bn": {
+              "type": [
+                "number",
+                "null"
+              ]
+            },
+            "export_yoy": {
+              "type": [
+                "number",
+                "null"
+              ]
+            },
+            "import_usd_bn": {
+              "type": [
+                "number",
+                "null"
+              ]
+            },
+            "import_yoy": {
+              "type": [
+                "number",
+                "null"
+              ]
+            },
+            "balance_usd_bn": {
+              "type": [
+                "number",
+                "null"
+              ]
+            }
+          }
+        },
+        "month_balance_usd_bn": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "domestic_balance_usd_bn": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "fdi_balance_usd_bn": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "history_ytd": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "export_usd_bn": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "import_usd_bn": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "year": {
+                "type": "integer"
+              },
+              "explanation": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            },
+            "required": [
+              "year"
+            ]
+          }
+        },
+        "quarterly_yoy": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "yoy": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "quarter": {
+                "type": "string",
+                "minLength": 1
+              },
+              "explanation": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            },
+            "required": [
+              "quarter"
+            ]
+          }
+        },
+        "import_structure": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "pct": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "name": {
+                "type": "string",
+                "minLength": 1
+              },
+              "explanation": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            },
+            "required": [
+              "name"
+            ]
+          }
+        },
+        "note": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "fdi": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "registered_usd_bn": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "registered_yoy": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "disbursed_usd_bn": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "disbursed_yoy": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "history_ytd": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "registered": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "disbursed": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "year": {
+                "type": "integer"
+              },
+              "explanation": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            },
+            "required": [
+              "year"
+            ]
+          }
+        },
+        "top_projects": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "usd_bn": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "name": {
+                "type": "string",
+                "minLength": 1
+              },
+              "province": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "country": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "explanation": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            },
+            "required": [
+              "name"
+            ]
+          }
+        },
+        "top_countries": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "usd_bn": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "name": {
+                "type": "string",
+                "minLength": 1
+              },
+              "explanation": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            },
+            "required": [
+              "name"
+            ]
+          }
+        },
+        "note": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "budget": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "month": {
+          "type": [
+            "object",
+            "null"
+          ],
+          "properties": {
+            "revenue": {
+              "type": [
+                "number",
+                "null"
+              ]
+            },
+            "expenditure": {
+              "type": [
+                "number",
+                "null"
+              ]
+            },
+            "balance": {
+              "type": [
+                "number",
+                "null"
+              ]
+            }
+          }
+        },
+        "ytd": {
+          "type": [
+            "object",
+            "null"
+          ],
+          "properties": {
+            "revenue": {
+              "type": [
+                "number",
+                "null"
+              ]
+            },
+            "revenue_pct_plan": {
+              "type": [
+                "number",
+                "null"
+              ]
+            },
+            "revenue_yoy": {
+              "type": [
+                "number",
+                "null"
+              ]
+            },
+            "expenditure": {
+              "type": [
+                "number",
+                "null"
+              ]
+            },
+            "expenditure_pct_plan": {
+              "type": [
+                "number",
+                "null"
+              ]
+            },
+            "expenditure_yoy": {
+              "type": [
+                "number",
+                "null"
+              ]
+            },
+            "balance": {
+              "type": [
+                "number",
+                "null"
+              ]
+            }
+          }
+        },
+        "plan": {
+          "type": [
+            "object",
+            "null"
+          ],
+          "properties": {
+            "revenue": {
+              "type": [
+                "number",
+                "null"
+              ]
+            },
+            "expenditure": {
+              "type": [
+                "number",
+                "null"
+              ]
+            },
+            "deficit": {
+              "type": [
+                "number",
+                "null"
+              ]
+            },
+            "borrowing": {
+              "type": [
+                "number",
+                "null"
+              ]
+            }
+          }
+        },
+        "domestic_revenue_share_pct": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "note": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "public_investment": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "month_disbursed": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "ytd_disbursed": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "ytd_pct_plan": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "ytd_yoy": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "plan_total": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "monthly_series": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "value": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "month": {
+                "type": "string",
+                "minLength": 1
+              },
+              "explanation": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            },
+            "required": [
+              "month"
+            ]
+          }
+        },
+        "note": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "monetary": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "credit_growth_ytd": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "fx_change_ytd": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "credit_as_of": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date"
+        },
+        "note_credit": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "note_fx": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "series": {
+          "type": [
+            "object",
+            "null"
+          ],
+          "properties": {
+            "credit": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "value": {
+                    "type": [
+                      "number",
+                      "null"
+                    ]
+                  },
+                  "month": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "explanation": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  }
+                },
+                "required": [
+                  "month"
+                ]
+              }
+            },
+            "usd_vnd": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "value": {
+                    "type": [
+                      "number",
+                      "null"
+                    ]
+                  },
+                  "month": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "explanation": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  }
+                },
+                "required": [
+                  "month"
+                ]
+              }
+            },
+            "interbank": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "value": {
+                    "type": [
+                      "number",
+                      "null"
+                    ]
+                  },
+                  "month": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "explanation": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  }
+                },
+                "required": [
+                  "month"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "pmi": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "value": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "previous": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "series": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "value": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "month": {
+                "type": "string",
+                "minLength": 1
+              },
+              "explanation": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            },
+            "required": [
+              "month"
+            ]
+          }
+        },
+        "note": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "business": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "new_and_returned_k": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "new_yoy": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "exited_k": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "exited_yoy": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "exit_ratio_pct": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "exit_ratio_history": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "pct": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "year": {
+                "type": "integer"
+              },
+              "explanation": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            },
+            "required": [
+              "year"
+            ]
+          }
+        },
+        "note": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "conclusion": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "overall": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "outlook": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "opportunities": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "theme": {
+                "type": "string",
+                "minLength": 1
+              },
+              "text": {
+                "type": "string",
+                "minLength": 1
+              },
+              "explanation": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            },
+            "required": [
+              "theme",
+              "text"
+            ]
+          }
+        },
+        "risks": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "theme": {
+                "type": "string",
+                "minLength": 1
+              },
+              "text": {
+                "type": "string",
+                "minLength": 1
+              },
+              "explanation": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            },
+            "required": [
+              "theme",
+              "text"
+            ]
+          }
+        },
+        "disclaimer": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "units": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      }
+    },
+    "missing_reasons": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      }
+    },
+    "provenance": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object"
+      }
+    },
+    "derived": {
+      "type": "object"
+    },
+    "comparisons": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": []
+      }
+    },
+    "polarity": {
+      "type": "object",
+      "additionalProperties": {
+        "enum": [
+          "higher_good",
+          "higher_bad",
+          "neutral"
+        ]
+      }
+    }
+  },
+  "$defs": {
+    "group": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": {
+        "$ref": "#/$defs/value"
+      }
+    },
+    "value": {
+      "oneOf": [
+        {
+          "type": "null"
+        },
+        {
+          "type": "number"
+        },
+        {
+          "type": "string"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/value"
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/$defs/value"
+          }
+        }
+      ]
+    }
+  }
+}

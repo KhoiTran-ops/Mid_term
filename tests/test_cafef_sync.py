@@ -151,3 +151,22 @@ def test_financial_sync_continues_when_one_statement_is_missing(tmp_path) -> Non
 
     assert result.rejected == 1
     assert result.saved == 3
+
+
+def test_missing_newest_anchor_does_not_skip_older_published_quarters(tmp_path):
+    class Client:
+        def get_financial_summary(self,symbol,*,page):
+            return {'isSuccess':True,'value':{'count':4,'data':[{'data':[
+                {'symbol':symbol,'year':2026 if q in (1,2) else 2025,'quater':q,
+                    'type':'HN','content':'Chưa kiểm toán'} for q in (2,1,4,3)]}]}}
+        def get_financial_html(self,symbol,statement_type,year,quarter):
+            if year==2026 and quarter==2:
+                raise CafeFError('HTTP 404',status_code=404)
+            return '<table id="tblGridData"><tr><td>x</td><td>Quý 1-2026</td><td>Quý 4-2025</td><td>Quý 3-2025</td></tr></table><table id="tableContent"><tr><td>Lợi nhuận</td><td>30</td><td>20</td><td>10</td></tr></table>'
+    store=MarketStore(tmp_path/'market.db');store.initialize()
+    result=sync_financial_history(Client(),store,symbols=['OCB'],max_quarters=4)
+    assert result.saved==12
+    assert result.rejected==4
+    assert store.financial_numeric_fact_count_for('OCB')==12
+    with store._connect() as db:
+        assert db.execute('SELECT DISTINCT fiscal_year,fiscal_quarter FROM financial_facts ORDER BY fiscal_year,fiscal_quarter').fetchall()==[(2025,3),(2025,4),(2026,1)]

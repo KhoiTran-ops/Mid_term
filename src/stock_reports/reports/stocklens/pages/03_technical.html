@@ -1,0 +1,9 @@
+<div class="page-title"><div class="kicker">PHÂN TÍCH KỸ THUẬT</div><h1>Giá, xu hướng và động lượng quan sát</h1></div>
+<div class="grid four">{{ kpi('Đỉnh quan sát',d.price.peak_250,'VND/cp',places=0,derived=true) }}{{ kpi('Đáy quan sát',d.price.trough_250,'VND/cp',places=0,derived=true) }}{{ kpi('So với đỉnh',d.price.drawdown_from_peak,'%',true,derived=true) }}{{ kpi('Sụt giảm sâu nhất',d.price.max_drawdown,'%',true,derived=true) }}</div>
+{% if d.price.series_250 %}<div class="charts-technical">
+{{ chart('Giá và MA20 / MA50 / MA200 · ' ~ d.price.series_250|length ~ ' phiên',v.charts.price,'VND/cp · Giá điều chỉnh VCI/vnstock; tính toán StockLens. Xanh dương: giá; xanh lá: MA20; vàng: MA50; tím: MA200.') }}
+{{ chart('RSI(14) · đường ngưỡng 30 / 70',v.charts.rsi,'Điểm · Nguồn: chuỗi giá EOD; Wilder(14).') }}
+{{ chart('MACD(12,26,9) / signal / histogram',v.charts.macd,'VND/cp · Xanh dương: MACD; xanh lá: signal; vàng: histogram.') }}
+{{ chart('Sụt giảm so với đỉnh lũy tiến trong cửa sổ quan sát',v.charts.drawdown,'% · Nguồn: giá EOD; không phải tổng lợi suất.') }}</div>
+{% else %}<div class="card"><h2>Các mốc giá hiện có</h2><div class="price-scale">{% for label,value in v.marks %}<div class="price-mark"><span>{{ label }}</span><b class="mono">{{ value|num(0) }} VND</b></div>{% else %}<p class="empty">Chưa có</p>{% endfor %}</div><p class="small muted">Chưa có series_250. Không vẽ biểu đồ giá giả.</p></div>{% endif %}
+<div class="callout small"><h3>Chuỗi suy luận có thể truy vết</h3>{% for item in v.technical_statements[:2] %}<p>{{ item.text }}</p>{{ evidence(item) }}{% else %}<p>Chưa có</p>{% endfor %}</div>

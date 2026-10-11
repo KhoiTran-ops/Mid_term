@@ -1,4 +1,5 @@
 from datetime import date
+from http.client import RemoteDisconnected
 import json
 
 from stock_reports.data_sources.cafef.client import CafeFClient, RateLimitedTransport
@@ -63,6 +64,9 @@ def test_financial_client_requests_quarterly_data() -> None:
     assert "TypeTime=QUY" in transport.urls[0]
     assert "pageIndex=2" in transport.urls[0]
     assert "quarter=3" in transport.urls[1]
+    assert "showtype=1" in transport.urls[1]
+    client.get_annual_financial_html('VCB', 'BSheet', 2025)
+    assert 'quarter=0' in transport.urls[2]
 
 
 def test_transport_retries_read_timeout(monkeypatch) -> None:
@@ -94,4 +98,34 @@ def test_transport_retries_read_timeout(monkeypatch) -> None:
     )
 
     assert content == b"ok"
+    assert calls == 2
+
+
+def test_transport_retries_remote_disconnect(monkeypatch) -> None:
+    calls = 0
+
+    class Response:
+        def __enter__(self):
+            return self
+
+        def __exit__(self, *_args: object) -> None:
+            return None
+
+        def read(self) -> bytes:
+            return b"ok"
+
+    def disconnected_once(*_args: object, **_kwargs: object) -> Response:
+        nonlocal calls
+        calls += 1
+        if calls == 1:
+            raise RemoteDisconnected("closed without response")
+        return Response()
+
+    monkeypatch.setattr("stock_reports.data_sources.cafef.client.urlopen", disconnected_once)
+    monkeypatch.setattr("stock_reports.data_sources.cafef.client.time.sleep", lambda _delay: None)
+    monkeypatch.setattr("stock_reports.data_sources.cafef.client.random.uniform", lambda *_args: 0)
+
+    assert RateLimitedTransport(requests_per_second=1, retries=1).get(
+        "https://cafef.vn/du-lieu/test"
+    ) == b"ok"
     assert calls == 2

@@ -19,7 +19,10 @@ def configured_news(settings):
     if not (settings.root / 'config/news_sources.json').is_file():
         return store, None
     sources, entities = load_news_config(settings.root)
+    from stock_reports.data_sources.news.entities import universe_entities
+    entities=universe_entities(settings,entities)
     store.sync_sources(sources)
+    store.reclassify_articles(entities)
 
     def adapter(source, state):
         from stock_reports.data_sources.news.adapters import collect_source

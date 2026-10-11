@@ -1,0 +1,9 @@
+<div class="card hero"><div><div class="label">GDP · {{ d.gdp.ytd.label or d.meta.period_label }}</div><div class="value {{ tone('gdp.ytd.yoy') }}">{{ cell('gdp.ytd.yoy',2,true) }}%</div><div class="unit">So với cùng kỳ{% if missing('gdp.ytd.yoy') %} · {{ reason('gdp.ytd.yoy') }}{% endif %}</div></div><div class="secondary"><div class="label">{{ d.gdp.q.label or 'GDP quý' }}</div><div class="value good">{{ cell('gdp.q.yoy',2,true) }}%</div></div></div>
+<div class="grid three">
+{{ c.kpi('Sản xuất công nghiệp · kỳ báo cáo','iip.ytd_yoy') }}{{ c.kpi('CPI bình quân · kỳ báo cáo','cpi.ytd_avg_yoy','%','higher_bad') }}{{ c.kpi('Bán lẻ · tăng trưởng','retail.ytd.yoy') }}
+{{ c.kpi('Xuất khẩu · tăng trưởng','trade.ytd.export_yoy') }}{{ c.kpi('Nhập khẩu · tăng trưởng','trade.ytd.import_yoy','%','neutral') }}{{ c.kpi('Cán cân thương mại','trade.ytd.balance_usd_bn','tỷ USD') }}
+{{ c.kpi('FDI đăng ký','fdi.registered_usd_bn','tỷ USD','neutral',2,false) }}{{ c.kpi('FDI thực hiện','fdi.disbursed_usd_bn','tỷ USD','higher_good',2,false) }}{{ c.kpi('Thu ngân sách · so dự toán','budget.ytd.revenue_pct_plan','% kế hoạch','higher_good',1,false) }}
+{{ c.kpi('Đầu tư công · so kế hoạch','public_investment.ytd_pct_plan','% kế hoạch','higher_good',1,false) }}{{ c.kpi('Tín dụng · so cuối năm trước','monetary.credit_growth_ytd') }}{{ c.kpi('PMI sản xuất','pmi.value','điểm','neutral',1,false) }}
+</div>
+<div class="grid two">{% if d.conclusion.overall %}<div class="card list-card"><h2>Điểm nhấn</h2><ul>{% for item in d.conclusion.overall %}<li>{{ item }}</li>{% endfor %}</ul></div>{% endif %}{% if d.conclusion.risks %}<div class="card list-card"><h2>Cần theo dõi</h2><ul>{% for item in d.conclusion.risks %}<li><strong>{{ item.theme }}</strong> {{ item.text }}</li>{% endfor %}</ul></div>{% endif %}</div>
+<p class="small muted">Xanh: cải thiện · Đỏ: rủi ro theo ngữ nghĩa chỉ tiêu · Xám: trung tính. Chưa có ≠ 0. † Chỉ tiêu suy ra có công thức trong JSON.</p>

@@ -1,5 +1,40 @@
 # Xác minh ngày 09/10/2026
 
+## Khuôn doanh nghiệp có định giá — xác minh 10/10/2026
+
+- Toàn bộ **103 tests passed**, gồm kiểm thử ngưỡng +15%/-10%, ROE/P/B đảo ngược,
+  chiết khấu FCFF/FCFE, NAV theo phần sở hữu, tổng hợp trọng số, độ nhạy, chặn đầu vào
+  thiếu và giữ thiếu thay vì số 0. Không đưa dữ liệu giả lập kiểm thử vào cấu hình mã thật.
+- Khuôn `company-template-1.5` có bìa kết luận trước, đủ I–VIII và 7.1–7.10.
+  Nguồn và SHA-256 của khuôn lưu trong JSON; giá mục tiêu bị chặn khi chưa kiểm chứng.
+- PDF VCB cuối `a71e5bd9-4669-4734-8854-df63d2178c95`, **17 trang**, đã render và
+  xem toàn bộ trang. Các lần sửa cuối đối chiếu SHA-256 ảnh: chỉ trang 11/13/16 thay đổi,
+  đã xem lại các trang đó. Số tài chính không vỡ dòng, STT không dựng chữ dọc;
+  ký hiệu ngưỡng dùng ASCII để tránh glyph toán học không có trong font.
+- Bản HPG kiểm tra riêng trong `tmp/pdfs` xuất thành công và giữ đủ tiêu đề chính,
+  dùng nhánh phi tài chính/FCFF thay vì P/B ngân hàng. Không đăng ký fixture vào thư viện.
+- Kiểm thử có đầu vào giả lập xuất đủ chi tiết dòng tiền, bảng giả định và ba biểu đồ
+  cơ cấu; đã xem trang hai biểu đồ doanh thu đặt cạnh nhau và bảng giả định dài.
+- Localhost cổng 8000 đã nạp bộ tạo mới; trang chi tiết, PDF và hồ sơ phân tích trả 200.
+  Tạo VCB từ web tái sử dụng cùng bản đã xuất, không tạo ID trùng. Bản vĩ mô theo
+  Markdown vẫn tái sử dụng ID `9a8fce4e-adad-458a-baf4-1750146b50ae`.
+- **Chưa xác minh hồ sơ review/giả định thật cho VCB**: không công bố giá mục tiêu hay
+  khuyến nghị mua/bán. Không coi việc xuất đủ mục là đã có đủ dữ liệu phân tích.
+
+## Bản vĩ mô theo Markdown — xác minh 10/10/2026
+
+- Toàn bộ **90 tests passed**; 3 kiểm thử mới xác nhận bảng/kỳ quan sát,
+  nguồn tài liệu cục bộ và tạo lại PDF không trùng.
+- Bản ngày chốt 09/10/2026 giữ 7 bảng logic, 22 nhóm ngành và Tiêu điểm + A–G.
+  Hồ sơ đầu vào chỉ chứa bản Markdown có SHA-256, không đọc dữ liệu live để
+  làm đầu vào cho snapshot đã duyệt.
+- PDF cuối `9a8fce4e-adad-458a-baf4-1750146b50ae`, **8 trang**, đã render qua
+  PyMuPDF và xem riêng từng trang: không cắt chữ, tràn bảng hay trang chỉ có tiêu đề.
+- Localhost cổng 8000: health, trang chi tiết và tải PDF trả HTTP 200.
+  Tạo vĩ mô ngày 09/10/2026 qua API hoàn tất, `reused=true` với đúng ID bản cuối.
+- Agriseco và tin tức là dữ liệu được dẫn lại từ bản người dùng cung cấp;
+  **chưa xác minh độc lập số liệu/URL nguồn gốc**. Không bổ sung dự báo hoặc khuyến nghị.
+
 ## Phân tích, PDF và giao diện Stitch
 
 - Toàn bộ **73 tests passed**, xác nhận lại qua `run.ps1 test` và `run.py test` ngoài sandbox với dữ liệu tạm trong

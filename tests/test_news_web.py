@@ -26,6 +26,12 @@ def test_news_page_and_separate_filters_do_not_expose_markup_or_private_files(tm
         assert client.get('/api/news?symbol=hpg&query=hoa%20phat').json()['total'] == 1
         assert client.get('/api/news?region=invalid').status_code == 422
         assert client.get('/api/news?page_size=101').status_code == 422
+        assert client.get('/api/news?category=chungkhoan').status_code == 200
+        assert client.get('/api/news?category=invalid').status_code == 422
+        assert client.get('/api/companies/hpg/news').json()['symbol'] == 'HPG'
+        assert client.get('/api/companies/VCB/news').json()['items'] == []
+        assert client.get('/api/companies/%3Cscript%3E/news').status_code == 422
+        assert client.get('/api/report-refresh-status').status_code == 200
         assert client.get('/api/reports').json()['total'] == 0
         assert client.get('/var/news.db').status_code == 404
         assert 'Tin tức' in client.get('/').text

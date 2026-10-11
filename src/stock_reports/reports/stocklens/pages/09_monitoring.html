@@ -1,0 +1,9 @@
+<div class="page-title"><div class="kicker">KẾ HOẠCH THEO DÕI & CÁ NHÂN HÓA</div><h1>Ưu tiên theo khung thời gian phân tích</h1></div>
+<div><span class="badge">{{ v.horizon_label }}</span> <span class="badge">Rủi ro: {{ d.meta.risk_level|txt }}</span> <span class="badge">{{ d.meta.depth|txt }}</span></div>
+<div class="table-card"><table class="dense focus"><tr><th>Khung thời gian</th><th>Kỹ thuật</th><th>Tin tức</th><th>Cơ bản</th><th>Định giá</th><th>Rủi ro</th></tr>{% for key,label in [('short','Ngắn hạn'),('medium','Trung hạn'),('long','Dài hạn')] %}<tr class="{{ 'selected' if key==d.meta.horizon else '' }}"><td>{{ label }}</td>{% for dots in v.focus_rows[key] %}<td>{{ dots }}</td>{% endfor %}</tr>{% endfor %}</table></div>
+<p class="tiny muted">Ma trận là cấu hình trọng tâm trình bày, không phải điểm chất lượng hoặc khuyến nghị.</p>
+<div class="table-card"><table class="dense"><tr><th>Ưu tiên</th><th>Điều kiện theo dõi</th><th>Ngưỡng</th><th>Ý nghĩa</th></tr>{% for item in v.alerts %}<tr><td>{{ v.priority_labels[item.priority] }}</td><td>{{ item.condition|txt }}</td><td>{{ item.threshold|txt }}</td><td>{{ item.meaning|txt }}</td></tr>{% else %}<tr><td colspan="4">Chưa có</td></tr>{% endfor %}</table></div>
+<p class="tiny muted">Truy vết từng cảnh báo: alerts[].fields trong JSON.</p>
+{% if v.alerts_omitted %}<p class="ellipsis-note">{{ v.alerts_omitted }} cảnh báo ưu tiên thấp hơn được giữ trong JSON đầu vào.</p>{% endif %}
+<div class="card"><h2>Các mốc giá hiện có</h2><div class="price-scale">{% for label,value in v.marks[:4] %}<div class="price-mark"><span>{{ label }}</span><b class="mono">{{ value|num(0) }} VND/cp</b></div>{% else %}<p class="empty">Chưa có</p>{% endfor %}</div></div>
+<p class="small muted">Giá, MA và ngưỡng là dữ liệu tại {{ d.meta.price_date|txt }}; không phải mức chắc chắn của tương lai.</p>

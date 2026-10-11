@@ -17,12 +17,15 @@ class ResponseArchive:
     def save(self, provider: str, request: str, payload: bytes, suffix: str):
         folder = self.root / provider
         folder.mkdir(exist_ok=True)
-        name = hashlib.sha256(request.encode()).hexdigest()[:24] + suffix
+        # A repeated URL may return revised content. Preserve each response,
+        # rather than making earlier receipts point to an overwritten file.
+        content_sha=hashlib.sha256(payload).hexdigest()
+        name = hashlib.sha256(request.encode()).hexdigest()[:16]+'-'+content_sha[:16]+suffix
         path = folder / name
-        path.write_bytes(payload)
+        if not path.exists():path.write_bytes(payload)
         receipt = dict(provider=provider, request=request,
                        fetched_at=datetime.now(UTC).isoformat(),
-                       path=str(path), sha256=hashlib.sha256(payload).hexdigest())
+                       path=str(path), sha256=content_sha)
         with (self.root / 'receipts.jsonl').open('a', encoding='utf-8') as stream:
             stream.write(json.dumps(receipt, ensure_ascii=False) + '\n')
 

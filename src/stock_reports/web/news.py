@@ -3,6 +3,7 @@
 from typing import Literal
 
 from fastapi import APIRouter, Query, Request
+from fastapi import Path as ApiPath
 
 
 def news_router(store, templates) -> APIRouter:
@@ -12,9 +13,14 @@ def news_router(store, templates) -> APIRouter:
     def news(region: Literal['VN', 'international'] | None = None,
              source_id: str | None = Query(None, max_length=80),
              symbol: str | None = Query(None, max_length=12), query: str | None = Query(None, max_length=240),
+             category: Literal['chungkhoan','doanhnghiep','nganhang','taichinh','quocte','vimo','kinhteso','thitruong','kinhte','nganh','diachinhtri'] | None = None,
              page: int = Query(1, ge=1), page_size: int = Query(20, ge=1, le=100)):
         return store.list_news(region=region, source_id=source_id, symbol=symbol,
-                               query=query, page=page, page_size=page_size)
+                               query=query, category=category, page=page, page_size=page_size)
+
+    @router.get('/api/companies/{symbol}/news')
+    def company_news(symbol:str=ApiPath(pattern=r'^[A-Za-z0-9]{2,12}$')):
+        return store.company_news(symbol.upper())
 
     @router.get('/api/news/sources')
     def sources():
@@ -27,12 +33,16 @@ def news_router(store, templates) -> APIRouter:
     def page_news(request: Request, region: Literal['', 'VN', 'international'] = '',
                   source_id: str = Query('', max_length=80), symbol: str = Query('', max_length=12),
                   query: str = Query('', max_length=240), page: int = Query(1, ge=1)):
+        category=request.query_params.get('category') or None
+        if category not in (None,'chungkhoan','doanhnghiep','nganhang','taichinh','quocte','vimo','kinhteso','thitruong','kinhte','nganh','diachinhtri'):
+            from fastapi import HTTPException
+            raise HTTPException(422,'Chủ đề tin tức không hợp lệ.')
         result = store.list_news(region=region or None, source_id=source_id or None,
-            symbol=symbol or None, query=query or None, page=page)
+            symbol=symbol or None, query=query or None, category=category, page=page)
         total_pages = max(1, (result['total'] + result['page_size'] - 1) // result['page_size'])
         states = [s for s in store.sources() if s['enabled']]
         return templates.TemplateResponse(request=request, name='news.html', context=dict(active='news',
-            result=result, filters=dict(region=region, source_id=source_id, symbol=symbol.upper(), query=query),
+            result=result, filters=dict(region=region, source_id=source_id, symbol=symbol.upper(), query=query,category=category or ''),
             sources=states, failed_sources=[s for s in states if s['status'] == 'error'],
             latest_success=max((s['last_success'] for s in states if s['last_success']), default=None),
             total_pages=total_pages,

@@ -7,7 +7,7 @@
     "region": "VN",
     "language": "vi",
     "category": "nganh",
-    "intervalMinutes": 10,
+    "intervalMinutes": 3,
     "enabled": true,
     "termsUrl": "https://vnexpress.net/rss"
   },
@@ -19,7 +19,7 @@
     "region": "Global",
     "language": "vi",
     "category": "khac",
-    "intervalMinutes": 15,
+    "intervalMinutes": 3,
     "enabled": true,
     "termsUrl": "https://vnexpress.net/rss"
   },
@@ -32,7 +32,7 @@
     "language": "vi",
     "category": "nganh",
     "sector": "Bất động sản",
-    "intervalMinutes": 15,
+    "intervalMinutes": 3,
     "enabled": true,
     "termsUrl": "https://vnexpress.net/rss"
   },
@@ -45,7 +45,7 @@
     "language": "vi",
     "category": "nganh",
     "sector": "Công nghệ",
-    "intervalMinutes": 15,
+    "intervalMinutes": 3,
     "enabled": true,
     "termsUrl": "https://vnexpress.net/rss"
   },
@@ -57,7 +57,7 @@
     "region": "VN",
     "language": "vi",
     "category": "nganh",
-    "intervalMinutes": 15,
+    "intervalMinutes": 3,
     "enabled": true
   },
   {
@@ -69,7 +69,7 @@
     "language": "vi",
     "category": "nganh",
     "sector": "Công nghệ",
-    "intervalMinutes": 20,
+    "intervalMinutes": 3,
     "enabled": true
   },
   {
@@ -95,7 +95,7 @@
     "region": "Global",
     "language": "en",
     "category": "nganh",
-    "intervalMinutes": 15,
+    "intervalMinutes": 3,
     "enabled": true
   },
   {
@@ -107,7 +107,7 @@
     "language": "en",
     "category": "nganh",
     "sector": "Công nghệ",
-    "intervalMinutes": 20,
+    "intervalMinutes": 3,
     "enabled": true
   },
   {
@@ -118,7 +118,7 @@
     "region": "Global",
     "language": "en",
     "category": "nganh",
-    "intervalMinutes": 15,
+    "intervalMinutes": 3,
     "enabled": true,
     "termsUrl": "https://www.theguardian.com/help/feeds"
   },
@@ -131,7 +131,7 @@
     "language": "en",
     "category": "nganh",
     "sector": "Công nghệ",
-    "intervalMinutes": 20,
+    "intervalMinutes": 3,
     "enabled": true,
     "termsUrl": "https://www.theguardian.com/help/feeds"
   },
@@ -143,7 +143,7 @@
     "region": "Global",
     "language": "en",
     "category": "nganh",
-    "intervalMinutes": 15,
+    "intervalMinutes": 3,
     "enabled": true
   },
   {
@@ -154,7 +154,7 @@
     "region": "Global",
     "language": "en",
     "category": "nganh",
-    "intervalMinutes": 15,
+    "intervalMinutes": 3,
     "enabled": true
   },
   {
@@ -166,7 +166,7 @@
     "language": "en",
     "category": "nganh",
     "sector": "Công nghệ",
-    "intervalMinutes": 20,
+    "intervalMinutes": 3,
     "enabled": true
   },
   {
@@ -226,8 +226,166 @@
     "category": "doanhnghiep",
     "intervalMinutes": 60,
     "enabled": true,
-    "selector": "a.listing-item[href]",
+    "selector": "a[href*='/trung-tam-phan-tich/']",
+    "fallbackRssUrl": "https://news.google.com/rss/search?q=site%3Avietcap.com.vn%2Ftrung-tam-phan-tich&hl=vi&gl=VN&ceid=VN%3Avi",
+    "fallbackTitleContains": "Vietcap",
     "exclude": "/bao-cao-trai-phieu-tien-te$",
     "parserVersion": 2
+  },
+  {
+    "id": "cafef-thi-truong-chung-khoan",
+    "name": "CafeF · Chứng khoán",
+    "kind": "rss",
+    "url": "https://cafef.vn/thi-truong-chung-khoan.rss",
+    "region": "VN",
+    "language": "vi",
+    "category": "chungkhoan",
+    "intervalMinutes": 1,
+    "enabled": true,
+    "finance_only": true,
+    "termsUrl": "https://cafef.vn/index.rss"
+  },
+  {
+    "id": "cafef-doanh-nghiep",
+    "name": "CafeF · Doanh nghiệp",
+    "kind": "rss",
+    "url": "https://cafef.vn/doanh-nghiep.rss",
+    "region": "VN",
+    "language": "vi",
+    "category": "doanhnghiep",
+    "intervalMinutes": 1,
+    "enabled": true,
+    "finance_only": true,
+    "termsUrl": "https://cafef.vn/index.rss"
+  },
+  {
+    "id": "cafef-tai-chinh-ngan-hang",
+    "name": "CafeF · Tài chính ngân hàng",
+    "kind": "rss",
+    "url": "https://cafef.vn/tai-chinh-ngan-hang.rss",
+    "region": "VN",
+    "language": "vi",
+    "category": "nganhang",
+    "intervalMinutes": 1,
+    "enabled": true,
+    "finance_only": true,
+    "termsUrl": "https://cafef.vn/index.rss"
+  },
+  {
+    "id": "cafef-tai-chinh-quoc-te",
+    "name": "CafeF · Tài chính quốc tế",
+    "kind": "rss",
+    "url": "https://cafef.vn/tai-chinh-quoc-te.rss",
+    "region": "Global",
+    "language": "vi",
+    "category": "quocte",
+    "intervalMinutes": 1,
+    "enabled": true,
+    "finance_only": true,
+    "termsUrl": "https://cafef.vn/index.rss"
+  },
+  {
+    "id": "cafef-vi-mo-dau-tu",
+    "name": "CafeF · Vĩ mô đầu tư",
+    "kind": "rss",
+    "url": "https://cafef.vn/vi-mo-dau-tu.rss",
+    "region": "VN",
+    "language": "vi",
+    "category": "vimo",
+    "intervalMinutes": 1,
+    "enabled": true,
+    "finance_only": true,
+    "termsUrl": "https://cafef.vn/index.rss"
+  },
+  {
+    "id": "cafef-kinh-te-so",
+    "name": "CafeF · Kinh tế số",
+    "kind": "rss",
+    "url": "https://cafef.vn/kinh-te-so.rss",
+    "region": "VN",
+    "language": "vi",
+    "category": "kinhteso",
+    "intervalMinutes": 1,
+    "enabled": true,
+    "finance_only": true,
+    "termsUrl": "https://cafef.vn/index.rss"
+  },
+  {
+    "id": "cafef-thi-truong",
+    "name": "CafeF · Thị trường",
+    "kind": "rss",
+    "url": "https://cafef.vn/thi-truong.rss",
+    "region": "VN",
+    "language": "vi",
+    "category": "thitruong",
+    "intervalMinutes": 1,
+    "enabled": true,
+    "finance_only": true,
+    "termsUrl": "https://cafef.vn/index.rss"
+  },
+  {
+    "id": "vneconomy-chung-khoan",
+    "name": "VnEconomy · Chứng khoán",
+    "kind": "rss",
+    "url": "https://vneconomy.vn/chung-khoan.rss",
+    "region": "VN",
+    "language": "vi",
+    "category": "chungkhoan",
+    "intervalMinutes": 2,
+    "enabled": true,
+    "finance_only": true,
+    "termsUrl": "https://vneconomy.vn/rss.html"
+  },
+  {
+    "id": "vneconomy-tai-chinh",
+    "name": "VnEconomy · Tài chính",
+    "kind": "rss",
+    "url": "https://vneconomy.vn/tai-chinh.rss",
+    "region": "VN",
+    "language": "vi",
+    "category": "taichinh",
+    "intervalMinutes": 2,
+    "enabled": true,
+    "finance_only": true,
+    "termsUrl": "https://vneconomy.vn/rss.html"
+  },
+  {
+    "id": "vneconomy-kinh-te-so",
+    "name": "VnEconomy · Kinh tế số",
+    "kind": "rss",
+    "url": "https://vneconomy.vn/kinh-te-so.rss",
+    "region": "VN",
+    "language": "vi",
+    "category": "kinhteso",
+    "intervalMinutes": 2,
+    "enabled": true,
+    "finance_only": true,
+    "termsUrl": "https://vneconomy.vn/rss.html"
+  },
+  {
+    "id": "vneconomy-doanh-nghiep",
+    "name": "VnEconomy · Doanh nghiệp",
+    "kind": "rss",
+    "url": "https://vneconomy.vn/nhip-cau-doanh-nghiep.rss",
+    "region": "VN",
+    "language": "vi",
+    "category": "doanhnghiep",
+    "intervalMinutes": 2,
+    "enabled": true,
+    "finance_only": true,
+    "termsUrl": "https://vneconomy.vn/rss.html"
+  },
+  {
+    "id": "vneconomy-the-gioi",
+    "name": "VnEconomy · Kinh tế thế giới",
+    "kind": "rss",
+    "url": "https://vneconomy.vn/the-gioi.rss",
+    "region": "Global",
+    "language": "vi",
+    "category": "quocte",
+    "intervalMinutes": 2,
+    "enabled": true,
+    "finance_only": true,
+    "termsUrl": "https://vneconomy.vn/rss.html"
   }
 ]

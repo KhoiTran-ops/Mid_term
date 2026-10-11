@@ -1,0 +1,49 @@
+{
+  "observations": [
+    {
+      "metric": "GDP_YOY",
+      "label": "GDP thực (ước tính)",
+      "value": 9.01,
+      "unit": "%",
+      "period_label": "9 tháng 2026",
+      "period_end": "2026-09-30",
+      "source": {
+        "source_name": "Cục Thống kê",
+        "url": "https://www.nso.gov.vn/bai-top/2026/10/bao-cao-tinh-hinh-kinh-te-xa-hoi-quy-iii-va-9-thang-nam-2026/",
+        "retrieved_at": "2026-10-10T10:35:22+00:00",
+        "published_at": "2026-10-03T00:00:00+07:00",
+        "locator": "Báo cáo quý III và 9 tháng 2026: mục 1 GDP, mục 3 IIP, mục 10 CPI; số ước tính thống kê"
+      }
+    },
+    {
+      "metric": "CPI_AVERAGE_YOY",
+      "label": "CPI bình quân",
+      "value": 4.52,
+      "unit": "%",
+      "period_label": "9 tháng 2026",
+      "period_end": "2026-09-30",
+      "source": {
+        "source_name": "Cục Thống kê",
+        "url": "https://www.nso.gov.vn/bai-top/2026/10/bao-cao-tinh-hinh-kinh-te-xa-hoi-quy-iii-va-9-thang-nam-2026/",
+        "retrieved_at": "2026-10-10T10:35:22+00:00",
+        "published_at": "2026-10-03T00:00:00+07:00",
+        "locator": "Báo cáo quý III và 9 tháng 2026: mục 1 GDP, mục 3 IIP, mục 10 CPI; số ước tính thống kê"
+      }
+    },
+    {
+      "metric": "IIP_YOY",
+      "label": "IIP (ước tính)",
+      "value": 12.3,
+      "unit": "%",
+      "period_label": "9 tháng 2026",
+      "period_end": "2026-09-30",
+      "source": {
+        "source_name": "Cục Thống kê",
+        "url": "https://www.nso.gov.vn/bai-top/2026/10/bao-cao-tinh-hinh-kinh-te-xa-hoi-quy-iii-va-9-thang-nam-2026/",
+        "retrieved_at": "2026-10-10T10:35:22+00:00",
+        "published_at": "2026-10-03T00:00:00+07:00",
+        "locator": "Báo cáo quý III và 9 tháng 2026: mục 1 GDP, mục 3 IIP, mục 10 CPI; số ước tính thống kê"
+      }
+    }
+  ]
+}

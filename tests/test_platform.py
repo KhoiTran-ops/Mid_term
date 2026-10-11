@@ -38,6 +38,27 @@ def test_catalog_registers_pdf_and_filters_without_touching_original_file(tmp_pa
     assert catalog.pdf_path(stock.id).read_bytes() == file.read_bytes()
 
 
+def test_catalog_reuses_exact_duplicate_and_generation_key(tmp_path):
+    catalog = ReportCatalog(tmp_path / 'reports.db', tmp_path / 'pdfs')
+    pdf = tmp_path / 'input.pdf'
+    pdf.write_bytes(b'%PDF-1.4\nidentical report\n%%EOF')
+    first = catalog.register(metadata(), pdf, generation_key='a' * 64)
+    second = catalog.register(metadata(), pdf, generation_key='a' * 64)
+    same_content = catalog.register(metadata(), pdf)
+    assert first.id == second.id == same_content.id
+    assert catalog.find_by_generation_key('a' * 64).id == first.id
+    assert catalog.list_reports().total == 1
+    duplicate_id = '00000000-0000-4000-8000-000000000001'
+    duplicate_pdf = catalog.directory / f'{duplicate_id}.pdf'
+    duplicate_pdf.write_bytes(pdf.read_bytes())
+    with sqlite3.connect(catalog.database) as db:
+        db.execute('''INSERT INTO reports
+            SELECT ?,kind,title,as_of,symbol,company_name,industry_id,industry_name,
+                   created_at,sha256,? FROM reports WHERE id=?''',
+            (duplicate_id, duplicate_pdf.name, first.id))
+    assert catalog.list_reports().total == 1
+
+
 def test_catalog_rejects_non_pdf_and_unsafe_pdf_path(tmp_path):
     catalog = ReportCatalog(tmp_path / 'reports.db', tmp_path / 'pdfs')
     bad = tmp_path / 'bad.pdf'

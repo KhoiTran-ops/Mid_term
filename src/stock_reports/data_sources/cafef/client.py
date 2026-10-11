@@ -2,6 +2,7 @@
 
 from dataclasses import dataclass
 from datetime import date
+from http.client import HTTPException
 import json
 import random
 import time
@@ -60,7 +61,7 @@ class RateLimitedTransport:
                     raise CafeFError(f"CafeF HTTP {error.code}", status_code=error.code) from error
                 retry_after = error.headers.get("Retry-After")
                 delay = min(float(retry_after), 300) if retry_after else 2 ** attempt
-            except (URLError, TimeoutError) as error:
+            except (URLError, TimeoutError, HTTPException, OSError) as error:
                 if attempt == self._retries:
                     raise CafeFError("CafeF network request failed") from error
                 delay = 2 ** attempt
@@ -122,9 +123,14 @@ class CafeFClient:
     def get_financial_html(self, symbol: str, statement_type: str,
                            anchor_year: int, anchor_quarter: int) -> str:
         query = urlencode({"quarter": anchor_quarter, "symbol": symbol,
-                           "type": statement_type, "year": anchor_year})
+                           "type": statement_type, "year": anchor_year, "showtype": 1})
         raw = self._transport.get(f"{BASE_URL}/du-lieu/BaoCaoTaiChinh_V2.aspx?{query}")
         return raw.decode("utf-8", errors="replace")
+
+    def get_annual_financial_html(self, symbol: str, statement_type: str,
+                                  anchor_year: int) -> str:
+        """quarter=0 requests real annual columns, never the Q4 statement."""
+        return self.get_financial_html(symbol, statement_type, anchor_year, 0)
 
     def get_financial_summary(self, symbol: str, *, page: int,
                               page_size: int = 4) -> object:

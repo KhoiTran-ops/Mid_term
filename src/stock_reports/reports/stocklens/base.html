@@ -1,0 +1,7 @@
+{% from 'components.html' import kpi, callout, points, evidence, chart %}
+<!doctype html><html lang="vi"><head><meta charset="utf-8"><title>{{ d.meta.ticker }} - StockLens</title><style>{{ styles|safe }}</style></head><body>
+{% for name in pages %}<section class="page layout-{{ name }}" data-page="{{ loop.index }}">
+<header class="page-header"><div class="brand"><div class="brand-icon">SL</div><span class="brand-name">STOCKLENS</span></div><div class="page-meta">{{ d.meta.ticker }} · {{ d.meta.report_date|txt }} · {{ v.horizon_label }}</div></header>
+<main class="page-content">{% include 'pages/' ~ name ~ '.html' %}</main>
+<footer class="page-footer"><span>Chỉ mang tính tham khảo, không phải khuyến nghị mua/bán<br>Xuất {{ exported_at }}</span><span class="mono">{{ loop.index }} / {{ total }}</span></footer></section>{% endfor %}
+</body></html>

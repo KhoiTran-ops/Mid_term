@@ -5,6 +5,7 @@ import struct
 import pytest
 
 from stock_reports.data_sources.dnse.sectors import decode_sector_packet, mqtt_varint, mqtt_string
+from stock_reports.pipeline.industries import public_company_instruments
 from stock_reports.storage.industries import IndustryStore
 
 
@@ -56,3 +57,4 @@ def test_industry_store_keys_classification_and_keeps_snapshots_and_company_memb
     assert data['sectors'] == 1 and data['companies'] == 1 and data['snapshots'] == 1
     assert store.list_companies(exchange='HOSE')[0]['industry_id'] == '12'
     assert json.loads(store.latest_snapshots()[0]['raw_json'])['id'] == '12'
+    assert public_company_instruments(store)[0].symbol == 'VCB'

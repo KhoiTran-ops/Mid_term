@@ -1,0 +1,75 @@
+{
+  "ticker": "FPT",
+  "report_date": "2026-10-11",
+  "price_date": "2026-10-09",
+  "missing_count": 10,
+  "missing_reason": {
+    "price.series_250.79.volume": "Nguồn đã lưu và hồ sơ đối chiếu chưa cung cấp số liệu cùng kỳ/cơ sở; không suy số hoặc dùng số mẫu.",
+    "price.series_250.80.volume": "Nguồn đã lưu và hồ sơ đối chiếu chưa cung cấp số liệu cùng kỳ/cơ sở; không suy số hoặc dùng số mẫu.",
+    "scores.pillars.value": "Trụ cột bị tắt trong cấu hình gốc; không điền điểm 0.",
+    "financials.latest_quarter.nim": "Không áp dụng chỉ tiêu ngân hàng cho doanh nghiệp này.",
+    "financials.latest_quarter.casa": "Không áp dụng chỉ tiêu ngân hàng cho doanh nghiệp này.",
+    "financials.latest_quarter.npl": "Không áp dụng chỉ tiêu ngân hàng cho doanh nghiệp này.",
+    "financials.latest_quarter.car": "Không áp dụng chỉ tiêu ngân hàng cho doanh nghiệp này.",
+    "valuation.peer_median_pe": "Không có snapshot cùng ngày gồm từng thành viên, P/E và phân loại sector/industry; PDF tổng hợp không thay thế dữ liệu gốc.",
+    "valuation.peer_count": "Không có snapshot cùng ngày gồm từng thành viên, P/E và phân loại sector/industry; PDF tổng hợp không thay thế dữ liệu gốc.",
+    "valuation.peer_snapshot_date": "Không có snapshot cùng ngày gồm từng thành viên, P/E và phân loại sector/industry; PDF tổng hợp không thay thế dữ liệu gốc."
+  },
+  "quality_checks": [
+    {
+      "check": "adjusted_history_300",
+      "status": "pass",
+      "detail": "530 phiên điều chỉnh; không tự bù phiên."
+    },
+    {
+      "check": "volume_adjustment",
+      "status": "pass",
+      "detail": "Khối lượng/giá trị TB20 phải kiểm tra sự kiện quyền và cơ sở khớp lệnh/tổng giao dịch; chưa đối chiếu không được coi là xác nhận X10."
+    },
+    {
+      "check": "aligned_price_dates",
+      "status": "pass",
+      "detail": "Ngày giá thô và giá điều chỉnh."
+    },
+    {
+      "check": "eps_share_identity",
+      "status": "pass",
+      "detail": "EPS × cổ phiếu = LNST mẹ TTM; thiếu đầu vào thì chặn định giá."
+    },
+    {
+      "check": "balance_2026Q2",
+      "status": "pass",
+      "detail": "Tài sản công bố = nợ + tổng vốn (≤ 0,5%); sai lệch thì cách ly ba trường, không suy tổng vốn."
+    },
+    {
+      "check": "balance_2026Q1",
+      "status": "pass",
+      "detail": "Tài sản công bố = nợ + tổng vốn (≤ 0,5%); sai lệch thì cách ly ba trường, không suy tổng vốn."
+    },
+    {
+      "check": "balance_2025Q4",
+      "status": "pass",
+      "detail": "Tài sản công bố = nợ + tổng vốn (≤ 0,5%); sai lệch thì cách ly ba trường, không suy tổng vốn."
+    },
+    {
+      "check": "balance_2025Q3",
+      "status": "pass",
+      "detail": "Tài sản công bố = nợ + tổng vốn (≤ 0,5%); sai lệch thì cách ly ba trường, không suy tổng vốn."
+    },
+    {
+      "check": "balance_2025Q2",
+      "status": "pass",
+      "detail": "Tài sản công bố = nợ + tổng vốn (≤ 0,5%); sai lệch thì cách ly ba trường, không suy tổng vốn."
+    },
+    {
+      "check": "action_price_jumps",
+      "status": "pass",
+      "detail": "Đối chiếu giá thô/điều chỉnh quanh các bước thay đổi cơ sở >5 điểm %: [{\"date\": \"2025-07-21\", \"raw_return_pct\": -12.46031746031746, \"adjusted_return_pct\": 0.6684491978609541}, {\"date\": \"2026-09-21\", \"raw_return_pct\": -7.3919107391910766, \"adjusted_return_pct\": 1.8717397974838734}]"
+    },
+    {
+      "check": "bonus_adjustment_2026-09-21",
+      "status": "pass",
+      "detail": "Hệ số giá qua quyền 1.100031; kỳ vọng 1+ratio=1.100000."
+    }
+  ]
+}

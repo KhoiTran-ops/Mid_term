@@ -3,7 +3,6 @@
 from datetime import datetime, UTC
 import json
 import math
-from pathlib import Path
 
 import httpx
 
@@ -16,6 +15,12 @@ INDICATORS = {
     'FP.CPI.TOTL.ZG': ('Lạm phát CPI','%/năm'),
     'NE.TRD.GNFS.ZS': ('Thương mại hàng hóa và dịch vụ','% GDP'),
     'BX.KLT.DINV.WD.GD.ZS': ('FDI ròng vào','% GDP'),
+}
+
+COUNTRIES = {
+    'VNM': 'Việt Nam', 'USA': 'Hoa Kỳ', 'CHN': 'Trung Quốc',
+    'JPN': 'Nhật Bản', 'KOR': 'Hàn Quốc', 'SGP': 'Singapore',
+    'THA': 'Thái Lan', 'IDN': 'Indonesia',
 }
 
 
@@ -35,7 +40,8 @@ def _update_macro(settings):
     observations,issues = [],[]
     with httpx.Client(timeout=30,follow_redirects=True) as client:
         for code,(label,unit) in INDICATORS.items():
-            url=f'https://api.worldbank.org/v2/country/VNM/indicator/{code}'
+            country_scope=';'.join(COUNTRIES)
+            url=f'https://api.worldbank.org/v2/country/{country_scope}/indicator/{code}'
             try:
                 response=client.get(url,params={'format':'json','date':f'{started.year-11}:{started.year-1}','per_page':100})
                 response.raise_for_status()
@@ -45,13 +51,17 @@ def _update_macro(settings):
                     raise ValueError('World Bank schema changed')
                 series=[]
                 for row in payload[1]:
-                    if row.get('value') is not None and row.get('countryiso3code')=='VNM':
+                    country=str(row.get('countryiso3code') or '')
+                    if row.get('value') is not None and country in COUNTRIES:
                         value=float(row['value'])
                         if not math.isfinite(value) or not started.year-11 <= int(row['date']) < started.year:
                             raise ValueError('Invalid indicator value/year')
-                        series.append(dict(metric=code,label=label,unit=unit,period=str(row['date']),
+                        series.append(dict(country=country,
+                            country_name=str(row.get('country', {}).get('value') or COUNTRIES[country]),
+                            metric=code,label=label,unit=unit,frequency='annual',period=str(row['date']),
                             value=value,provider_updated=payload[0].get('lastupdated'),
-                            source=dict(source_name='World Bank WDI',url=str(response.url),retrieved_at=started.isoformat(),locator=f"{code}, Việt Nam, năm {row['date']}")))
+                            source=dict(source_name='World Bank WDI',url=str(response.url),retrieved_at=started.isoformat(),
+                                locator=f"{code}, {COUNTRIES[country]}, năm {row['date']}")))
                 if not series:
                     raise ValueError('No observations for this indicator')
                 observations.extend(series)
@@ -65,7 +75,8 @@ def _update_macro(settings):
         old=json.loads(previous.read_text(encoding='utf-8'))['observations']
         failed={i['metric'] for i in issues}
         observations.extend(r for r in old if r['metric'] in failed)
-    result=dict(country='VNM',updated_at=started.isoformat(),observations=observations,issues=issues)
+    result=dict(primary_country='VNM',countries=list(COUNTRIES),updated_at=started.isoformat(),
+                observations=observations,issues=issues)
     temporary=folder/'worldbank.json.tmp'
     temporary.write_text(json.dumps(result,ensure_ascii=False,indent=2),encoding='utf-8')
     temporary.replace(previous)

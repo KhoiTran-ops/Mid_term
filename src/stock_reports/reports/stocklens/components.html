@@ -1,0 +1,7 @@
+{% macro kpi(label,value,unit='',signed=false,places=2,derived=false) -%}
+<div class="card kpi"><div class="label">{{ label }}</div><div class="value {{ value|tone }}">{{ value|num(places,signed) }}{% if value is not none %}{% if derived %}<sup>†</sup>{% endif %}{% if unit=='%' %}%{% endif %}{% endif %}</div>{% if unit and unit!='%' %}<div class="sub">{{ unit }}</div>{% endif %}</div>
+{%- endmacro %}
+{% macro callout(title,content,kind='') -%}<div class="callout {{ kind }}"><h2>{{ title }}</h2><p>{{ content|txt }}</p></div>{%- endmacro %}
+{% macro evidence(item) -%}<div class="provenance">Dữ liệu: {{ item.fields|join(' · ') }}{% if item.rule %}<span class="rule"><br>Quy tắc: {{ item.rule }}</span>{% endif %}</div>{%- endmacro %}
+{% macro points(title,items,kind='') -%}<div class="card notes {{ kind }}"><h2>{{ title }}</h2>{% for item in items %}<p class="bullet small">{{ item.text }}</p>{{ evidence(item) }}{% else %}<p class="empty">Chưa có</p>{% endfor %}</div>{%- endmacro %}
+{% macro chart(title,svg,unit) -%}<div class="chart"><div class="chart-title">{{ title }}</div>{% if svg %}{{ svg }}{% else %}<div class="empty">Chưa có</div>{% endif %}<div class="unit">{{ unit }}</div></div>{%- endmacro %}
